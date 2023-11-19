@@ -27,12 +27,23 @@ namespace HotelReservationSystem.Appdata
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<GuestInformation> GuestInformation { get; set; }
         public virtual DbSet<Role> Role { get; set; }
+        public virtual DbSet<RoomInformation> RoomInformation { get; set; }
         public virtual DbSet<UserAccount> UserAccount { get; set; }
         public virtual DbSet<UserInformation> UserInformation { get; set; }
-        public virtual DbSet<vw_all_user_role> vw_all_user_role { get; set; }
+        public virtual DbSet<vw_RoomInfo_Available> vw_RoomInfo_Available { get; set; }
+        public virtual DbSet<vw_RoomInfo_Full> vw_RoomInfo_Full { get; set; }
+        public virtual DbSet<vw_RoomInfo_Occupied> vw_RoomInfo_Occupied { get; set; }
+        public virtual DbSet<vw_RoomInfo_Prices> vw_RoomInfo_Prices { get; set; }
+        public virtual DbSet<vw_RoomInfo_Types> vw_RoomInfo_Types { get; set; }
+        public virtual DbSet<vw_UserAccount_Active> vw_UserAccount_Active { get; set; }
+        public virtual DbSet<vw_UserAccount_Full> vw_UserAccount_Full { get; set; }
+        public virtual DbSet<vw_UserAccount_Inactive> vw_UserAccount_Inactive { get; set; }
+        public virtual DbSet<vw_UserAccount_Roles> vw_UserAccount_Roles { get; set; }
+        public virtual DbSet<vw_UserAccount_Updates> vw_UserAccount_Updates { get; set; }
     
-        public virtual int SP_NewUserAccount(string uName, string uPassword, Nullable<int> roleID, Nullable<int> createdByID)
+        public virtual int SP_NewUserAccount(string uName, string uPassword, Nullable<System.DateTime> createDate, Nullable<System.DateTime> updateDate, Nullable<int> roleID, Nullable<int> createdByID, string creatorName)
         {
             var uNameParameter = uName != null ?
                 new ObjectParameter("UName", uName) :
@@ -42,6 +53,14 @@ namespace HotelReservationSystem.Appdata
                 new ObjectParameter("UPassword", uPassword) :
                 new ObjectParameter("UPassword", typeof(string));
     
+            var createDateParameter = createDate.HasValue ?
+                new ObjectParameter("CreateDate", createDate) :
+                new ObjectParameter("CreateDate", typeof(System.DateTime));
+    
+            var updateDateParameter = updateDate.HasValue ?
+                new ObjectParameter("UpdateDate", updateDate) :
+                new ObjectParameter("UpdateDate", typeof(System.DateTime));
+    
             var roleIDParameter = roleID.HasValue ?
                 new ObjectParameter("RoleID", roleID) :
                 new ObjectParameter("RoleID", typeof(int));
@@ -50,7 +69,58 @@ namespace HotelReservationSystem.Appdata
                 new ObjectParameter("CreatedByID", createdByID) :
                 new ObjectParameter("CreatedByID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_NewUserAccount", uNameParameter, uPasswordParameter, roleIDParameter, createdByIDParameter);
+            var creatorNameParameter = creatorName != null ?
+                new ObjectParameter("CreatorName", creatorName) :
+                new ObjectParameter("CreatorName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_NewUserAccount", uNameParameter, uPasswordParameter, createDateParameter, updateDateParameter, roleIDParameter, createdByIDParameter, creatorNameParameter);
+        }
+    
+        public virtual int SP_DeleteUserAccount(Nullable<int> specificID)
+        {
+            var specificIDParameter = specificID.HasValue ?
+                new ObjectParameter("SpecificID", specificID) :
+                new ObjectParameter("SpecificID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_DeleteUserAccount", specificIDParameter);
+        }
+    
+        public virtual int SP_UpdateUserAccount(Nullable<int> specificID, string uName, string uPassword, string uStatus, Nullable<System.DateTime> uLastUpdated)
+        {
+            var specificIDParameter = specificID.HasValue ?
+                new ObjectParameter("SpecificID", specificID) :
+                new ObjectParameter("SpecificID", typeof(int));
+    
+            var uNameParameter = uName != null ?
+                new ObjectParameter("UName", uName) :
+                new ObjectParameter("UName", typeof(string));
+    
+            var uPasswordParameter = uPassword != null ?
+                new ObjectParameter("UPassword", uPassword) :
+                new ObjectParameter("UPassword", typeof(string));
+    
+            var uStatusParameter = uStatus != null ?
+                new ObjectParameter("UStatus", uStatus) :
+                new ObjectParameter("UStatus", typeof(string));
+    
+            var uLastUpdatedParameter = uLastUpdated.HasValue ?
+                new ObjectParameter("ULastUpdated", uLastUpdated) :
+                new ObjectParameter("ULastUpdated", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UpdateUserAccount", specificIDParameter, uNameParameter, uPasswordParameter, uStatusParameter, uLastUpdatedParameter);
+        }
+    
+        public virtual int SP_UpdateUserAccountStatus(string uName, string uStatus)
+        {
+            var uNameParameter = uName != null ?
+                new ObjectParameter("UName", uName) :
+                new ObjectParameter("UName", typeof(string));
+    
+            var uStatusParameter = uStatus != null ?
+                new ObjectParameter("UStatus", uStatus) :
+                new ObjectParameter("UStatus", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UpdateUserAccountStatus", uNameParameter, uStatusParameter);
         }
     }
 }

@@ -1,5 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DBSYSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="GuestInformation">
+    <Key>
+      <PropertyRef Name="guestID" />
+    </Key>
+    <Property Name="guestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="guestFirstName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="guestLastName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="guestBirthDate" Type="smalldatetime" />
+    <Property Name="guestGender" Type="varchar" MaxLength="99" Nullable="false" />
+    <Property Name="guestContactNo" Type="varchar" MaxLength="99" Nullable="false" />
+    <Property Name="guestAddress" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="guestEmailAddress" Type="varchar" MaxLength="99" Nullable="false" />
+    <Property Name="guestLastCheckInDate" Type="smalldatetime" Nullable="false" />
+    <Property Name="guestLastCheckOutDate" Type="smalldatetime" Nullable="false" />
+    <Property Name="userID" Type="int" />
+    <Property Name="roomID" Type="int" />
+  </EntityType>
   <EntityType Name="Role">
     <Key>
       <PropertyRef Name="roleId" />
@@ -7,6 +24,19 @@
     <Property Name="roleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="roleName" Type="nvarchar" MaxLength="50" />
     <Property Name="roleDescription" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="RoomInformation">
+    <Key>
+      <PropertyRef Name="roomID" />
+    </Key>
+    <Property Name="roomID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="roomTitle" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="roomType" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="roomPrice" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+    <Property Name="roomImage" Type="varchar" MaxLength="255" />
+    <Property Name="roomDesc" Type="varchar" MaxLength="255" />
+    <Property Name="roomGuestCount" Type="int" />
+    <Property Name="userID" Type="int" />
   </EntityType>
   <EntityType Name="UserAccount">
     <Key>
@@ -16,8 +46,11 @@
     <Property Name="userName" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="userPassword" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="userStatus" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="userDateCreated" Type="datetime" />
+    <Property Name="userDateUpdated" Type="datetime" />
     <Property Name="roleId" Type="int" />
     <Property Name="createdById" Type="int" />
+    <Property Name="createdByUser" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="UserInformation">
     <Key>
@@ -31,18 +64,188 @@
     <Property Name="userId" Type="int" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'DBSYS.dbo.vw_all_user_role' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="vw_all_user_role">
+warning 6002: The table/view 'DBSYS.dbo.vw_RoomInfo_Available' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_RoomInfo_Available">
     <Key>
-      <PropertyRef Name="UserId" />
+      <PropertyRef Name="Room ID" />
+      <PropertyRef Name="Room Name" />
+      <PropertyRef Name="Room Type" />
+      <PropertyRef Name="Occupant User ID" />
+      <PropertyRef Name="Occupant Username" />
+    </Key>
+    <Property Name="Room ID" Type="int" Nullable="false" />
+    <Property Name="Room Name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Room Type" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Occupant User ID" Type="int" Nullable="false" />
+    <Property Name="Room Occupants" Type="int" />
+    <Property Name="Occupant Username" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_RoomInfo_Full' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_RoomInfo_Full">
+    <Key>
+      <PropertyRef Name="Room ID" />
+      <PropertyRef Name="Room Name" />
+      <PropertyRef Name="Room Type" />
+      <PropertyRef Name="Room Price" />
+      <PropertyRef Name="Occupant User ID" />
+    </Key>
+    <Property Name="Room ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Room Name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Room Type" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Room Price" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+    <Property Name="Room Image File Name" Type="varchar" MaxLength="255" />
+    <Property Name="Room Description" Type="varchar" MaxLength="255" />
+    <Property Name="Room Occupants" Type="int" />
+    <Property Name="Occupant User ID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_RoomInfo_Occupied' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_RoomInfo_Occupied">
+    <Key>
+      <PropertyRef Name="Room ID" />
+      <PropertyRef Name="Room Name" />
+      <PropertyRef Name="Room Type" />
+      <PropertyRef Name="Occupant User ID" />
+      <PropertyRef Name="Occupant Username" />
+    </Key>
+    <Property Name="Room ID" Type="int" Nullable="false" />
+    <Property Name="Room Name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Room Type" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Occupant User ID" Type="int" Nullable="false" />
+    <Property Name="Room Occupants" Type="int" />
+    <Property Name="Occupant Username" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_RoomInfo_Prices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_RoomInfo_Prices">
+    <Key>
+      <PropertyRef Name="Room ID" />
+      <PropertyRef Name="Room Name" />
+      <PropertyRef Name="Room Type" />
+      <PropertyRef Name="Room Price" />
+    </Key>
+    <Property Name="Room ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Room Name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Room Type" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Room Price" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+    <Property Name="Room Description" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_RoomInfo_Types' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_RoomInfo_Types">
+    <Key>
+      <PropertyRef Name="Room ID" />
+      <PropertyRef Name="Room Name" />
+      <PropertyRef Name="Room Type" />
+    </Key>
+    <Property Name="Room ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Room Name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Room Type" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Room Description" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Active' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_UserAccount_Active">
+    <Key>
+      <PropertyRef Name="User ID#" />
+      <PropertyRef Name="Username" />
+      <PropertyRef Name="Status" />
+    </Key>
+    <Property Name="User ID#" Type="int" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Full' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_UserAccount_Full">
+    <Key>
+      <PropertyRef Name="User ID#" />
       <PropertyRef Name="Username" />
       <PropertyRef Name="Password" />
+      <PropertyRef Name="Status" />
     </Key>
-    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="User ID#" Type="int" Nullable="false" />
     <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Date Created" Type="smalldatetime" />
+    <Property Name="Date Updated" Type="smalldatetime" />
+    <Property Name="Role" Type="nvarchar" MaxLength="50" />
+    <Property Name="User Creator" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Inactive' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_UserAccount_Inactive">
+    <Key>
+      <PropertyRef Name="User ID#" />
+      <PropertyRef Name="Username" />
+      <PropertyRef Name="Status" />
+    </Key>
+    <Property Name="User ID#" Type="int" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Roles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_UserAccount_Roles">
+    <Key>
+      <PropertyRef Name="User ID#" />
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="User ID#" Type="int" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Role" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Updates' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_UserAccount_Updates">
+    <Key>
+      <PropertyRef Name="User ID#" />
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="User ID#" Type="int" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Date Created" Type="smalldatetime" />
+    <Property Name="Date Updated" Type="smalldatetime" />
+    <Property Name="Creator" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <Association Name="FK__GuestInfo__roomI__01142BA1">
+    <End Role="RoomInformation" Type="Self.RoomInformation" Multiplicity="0..1" />
+    <End Role="GuestInformation" Type="Self.GuestInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoomInformation">
+        <PropertyRef Name="roomID" />
+      </Principal>
+      <Dependent Role="GuestInformation">
+        <PropertyRef Name="roomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GuestInfo__userI__00200768">
+    <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+    <End Role="GuestInformation" Type="Self.GuestInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccount">
+        <PropertyRef Name="userId" />
+      </Principal>
+      <Dependent Role="GuestInformation">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RoomInfor__userI__7B5B524B">
+    <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+    <End Role="RoomInformation" Type="Self.RoomInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccount">
+        <PropertyRef Name="userId" />
+      </Principal>
+      <Dependent Role="RoomInformation">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__UserInfor__userI__1BFD2C07">
     <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
     <End Role="UserInformation" Type="Self.UserInformation" Multiplicity="*" />
@@ -67,24 +270,138 @@ warning 6002: The table/view 'DBSYS.dbo.vw_all_user_role' does not have a primar
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="SP_DeleteUserAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SpecificID" Type="int" Mode="In" />
+  </Function>
   <Function Name="SP_NewUserAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="UName" Type="varchar" Mode="In" />
     <Parameter Name="UPassword" Type="varchar" Mode="In" />
+    <Parameter Name="CreateDate" Type="datetime" Mode="In" />
+    <Parameter Name="UpdateDate" Type="datetime" Mode="In" />
     <Parameter Name="RoleID" Type="int" Mode="In" />
     <Parameter Name="CreatedByID" Type="int" Mode="In" />
+    <Parameter Name="CreatorName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_UpdateUserAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SpecificID" Type="int" Mode="In" />
+    <Parameter Name="UName" Type="varchar" Mode="In" />
+    <Parameter Name="UPassword" Type="varchar" Mode="In" />
+    <Parameter Name="UStatus" Type="varchar" Mode="In" />
+    <Parameter Name="ULastUpdated" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="SP_UpdateUserAccountStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UName" Type="varchar" Mode="In" />
+    <Parameter Name="UStatus" Type="varchar" Mode="In" />
   </Function>
   <EntityContainer Name="DBSYSModelStoreContainer">
+    <EntitySet Name="GuestInformation" EntityType="Self.GuestInformation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RoomInformation" EntityType="Self.RoomInformation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserAccount" EntityType="Self.UserAccount" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserInformation" EntityType="Self.UserInformation" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="vw_all_user_role" EntityType="Self.vw_all_user_role" store:Type="Views" store:Schema="dbo">
+    <EntitySet Name="vw_RoomInfo_Available" EntityType="Self.vw_RoomInfo_Available" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
-    [vw_all_user_role].[UserId] AS [UserId], 
-    [vw_all_user_role].[Username] AS [Username], 
-    [vw_all_user_role].[Password] AS [Password], 
-    [vw_all_user_role].[Role] AS [Role]
-    FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
+    [vw_RoomInfo_Available].[Room ID] AS [Room ID], 
+    [vw_RoomInfo_Available].[Room Name] AS [Room Name], 
+    [vw_RoomInfo_Available].[Room Type] AS [Room Type], 
+    [vw_RoomInfo_Available].[Occupant User ID] AS [Occupant User ID], 
+    [vw_RoomInfo_Available].[Room Occupants] AS [Room Occupants], 
+    [vw_RoomInfo_Available].[Occupant Username] AS [Occupant Username]
+    FROM [dbo].[vw_RoomInfo_Available] AS [vw_RoomInfo_Available]</DefiningQuery>
     </EntitySet>
+    <EntitySet Name="vw_RoomInfo_Full" EntityType="Self.vw_RoomInfo_Full" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_RoomInfo_Full].[Room ID] AS [Room ID], 
+    [vw_RoomInfo_Full].[Room Name] AS [Room Name], 
+    [vw_RoomInfo_Full].[Room Type] AS [Room Type], 
+    [vw_RoomInfo_Full].[Room Price] AS [Room Price], 
+    [vw_RoomInfo_Full].[Room Image File Name] AS [Room Image File Name], 
+    [vw_RoomInfo_Full].[Room Description] AS [Room Description], 
+    [vw_RoomInfo_Full].[Room Occupants] AS [Room Occupants], 
+    [vw_RoomInfo_Full].[Occupant User ID] AS [Occupant User ID]
+    FROM [dbo].[vw_RoomInfo_Full] AS [vw_RoomInfo_Full]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_RoomInfo_Occupied" EntityType="Self.vw_RoomInfo_Occupied" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_RoomInfo_Occupied].[Room ID] AS [Room ID], 
+    [vw_RoomInfo_Occupied].[Room Name] AS [Room Name], 
+    [vw_RoomInfo_Occupied].[Room Type] AS [Room Type], 
+    [vw_RoomInfo_Occupied].[Occupant User ID] AS [Occupant User ID], 
+    [vw_RoomInfo_Occupied].[Room Occupants] AS [Room Occupants], 
+    [vw_RoomInfo_Occupied].[Occupant Username] AS [Occupant Username]
+    FROM [dbo].[vw_RoomInfo_Occupied] AS [vw_RoomInfo_Occupied]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_RoomInfo_Prices" EntityType="Self.vw_RoomInfo_Prices" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_RoomInfo_Prices].[Room ID] AS [Room ID], 
+    [vw_RoomInfo_Prices].[Room Name] AS [Room Name], 
+    [vw_RoomInfo_Prices].[Room Type] AS [Room Type], 
+    [vw_RoomInfo_Prices].[Room Price] AS [Room Price], 
+    [vw_RoomInfo_Prices].[Room Description] AS [Room Description]
+    FROM [dbo].[vw_RoomInfo_Prices] AS [vw_RoomInfo_Prices]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_RoomInfo_Types" EntityType="Self.vw_RoomInfo_Types" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_RoomInfo_Types].[Room ID] AS [Room ID], 
+    [vw_RoomInfo_Types].[Room Name] AS [Room Name], 
+    [vw_RoomInfo_Types].[Room Type] AS [Room Type], 
+    [vw_RoomInfo_Types].[Room Description] AS [Room Description]
+    FROM [dbo].[vw_RoomInfo_Types] AS [vw_RoomInfo_Types]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_UserAccount_Active" EntityType="Self.vw_UserAccount_Active" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_UserAccount_Active].[User ID#] AS [User ID#], 
+    [vw_UserAccount_Active].[Username] AS [Username], 
+    [vw_UserAccount_Active].[Status] AS [Status]
+    FROM [dbo].[vw_UserAccount_Active] AS [vw_UserAccount_Active]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_UserAccount_Full" EntityType="Self.vw_UserAccount_Full" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_UserAccount_Full].[User ID#] AS [User ID#], 
+    [vw_UserAccount_Full].[Username] AS [Username], 
+    [vw_UserAccount_Full].[Password] AS [Password], 
+    [vw_UserAccount_Full].[Status] AS [Status], 
+    [vw_UserAccount_Full].[Date Created] AS [Date Created], 
+    [vw_UserAccount_Full].[Date Updated] AS [Date Updated], 
+    [vw_UserAccount_Full].[Role] AS [Role], 
+    [vw_UserAccount_Full].[User Creator] AS [User Creator]
+    FROM [dbo].[vw_UserAccount_Full] AS [vw_UserAccount_Full]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_UserAccount_Inactive" EntityType="Self.vw_UserAccount_Inactive" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_UserAccount_Inactive].[User ID#] AS [User ID#], 
+    [vw_UserAccount_Inactive].[Username] AS [Username], 
+    [vw_UserAccount_Inactive].[Status] AS [Status]
+    FROM [dbo].[vw_UserAccount_Inactive] AS [vw_UserAccount_Inactive]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_UserAccount_Roles" EntityType="Self.vw_UserAccount_Roles" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_UserAccount_Roles].[User ID#] AS [User ID#], 
+    [vw_UserAccount_Roles].[Username] AS [Username], 
+    [vw_UserAccount_Roles].[Role] AS [Role]
+    FROM [dbo].[vw_UserAccount_Roles] AS [vw_UserAccount_Roles]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_UserAccount_Updates" EntityType="Self.vw_UserAccount_Updates" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_UserAccount_Updates].[User ID#] AS [User ID#], 
+    [vw_UserAccount_Updates].[Username] AS [Username], 
+    [vw_UserAccount_Updates].[Date Created] AS [Date Created], 
+    [vw_UserAccount_Updates].[Date Updated] AS [Date Updated], 
+    [vw_UserAccount_Updates].[Creator] AS [Creator]
+    FROM [dbo].[vw_UserAccount_Updates] AS [vw_UserAccount_Updates]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__GuestInfo__roomI__01142BA1" Association="Self.FK__GuestInfo__roomI__01142BA1">
+      <End Role="RoomInformation" EntitySet="RoomInformation" />
+      <End Role="GuestInformation" EntitySet="GuestInformation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GuestInfo__userI__00200768" Association="Self.FK__GuestInfo__userI__00200768">
+      <End Role="UserAccount" EntitySet="UserAccount" />
+      <End Role="GuestInformation" EntitySet="GuestInformation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RoomInfor__userI__7B5B524B" Association="Self.FK__RoomInfor__userI__7B5B524B">
+      <End Role="UserAccount" EntitySet="UserAccount" />
+      <End Role="RoomInformation" EntitySet="RoomInformation" />
+    </AssociationSet>
     <AssociationSet Name="FK__UserInfor__userI__1BFD2C07" Association="Self.FK__UserInfor__userI__1BFD2C07">
       <End Role="UserAccount" EntitySet="UserAccount" />
       <End Role="UserInformation" EntitySet="UserInformation" />

@@ -5,11 +5,25 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="00a467fdabce44f7863a0ff2c23b014f" Name="Diagram1">
-        <EntityTypeShape EntityType="DBSYSModel.Role" Width="1.5" PointX="0.75" PointY="1.375" />
-        <EntityTypeShape EntityType="DBSYSModel.UserAccount" Width="1.5" PointX="3" PointY="1" />
-        <EntityTypeShape EntityType="DBSYSModel.UserInformation" Width="1.5" PointX="5.25" PointY="1" />
-        <EntityTypeShape EntityType="DBSYSModel.vw_all_user_role" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DBSYSModel.GuestInformation" Width="1.5" PointX="7.5" PointY="7.625" />
+        <EntityTypeShape EntityType="DBSYSModel.Role" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="DBSYSModel.RoomInformation" Width="1.5" PointX="5.25" PointY="11.125" />
+        <EntityTypeShape EntityType="DBSYSModel.UserAccount" Width="1.5" PointX="3" PointY="4.875" />
+        <EntityTypeShape EntityType="DBSYSModel.UserInformation" Width="1.5" PointX="5.25" PointY="3.625" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_RoomInfo_Available" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_RoomInfo_Full" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_RoomInfo_Occupied" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_RoomInfo_Prices" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_RoomInfo_Types" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_UserAccount_Active" Width="1.5" PointX="7.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_UserAccount_Full" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_UserAccount_Inactive" Width="1.5" PointX="9.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_UserAccount_Roles" Width="1.5" PointX="9.75" PointY="6.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_UserAccount_Updates" Width="1.5" PointX="9.75" PointY="9.75" />
+        <AssociationConnector Association="DBSYSModel.FK__GuestInfo__roomI__01142BA1" />
+        <AssociationConnector Association="DBSYSModel.FK__GuestInfo__userI__00200768" />
         <AssociationConnector Association="DBSYSModel.FK_UserAccount_Role" />
+        <AssociationConnector Association="DBSYSModel.FK__RoomInfor__userI__7B5B524B" />
         <AssociationConnector Association="DBSYSModel.FK__UserInfor__userI__1BFD2C07" />
       </Diagram>
     </edmx:Diagrams>

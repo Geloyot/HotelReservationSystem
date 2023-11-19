@@ -59,6 +59,10 @@ namespace HotelReservationSystem
 
                     Timer_Loading.Start();
                 }
+                else
+                {
+                    MessageBox.Show("Login failed! Credentials not found!", "Login Fail", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else 
             {

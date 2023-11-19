@@ -105,10 +105,12 @@ namespace HotelReservationSystem
             UserAccount NewUserAccount = new UserAccount();
             NewUserAccount.userName = Txt_Username.Text;
             NewUserAccount.userPassword = Txt_Password.Text;
-            NewUserAccount.roleId = Convert.ToInt32(CbBox_Role.SelectedValue);
             NewUserAccount.userStatus = "ACTIVE";
-
-            string username = Txt_Username.Text;
+            NewUserAccount.userDateCreated = DateTime.Now;
+            NewUserAccount.userDateUpdated = DateTime.Now;
+            NewUserAccount.roleId = Convert.ToInt32(CbBox_Role.SelectedValue);
+            NewUserAccount.createdById = NewUserAccount.userId;
+            NewUserAccount.createdByUser = Txt_Username.Text;
 
             Database.UserAccount.Add(NewUserAccount);
             Database.SaveChanges();
@@ -117,9 +119,16 @@ namespace HotelReservationSystem
             Txt_Password.Clear();
             Txt_PasswordConfirm.Clear();
             MessageBox.Show("Registration successful!", "Registration Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            this.Dispose();
         }
 
         private void CbBox_Role_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

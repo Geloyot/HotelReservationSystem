@@ -12,7 +12,8 @@ namespace HotelReservationSystem.Forms
 {
     public partial class Form_Dashboard_Admin : Form
     {
-        bool IsLoggingOut = false;
+        private bool IsLoggingOut = false;
+        private UserRepository UserRepos;
 
         public Form_Dashboard_Admin()
         {
@@ -42,11 +43,22 @@ namespace HotelReservationSystem.Forms
         {
             ToolStripStatus_CurrentUser.Text = "Current User: " + CurrentlyLoggedUser.GetInstance().CurrentUserAccount.userName;
             Timer_Clock.Start();
+
+            UserRepos = new UserRepository();
+            LoadUserAccountsRoles();
         }
 
-        private void LinkLabelAcctManage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LoadUserAccountsRoles() 
         {
-            OpenAcctManageForm();
+            Dgv_AccountsSmall.DataSource = UserRepos.GetUserAccountRolesList();
+        }
+        private void LoadUserAccountsActive() 
+        {
+            Dgv_AccountsSmall.DataSource = UserRepos.GetUserAccountActiveList();
+        }
+        private void LoadUserAccountsInactive() 
+        {
+            Dgv_AccountsSmall.DataSource = UserRepos.GetUserAccountInactiveList();
         }
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -77,6 +89,56 @@ namespace HotelReservationSystem.Forms
             else {
                 Application.Exit();
             }
+        }
+
+        private void Btn_Accounts_Click(object sender, EventArgs e)
+        {
+            OpenAcctManageForm();
+        }
+
+        private void Btn_Rooms_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_Reservation_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LinkLabel_Room_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
+        private void LinkLabel_Reservation_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
+        private void LinkLabelAcctManage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            OpenAcctManageForm();
+        }
+
+        private void Dgv_AccountsSmall_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Btn_AcctRoles_Click(object sender, EventArgs e)
+        {
+            LoadUserAccountsRoles();
+        }
+
+        private void Btn_AcctActive_Click(object sender, EventArgs e)
+        {
+            LoadUserAccountsActive();
+        }
+
+        private void Btn_AcctInactive_Click(object sender, EventArgs e)
+        {
+            LoadUserAccountsInactive();
         }
     }
 }

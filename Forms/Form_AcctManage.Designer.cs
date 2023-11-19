@@ -38,6 +38,9 @@
             this.Label_Clock = new System.Windows.Forms.Label();
             this.Pic_HotelKannoteki = new System.Windows.Forms.PictureBox();
             this.Panel_AcctOptions = new System.Windows.Forms.Panel();
+            this.Label_Status = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Btn_UserStatus = new System.Windows.Forms.Button();
             this.Btn_Register = new System.Windows.Forms.Button();
             this.Btn_Update = new System.Windows.Forms.Button();
             this.Btn_Login = new System.Windows.Forms.Button();
@@ -138,6 +141,9 @@
             // Panel_AcctOptions
             // 
             this.Panel_AcctOptions.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.Panel_AcctOptions.Controls.Add(this.Label_Status);
+            this.Panel_AcctOptions.Controls.Add(this.label3);
+            this.Panel_AcctOptions.Controls.Add(this.Btn_UserStatus);
             this.Panel_AcctOptions.Controls.Add(this.Btn_Register);
             this.Panel_AcctOptions.Controls.Add(this.Btn_Update);
             this.Panel_AcctOptions.Controls.Add(this.Btn_Login);
@@ -151,6 +157,38 @@
             this.Panel_AcctOptions.Name = "Panel_AcctOptions";
             this.Panel_AcctOptions.Size = new System.Drawing.Size(889, 175);
             this.Panel_AcctOptions.TabIndex = 9;
+            // 
+            // Label_Status
+            // 
+            this.Label_Status.AutoSize = true;
+            this.Label_Status.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_Status.ForeColor = System.Drawing.Color.DarkGreen;
+            this.Label_Status.Location = new System.Drawing.Point(773, 6);
+            this.Label_Status.Name = "Label_Status";
+            this.Label_Status.Size = new System.Drawing.Size(79, 25);
+            this.Label_Status.TabIndex = 15;
+            this.Label_Status.Text = "ACTIVE";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(689, 7);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(78, 25);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Status:";
+            // 
+            // Btn_UserStatus
+            // 
+            this.Btn_UserStatus.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_UserStatus.Location = new System.Drawing.Point(694, 34);
+            this.Btn_UserStatus.Name = "Btn_UserStatus";
+            this.Btn_UserStatus.Size = new System.Drawing.Size(178, 32);
+            this.Btn_UserStatus.TabIndex = 13;
+            this.Btn_UserStatus.Text = "Set Status";
+            this.Btn_UserStatus.UseVisualStyleBackColor = true;
+            this.Btn_UserStatus.Click += new System.EventHandler(this.Btn_UserStatus_Click);
             // 
             // Btn_Register
             // 
@@ -253,6 +291,7 @@
             this.Dgv_AcctManage.Size = new System.Drawing.Size(889, 344);
             this.Dgv_AcctManage.TabIndex = 0;
             this.Dgv_AcctManage.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_AcctManage_CellClick);
+            this.Dgv_AcctManage.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_AcctManage_CellContentClick);
             // 
             // ErrorProviderInput
             // 
@@ -308,6 +347,9 @@
         private System.Windows.Forms.Button Btn_LogOut;
         private System.Windows.Forms.Button BtnDashboard;
         private System.Windows.Forms.PictureBox Pic_HotelKannoteki;
+        private System.Windows.Forms.Button Btn_UserStatus;
+        private System.Windows.Forms.Label Label_Status;
+        private System.Windows.Forms.Label label3;
     }
 }
 

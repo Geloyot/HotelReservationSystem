@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HotelReservationSystem
+namespace HotelReservationSystem.Appdata
 {
     using System;
     using System.Collections.Generic;

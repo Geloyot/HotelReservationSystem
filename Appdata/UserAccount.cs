@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HotelReservationSystem
+namespace HotelReservationSystem.Appdata
 {
     using System;
     using System.Collections.Generic;
@@ -17,6 +17,8 @@ namespace HotelReservationSystem
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UserAccount()
         {
+            this.GuestInformation = new HashSet<GuestInformation>();
+            this.RoomInformation = new HashSet<RoomInformation>();
             this.UserInformation = new HashSet<UserInformation>();
         }
     
@@ -24,10 +26,17 @@ namespace HotelReservationSystem
         public string userName { get; set; }
         public string userPassword { get; set; }
         public string userStatus { get; set; }
+        public Nullable<System.DateTime> userDateCreated { get; set; }
+        public Nullable<System.DateTime> userDateUpdated { get; set; }
         public Nullable<int> roleId { get; set; }
         public Nullable<int> createdById { get; set; }
+        public string createdByUser { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GuestInformation> GuestInformation { get; set; }
         public virtual Role Role { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RoomInformation> RoomInformation { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserInformation> UserInformation { get; set; }
     }

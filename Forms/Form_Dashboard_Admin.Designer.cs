@@ -37,35 +37,38 @@
             this.TS_MI_OpenUserEntryForm = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Panel_NavBar = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.LinkLabel_Room = new System.Windows.Forms.LinkLabel();
             this.LinkLabel_Reservation = new System.Windows.Forms.LinkLabel();
             this.LinkLabelLogout = new System.Windows.Forms.LinkLabel();
             this.Label_Clock = new System.Windows.Forms.Label();
             this.LinkLabelAcctManage = new System.Windows.Forms.LinkLabel();
             this.Label_Calendar = new System.Windows.Forms.Label();
-            this.LinkLabelDashboard = new System.Windows.Forms.LinkLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Timer_Clock = new System.Windows.Forms.Timer(this.components);
             this.Panel_Availability = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.Label_RoomUsedCount = new System.Windows.Forms.Label();
             this.Btn_Rooms = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.Label_RoomAvailCount = new System.Windows.Forms.Label();
             this.Label_Availability = new System.Windows.Forms.Label();
             this.Panel_Reservation = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.Label_CheckOutCount = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Label_CheckInCount = new System.Windows.Forms.Label();
             this.Btn_Reservation = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.Label_ReservationCount = new System.Windows.Forms.Label();
             this.Label_Reservation = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.Label_CheckInCount = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.Label_CheckOutCount = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.Label_RoomUsedCount = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
-            this.Btn_Accounts = new System.Windows.Forms.Button();
             this.Dgv_AccountsSmall = new System.Windows.Forms.DataGridView();
+            this.Btn_Accounts = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.Btn_AcctRoles = new System.Windows.Forms.Button();
+            this.Btn_AcctActive = new System.Windows.Forms.Button();
+            this.Btn_AcctInactive = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.Panel_NavBar.SuspendLayout();
@@ -137,18 +140,29 @@
             // Panel_NavBar
             // 
             this.Panel_NavBar.BackColor = System.Drawing.Color.Aquamarine;
+            this.Panel_NavBar.Controls.Add(this.label3);
             this.Panel_NavBar.Controls.Add(this.LinkLabel_Room);
             this.Panel_NavBar.Controls.Add(this.LinkLabel_Reservation);
             this.Panel_NavBar.Controls.Add(this.LinkLabelLogout);
             this.Panel_NavBar.Controls.Add(this.Label_Clock);
             this.Panel_NavBar.Controls.Add(this.LinkLabelAcctManage);
             this.Panel_NavBar.Controls.Add(this.Label_Calendar);
-            this.Panel_NavBar.Controls.Add(this.LinkLabelDashboard);
             this.Panel_NavBar.Controls.Add(this.pictureBox1);
             this.Panel_NavBar.Location = new System.Drawing.Point(0, 26);
             this.Panel_NavBar.Name = "Panel_NavBar";
             this.Panel_NavBar.Size = new System.Drawing.Size(125, 392);
             this.Panel_NavBar.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(4, 138);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(113, 25);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "Dashboard";
             // 
             // LinkLabel_Room
             // 
@@ -161,6 +175,7 @@
             this.LinkLabel_Room.TabIndex = 17;
             this.LinkLabel_Room.TabStop = true;
             this.LinkLabel_Room.Text = "Rooms";
+            this.LinkLabel_Room.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel_Room_LinkClicked);
             // 
             // LinkLabel_Reservation
             // 
@@ -173,6 +188,7 @@
             this.LinkLabel_Reservation.TabIndex = 16;
             this.LinkLabel_Reservation.TabStop = true;
             this.LinkLabel_Reservation.Text = "Reservations";
+            this.LinkLabel_Reservation.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel_Reservation_LinkClicked);
             // 
             // LinkLabelLogout
             // 
@@ -221,18 +237,6 @@
             this.Label_Calendar.TabIndex = 14;
             this.Label_Calendar.Text = "Date:";
             // 
-            // LinkLabelDashboard
-            // 
-            this.LinkLabelDashboard.AutoSize = true;
-            this.LinkLabelDashboard.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LinkLabelDashboard.LinkColor = System.Drawing.Color.Black;
-            this.LinkLabelDashboard.Location = new System.Drawing.Point(3, 137);
-            this.LinkLabelDashboard.Name = "LinkLabelDashboard";
-            this.LinkLabelDashboard.Size = new System.Drawing.Size(113, 25);
-            this.LinkLabelDashboard.TabIndex = 4;
-            this.LinkLabelDashboard.TabStop = true;
-            this.LinkLabelDashboard.Text = "Dashboard";
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
@@ -263,15 +267,38 @@
             this.Panel_Availability.Size = new System.Drawing.Size(515, 171);
             this.Panel_Availability.TabIndex = 7;
             // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(259, 93);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(228, 25);
+            this.label8.TabIndex = 23;
+            this.label8.Text = "No. of Occupied Rooms";
+            // 
+            // Label_RoomUsedCount
+            // 
+            this.Label_RoomUsedCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Label_RoomUsedCount.AutoSize = true;
+            this.Label_RoomUsedCount.Font = new System.Drawing.Font("Bahnschrift", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_RoomUsedCount.Location = new System.Drawing.Point(348, 48);
+            this.Label_RoomUsedCount.Name = "Label_RoomUsedCount";
+            this.Label_RoomUsedCount.Size = new System.Drawing.Size(46, 39);
+            this.Label_RoomUsedCount.TabIndex = 22;
+            this.Label_RoomUsedCount.Text = "10";
+            // 
             // Btn_Rooms
             // 
-            this.Btn_Rooms.Font = new System.Drawing.Font("Bahnschrift Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Rooms.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Rooms.Location = new System.Drawing.Point(21, 132);
             this.Btn_Rooms.Name = "Btn_Rooms";
             this.Btn_Rooms.Size = new System.Drawing.Size(468, 32);
             this.Btn_Rooms.TabIndex = 21;
             this.Btn_Rooms.Text = "Go to Rooms";
             this.Btn_Rooms.UseVisualStyleBackColor = true;
+            this.Btn_Rooms.Click += new System.EventHandler(this.Btn_Rooms_Click);
             // 
             // label1
             // 
@@ -323,15 +350,60 @@
             this.Panel_Reservation.Size = new System.Drawing.Size(515, 171);
             this.Panel_Reservation.TabIndex = 22;
             // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(356, 95);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(130, 25);
+            this.label4.TabIndex = 25;
+            this.label4.Text = "Checked Out";
+            // 
+            // Label_CheckOutCount
+            // 
+            this.Label_CheckOutCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Label_CheckOutCount.AutoSize = true;
+            this.Label_CheckOutCount.Font = new System.Drawing.Font("Bahnschrift", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_CheckOutCount.Location = new System.Drawing.Point(398, 45);
+            this.Label_CheckOutCount.Name = "Label_CheckOutCount";
+            this.Label_CheckOutCount.Size = new System.Drawing.Size(34, 39);
+            this.Label_CheckOutCount.TabIndex = 24;
+            this.Label_CheckOutCount.Text = "2";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(203, 95);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(115, 25);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "Checked In";
+            // 
+            // Label_CheckInCount
+            // 
+            this.Label_CheckInCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Label_CheckInCount.AutoSize = true;
+            this.Label_CheckInCount.Font = new System.Drawing.Font("Bahnschrift", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_CheckInCount.Location = new System.Drawing.Point(245, 45);
+            this.Label_CheckInCount.Name = "Label_CheckInCount";
+            this.Label_CheckInCount.Size = new System.Drawing.Size(35, 39);
+            this.Label_CheckInCount.TabIndex = 22;
+            this.Label_CheckInCount.Text = "4";
+            // 
             // Btn_Reservation
             // 
-            this.Btn_Reservation.Font = new System.Drawing.Font("Bahnschrift Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Reservation.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Reservation.Location = new System.Drawing.Point(21, 132);
             this.Btn_Reservation.Name = "Btn_Reservation";
             this.Btn_Reservation.Size = new System.Drawing.Size(468, 32);
             this.Btn_Reservation.TabIndex = 21;
             this.Btn_Reservation.Text = "Go to Reservations";
             this.Btn_Reservation.UseVisualStyleBackColor = true;
+            this.Btn_Reservation.Click += new System.EventHandler(this.Btn_Reservation_Click);
             // 
             // label5
             // 
@@ -366,76 +438,13 @@
             this.Label_Reservation.TabIndex = 18;
             this.Label_Reservation.Text = "Reservations";
             // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(203, 95);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(115, 25);
-            this.label2.TabIndex = 23;
-            this.label2.Text = "Checked In";
-            // 
-            // Label_CheckInCount
-            // 
-            this.Label_CheckInCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Label_CheckInCount.AutoSize = true;
-            this.Label_CheckInCount.Font = new System.Drawing.Font("Bahnschrift", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_CheckInCount.Location = new System.Drawing.Point(245, 45);
-            this.Label_CheckInCount.Name = "Label_CheckInCount";
-            this.Label_CheckInCount.Size = new System.Drawing.Size(35, 39);
-            this.Label_CheckInCount.TabIndex = 22;
-            this.Label_CheckInCount.Text = "4";
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(356, 95);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(130, 25);
-            this.label4.TabIndex = 25;
-            this.label4.Text = "Checked Out";
-            // 
-            // Label_CheckOutCount
-            // 
-            this.Label_CheckOutCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Label_CheckOutCount.AutoSize = true;
-            this.Label_CheckOutCount.Font = new System.Drawing.Font("Bahnschrift", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_CheckOutCount.Location = new System.Drawing.Point(398, 45);
-            this.Label_CheckOutCount.Name = "Label_CheckOutCount";
-            this.Label_CheckOutCount.Size = new System.Drawing.Size(34, 39);
-            this.Label_CheckOutCount.TabIndex = 24;
-            this.Label_CheckOutCount.Text = "2";
-            // 
-            // label8
-            // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(259, 93);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(228, 25);
-            this.label8.TabIndex = 23;
-            this.label8.Text = "No. of Occupied Rooms";
-            // 
-            // Label_RoomUsedCount
-            // 
-            this.Label_RoomUsedCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Label_RoomUsedCount.AutoSize = true;
-            this.Label_RoomUsedCount.Font = new System.Drawing.Font("Bahnschrift", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_RoomUsedCount.Location = new System.Drawing.Point(348, 48);
-            this.Label_RoomUsedCount.Name = "Label_RoomUsedCount";
-            this.Label_RoomUsedCount.Size = new System.Drawing.Size(46, 39);
-            this.Label_RoomUsedCount.TabIndex = 22;
-            this.Label_RoomUsedCount.Text = "10";
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.Btn_AcctInactive);
+            this.panel1.Controls.Add(this.Btn_AcctActive);
+            this.panel1.Controls.Add(this.Btn_AcctRoles);
             this.panel1.Controls.Add(this.Dgv_AccountsSmall);
             this.panel1.Controls.Add(this.Btn_Accounts);
             this.panel1.Controls.Add(this.label10);
@@ -443,6 +452,28 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(270, 370);
             this.panel1.TabIndex = 24;
+            // 
+            // Dgv_AccountsSmall
+            // 
+            this.Dgv_AccountsSmall.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.Dgv_AccountsSmall.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.Dgv_AccountsSmall.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_AccountsSmall.Location = new System.Drawing.Point(9, 75);
+            this.Dgv_AccountsSmall.Name = "Dgv_AccountsSmall";
+            this.Dgv_AccountsSmall.Size = new System.Drawing.Size(249, 243);
+            this.Dgv_AccountsSmall.TabIndex = 25;
+            this.Dgv_AccountsSmall.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_AccountsSmall_CellContentClick);
+            // 
+            // Btn_Accounts
+            // 
+            this.Btn_Accounts.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Accounts.Location = new System.Drawing.Point(8, 331);
+            this.Btn_Accounts.Name = "Btn_Accounts";
+            this.Btn_Accounts.Size = new System.Drawing.Size(255, 32);
+            this.Btn_Accounts.TabIndex = 24;
+            this.Btn_Accounts.Text = "Go to Accounts";
+            this.Btn_Accounts.UseVisualStyleBackColor = true;
+            this.Btn_Accounts.Click += new System.EventHandler(this.Btn_Accounts_Click);
             // 
             // label10
             // 
@@ -455,23 +486,38 @@
             this.label10.TabIndex = 24;
             this.label10.Text = "Recently Added Accounts";
             // 
-            // Btn_Accounts
+            // Btn_AcctRoles
             // 
-            this.Btn_Accounts.Font = new System.Drawing.Font("Bahnschrift Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Accounts.Location = new System.Drawing.Point(8, 331);
-            this.Btn_Accounts.Name = "Btn_Accounts";
-            this.Btn_Accounts.Size = new System.Drawing.Size(255, 32);
-            this.Btn_Accounts.TabIndex = 24;
-            this.Btn_Accounts.Text = "Go to Accounts";
-            this.Btn_Accounts.UseVisualStyleBackColor = true;
+            this.Btn_AcctRoles.Font = new System.Drawing.Font("Bahnschrift Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_AcctRoles.Location = new System.Drawing.Point(8, 42);
+            this.Btn_AcctRoles.Name = "Btn_AcctRoles";
+            this.Btn_AcctRoles.Size = new System.Drawing.Size(79, 32);
+            this.Btn_AcctRoles.TabIndex = 26;
+            this.Btn_AcctRoles.Text = "Roles";
+            this.Btn_AcctRoles.UseVisualStyleBackColor = true;
+            this.Btn_AcctRoles.Click += new System.EventHandler(this.Btn_AcctRoles_Click);
             // 
-            // Dgv_AccountsSmall
+            // Btn_AcctActive
             // 
-            this.Dgv_AccountsSmall.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_AccountsSmall.Location = new System.Drawing.Point(9, 49);
-            this.Dgv_AccountsSmall.Name = "Dgv_AccountsSmall";
-            this.Dgv_AccountsSmall.Size = new System.Drawing.Size(249, 269);
-            this.Dgv_AccountsSmall.TabIndex = 25;
+            this.Btn_AcctActive.Font = new System.Drawing.Font("Bahnschrift Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_AcctActive.Location = new System.Drawing.Point(88, 42);
+            this.Btn_AcctActive.Name = "Btn_AcctActive";
+            this.Btn_AcctActive.Size = new System.Drawing.Size(84, 32);
+            this.Btn_AcctActive.TabIndex = 27;
+            this.Btn_AcctActive.Text = "Active";
+            this.Btn_AcctActive.UseVisualStyleBackColor = true;
+            this.Btn_AcctActive.Click += new System.EventHandler(this.Btn_AcctActive_Click);
+            // 
+            // Btn_AcctInactive
+            // 
+            this.Btn_AcctInactive.Font = new System.Drawing.Font("Bahnschrift Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_AcctInactive.Location = new System.Drawing.Point(173, 42);
+            this.Btn_AcctInactive.Name = "Btn_AcctInactive";
+            this.Btn_AcctInactive.Size = new System.Drawing.Size(85, 32);
+            this.Btn_AcctInactive.TabIndex = 28;
+            this.Btn_AcctInactive.Text = "Inactive";
+            this.Btn_AcctInactive.UseVisualStyleBackColor = true;
+            this.Btn_AcctInactive.Click += new System.EventHandler(this.Btn_AcctInactive_Click);
             // 
             // Form_Dashboard_Admin
             // 
@@ -520,7 +566,6 @@
         private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
         private System.Windows.Forms.Panel Panel_NavBar;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.LinkLabel LinkLabelDashboard;
         private System.Windows.Forms.LinkLabel LinkLabelAcctManage;
         private System.Windows.Forms.LinkLabel LinkLabelLogout;
         private System.Windows.Forms.Label Label_Clock;
@@ -548,5 +593,9 @@
         private System.Windows.Forms.Button Btn_Accounts;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridView Dgv_AccountsSmall;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button Btn_AcctInactive;
+        private System.Windows.Forms.Button Btn_AcctActive;
+        private System.Windows.Forms.Button Btn_AcctRoles;
     }
 }

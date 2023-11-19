@@ -53,34 +53,23 @@ namespace HotelReservationSystem
             }
 
             DBSYSEntities Database = new DBSYSEntities();
-            Database.SP_NewUserAccount(username, password, 1, CurrentlyLoggedUser.GetInstance().CurrentUserAccount.userId);
-            
+            Database.SP_NewUserAccount(username, password, DateTime.Now, DateTime.Now, 1, CurrentlyLoggedUser.GetInstance().CurrentUserAccount.userId, CurrentlyLoggedUser.GetInstance().CurrentUserAccount.userName);
+
+            MessageBox.Show(username + " is successfully registered!", "Registration Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             LoadUsersDatabase();
+
+            ErrorProviderInput.Clear();
             Txt_Username.Clear();
             Txt_Password.Clear();
-
-            //UserAccount RegisteredUser = new UserAccount();
-            //RegisteredUser.userName = username;
-            //RegisteredUser.userPassword = password;
-            //RegisteredUser.userStatus = "ACTIVE";
-
-            //bool RegistrationSuccessful = false;
-            //UserRepos.RegisterUser(RegisteredUser, ref RegistrationSuccessful);
-            //if (RegistrationSuccessful)
-            //{
-            //    ErrorProviderInput.Clear();
-            //    Txt_Username.Clear();
-            //    Txt_Password.Clear();
-
-            //    MessageBox.Show(username + " is successfully registered!", "Registration Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    LoadUsersDatabase();
-            //}
         }
 
         private void Btn_Update_Click(object sender, EventArgs e)
         {
+            
             string username = Txt_Username.Text;
             string password = Txt_Password.Text;
+            string status = "ACTIVE";
 
             if (String.IsNullOrEmpty(username))
             {
@@ -92,22 +81,21 @@ namespace HotelReservationSystem
                 ErrorProviderInput.SetError(Txt_Password, "Password field is empty!");
                 return;
             }
-
-            UserAccount UpdatedUser = UserRepos.GetUserByUserID(SelectedUserId);
-            UpdatedUser.userName = username;
-            UpdatedUser.userPassword = password;
-
-            bool RegistrationSuccessful = false;
-            UserRepos.UpdateUser(SelectedUserId, UpdatedUser, ref RegistrationSuccessful);
-            if (RegistrationSuccessful)
+            else if (Label_Status.Text != "ACTIVE" && Label_Status.Text != "INACTIVE") 
             {
-                ErrorProviderInput.Clear();
-                Txt_Username.Clear();
-                Txt_Password.Clear();
-
-                MessageBox.Show(username + " is successfully updated!", "Update Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadUsersDatabase();
+                ErrorProviderInput.SetError(Btn_UserStatus, "Invalid user account status!");
+                return;
             }
+
+            DBSYSEntities Database = new DBSYSEntities();
+            Database.SP_UpdateUserAccount(SelectedUserId, username, password, status, DateTime.Now);
+
+            ErrorProviderInput.Clear();
+            Txt_Username.Clear();
+            Txt_Password.Clear();
+
+            MessageBox.Show(username + " is successfully updated!", "Update Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LoadUsersDatabase();
         }
 
         private void Btn_Delete_Click(object sender, EventArgs e)
@@ -117,17 +105,18 @@ namespace HotelReservationSystem
             {
                 string username = Txt_Username.Text;
 
-                bool RegistrationSuccessful = false;
-                UserRepos.RemoveUser(SelectedUserId, ref RegistrationSuccessful);
-                if (RegistrationSuccessful)
-                {
-                    ErrorProviderInput.Clear();
-                    Txt_Username.Clear();
-                    Txt_Password.Clear();
+                DBSYSEntities Database = new DBSYSEntities();
+                Database.SP_DeleteUserAccount(SelectedUserId);
 
-                    MessageBox.Show(username + " is successfully removed!", "Removal Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadUsersDatabase();
-                }
+                ErrorProviderInput.Clear();
+                Txt_Username.Clear();
+                Txt_Password.Clear();
+
+                MessageBox.Show(username + " is successfully removed!", "Removal Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                SelectedUserId = null;
+                Btn_Register.Focus();
+                LoadUsersDatabase();
             }
         }
 
@@ -138,6 +127,15 @@ namespace HotelReservationSystem
                 SelectedUserId = Convert.ToInt32(Dgv_AcctManage.Rows[e.RowIndex].Cells[0].Value);
                 Txt_Username.Text = Dgv_AcctManage.Rows[e.RowIndex].Cells[1].Value.ToString();
                 Txt_Password.Text = Dgv_AcctManage.Rows[e.RowIndex].Cells[2].Value.ToString();
+                Label_Status.Text = Dgv_AcctManage.Rows[e.RowIndex].Cells[3].Value.ToString();
+                if (Label_Status.Text == "ACTIVE")
+                {
+                    Label_Status.ForeColor = System.Drawing.Color.DarkGreen;
+                }
+                else
+                {
+                    Label_Status.ForeColor = System.Drawing.Color.Red;
+                }
             }
             catch (Exception ex) 
             {
@@ -196,6 +194,39 @@ namespace HotelReservationSystem
             Form_Dashboard_Admin dashboard = new Form_Dashboard_Admin();
             dashboard.Show();
             this.Dispose();
+        }
+
+        private void Dgv_AcctManage_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Btn_UserStatus_Click(object sender, EventArgs e)
+        {
+            DBSYSEntities Database = new DBSYSEntities();
+
+            if (Label_Status.Text == "ACTIVE")
+            {
+                DialogResult dialog = MessageBox.Show("Are you sure you want to deactivate this account?", "Account Deactivation", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                if (dialog == DialogResult.Yes)
+                {
+                    Label_Status.Text = "INACTIVE";
+                    Label_Status.ForeColor = System.Drawing.Color.Red;
+                    Database.SP_UpdateUserAccountStatus(Txt_Username.Text, "INACTIVE");
+                }
+            }
+            else 
+            {
+                DialogResult dialog = MessageBox.Show("Are you sure you want to activate this account?", "Account Activation", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                if (dialog == DialogResult.Yes)
+                {
+                    Label_Status.Text = "ACTIVE";
+                    Label_Status.ForeColor = System.Drawing.Color.DarkGreen;
+                    Database.SP_UpdateUserAccountStatus(Txt_Username.Text, "ACTIVE");
+                }
+            }
+
+            LoadUsersDatabase();
         }
     }
 }

@@ -58,6 +58,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Appdata\GuestInformation.cs">
+      <DependentUpon>HotelDbSysModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Appdata\HotelDbSysModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -76,14 +79,56 @@
     <Compile Include="Appdata\Role.cs">
       <DependentUpon>HotelDbSysModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Appdata\RoomInformation.cs">
+      <DependentUpon>HotelDbSysModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Appdata\UserAccount.cs">
       <DependentUpon>HotelDbSysModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Appdata\UserInformation.cs">
       <DependentUpon>HotelDbSysModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Appdata\vw_all_user_role.cs">
+    <Compile Include="Appdata\vw_RoomInfo_Available.cs">
       <DependentUpon>HotelDbSysModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_RoomInfo_Full.cs">
+      <DependentUpon>HotelDbSysModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_RoomInfo_Occupied.cs">
+      <DependentUpon>HotelDbSysModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_RoomInfo_Prices.cs">
+      <DependentUpon>HotelDbSysModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_RoomInfo_Types.cs">
+      <DependentUpon>HotelDbSysModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_UserAccount_Active.cs">
+      <DependentUpon>HotelDbSysModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_UserAccount_Full.cs">
+      <DependentUpon>HotelDbSysModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_UserAccount_Inactive.cs">
+      <DependentUpon>HotelDbSysModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_UserAccount_Roles.cs">
+      <DependentUpon>HotelDbSysModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_UserAccount_Updates.cs">
+      <DependentUpon>HotelDbSysModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Admin_Reservations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin_Reservations.Designer.cs">
+      <DependentUpon>Admin_Reservations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Admin_Rooms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin_Rooms.Designer.cs">
+      <DependentUpon>Admin_Rooms.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Form_AcctManage.cs">
       <SubType>Form</SubType>

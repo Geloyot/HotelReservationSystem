@@ -16,48 +16,6 @@ namespace HotelReservationSystem
             Database = new DBSYSEntities();
         }
 
-        public void RegisterUser(UserAccount UserAcct, ref bool ActionSuccessful) {
-            try 
-            {
-                Database.UserAccount.Add(UserAcct);
-                Database.SaveChanges();
-                ActionSuccessful = true;
-            }    
-            catch (Exception ex) {
-                MessageBox.Show(ex.Message, "Account Registration Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        public void UpdateUser(int? SpecificUserId, UserAccount UserAcct, ref bool ActionSuccessful) {
-            try 
-            {
-                UserAccount SpecificUser = Database.UserAccount.Where(m => m.userId == SpecificUserId).FirstOrDefault();
-                SpecificUser.userName = UserAcct.userName;
-                SpecificUser.userPassword = UserAcct.userPassword;
-
-                Database.SaveChanges();
-                ActionSuccessful = true;
-            }
-            catch (Exception ex) 
-            {
-                MessageBox.Show(ex.Message, "Account Update Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        public void RemoveUser(int? SpecificUserId, ref bool ActionSuccessful) {
-            try
-            {
-                UserAccount SpecificUser = Database.UserAccount.Where(m => m.userId == SpecificUserId).FirstOrDefault();
-                Database.UserAccount.Remove(SpecificUser);
-                Database.SaveChanges();
-                ActionSuccessful = true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Account Removal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         public UserAccount GetUserByUsername(string SpecificUsername)
         {
             // Re-initialize db object because sometimes data in the list is not updated.
@@ -71,11 +29,26 @@ namespace HotelReservationSystem
             return Database.UserAccount.Where(u => u.userId == UserID).FirstOrDefault();
         }
 
-        public List<UserAccount> GetUserAccountList()
+        public List<vw_UserAccount_Full> GetUserAccountList()
         {
             Database = new DBSYSEntities();
+            return Database.vw_UserAccount_Full.ToList();
+        }
 
-            return Database.UserAccount.ToList();
+        public List<vw_UserAccount_Roles> GetUserAccountRolesList()
+        {
+            Database = new DBSYSEntities();
+            return Database.vw_UserAccount_Roles.ToList();
+        }
+        public List<vw_UserAccount_Active> GetUserAccountActiveList() 
+        {
+            Database = new DBSYSEntities(); 
+            return Database.vw_UserAccount_Active.ToList();
+        }
+        public List<vw_UserAccount_Inactive> GetUserAccountInactiveList()
+        {
+            Database = new DBSYSEntities();
+            return Database.vw_UserAccount_Inactive.ToList();
         }
     }
 }

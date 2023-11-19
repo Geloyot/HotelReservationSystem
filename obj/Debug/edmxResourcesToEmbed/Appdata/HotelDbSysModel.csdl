@@ -1,25 +1,84 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DBSYSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="DBSYSEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="SP_NewUserAccount">
+      <Parameter Name="UName" Mode="In" Type="String" />
+      <Parameter Name="UPassword" Mode="In" Type="String" />
+      <Parameter Name="CreateDate" Mode="In" Type="DateTime" />
+      <Parameter Name="UpdateDate" Mode="In" Type="DateTime" />
+      <Parameter Name="RoleID" Mode="In" Type="Int32" />
+      <Parameter Name="CreatedByID" Mode="In" Type="Int32" />
+      <Parameter Name="CreatorName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_DeleteUserAccount">
+      <Parameter Name="SpecificID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_UpdateUserAccount">
+      <Parameter Name="SpecificID" Mode="In" Type="Int32" />
+      <Parameter Name="UName" Mode="In" Type="String" />
+      <Parameter Name="UPassword" Mode="In" Type="String" />
+      <Parameter Name="UStatus" Mode="In" Type="String" />
+      <Parameter Name="ULastUpdated" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="SP_UpdateUserAccountStatus">
+      <Parameter Name="UName" Mode="In" Type="String" />
+      <Parameter Name="UStatus" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="GuestInformation" EntityType="DBSYSModel.GuestInformation" />
     <EntitySet Name="Role" EntityType="DBSYSModel.Role" />
+    <EntitySet Name="RoomInformation" EntityType="DBSYSModel.RoomInformation" />
     <EntitySet Name="UserAccount" EntityType="DBSYSModel.UserAccount" />
     <EntitySet Name="UserInformation" EntityType="DBSYSModel.UserInformation" />
-    <EntitySet Name="vw_all_user_role" EntityType="DBSYSModel.vw_all_user_role" />
+    <EntitySet Name="vw_RoomInfo_Available" EntityType="DBSYSModel.vw_RoomInfo_Available" />
+    <EntitySet Name="vw_RoomInfo_Full" EntityType="DBSYSModel.vw_RoomInfo_Full" />
+    <EntitySet Name="vw_RoomInfo_Occupied" EntityType="DBSYSModel.vw_RoomInfo_Occupied" />
+    <EntitySet Name="vw_RoomInfo_Prices" EntityType="DBSYSModel.vw_RoomInfo_Prices" />
+    <EntitySet Name="vw_RoomInfo_Types" EntityType="DBSYSModel.vw_RoomInfo_Types" />
+    <EntitySet Name="vw_UserAccount_Active" EntityType="DBSYSModel.vw_UserAccount_Active" />
+    <EntitySet Name="vw_UserAccount_Full" EntityType="DBSYSModel.vw_UserAccount_Full" />
+    <EntitySet Name="vw_UserAccount_Inactive" EntityType="DBSYSModel.vw_UserAccount_Inactive" />
+    <EntitySet Name="vw_UserAccount_Roles" EntityType="DBSYSModel.vw_UserAccount_Roles" />
+    <EntitySet Name="vw_UserAccount_Updates" EntityType="DBSYSModel.vw_UserAccount_Updates" />
+    <AssociationSet Name="FK__GuestInfo__roomI__01142BA1" Association="DBSYSModel.FK__GuestInfo__roomI__01142BA1">
+      <End Role="RoomInformation" EntitySet="RoomInformation" />
+      <End Role="GuestInformation" EntitySet="GuestInformation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GuestInfo__userI__00200768" Association="DBSYSModel.FK__GuestInfo__userI__00200768">
+      <End Role="UserAccount" EntitySet="UserAccount" />
+      <End Role="GuestInformation" EntitySet="GuestInformation" />
+    </AssociationSet>
     <AssociationSet Name="FK_UserAccount_Role" Association="DBSYSModel.FK_UserAccount_Role">
       <End Role="Role" EntitySet="Role" />
       <End Role="UserAccount" EntitySet="UserAccount" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RoomInfor__userI__7B5B524B" Association="DBSYSModel.FK__RoomInfor__userI__7B5B524B">
+      <End Role="UserAccount" EntitySet="UserAccount" />
+      <End Role="RoomInformation" EntitySet="RoomInformation" />
     </AssociationSet>
     <AssociationSet Name="FK__UserInfor__userI__1BFD2C07" Association="DBSYSModel.FK__UserInfor__userI__1BFD2C07">
       <End Role="UserAccount" EntitySet="UserAccount" />
       <End Role="UserInformation" EntitySet="UserInformation" />
     </AssociationSet>
-    <FunctionImport Name="SP_NewUserAccount">
-      <Parameter Name="UName" Mode="In" Type="String" />
-      <Parameter Name="UPassword" Mode="In" Type="String" />
-      <Parameter Name="RoleID" Mode="In" Type="Int32" />
-      <Parameter Name="CreatedByID" Mode="In" Type="Int32" />
-    </FunctionImport>
   </EntityContainer>
+  <EntityType Name="GuestInformation">
+    <Key>
+      <PropertyRef Name="guestID" />
+    </Key>
+    <Property Name="guestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="guestFirstName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="guestLastName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="guestBirthDate" Type="DateTime" Precision="0" />
+    <Property Name="guestGender" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
+    <Property Name="guestContactNo" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
+    <Property Name="guestAddress" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="guestEmailAddress" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
+    <Property Name="guestLastCheckInDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="guestLastCheckOutDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="userID" Type="Int32" />
+    <Property Name="roomID" Type="Int32" />
+    <NavigationProperty Name="RoomInformation" Relationship="DBSYSModel.FK__GuestInfo__roomI__01142BA1" FromRole="GuestInformation" ToRole="RoomInformation" />
+    <NavigationProperty Name="UserAccount" Relationship="DBSYSModel.FK__GuestInfo__userI__00200768" FromRole="GuestInformation" ToRole="UserAccount" />
+  </EntityType>
   <EntityType Name="Role">
     <Key>
       <PropertyRef Name="roleId" />
@@ -29,6 +88,21 @@
     <Property Name="roleDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="UserAccount" Relationship="DBSYSModel.FK_UserAccount_Role" FromRole="Role" ToRole="UserAccount" />
   </EntityType>
+  <EntityType Name="RoomInformation">
+    <Key>
+      <PropertyRef Name="roomID" />
+    </Key>
+    <Property Name="roomID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="roomTitle" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="roomType" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="roomPrice" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="roomImage" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="roomDesc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="roomGuestCount" Type="Int32" />
+    <Property Name="userID" Type="Int32" />
+    <NavigationProperty Name="GuestInformation" Relationship="DBSYSModel.FK__GuestInfo__roomI__01142BA1" FromRole="RoomInformation" ToRole="GuestInformation" />
+    <NavigationProperty Name="UserAccount" Relationship="DBSYSModel.FK__RoomInfor__userI__7B5B524B" FromRole="RoomInformation" ToRole="UserAccount" />
+  </EntityType>
   <EntityType Name="UserAccount">
     <Key>
       <PropertyRef Name="userId" />
@@ -37,9 +111,14 @@
     <Property Name="userName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="userPassword" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="userStatus" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="userDateCreated" Type="DateTime" Precision="3" />
+    <Property Name="userDateUpdated" Type="DateTime" Precision="3" />
     <Property Name="roleId" Type="Int32" />
     <Property Name="createdById" Type="Int32" />
+    <Property Name="createdByUser" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="GuestInformation" Relationship="DBSYSModel.FK__GuestInfo__userI__00200768" FromRole="UserAccount" ToRole="GuestInformation" />
     <NavigationProperty Name="Role" Relationship="DBSYSModel.FK_UserAccount_Role" FromRole="UserAccount" ToRole="Role" />
+    <NavigationProperty Name="RoomInformation" Relationship="DBSYSModel.FK__RoomInfor__userI__7B5B524B" FromRole="UserAccount" ToRole="RoomInformation" />
     <NavigationProperty Name="UserInformation" Relationship="DBSYSModel.FK__UserInfor__userI__1BFD2C07" FromRole="UserAccount" ToRole="UserInformation" />
   </EntityType>
   <EntityType Name="UserInformation">
@@ -54,17 +133,157 @@
     <Property Name="userId" Type="Int32" />
     <NavigationProperty Name="UserAccount" Relationship="DBSYSModel.FK__UserInfor__userI__1BFD2C07" FromRole="UserInformation" ToRole="UserAccount" />
   </EntityType>
-  <EntityType Name="vw_all_user_role">
+  <EntityType Name="vw_RoomInfo_Available">
     <Key>
-      <PropertyRef Name="UserId" />
+      <PropertyRef Name="Room_ID" />
+      <PropertyRef Name="Room_Name" />
+      <PropertyRef Name="Room_Type" />
+      <PropertyRef Name="Occupant_User_ID" />
+      <PropertyRef Name="Occupant_Username" />
+    </Key>
+    <Property Name="Room_ID" Type="Int32" Nullable="false" />
+    <Property Name="Room_Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Room_Type" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Occupant_User_ID" Type="Int32" Nullable="false" />
+    <Property Name="Room_Occupants" Type="Int32" />
+    <Property Name="Occupant_Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="vw_RoomInfo_Full">
+    <Key>
+      <PropertyRef Name="Room_ID" />
+      <PropertyRef Name="Room_Name" />
+      <PropertyRef Name="Room_Type" />
+      <PropertyRef Name="Room_Price" />
+      <PropertyRef Name="Occupant_User_ID" />
+    </Key>
+    <Property Name="Room_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Room_Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Room_Type" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Room_Price" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="Room_Image_File_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Room_Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Room_Occupants" Type="Int32" />
+    <Property Name="Occupant_User_ID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vw_RoomInfo_Occupied">
+    <Key>
+      <PropertyRef Name="Room_ID" />
+      <PropertyRef Name="Room_Name" />
+      <PropertyRef Name="Room_Type" />
+      <PropertyRef Name="Occupant_User_ID" />
+      <PropertyRef Name="Occupant_Username" />
+    </Key>
+    <Property Name="Room_ID" Type="Int32" Nullable="false" />
+    <Property Name="Room_Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Room_Type" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Occupant_User_ID" Type="Int32" Nullable="false" />
+    <Property Name="Room_Occupants" Type="Int32" />
+    <Property Name="Occupant_Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="vw_RoomInfo_Prices">
+    <Key>
+      <PropertyRef Name="Room_ID" />
+      <PropertyRef Name="Room_Name" />
+      <PropertyRef Name="Room_Type" />
+      <PropertyRef Name="Room_Price" />
+    </Key>
+    <Property Name="Room_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Room_Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Room_Type" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Room_Price" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="Room_Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="vw_RoomInfo_Types">
+    <Key>
+      <PropertyRef Name="Room_ID" />
+      <PropertyRef Name="Room_Name" />
+      <PropertyRef Name="Room_Type" />
+    </Key>
+    <Property Name="Room_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Room_Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Room_Type" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Room_Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="vw_UserAccount_Active">
+    <Key>
+      <PropertyRef Name="User_ID_" />
+      <PropertyRef Name="Username" />
+      <PropertyRef Name="Status" />
+    </Key>
+    <Property Name="User_ID_" Type="Int32" Nullable="false" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="vw_UserAccount_Full">
+    <Key>
+      <PropertyRef Name="User_ID_" />
       <PropertyRef Name="Username" />
       <PropertyRef Name="Password" />
+      <PropertyRef Name="Status" />
     </Key>
-    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="User_ID_" Type="Int32" Nullable="false" />
     <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Date_Created" Type="DateTime" Precision="0" />
+    <Property Name="Date_Updated" Type="DateTime" Precision="0" />
+    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="User_Creator" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="vw_UserAccount_Inactive">
+    <Key>
+      <PropertyRef Name="User_ID_" />
+      <PropertyRef Name="Username" />
+      <PropertyRef Name="Status" />
+    </Key>
+    <Property Name="User_ID_" Type="Int32" Nullable="false" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="vw_UserAccount_Roles">
+    <Key>
+      <PropertyRef Name="User_ID_" />
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="User_ID_" Type="Int32" Nullable="false" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
+  <EntityType Name="vw_UserAccount_Updates">
+    <Key>
+      <PropertyRef Name="User_ID_" />
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="User_ID_" Type="Int32" Nullable="false" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Date_Created" Type="DateTime" Precision="0" />
+    <Property Name="Date_Updated" Type="DateTime" Precision="0" />
+    <Property Name="Creator" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__GuestInfo__roomI__01142BA1">
+    <End Type="DBSYSModel.RoomInformation" Role="RoomInformation" Multiplicity="0..1" />
+    <End Type="DBSYSModel.GuestInformation" Role="GuestInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoomInformation">
+        <PropertyRef Name="roomID" />
+      </Principal>
+      <Dependent Role="GuestInformation">
+        <PropertyRef Name="roomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GuestInfo__userI__00200768">
+    <End Type="DBSYSModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
+    <End Type="DBSYSModel.GuestInformation" Role="GuestInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccount">
+        <PropertyRef Name="userId" />
+      </Principal>
+      <Dependent Role="GuestInformation">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_UserAccount_Role">
     <End Type="DBSYSModel.Role" Role="Role" Multiplicity="0..1" />
     <End Type="DBSYSModel.UserAccount" Role="UserAccount" Multiplicity="*" />
@@ -74,6 +293,18 @@
       </Principal>
       <Dependent Role="UserAccount">
         <PropertyRef Name="roleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RoomInfor__userI__7B5B524B">
+    <End Type="DBSYSModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
+    <End Type="DBSYSModel.RoomInformation" Role="RoomInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccount">
+        <PropertyRef Name="userId" />
+      </Principal>
+      <Dependent Role="RoomInformation">
+        <PropertyRef Name="userID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
