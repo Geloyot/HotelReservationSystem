@@ -14,6 +14,13 @@ namespace HotelReservationSystem.Appdata
     
     public partial class GuestInformation
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public GuestInformation()
+        {
+            this.PaymentInfo = new HashSet<PaymentInfo>();
+            this.ReservationInfo = new HashSet<ReservationInfo>();
+        }
+    
         public int guestID { get; set; }
         public string guestFirstName { get; set; }
         public string guestLastName { get; set; }
@@ -29,5 +36,9 @@ namespace HotelReservationSystem.Appdata
     
         public virtual RoomInformation RoomInformation { get; set; }
         public virtual UserAccount UserAccount { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PaymentInfo> PaymentInfo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ReservationInfo> ReservationInfo { get; set; }
     }
 }

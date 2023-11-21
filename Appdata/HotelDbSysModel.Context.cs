@@ -28,10 +28,23 @@ namespace HotelReservationSystem.Appdata
         }
     
         public virtual DbSet<GuestInformation> GuestInformation { get; set; }
+        public virtual DbSet<PaymentInfo> PaymentInfo { get; set; }
+        public virtual DbSet<ReservationInfo> ReservationInfo { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<RoomInformation> RoomInformation { get; set; }
         public virtual DbSet<UserAccount> UserAccount { get; set; }
-        public virtual DbSet<UserInformation> UserInformation { get; set; }
+        public virtual DbSet<vw_Payment_Amount> vw_Payment_Amount { get; set; }
+        public virtual DbSet<vw_Payment_CardInfo> vw_Payment_CardInfo { get; set; }
+        public virtual DbSet<vw_Payment_Full> vw_Payment_Full { get; set; }
+        public virtual DbSet<vw_Payment_GuestInfo> vw_Payment_GuestInfo { get; set; }
+        public virtual DbSet<vw_Payment_ReservationInfo> vw_Payment_ReservationInfo { get; set; }
+        public virtual DbSet<vw_Payment_UserInfo> vw_Payment_UserInfo { get; set; }
+        public virtual DbSet<vw_Reservation_Full> vw_Reservation_Full { get; set; }
+        public virtual DbSet<vw_Reservation_GuestCount> vw_Reservation_GuestCount { get; set; }
+        public virtual DbSet<vw_Reservation_GuestInfo> vw_Reservation_GuestInfo { get; set; }
+        public virtual DbSet<vw_Reservation_RoomInfo> vw_Reservation_RoomInfo { get; set; }
+        public virtual DbSet<vw_Reservation_Rooms> vw_Reservation_Rooms { get; set; }
+        public virtual DbSet<vw_Reservation_UserInfo> vw_Reservation_UserInfo { get; set; }
         public virtual DbSet<vw_RoomInfo_Available> vw_RoomInfo_Available { get; set; }
         public virtual DbSet<vw_RoomInfo_Full> vw_RoomInfo_Full { get; set; }
         public virtual DbSet<vw_RoomInfo_Occupied> vw_RoomInfo_Occupied { get; set; }

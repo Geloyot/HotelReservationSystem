@@ -16,3 +16,4 @@ C:\Users\admin\source\repos\HotelReservationSystem\obj\Debug\HotelReservationSys
 C:\Users\admin\source\repos\HotelReservationSystem\obj\Debug\HotelReservationSystem.Form_Login.resources
 C:\Users\admin\source\repos\HotelReservationSystem\obj\Debug\HotelReservationSystem.Forms.Form_Dashboard_Admin.resources
 C:\Users\admin\source\repos\HotelReservationSystem\obj\Debug\HotelReservationSystem.Form_Register.resources
+C:\Users\admin\source\repos\HotelReservationSystem\obj\Debug\HotelReservationSystem.Forms.Form_Dashboard_Guest.resources
