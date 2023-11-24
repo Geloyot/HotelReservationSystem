@@ -59,64 +59,118 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Appdata\GuestInformation.cs">
-      <DependentUpon>HotelDbSysModel.tt</DependentUpon>
+      <DependentUpon>HotelDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Appdata\HotelDbSysModel.Context.cs">
+    <Compile Include="Appdata\HotelDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HotelDbSysModel.Context.tt</DependentUpon>
+      <DependentUpon>HotelDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Appdata\HotelDbSysModel.cs">
+    <Compile Include="Appdata\HotelDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HotelDbSysModel.tt</DependentUpon>
+      <DependentUpon>HotelDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Appdata\HotelDbSysModel.Designer.cs">
+    <Compile Include="Appdata\HotelDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HotelDbSysModel.edmx</DependentUpon>
+      <DependentUpon>HotelDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\PaymentInfo.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\ReservationInfo.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Appdata\Role.cs">
-      <DependentUpon>HotelDbSysModel.tt</DependentUpon>
+      <DependentUpon>HotelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Appdata\RoomInformation.cs">
-      <DependentUpon>HotelDbSysModel.tt</DependentUpon>
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\SP_SearchUA_Username_Result.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\StaffInfo.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Appdata\UserAccount.cs">
-      <DependentUpon>HotelDbSysModel.tt</DependentUpon>
+      <DependentUpon>HotelDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Appdata\UserInformation.cs">
-      <DependentUpon>HotelDbSysModel.tt</DependentUpon>
+    <Compile Include="Appdata\vw_Payment_Amount.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_Payment_CardInfo.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_Payment_Full.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_Payment_GuestInfo.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_Payment_ReservationInfo.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_Payment_UserInfo.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_Reservation_Full.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_Reservation_GuestCount.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_Reservation_GuestInfo.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_Reservation_RoomInfo.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_Reservation_Rooms.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_Reservation_UserInfo.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Appdata\vw_RoomInfo_Available.cs">
-      <DependentUpon>HotelDbSysModel.tt</DependentUpon>
+      <DependentUpon>HotelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Appdata\vw_RoomInfo_Full.cs">
-      <DependentUpon>HotelDbSysModel.tt</DependentUpon>
+      <DependentUpon>HotelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Appdata\vw_RoomInfo_Occupied.cs">
-      <DependentUpon>HotelDbSysModel.tt</DependentUpon>
+      <DependentUpon>HotelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Appdata\vw_RoomInfo_Prices.cs">
-      <DependentUpon>HotelDbSysModel.tt</DependentUpon>
+      <DependentUpon>HotelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Appdata\vw_RoomInfo_Types.cs">
-      <DependentUpon>HotelDbSysModel.tt</DependentUpon>
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_Staff_Full.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_Staff_Personal.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_Staff_Salary.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Appdata\vw_UserAccount_Active.cs">
-      <DependentUpon>HotelDbSysModel.tt</DependentUpon>
+      <DependentUpon>HotelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Appdata\vw_UserAccount_Full.cs">
-      <DependentUpon>HotelDbSysModel.tt</DependentUpon>
+      <DependentUpon>HotelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Appdata\vw_UserAccount_Inactive.cs">
-      <DependentUpon>HotelDbSysModel.tt</DependentUpon>
+      <DependentUpon>HotelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Appdata\vw_UserAccount_Roles.cs">
-      <DependentUpon>HotelDbSysModel.tt</DependentUpon>
+      <DependentUpon>HotelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Appdata\vw_UserAccount_Updates.cs">
-      <DependentUpon>HotelDbSysModel.tt</DependentUpon>
+      <DependentUpon>HotelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Forms\Admin_Reservations.cs">
       <SubType>Form</SubType>
@@ -169,6 +223,7 @@
     <Compile Include="Model\CurrentlyLoggedUser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\HotelRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Utilities\EnumRoles.cs" />
     <EmbeddedResource Include="Forms\Form_AcctManage.resx">
@@ -196,12 +251,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EntityDeploy Include="Appdata\HotelDbSysModel.edmx">
+    <EntityDeploy Include="Appdata\HotelDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>HotelDbSysModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>HotelDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Appdata\HotelDbSysModel.edmx.diagram">
-      <DependentUpon>HotelDbSysModel.edmx</DependentUpon>
+    <None Include="Appdata\HotelDB.edmx.diagram">
+      <DependentUpon>HotelDB.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -218,15 +273,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Appdata\HotelDbSysModel.Context.tt">
+    <Content Include="Appdata\HotelDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HotelDbSysModel.edmx</DependentUpon>
-      <LastGenOutput>HotelDbSysModel.Context.cs</LastGenOutput>
+      <DependentUpon>HotelDB.edmx</DependentUpon>
+      <LastGenOutput>HotelDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Appdata\HotelDbSysModel.tt">
+    <Content Include="Appdata\HotelDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HotelDbSysModel.edmx</DependentUpon>
-      <LastGenOutput>HotelDbSysModel.cs</LastGenOutput>
+      <DependentUpon>HotelDB.edmx</DependentUpon>
+      <LastGenOutput>HotelDB.cs</LastGenOutput>
     </Content>
     <Content Include="hoteldbsyslogo.ico" />
     <None Include="Resources\1409295-200.png" />

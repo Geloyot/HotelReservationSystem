@@ -15,12 +15,12 @@ namespace HotelReservationSystem
 {
     public partial class Form_Register : Form
     {
-        private DBSYSEntities Database;
+        private DBSYSEntities DB;
 
         public Form_Register()
         {
             InitializeComponent();
-            Database = new DBSYSEntities();
+            DB = new DBSYSEntities();
         }
 
         private void Form_Register_Load(object sender, EventArgs e)
@@ -31,7 +31,7 @@ namespace HotelReservationSystem
 
         private void LoadCbBoxRoles() 
         {
-            var User_Roles = Database.Role.ToList();
+            var User_Roles = DB.Role.ToList();
             CbBox_Role.ValueMember = "roleId";
             CbBox_Role.DisplayMember = "roleName";
             CbBox_Role.DataSource = User_Roles;
@@ -112,8 +112,8 @@ namespace HotelReservationSystem
             NewUserAccount.createdById = NewUserAccount.userId;
             NewUserAccount.createdByUser = Txt_Username.Text;
 
-            Database.UserAccount.Add(NewUserAccount);
-            Database.SaveChanges();
+            DB.UserAccount.Add(NewUserAccount);
+            DB.SaveChanges();
 
             Txt_Username.Clear();
             Txt_Password.Clear();

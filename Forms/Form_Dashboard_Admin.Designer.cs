@@ -63,12 +63,13 @@
             this.Label_ReservationCount = new System.Windows.Forms.Label();
             this.Label_Reservation = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Btn_AcctInactive = new System.Windows.Forms.Button();
+            this.Btn_AcctActive = new System.Windows.Forms.Button();
+            this.Btn_AcctRoles = new System.Windows.Forms.Button();
             this.Dgv_AccountsSmall = new System.Windows.Forms.DataGridView();
             this.Btn_Accounts = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.Btn_AcctRoles = new System.Windows.Forms.Button();
-            this.Btn_AcctActive = new System.Windows.Forms.Button();
-            this.Btn_AcctInactive = new System.Windows.Forms.Button();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.Panel_NavBar.SuspendLayout();
@@ -140,6 +141,7 @@
             // Panel_NavBar
             // 
             this.Panel_NavBar.BackColor = System.Drawing.Color.Aquamarine;
+            this.Panel_NavBar.Controls.Add(this.linkLabel1);
             this.Panel_NavBar.Controls.Add(this.label3);
             this.Panel_NavBar.Controls.Add(this.LinkLabel_Room);
             this.Panel_NavBar.Controls.Add(this.LinkLabel_Reservation);
@@ -158,7 +160,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(4, 138);
+            this.label3.Location = new System.Drawing.Point(3, 128);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(113, 25);
             this.label3.TabIndex = 18;
@@ -169,7 +171,7 @@
             this.LinkLabel_Room.AutoSize = true;
             this.LinkLabel_Room.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LinkLabel_Room.LinkColor = System.Drawing.Color.Black;
-            this.LinkLabel_Room.Location = new System.Drawing.Point(25, 257);
+            this.LinkLabel_Room.Location = new System.Drawing.Point(24, 247);
             this.LinkLabel_Room.Name = "LinkLabel_Room";
             this.LinkLabel_Room.Size = new System.Drawing.Size(69, 25);
             this.LinkLabel_Room.TabIndex = 17;
@@ -182,7 +184,7 @@
             this.LinkLabel_Reservation.AutoSize = true;
             this.LinkLabel_Reservation.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LinkLabel_Reservation.LinkColor = System.Drawing.Color.Black;
-            this.LinkLabel_Reservation.Location = new System.Drawing.Point(2, 217);
+            this.LinkLabel_Reservation.Location = new System.Drawing.Point(1, 207);
             this.LinkLabel_Reservation.Name = "LinkLabel_Reservation";
             this.LinkLabel_Reservation.Size = new System.Drawing.Size(120, 25);
             this.LinkLabel_Reservation.TabIndex = 16;
@@ -218,7 +220,7 @@
             this.LinkLabelAcctManage.AutoSize = true;
             this.LinkLabelAcctManage.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LinkLabelAcctManage.LinkColor = System.Drawing.Color.Black;
-            this.LinkLabelAcctManage.Location = new System.Drawing.Point(18, 177);
+            this.LinkLabelAcctManage.Location = new System.Drawing.Point(17, 167);
             this.LinkLabelAcctManage.Name = "LinkLabelAcctManage";
             this.LinkLabelAcctManage.Size = new System.Drawing.Size(86, 25);
             this.LinkLabelAcctManage.TabIndex = 5;
@@ -453,6 +455,39 @@
             this.panel1.Size = new System.Drawing.Size(270, 370);
             this.panel1.TabIndex = 24;
             // 
+            // Btn_AcctInactive
+            // 
+            this.Btn_AcctInactive.Font = new System.Drawing.Font("Bahnschrift Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_AcctInactive.Location = new System.Drawing.Point(173, 42);
+            this.Btn_AcctInactive.Name = "Btn_AcctInactive";
+            this.Btn_AcctInactive.Size = new System.Drawing.Size(85, 32);
+            this.Btn_AcctInactive.TabIndex = 28;
+            this.Btn_AcctInactive.Text = "Inactive";
+            this.Btn_AcctInactive.UseVisualStyleBackColor = true;
+            this.Btn_AcctInactive.Click += new System.EventHandler(this.Btn_AcctInactive_Click);
+            // 
+            // Btn_AcctActive
+            // 
+            this.Btn_AcctActive.Font = new System.Drawing.Font("Bahnschrift Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_AcctActive.Location = new System.Drawing.Point(88, 42);
+            this.Btn_AcctActive.Name = "Btn_AcctActive";
+            this.Btn_AcctActive.Size = new System.Drawing.Size(84, 32);
+            this.Btn_AcctActive.TabIndex = 27;
+            this.Btn_AcctActive.Text = "Active";
+            this.Btn_AcctActive.UseVisualStyleBackColor = true;
+            this.Btn_AcctActive.Click += new System.EventHandler(this.Btn_AcctActive_Click);
+            // 
+            // Btn_AcctRoles
+            // 
+            this.Btn_AcctRoles.Font = new System.Drawing.Font("Bahnschrift Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_AcctRoles.Location = new System.Drawing.Point(8, 42);
+            this.Btn_AcctRoles.Name = "Btn_AcctRoles";
+            this.Btn_AcctRoles.Size = new System.Drawing.Size(79, 32);
+            this.Btn_AcctRoles.TabIndex = 26;
+            this.Btn_AcctRoles.Text = "Roles";
+            this.Btn_AcctRoles.UseVisualStyleBackColor = true;
+            this.Btn_AcctRoles.Click += new System.EventHandler(this.Btn_AcctRoles_Click);
+            // 
             // Dgv_AccountsSmall
             // 
             this.Dgv_AccountsSmall.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
@@ -486,38 +521,17 @@
             this.label10.TabIndex = 24;
             this.label10.Text = "Recently Added Accounts";
             // 
-            // Btn_AcctRoles
+            // linkLabel1
             // 
-            this.Btn_AcctRoles.Font = new System.Drawing.Font("Bahnschrift Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_AcctRoles.Location = new System.Drawing.Point(8, 42);
-            this.Btn_AcctRoles.Name = "Btn_AcctRoles";
-            this.Btn_AcctRoles.Size = new System.Drawing.Size(79, 32);
-            this.Btn_AcctRoles.TabIndex = 26;
-            this.Btn_AcctRoles.Text = "Roles";
-            this.Btn_AcctRoles.UseVisualStyleBackColor = true;
-            this.Btn_AcctRoles.Click += new System.EventHandler(this.Btn_AcctRoles_Click);
-            // 
-            // Btn_AcctActive
-            // 
-            this.Btn_AcctActive.Font = new System.Drawing.Font("Bahnschrift Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_AcctActive.Location = new System.Drawing.Point(88, 42);
-            this.Btn_AcctActive.Name = "Btn_AcctActive";
-            this.Btn_AcctActive.Size = new System.Drawing.Size(84, 32);
-            this.Btn_AcctActive.TabIndex = 27;
-            this.Btn_AcctActive.Text = "Active";
-            this.Btn_AcctActive.UseVisualStyleBackColor = true;
-            this.Btn_AcctActive.Click += new System.EventHandler(this.Btn_AcctActive_Click);
-            // 
-            // Btn_AcctInactive
-            // 
-            this.Btn_AcctInactive.Font = new System.Drawing.Font("Bahnschrift Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_AcctInactive.Location = new System.Drawing.Point(173, 42);
-            this.Btn_AcctInactive.Name = "Btn_AcctInactive";
-            this.Btn_AcctInactive.Size = new System.Drawing.Size(85, 32);
-            this.Btn_AcctInactive.TabIndex = 28;
-            this.Btn_AcctInactive.Text = "Inactive";
-            this.Btn_AcctInactive.UseVisualStyleBackColor = true;
-            this.Btn_AcctInactive.Click += new System.EventHandler(this.Btn_AcctInactive_Click);
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.LinkColor = System.Drawing.Color.Black;
+            this.linkLabel1.Location = new System.Drawing.Point(33, 288);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(51, 25);
+            this.linkLabel1.TabIndex = 19;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Staff";
             // 
             // Form_Dashboard_Admin
             // 
@@ -597,5 +611,6 @@
         private System.Windows.Forms.Button Btn_AcctInactive;
         private System.Windows.Forms.Button Btn_AcctActive;
         private System.Windows.Forms.Button Btn_AcctRoles;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }

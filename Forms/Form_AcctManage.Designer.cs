@@ -38,6 +38,8 @@
             this.Label_Clock = new System.Windows.Forms.Label();
             this.Pic_HotelKannoteki = new System.Windows.Forms.PictureBox();
             this.Panel_AcctOptions = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.Txt_UsernameSearch = new System.Windows.Forms.TextBox();
             this.Label_Status = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.Btn_UserStatus = new System.Windows.Forms.Button();
@@ -141,6 +143,8 @@
             // Panel_AcctOptions
             // 
             this.Panel_AcctOptions.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.Panel_AcctOptions.Controls.Add(this.label4);
+            this.Panel_AcctOptions.Controls.Add(this.Txt_UsernameSearch);
             this.Panel_AcctOptions.Controls.Add(this.Label_Status);
             this.Panel_AcctOptions.Controls.Add(this.label3);
             this.Panel_AcctOptions.Controls.Add(this.Btn_UserStatus);
@@ -157,6 +161,26 @@
             this.Panel_AcctOptions.Name = "Panel_AcctOptions";
             this.Panel_AcctOptions.Size = new System.Drawing.Size(889, 175);
             this.Panel_AcctOptions.TabIndex = 9;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Bahnschrift SemiBold Condensed", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(22, 110);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(141, 25);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Search Username:";
+            // 
+            // Txt_UsernameSearch
+            // 
+            this.Txt_UsernameSearch.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_UsernameSearch.Location = new System.Drawing.Point(27, 138);
+            this.Txt_UsernameSearch.Name = "Txt_UsernameSearch";
+            this.Txt_UsernameSearch.Size = new System.Drawing.Size(189, 33);
+            this.Txt_UsernameSearch.TabIndex = 16;
+            this.Txt_UsernameSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_UsernameSearch_KeyPress);
+            this.Txt_UsernameSearch.Leave += new System.EventHandler(this.Txt_UsernameSearch_Leave);
             // 
             // Label_Status
             // 
@@ -193,9 +217,9 @@
             // Btn_Register
             // 
             this.Btn_Register.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Register.Location = new System.Drawing.Point(8, 138);
+            this.Btn_Register.Location = new System.Drawing.Point(222, 138);
             this.Btn_Register.Name = "Btn_Register";
-            this.Btn_Register.Size = new System.Drawing.Size(166, 34);
+            this.Btn_Register.Size = new System.Drawing.Size(160, 34);
             this.Btn_Register.TabIndex = 1;
             this.Btn_Register.Text = "Register Account";
             this.Btn_Register.UseVisualStyleBackColor = true;
@@ -204,9 +228,9 @@
             // Btn_Update
             // 
             this.Btn_Update.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Update.Location = new System.Drawing.Point(180, 138);
+            this.Btn_Update.Location = new System.Drawing.Point(388, 138);
             this.Btn_Update.Name = "Btn_Update";
-            this.Btn_Update.Size = new System.Drawing.Size(166, 34);
+            this.Btn_Update.Size = new System.Drawing.Size(160, 34);
             this.Btn_Update.TabIndex = 2;
             this.Btn_Update.Text = "Update Account";
             this.Btn_Update.UseVisualStyleBackColor = true;
@@ -238,9 +262,9 @@
             // Btn_Delete
             // 
             this.Btn_Delete.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Delete.Location = new System.Drawing.Point(352, 138);
+            this.Btn_Delete.Location = new System.Drawing.Point(554, 138);
             this.Btn_Delete.Name = "Btn_Delete";
-            this.Btn_Delete.Size = new System.Drawing.Size(166, 34);
+            this.Btn_Delete.Size = new System.Drawing.Size(160, 34);
             this.Btn_Delete.TabIndex = 3;
             this.Btn_Delete.Text = "Delete Account";
             this.Btn_Delete.UseVisualStyleBackColor = true;
@@ -350,6 +374,8 @@
         private System.Windows.Forms.Button Btn_UserStatus;
         private System.Windows.Forms.Label Label_Status;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox Txt_UsernameSearch;
+        private System.Windows.Forms.Label label4;
     }
 }
 

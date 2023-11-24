@@ -1,0 +1,404 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBSYSModelStoreContainer" CdmEntityContainer="DBSYSEntities">
+    <FunctionImportMapping FunctionImportName="SP_AddReservation" FunctionName="DBSYSModel.Store.SP_AddReservation" />
+    <FunctionImportMapping FunctionImportName="SP_DeleteUserAccount" FunctionName="DBSYSModel.Store.SP_DeleteUserAccount" />
+    <FunctionImportMapping FunctionImportName="SP_NewUserAccount" FunctionName="DBSYSModel.Store.SP_NewUserAccount" />
+    <FunctionImportMapping FunctionImportName="SP_SearchUA_Username" FunctionName="DBSYSModel.Store.SP_SearchUA_Username">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBSYSModel.SP_SearchUA_Username_Result">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="userPassword" ColumnName="userPassword" />
+          <ScalarProperty Name="userStatus" ColumnName="userStatus" />
+          <ScalarProperty Name="userDateCreated" ColumnName="userDateCreated" />
+          <ScalarProperty Name="userDateUpdated" ColumnName="userDateUpdated" />
+          <ScalarProperty Name="roleId" ColumnName="roleId" />
+          <ScalarProperty Name="createdById" ColumnName="createdById" />
+          <ScalarProperty Name="createdByUser" ColumnName="createdByUser" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_UpdateUserAccount" FunctionName="DBSYSModel.Store.SP_UpdateUserAccount" />
+    <FunctionImportMapping FunctionImportName="SP_UpdateUserAccountStatus" FunctionName="DBSYSModel.Store.SP_UpdateUserAccountStatus" />
+    <EntitySetMapping Name="GuestInformation">
+      <EntityTypeMapping TypeName="DBSYSModel.GuestInformation">
+        <MappingFragment StoreEntitySet="GuestInformation">
+          <ScalarProperty Name="roomID" ColumnName="roomID" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="guestLastCheckOutDate" ColumnName="guestLastCheckOutDate" />
+          <ScalarProperty Name="guestLastCheckInDate" ColumnName="guestLastCheckInDate" />
+          <ScalarProperty Name="guestEmailAddress" ColumnName="guestEmailAddress" />
+          <ScalarProperty Name="guestAddress" ColumnName="guestAddress" />
+          <ScalarProperty Name="guestContactNo" ColumnName="guestContactNo" />
+          <ScalarProperty Name="guestGender" ColumnName="guestGender" />
+          <ScalarProperty Name="guestBirthDate" ColumnName="guestBirthDate" />
+          <ScalarProperty Name="guestLastName" ColumnName="guestLastName" />
+          <ScalarProperty Name="guestFirstName" ColumnName="guestFirstName" />
+          <ScalarProperty Name="guestID" ColumnName="guestID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentInfo">
+      <EntityTypeMapping TypeName="DBSYSModel.PaymentInfo">
+        <MappingFragment StoreEntitySet="PaymentInfo">
+          <ScalarProperty Name="reserveID" ColumnName="reserveID" />
+          <ScalarProperty Name="guestID" ColumnName="guestID" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="cardOwnerName" ColumnName="cardOwnerName" />
+          <ScalarProperty Name="cardSecurityCode" ColumnName="cardSecurityCode" />
+          <ScalarProperty Name="cardExpiryDate" ColumnName="cardExpiryDate" />
+          <ScalarProperty Name="cardNumber" ColumnName="cardNumber" />
+          <ScalarProperty Name="paymentAmount" ColumnName="paymentAmount" />
+          <ScalarProperty Name="paymentType" ColumnName="paymentType" />
+          <ScalarProperty Name="paymentID" ColumnName="paymentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReservationInfo">
+      <EntityTypeMapping TypeName="DBSYSModel.ReservationInfo">
+        <MappingFragment StoreEntitySet="ReservationInfo">
+          <ScalarProperty Name="roomID" ColumnName="roomID" />
+          <ScalarProperty Name="guestID" ColumnName="guestID" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="reserveGuestChildCount" ColumnName="reserveGuestChildCount" />
+          <ScalarProperty Name="reserveGuestAdultCount" ColumnName="reserveGuestAdultCount" />
+          <ScalarProperty Name="reserveGuestCount" ColumnName="reserveGuestCount" />
+          <ScalarProperty Name="reserveStayLength" ColumnName="reserveStayLength" />
+          <ScalarProperty Name="reserveCheckOutDate" ColumnName="reserveCheckOutDate" />
+          <ScalarProperty Name="reserveCheckInDate" ColumnName="reserveCheckInDate" />
+          <ScalarProperty Name="reserveID" ColumnName="reserveID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="DBSYSModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="roleDescription" ColumnName="roleDescription" />
+          <ScalarProperty Name="roleName" ColumnName="roleName" />
+          <ScalarProperty Name="roleId" ColumnName="roleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoomInformation">
+      <EntityTypeMapping TypeName="DBSYSModel.RoomInformation">
+        <MappingFragment StoreEntitySet="RoomInformation">
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="roomGuestCount" ColumnName="roomGuestCount" />
+          <ScalarProperty Name="roomDesc" ColumnName="roomDesc" />
+          <ScalarProperty Name="roomImage" ColumnName="roomImage" />
+          <ScalarProperty Name="roomPrice" ColumnName="roomPrice" />
+          <ScalarProperty Name="roomType" ColumnName="roomType" />
+          <ScalarProperty Name="roomTitle" ColumnName="roomTitle" />
+          <ScalarProperty Name="roomID" ColumnName="roomID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StaffInfo">
+      <EntityTypeMapping TypeName="DBSYSModel.StaffInfo">
+        <MappingFragment StoreEntitySet="StaffInfo">
+          <ScalarProperty Name="StaffSalary" ColumnName="StaffSalary" />
+          <ScalarProperty Name="StaffEmailAddress" ColumnName="StaffEmailAddress" />
+          <ScalarProperty Name="StaffContactNo" ColumnName="StaffContactNo" />
+          <ScalarProperty Name="StaffGender" ColumnName="StaffGender" />
+          <ScalarProperty Name="StaffBirthDate" ColumnName="StaffBirthDate" />
+          <ScalarProperty Name="StaffLastName" ColumnName="StaffLastName" />
+          <ScalarProperty Name="StaffFirstName" ColumnName="StaffFirstName" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="roleId" ColumnName="roleId" />
+          <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserAccount">
+      <EntityTypeMapping TypeName="DBSYSModel.UserAccount">
+        <MappingFragment StoreEntitySet="UserAccount">
+          <ScalarProperty Name="createdByUser" ColumnName="createdByUser" />
+          <ScalarProperty Name="createdById" ColumnName="createdById" />
+          <ScalarProperty Name="roleId" ColumnName="roleId" />
+          <ScalarProperty Name="userDateUpdated" ColumnName="userDateUpdated" />
+          <ScalarProperty Name="userDateCreated" ColumnName="userDateCreated" />
+          <ScalarProperty Name="userStatus" ColumnName="userStatus" />
+          <ScalarProperty Name="userPassword" ColumnName="userPassword" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Payment_Amount">
+      <EntityTypeMapping TypeName="DBSYSModel.vw_Payment_Amount">
+        <MappingFragment StoreEntitySet="vw_Payment_Amount">
+          <ScalarProperty Name="Credit_Card_Name" ColumnName="Credit Card Name" />
+          <ScalarProperty Name="Credit_Card_No_" ColumnName="Credit Card No." />
+          <ScalarProperty Name="Payment_Amount" ColumnName="Payment Amount" />
+          <ScalarProperty Name="Payment_Mode" ColumnName="Payment Mode" />
+          <ScalarProperty Name="Payment_No_" ColumnName="Payment No." />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Payment_CardInfo">
+      <EntityTypeMapping TypeName="DBSYSModel.vw_Payment_CardInfo">
+        <MappingFragment StoreEntitySet="vw_Payment_CardInfo">
+          <ScalarProperty Name="Credit_Card_Name" ColumnName="Credit Card Name" />
+          <ScalarProperty Name="Credit_Card_Security_Code" ColumnName="Credit Card Security Code" />
+          <ScalarProperty Name="Credit_Card_Expiration_Date" ColumnName="Credit Card Expiration Date" />
+          <ScalarProperty Name="Credit_Card_No_" ColumnName="Credit Card No." />
+          <ScalarProperty Name="Payment_Amount" ColumnName="Payment Amount" />
+          <ScalarProperty Name="Payment_Mode" ColumnName="Payment Mode" />
+          <ScalarProperty Name="Payment_No_" ColumnName="Payment No." />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Payment_Full">
+      <EntityTypeMapping TypeName="DBSYSModel.vw_Payment_Full">
+        <MappingFragment StoreEntitySet="vw_Payment_Full">
+          <ScalarProperty Name="Referred_Reservation_ID" ColumnName="Referred Reservation ID" />
+          <ScalarProperty Name="Payer_Guest_ID" ColumnName="Payer Guest ID" />
+          <ScalarProperty Name="Payer_Username" ColumnName="Payer Username" />
+          <ScalarProperty Name="Credit_Card_Name" ColumnName="Credit Card Name" />
+          <ScalarProperty Name="Credit_Card_Security_Code" ColumnName="Credit Card Security Code" />
+          <ScalarProperty Name="Credit_Card_Expiration_Date" ColumnName="Credit Card Expiration Date" />
+          <ScalarProperty Name="Credit_Card_No_" ColumnName="Credit Card No." />
+          <ScalarProperty Name="Payment_Amount" ColumnName="Payment Amount" />
+          <ScalarProperty Name="Payment_Mode" ColumnName="Payment Mode" />
+          <ScalarProperty Name="Payment_No_" ColumnName="Payment No." />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Payment_GuestInfo">
+      <EntityTypeMapping TypeName="DBSYSModel.vw_Payment_GuestInfo">
+        <MappingFragment StoreEntitySet="vw_Payment_GuestInfo">
+          <ScalarProperty Name="Email_Address" ColumnName="Email Address" />
+          <ScalarProperty Name="Contact_No_" ColumnName="Contact No." />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Guest_Last_Name" ColumnName="Guest Last Name" />
+          <ScalarProperty Name="Guest_First_Name" ColumnName="Guest First Name" />
+          <ScalarProperty Name="Payer_Guest_ID" ColumnName="Payer Guest ID" />
+          <ScalarProperty Name="Payment_Amount" ColumnName="Payment Amount" />
+          <ScalarProperty Name="Payment_Mode" ColumnName="Payment Mode" />
+          <ScalarProperty Name="Payment_No_" ColumnName="Payment No." />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Payment_ReservationInfo">
+      <EntityTypeMapping TypeName="DBSYSModel.vw_Payment_ReservationInfo">
+        <MappingFragment StoreEntitySet="vw_Payment_ReservationInfo">
+          <ScalarProperty Name="No__of_Guests" ColumnName="No. of Guests" />
+          <ScalarProperty Name="Check_Out_Date" ColumnName="Check-Out Date" />
+          <ScalarProperty Name="Check_In_Date" ColumnName="Check-In Date" />
+          <ScalarProperty Name="Referred_Reservation_ID" ColumnName="Referred Reservation ID" />
+          <ScalarProperty Name="Payment_Amount" ColumnName="Payment Amount" />
+          <ScalarProperty Name="Payment_Mode" ColumnName="Payment Mode" />
+          <ScalarProperty Name="Payment_No_" ColumnName="Payment No." />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Payment_UserInfo">
+      <EntityTypeMapping TypeName="DBSYSModel.vw_Payment_UserInfo">
+        <MappingFragment StoreEntitySet="vw_Payment_UserInfo">
+          <ScalarProperty Name="Payer_Username" ColumnName="Payer Username" />
+          <ScalarProperty Name="Payer_User_ID" ColumnName="Payer User ID" />
+          <ScalarProperty Name="Payment_Amount" ColumnName="Payment Amount" />
+          <ScalarProperty Name="Payment_Mode" ColumnName="Payment Mode" />
+          <ScalarProperty Name="Payment_No_" ColumnName="Payment No." />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Reservation_Full">
+      <EntityTypeMapping TypeName="DBSYSModel.vw_Reservation_Full">
+        <MappingFragment StoreEntitySet="vw_Reservation_Full">
+          <ScalarProperty Name="Room_ID" ColumnName="Room ID" />
+          <ScalarProperty Name="Guest_ID_No_" ColumnName="Guest ID No." />
+          <ScalarProperty Name="Booker_ID" ColumnName="Booker ID" />
+          <ScalarProperty Name="No__of_Guests" ColumnName="No. of Guests" />
+          <ScalarProperty Name="No__of_Children_Guests" ColumnName="No. of Children Guests" />
+          <ScalarProperty Name="No__of_Adult_Guests" ColumnName="No. of Adult Guests" />
+          <ScalarProperty Name="Nights_to_Stay" ColumnName="Nights to Stay" />
+          <ScalarProperty Name="Check_Out" ColumnName="Check-Out" />
+          <ScalarProperty Name="Check_In" ColumnName="Check-In" />
+          <ScalarProperty Name="Reservation_No_" ColumnName="Reservation No." />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Reservation_GuestCount">
+      <EntityTypeMapping TypeName="DBSYSModel.vw_Reservation_GuestCount">
+        <MappingFragment StoreEntitySet="vw_Reservation_GuestCount">
+          <ScalarProperty Name="Guest_ID_No_" ColumnName="Guest ID No." />
+          <ScalarProperty Name="No__of_Guests" ColumnName="No. of Guests" />
+          <ScalarProperty Name="No__of_Children_Guests" ColumnName="No. of Children Guests" />
+          <ScalarProperty Name="No__of_Adult_Guests" ColumnName="No. of Adult Guests" />
+          <ScalarProperty Name="Check_Out" ColumnName="Check-Out" />
+          <ScalarProperty Name="Check_In" ColumnName="Check-In" />
+          <ScalarProperty Name="Reservation_No_" ColumnName="Reservation No." />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Reservation_GuestInfo">
+      <EntityTypeMapping TypeName="DBSYSModel.vw_Reservation_GuestInfo">
+        <MappingFragment StoreEntitySet="vw_Reservation_GuestInfo">
+          <ScalarProperty Name="Last_Checked_Out" ColumnName="Last Checked-Out" />
+          <ScalarProperty Name="Last_Checked_In" ColumnName="Last Checked-In" />
+          <ScalarProperty Name="Email_Address" ColumnName="Email Address" />
+          <ScalarProperty Name="Contact_No_" ColumnName="Contact No." />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last Name" />
+          <ScalarProperty Name="First_Name" ColumnName="First Name" />
+          <ScalarProperty Name="Guest_ID_No_" ColumnName="Guest ID No." />
+          <ScalarProperty Name="No__of_Guests" ColumnName="No. of Guests" />
+          <ScalarProperty Name="Check_Out" ColumnName="Check-Out" />
+          <ScalarProperty Name="Check_In" ColumnName="Check-In" />
+          <ScalarProperty Name="Reservation_No_" ColumnName="Reservation No." />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Reservation_RoomInfo">
+      <EntityTypeMapping TypeName="DBSYSModel.vw_Reservation_RoomInfo">
+        <MappingFragment StoreEntitySet="vw_Reservation_RoomInfo">
+          <ScalarProperty Name="Short_Description" ColumnName="Short Description" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Room_Type" ColumnName="Room Type" />
+          <ScalarProperty Name="Room_Title" ColumnName="Room Title" />
+          <ScalarProperty Name="Room_ID" ColumnName="Room ID" />
+          <ScalarProperty Name="Check_Out" ColumnName="Check-Out" />
+          <ScalarProperty Name="Check_In" ColumnName="Check-In" />
+          <ScalarProperty Name="Reservation_No_" ColumnName="Reservation No." />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Reservation_Rooms">
+      <EntityTypeMapping TypeName="DBSYSModel.vw_Reservation_Rooms">
+        <MappingFragment StoreEntitySet="vw_Reservation_Rooms">
+          <ScalarProperty Name="Room_ID" ColumnName="Room ID" />
+          <ScalarProperty Name="No__of_Guests" ColumnName="No. of Guests" />
+          <ScalarProperty Name="Check_Out" ColumnName="Check-Out" />
+          <ScalarProperty Name="Check_In" ColumnName="Check-In" />
+          <ScalarProperty Name="Reservation_No_" ColumnName="Reservation No." />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Reservation_UserInfo">
+      <EntityTypeMapping TypeName="DBSYSModel.vw_Reservation_UserInfo">
+        <MappingFragment StoreEntitySet="vw_Reservation_UserInfo">
+          <ScalarProperty Name="Last_Updated" ColumnName="Last Updated" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="User_ID" ColumnName="User ID" />
+          <ScalarProperty Name="No__of_Guests" ColumnName="No. of Guests" />
+          <ScalarProperty Name="Check_Out" ColumnName="Check-Out" />
+          <ScalarProperty Name="Check_In" ColumnName="Check-In" />
+          <ScalarProperty Name="Reservation_No_" ColumnName="Reservation No." />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_RoomInfo_Available">
+      <EntityTypeMapping TypeName="DBSYSModel.vw_RoomInfo_Available">
+        <MappingFragment StoreEntitySet="vw_RoomInfo_Available">
+          <ScalarProperty Name="Occupant_Username" ColumnName="Occupant Username" />
+          <ScalarProperty Name="Room_Occupants" ColumnName="Room Occupants" />
+          <ScalarProperty Name="Occupant_User_ID" ColumnName="Occupant User ID" />
+          <ScalarProperty Name="Room_Type" ColumnName="Room Type" />
+          <ScalarProperty Name="Room_Name" ColumnName="Room Name" />
+          <ScalarProperty Name="Room_ID" ColumnName="Room ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_RoomInfo_Full">
+      <EntityTypeMapping TypeName="DBSYSModel.vw_RoomInfo_Full">
+        <MappingFragment StoreEntitySet="vw_RoomInfo_Full">
+          <ScalarProperty Name="Occupant_User_ID" ColumnName="Occupant User ID" />
+          <ScalarProperty Name="Room_Occupants" ColumnName="Room Occupants" />
+          <ScalarProperty Name="Room_Description" ColumnName="Room Description" />
+          <ScalarProperty Name="Room_Image_File_Name" ColumnName="Room Image File Name" />
+          <ScalarProperty Name="Room_Price" ColumnName="Room Price" />
+          <ScalarProperty Name="Room_Type" ColumnName="Room Type" />
+          <ScalarProperty Name="Room_Name" ColumnName="Room Name" />
+          <ScalarProperty Name="Room_ID" ColumnName="Room ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_RoomInfo_Occupied">
+      <EntityTypeMapping TypeName="DBSYSModel.vw_RoomInfo_Occupied">
+        <MappingFragment StoreEntitySet="vw_RoomInfo_Occupied">
+          <ScalarProperty Name="Occupant_Username" ColumnName="Occupant Username" />
+          <ScalarProperty Name="Room_Occupants" ColumnName="Room Occupants" />
+          <ScalarProperty Name="Occupant_User_ID" ColumnName="Occupant User ID" />
+          <ScalarProperty Name="Room_Type" ColumnName="Room Type" />
+          <ScalarProperty Name="Room_Name" ColumnName="Room Name" />
+          <ScalarProperty Name="Room_ID" ColumnName="Room ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_RoomInfo_Prices">
+      <EntityTypeMapping TypeName="DBSYSModel.vw_RoomInfo_Prices">
+        <MappingFragment StoreEntitySet="vw_RoomInfo_Prices">
+          <ScalarProperty Name="Room_Description" ColumnName="Room Description" />
+          <ScalarProperty Name="Room_Price" ColumnName="Room Price" />
+          <ScalarProperty Name="Room_Type" ColumnName="Room Type" />
+          <ScalarProperty Name="Room_Name" ColumnName="Room Name" />
+          <ScalarProperty Name="Room_ID" ColumnName="Room ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_RoomInfo_Types">
+      <EntityTypeMapping TypeName="DBSYSModel.vw_RoomInfo_Types">
+        <MappingFragment StoreEntitySet="vw_RoomInfo_Types">
+          <ScalarProperty Name="Room_Description" ColumnName="Room Description" />
+          <ScalarProperty Name="Room_Type" ColumnName="Room Type" />
+          <ScalarProperty Name="Room_Name" ColumnName="Room Name" />
+          <ScalarProperty Name="Room_ID" ColumnName="Room ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_UserAccount_Active">
+      <EntityTypeMapping TypeName="DBSYSModel.vw_UserAccount_Active">
+        <MappingFragment StoreEntitySet="vw_UserAccount_Active">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="User_ID_" ColumnName="User ID#" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_UserAccount_Full">
+      <EntityTypeMapping TypeName="DBSYSModel.vw_UserAccount_Full">
+        <MappingFragment StoreEntitySet="vw_UserAccount_Full">
+          <ScalarProperty Name="User_Creator" ColumnName="User Creator" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Date_Updated" ColumnName="Date Updated" />
+          <ScalarProperty Name="Date_Created" ColumnName="Date Created" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="User_ID_" ColumnName="User ID#" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_UserAccount_Inactive">
+      <EntityTypeMapping TypeName="DBSYSModel.vw_UserAccount_Inactive">
+        <MappingFragment StoreEntitySet="vw_UserAccount_Inactive">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="User_ID_" ColumnName="User ID#" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_UserAccount_Roles">
+      <EntityTypeMapping TypeName="DBSYSModel.vw_UserAccount_Roles">
+        <MappingFragment StoreEntitySet="vw_UserAccount_Roles">
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="User_ID_" ColumnName="User ID#" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_UserAccount_Updates">
+      <EntityTypeMapping TypeName="DBSYSModel.vw_UserAccount_Updates">
+        <MappingFragment StoreEntitySet="vw_UserAccount_Updates">
+          <ScalarProperty Name="Creator" ColumnName="Creator" />
+          <ScalarProperty Name="Date_Updated" ColumnName="Date Updated" />
+          <ScalarProperty Name="Date_Created" ColumnName="Date Created" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="User_ID_" ColumnName="User ID#" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

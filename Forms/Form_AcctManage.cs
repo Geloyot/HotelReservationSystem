@@ -29,10 +29,10 @@ namespace HotelReservationSystem
         {
             Timer_Clock.Start();
             UserRepos = new UserRepository();
-            LoadUsersDatabase();
+            LoadUsersDB();
         }
 
-        private void LoadUsersDatabase()
+        private void LoadUsersDB()
         {
             Dgv_AcctManage.DataSource = UserRepos.GetUserAccountList();
         }
@@ -52,12 +52,12 @@ namespace HotelReservationSystem
                 return;
             }
 
-            DBSYSEntities Database = new DBSYSEntities();
-            Database.SP_NewUserAccount(username, password, DateTime.Now, DateTime.Now, 1, CurrentlyLoggedUser.GetInstance().CurrentUserAccount.userId, CurrentlyLoggedUser.GetInstance().CurrentUserAccount.userName);
+            DBSYSEntities DB = new DBSYSEntities();
+            DB.SP_NewUserAccount(username, password, DateTime.Now, DateTime.Now, 1, CurrentlyLoggedUser.GetInstance().CurrentUserAccount.userId, CurrentlyLoggedUser.GetInstance().CurrentUserAccount.userName);
 
             MessageBox.Show(username + " is successfully registered!", "Registration Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            LoadUsersDatabase();
+            LoadUsersDB();
 
             ErrorProviderInput.Clear();
             Txt_Username.Clear();
@@ -87,15 +87,15 @@ namespace HotelReservationSystem
                 return;
             }
 
-            DBSYSEntities Database = new DBSYSEntities();
-            Database.SP_UpdateUserAccount(SelectedUserId, username, password, status, DateTime.Now);
+            DBSYSEntities DB = new DBSYSEntities();
+            DB.SP_UpdateUserAccount(SelectedUserId, username, password, status, DateTime.Now);
 
             ErrorProviderInput.Clear();
             Txt_Username.Clear();
             Txt_Password.Clear();
 
             MessageBox.Show(username + " is successfully updated!", "Update Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            LoadUsersDatabase();
+            LoadUsersDB();
         }
 
         private void Btn_Delete_Click(object sender, EventArgs e)
@@ -105,8 +105,8 @@ namespace HotelReservationSystem
             {
                 string username = Txt_Username.Text;
 
-                DBSYSEntities Database = new DBSYSEntities();
-                Database.SP_DeleteUserAccount(SelectedUserId);
+                DBSYSEntities DB = new DBSYSEntities();
+                DB.SP_DeleteUserAccount(SelectedUserId);
 
                 ErrorProviderInput.Clear();
                 Txt_Username.Clear();
@@ -116,7 +116,7 @@ namespace HotelReservationSystem
 
                 SelectedUserId = null;
                 Btn_Register.Focus();
-                LoadUsersDatabase();
+                LoadUsersDB();
             }
         }
 
@@ -203,7 +203,7 @@ namespace HotelReservationSystem
 
         private void Btn_UserStatus_Click(object sender, EventArgs e)
         {
-            DBSYSEntities Database = new DBSYSEntities();
+            DBSYSEntities DB = new DBSYSEntities();
 
             if (Label_Status.Text == "ACTIVE")
             {
@@ -212,7 +212,7 @@ namespace HotelReservationSystem
                 {
                     Label_Status.Text = "INACTIVE";
                     Label_Status.ForeColor = System.Drawing.Color.Red;
-                    Database.SP_UpdateUserAccountStatus(Txt_Username.Text, "INACTIVE");
+                    DB.SP_UpdateUserAccountStatus(Txt_Username.Text, "INACTIVE");
                 }
             }
             else 
@@ -222,11 +222,37 @@ namespace HotelReservationSystem
                 {
                     Label_Status.Text = "ACTIVE";
                     Label_Status.ForeColor = System.Drawing.Color.DarkGreen;
-                    Database.SP_UpdateUserAccountStatus(Txt_Username.Text, "ACTIVE");
+                    DB.SP_UpdateUserAccountStatus(Txt_Username.Text, "ACTIVE");
                 }
             }
 
-            LoadUsersDatabase();
+            LoadUsersDB();
+        }
+
+        private void SearchByUsername() 
+        {
+            DBSYSEntities DB = new DBSYSEntities();
+            if (String.IsNullOrEmpty(Txt_UsernameSearch.Text))
+            {
+                LoadUsersDB();
+            }
+            else
+            {
+                Dgv_AcctManage.DataSource = DB.SP_SearchUA_Username(Txt_UsernameSearch.Text).ToList();
+            }
+        }
+
+        private void Txt_UsernameSearch_Leave(object sender, EventArgs e)
+        {
+            LoadUsersDB();
+        }
+
+        private void Txt_UsernameSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                SearchByUsername();
+            }
         }
     }
 }

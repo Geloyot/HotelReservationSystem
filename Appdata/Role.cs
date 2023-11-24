@@ -17,6 +17,7 @@ namespace HotelReservationSystem.Appdata
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Role()
         {
+            this.StaffInfo = new HashSet<StaffInfo>();
             this.UserAccount = new HashSet<UserAccount>();
         }
     
@@ -24,6 +25,8 @@ namespace HotelReservationSystem.Appdata
         public string roleName { get; set; }
         public string roleDescription { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StaffInfo> StaffInfo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserAccount> UserAccount { get; set; }
     }

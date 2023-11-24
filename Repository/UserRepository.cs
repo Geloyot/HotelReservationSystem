@@ -10,45 +10,62 @@ namespace HotelReservationSystem
 {
     public class UserRepository
     {
-        private DBSYSEntities Database;
+        private DBSYSEntities DB;
 
         public UserRepository() { 
-            Database = new DBSYSEntities();
+            DB = new DBSYSEntities();
         }
 
         public UserAccount GetUserByUsername(string SpecificUsername)
         {
             // Re-initialize db object because sometimes data in the list is not updated.
-            Database = new DBSYSEntities();
-            return Database.UserAccount.Where(m => m.userName == SpecificUsername).FirstOrDefault();
+            DB = new DBSYSEntities();
+            return DB.UserAccount.Where(m => m.userName == SpecificUsername).FirstOrDefault();
         }
 
         public UserAccount GetUserByUserID(int? UserID) 
         {
-            Database = new DBSYSEntities();
-            return Database.UserAccount.Where(u => u.userId == UserID).FirstOrDefault();
+            DB = new DBSYSEntities();
+            return DB.UserAccount.Where(u => u.userId == UserID).FirstOrDefault();
         }
 
         public List<vw_UserAccount_Full> GetUserAccountList()
         {
-            Database = new DBSYSEntities();
-            return Database.vw_UserAccount_Full.ToList();
+            DB = new DBSYSEntities();
+            return DB.vw_UserAccount_Full.ToList();
         }
 
         public List<vw_UserAccount_Roles> GetUserAccountRolesList()
         {
-            Database = new DBSYSEntities();
-            return Database.vw_UserAccount_Roles.ToList();
+            DB = new DBSYSEntities();
+            return DB.vw_UserAccount_Roles.ToList();
         }
         public List<vw_UserAccount_Active> GetUserAccountActiveList() 
         {
-            Database = new DBSYSEntities(); 
-            return Database.vw_UserAccount_Active.ToList();
+            DB = new DBSYSEntities(); 
+            return DB.vw_UserAccount_Active.ToList();
         }
         public List<vw_UserAccount_Inactive> GetUserAccountInactiveList()
         {
-            Database = new DBSYSEntities();
-            return Database.vw_UserAccount_Inactive.ToList();
+            DB = new DBSYSEntities();
+            return DB.vw_UserAccount_Inactive.ToList();
         }
+
+        public List<vw_Staff_Full> GetStaffFullList() 
+        {
+            DB = new DBSYSEntities();
+            return DB.vw_Staff_Full.ToList();
+        }
+        public List<vw_Staff_Personal> GetStaffPIList() 
+        {
+            DB = new DBSYSEntities();
+            return DB.vw_Staff_Personal.ToList();
+        }
+        public List<vw_Staff_Salary> GetStaffSalaryList() 
+        {
+            DB = new DBSYSEntities();
+            return DB.vw_Staff_Salary.ToList();
+        }
+
     }
 }

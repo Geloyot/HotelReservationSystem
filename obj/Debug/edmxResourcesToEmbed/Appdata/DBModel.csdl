@@ -1,0 +1,738 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBSYSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DBSYSEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="SP_AddReservation">
+      <Parameter Name="CheckInDate" Mode="In" Type="DateTime" />
+      <Parameter Name="CheckOutDate" Mode="In" Type="DateTime" />
+      <Parameter Name="StayCount" Mode="In" Type="Int32" />
+      <Parameter Name="GuestCount" Mode="In" Type="Int32" />
+      <Parameter Name="AdultGuestCount" Mode="In" Type="Int32" />
+      <Parameter Name="ChildGuestCount" Mode="In" Type="Int32" />
+      <Parameter Name="UID" Mode="In" Type="Int32" />
+      <Parameter Name="GID" Mode="In" Type="Int32" />
+      <Parameter Name="RID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_DeleteUserAccount">
+      <Parameter Name="SpecificID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_NewUserAccount">
+      <Parameter Name="UName" Mode="In" Type="String" />
+      <Parameter Name="UPassword" Mode="In" Type="String" />
+      <Parameter Name="CreateDate" Mode="In" Type="DateTime" />
+      <Parameter Name="UpdateDate" Mode="In" Type="DateTime" />
+      <Parameter Name="RoleID" Mode="In" Type="Int32" />
+      <Parameter Name="CreatedByID" Mode="In" Type="Int32" />
+      <Parameter Name="CreatorName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_SearchUA_Username" ReturnType="Collection(DBSYSModel.SP_SearchUA_Username_Result)">
+      <Parameter Name="UName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_UpdateUserAccount">
+      <Parameter Name="SpecificID" Mode="In" Type="Int32" />
+      <Parameter Name="UName" Mode="In" Type="String" />
+      <Parameter Name="UPassword" Mode="In" Type="String" />
+      <Parameter Name="UStatus" Mode="In" Type="String" />
+      <Parameter Name="ULastUpdated" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="SP_UpdateUserAccountStatus">
+      <Parameter Name="UName" Mode="In" Type="String" />
+      <Parameter Name="UStatus" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="GuestInformation" EntityType="DBSYSModel.GuestInformation" />
+    <EntitySet Name="PaymentInfo" EntityType="DBSYSModel.PaymentInfo" />
+    <EntitySet Name="ReservationInfo" EntityType="DBSYSModel.ReservationInfo" />
+    <EntitySet Name="Role" EntityType="DBSYSModel.Role" />
+    <EntitySet Name="RoomInformation" EntityType="DBSYSModel.RoomInformation" />
+    <EntitySet Name="StaffInfo" EntityType="DBSYSModel.StaffInfo" />
+    <EntitySet Name="UserAccount" EntityType="DBSYSModel.UserAccount" />
+    <EntitySet Name="vw_Payment_Amount" EntityType="DBSYSModel.vw_Payment_Amount" />
+    <EntitySet Name="vw_Payment_CardInfo" EntityType="DBSYSModel.vw_Payment_CardInfo" />
+    <EntitySet Name="vw_Payment_Full" EntityType="DBSYSModel.vw_Payment_Full" />
+    <EntitySet Name="vw_Payment_GuestInfo" EntityType="DBSYSModel.vw_Payment_GuestInfo" />
+    <EntitySet Name="vw_Payment_ReservationInfo" EntityType="DBSYSModel.vw_Payment_ReservationInfo" />
+    <EntitySet Name="vw_Payment_UserInfo" EntityType="DBSYSModel.vw_Payment_UserInfo" />
+    <EntitySet Name="vw_Reservation_Full" EntityType="DBSYSModel.vw_Reservation_Full" />
+    <EntitySet Name="vw_Reservation_GuestCount" EntityType="DBSYSModel.vw_Reservation_GuestCount" />
+    <EntitySet Name="vw_Reservation_GuestInfo" EntityType="DBSYSModel.vw_Reservation_GuestInfo" />
+    <EntitySet Name="vw_Reservation_RoomInfo" EntityType="DBSYSModel.vw_Reservation_RoomInfo" />
+    <EntitySet Name="vw_Reservation_Rooms" EntityType="DBSYSModel.vw_Reservation_Rooms" />
+    <EntitySet Name="vw_Reservation_UserInfo" EntityType="DBSYSModel.vw_Reservation_UserInfo" />
+    <EntitySet Name="vw_RoomInfo_Available" EntityType="DBSYSModel.vw_RoomInfo_Available" />
+    <EntitySet Name="vw_RoomInfo_Full" EntityType="DBSYSModel.vw_RoomInfo_Full" />
+    <EntitySet Name="vw_RoomInfo_Occupied" EntityType="DBSYSModel.vw_RoomInfo_Occupied" />
+    <EntitySet Name="vw_RoomInfo_Prices" EntityType="DBSYSModel.vw_RoomInfo_Prices" />
+    <EntitySet Name="vw_RoomInfo_Types" EntityType="DBSYSModel.vw_RoomInfo_Types" />
+    <EntitySet Name="vw_UserAccount_Active" EntityType="DBSYSModel.vw_UserAccount_Active" />
+    <EntitySet Name="vw_UserAccount_Full" EntityType="DBSYSModel.vw_UserAccount_Full" />
+    <EntitySet Name="vw_UserAccount_Inactive" EntityType="DBSYSModel.vw_UserAccount_Inactive" />
+    <EntitySet Name="vw_UserAccount_Roles" EntityType="DBSYSModel.vw_UserAccount_Roles" />
+    <EntitySet Name="vw_UserAccount_Updates" EntityType="DBSYSModel.vw_UserAccount_Updates" />
+    <AssociationSet Name="FK__GuestInfo__roomI__01142BA1" Association="DBSYSModel.FK__GuestInfo__roomI__01142BA1">
+      <End Role="RoomInformation" EntitySet="RoomInformation" />
+      <End Role="GuestInformation" EntitySet="GuestInformation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GuestInfo__userI__00200768" Association="DBSYSModel.FK__GuestInfo__userI__00200768">
+      <End Role="UserAccount" EntitySet="UserAccount" />
+      <End Role="GuestInformation" EntitySet="GuestInformation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PaymentIn__guest__41EDCAC5" Association="DBSYSModel.FK__PaymentIn__guest__41EDCAC5">
+      <End Role="GuestInformation" EntitySet="GuestInformation" />
+      <End Role="PaymentInfo" EntitySet="PaymentInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Reservati__guest__3D2915A8" Association="DBSYSModel.FK__Reservati__guest__3D2915A8">
+      <End Role="GuestInformation" EntitySet="GuestInformation" />
+      <End Role="ReservationInfo" EntitySet="ReservationInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PaymentIn__reser__42E1EEFE" Association="DBSYSModel.FK__PaymentIn__reser__42E1EEFE">
+      <End Role="ReservationInfo" EntitySet="ReservationInfo" />
+      <End Role="PaymentInfo" EntitySet="PaymentInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PaymentIn__userI__40F9A68C" Association="DBSYSModel.FK__PaymentIn__userI__40F9A68C">
+      <End Role="UserAccount" EntitySet="UserAccount" />
+      <End Role="PaymentInfo" EntitySet="PaymentInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Reservati__roomI__3E1D39E1" Association="DBSYSModel.FK__Reservati__roomI__3E1D39E1">
+      <End Role="RoomInformation" EntitySet="RoomInformation" />
+      <End Role="ReservationInfo" EntitySet="ReservationInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Reservati__userI__3C34F16F" Association="DBSYSModel.FK__Reservati__userI__3C34F16F">
+      <End Role="UserAccount" EntitySet="UserAccount" />
+      <End Role="ReservationInfo" EntitySet="ReservationInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StaffInfo__roleI__57DD0BE4" Association="DBSYSModel.FK__StaffInfo__roleI__57DD0BE4">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="StaffInfo" EntitySet="StaffInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAccount_Role" Association="DBSYSModel.FK_UserAccount_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="UserAccount" EntitySet="UserAccount" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RoomInfor__userI__7B5B524B" Association="DBSYSModel.FK__RoomInfor__userI__7B5B524B">
+      <End Role="UserAccount" EntitySet="UserAccount" />
+      <End Role="RoomInformation" EntitySet="RoomInformation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StaffInfo__userI__58D1301D" Association="DBSYSModel.FK__StaffInfo__userI__58D1301D">
+      <End Role="UserAccount" EntitySet="UserAccount" />
+      <End Role="StaffInfo" EntitySet="StaffInfo" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="SP_SearchUA_Username_Result">
+    <Property Type="Int32" Name="userId" Nullable="false" />
+    <Property Type="String" Name="userName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="userPassword" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="userStatus" Nullable="false" MaxLength="10" />
+    <Property Type="DateTime" Name="userDateCreated" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="userDateUpdated" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="roleId" Nullable="true" />
+    <Property Type="Int32" Name="createdById" Nullable="true" />
+    <Property Type="String" Name="createdByUser" Nullable="true" MaxLength="255" />
+  </ComplexType>
+  <EntityType Name="GuestInformation">
+    <Key>
+      <PropertyRef Name="guestID" />
+    </Key>
+    <Property Name="guestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="guestFirstName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="guestLastName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="guestBirthDate" Type="DateTime" Precision="0" />
+    <Property Name="guestGender" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
+    <Property Name="guestContactNo" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
+    <Property Name="guestAddress" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="guestEmailAddress" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
+    <Property Name="guestLastCheckInDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="guestLastCheckOutDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="userID" Type="Int32" />
+    <Property Name="roomID" Type="Int32" />
+    <NavigationProperty Name="RoomInformation" Relationship="DBSYSModel.FK__GuestInfo__roomI__01142BA1" FromRole="GuestInformation" ToRole="RoomInformation" />
+    <NavigationProperty Name="UserAccount" Relationship="DBSYSModel.FK__GuestInfo__userI__00200768" FromRole="GuestInformation" ToRole="UserAccount" />
+    <NavigationProperty Name="PaymentInfo" Relationship="DBSYSModel.FK__PaymentIn__guest__41EDCAC5" FromRole="GuestInformation" ToRole="PaymentInfo" />
+    <NavigationProperty Name="ReservationInfo" Relationship="DBSYSModel.FK__Reservati__guest__3D2915A8" FromRole="GuestInformation" ToRole="ReservationInfo" />
+  </EntityType>
+  <EntityType Name="PaymentInfo">
+    <Key>
+      <PropertyRef Name="paymentID" />
+    </Key>
+    <Property Name="paymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="paymentType" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
+    <Property Name="paymentAmount" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="cardNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cardExpiryDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="cardSecurityCode" Type="Int32" Nullable="false" />
+    <Property Name="cardOwnerName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="userId" Type="Int32" />
+    <Property Name="guestID" Type="Int32" />
+    <Property Name="reserveID" Type="Int32" />
+    <NavigationProperty Name="GuestInformation" Relationship="DBSYSModel.FK__PaymentIn__guest__41EDCAC5" FromRole="PaymentInfo" ToRole="GuestInformation" />
+    <NavigationProperty Name="ReservationInfo" Relationship="DBSYSModel.FK__PaymentIn__reser__42E1EEFE" FromRole="PaymentInfo" ToRole="ReservationInfo" />
+    <NavigationProperty Name="UserAccount" Relationship="DBSYSModel.FK__PaymentIn__userI__40F9A68C" FromRole="PaymentInfo" ToRole="UserAccount" />
+  </EntityType>
+  <EntityType Name="ReservationInfo">
+    <Key>
+      <PropertyRef Name="reserveID" />
+    </Key>
+    <Property Name="reserveID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="reserveCheckInDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="reserveCheckOutDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="reserveStayLength" Type="Int32" Nullable="false" />
+    <Property Name="reserveGuestCount" Type="Int32" Nullable="false" />
+    <Property Name="reserveGuestAdultCount" Type="Int32" Nullable="false" />
+    <Property Name="reserveGuestChildCount" Type="Int32" Nullable="false" />
+    <Property Name="userId" Type="Int32" />
+    <Property Name="guestID" Type="Int32" />
+    <Property Name="roomID" Type="Int32" />
+    <NavigationProperty Name="GuestInformation" Relationship="DBSYSModel.FK__Reservati__guest__3D2915A8" FromRole="ReservationInfo" ToRole="GuestInformation" />
+    <NavigationProperty Name="PaymentInfo" Relationship="DBSYSModel.FK__PaymentIn__reser__42E1EEFE" FromRole="ReservationInfo" ToRole="PaymentInfo" />
+    <NavigationProperty Name="RoomInformation" Relationship="DBSYSModel.FK__Reservati__roomI__3E1D39E1" FromRole="ReservationInfo" ToRole="RoomInformation" />
+    <NavigationProperty Name="UserAccount" Relationship="DBSYSModel.FK__Reservati__userI__3C34F16F" FromRole="ReservationInfo" ToRole="UserAccount" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="roleId" />
+    </Key>
+    <Property Name="roleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="roleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="roleDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="StaffInfo" Relationship="DBSYSModel.FK__StaffInfo__roleI__57DD0BE4" FromRole="Role" ToRole="StaffInfo" />
+    <NavigationProperty Name="UserAccount" Relationship="DBSYSModel.FK_UserAccount_Role" FromRole="Role" ToRole="UserAccount" />
+  </EntityType>
+  <EntityType Name="RoomInformation">
+    <Key>
+      <PropertyRef Name="roomID" />
+    </Key>
+    <Property Name="roomID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="roomTitle" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="roomType" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="roomPrice" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="roomImage" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="roomDesc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="roomGuestCount" Type="Int32" />
+    <Property Name="userID" Type="Int32" />
+    <NavigationProperty Name="GuestInformation" Relationship="DBSYSModel.FK__GuestInfo__roomI__01142BA1" FromRole="RoomInformation" ToRole="GuestInformation" />
+    <NavigationProperty Name="ReservationInfo" Relationship="DBSYSModel.FK__Reservati__roomI__3E1D39E1" FromRole="RoomInformation" ToRole="ReservationInfo" />
+    <NavigationProperty Name="UserAccount" Relationship="DBSYSModel.FK__RoomInfor__userI__7B5B524B" FromRole="RoomInformation" ToRole="UserAccount" />
+  </EntityType>
+  <EntityType Name="StaffInfo">
+    <Key>
+      <PropertyRef Name="StaffID" />
+    </Key>
+    <Property Name="StaffID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="roleId" Type="Int32" />
+    <Property Name="userId" Type="Int32" />
+    <Property Name="StaffFirstName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="StaffLastName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="StaffBirthDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="StaffGender" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
+    <Property Name="StaffContactNo" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
+    <Property Name="StaffEmailAddress" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
+    <Property Name="StaffSalary" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+    <NavigationProperty Name="Role" Relationship="DBSYSModel.FK__StaffInfo__roleI__57DD0BE4" FromRole="StaffInfo" ToRole="Role" />
+    <NavigationProperty Name="UserAccount" Relationship="DBSYSModel.FK__StaffInfo__userI__58D1301D" FromRole="StaffInfo" ToRole="UserAccount" />
+  </EntityType>
+  <EntityType Name="UserAccount">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="userPassword" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="userStatus" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="userDateCreated" Type="DateTime" Precision="3" />
+    <Property Name="userDateUpdated" Type="DateTime" Precision="3" />
+    <Property Name="roleId" Type="Int32" />
+    <Property Name="createdById" Type="Int32" />
+    <Property Name="createdByUser" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="GuestInformation" Relationship="DBSYSModel.FK__GuestInfo__userI__00200768" FromRole="UserAccount" ToRole="GuestInformation" />
+    <NavigationProperty Name="PaymentInfo" Relationship="DBSYSModel.FK__PaymentIn__userI__40F9A68C" FromRole="UserAccount" ToRole="PaymentInfo" />
+    <NavigationProperty Name="ReservationInfo" Relationship="DBSYSModel.FK__Reservati__userI__3C34F16F" FromRole="UserAccount" ToRole="ReservationInfo" />
+    <NavigationProperty Name="Role" Relationship="DBSYSModel.FK_UserAccount_Role" FromRole="UserAccount" ToRole="Role" />
+    <NavigationProperty Name="RoomInformation" Relationship="DBSYSModel.FK__RoomInfor__userI__7B5B524B" FromRole="UserAccount" ToRole="RoomInformation" />
+    <NavigationProperty Name="StaffInfo" Relationship="DBSYSModel.FK__StaffInfo__userI__58D1301D" FromRole="UserAccount" ToRole="StaffInfo" />
+  </EntityType>
+  <EntityType Name="vw_Payment_Amount">
+    <Key>
+      <PropertyRef Name="Payment_No_" />
+      <PropertyRef Name="Payment_Mode" />
+      <PropertyRef Name="Payment_Amount" />
+      <PropertyRef Name="Credit_Card_No_" />
+      <PropertyRef Name="Credit_Card_Name" />
+    </Key>
+    <Property Name="Payment_No_" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Payment_Mode" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
+    <Property Name="Payment_Amount" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="Credit_Card_No_" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Credit_Card_Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="vw_Payment_CardInfo">
+    <Key>
+      <PropertyRef Name="Payment_No_" />
+      <PropertyRef Name="Payment_Mode" />
+      <PropertyRef Name="Payment_Amount" />
+      <PropertyRef Name="Credit_Card_No_" />
+      <PropertyRef Name="Credit_Card_Expiration_Date" />
+      <PropertyRef Name="Credit_Card_Security_Code" />
+      <PropertyRef Name="Credit_Card_Name" />
+    </Key>
+    <Property Name="Payment_No_" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Payment_Mode" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
+    <Property Name="Payment_Amount" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="Credit_Card_No_" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Credit_Card_Expiration_Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Credit_Card_Security_Code" Type="Int32" Nullable="false" />
+    <Property Name="Credit_Card_Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="vw_Payment_Full">
+    <Key>
+      <PropertyRef Name="Payment_No_" />
+      <PropertyRef Name="Payment_Mode" />
+      <PropertyRef Name="Payment_Amount" />
+      <PropertyRef Name="Credit_Card_No_" />
+      <PropertyRef Name="Credit_Card_Expiration_Date" />
+      <PropertyRef Name="Credit_Card_Security_Code" />
+      <PropertyRef Name="Credit_Card_Name" />
+    </Key>
+    <Property Name="Payment_No_" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Payment_Mode" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
+    <Property Name="Payment_Amount" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="Credit_Card_No_" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Credit_Card_Expiration_Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Credit_Card_Security_Code" Type="Int32" Nullable="false" />
+    <Property Name="Credit_Card_Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Payer_Username" Type="Int32" />
+    <Property Name="Payer_Guest_ID" Type="Int32" />
+    <Property Name="Referred_Reservation_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vw_Payment_GuestInfo">
+    <Key>
+      <PropertyRef Name="Payment_No_" />
+      <PropertyRef Name="Payment_Mode" />
+      <PropertyRef Name="Payment_Amount" />
+      <PropertyRef Name="Guest_First_Name" />
+      <PropertyRef Name="Guest_Last_Name" />
+      <PropertyRef Name="Gender" />
+      <PropertyRef Name="Contact_No_" />
+      <PropertyRef Name="Email_Address" />
+    </Key>
+    <Property Name="Payment_No_" Type="Int32" Nullable="false" />
+    <Property Name="Payment_Mode" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
+    <Property Name="Payment_Amount" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="Payer_Guest_ID" Type="Int32" />
+    <Property Name="Guest_First_Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Guest_Last_Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
+    <Property Name="Contact_No_" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
+    <Property Name="Email_Address" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="vw_Payment_ReservationInfo">
+    <Key>
+      <PropertyRef Name="Payment_No_" />
+      <PropertyRef Name="Payment_Mode" />
+      <PropertyRef Name="Payment_Amount" />
+      <PropertyRef Name="Check_In_Date" />
+      <PropertyRef Name="Check_Out_Date" />
+      <PropertyRef Name="No__of_Guests" />
+    </Key>
+    <Property Name="Payment_No_" Type="Int32" Nullable="false" />
+    <Property Name="Payment_Mode" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
+    <Property Name="Payment_Amount" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="Referred_Reservation_ID" Type="Int32" />
+    <Property Name="Check_In_Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Check_Out_Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="No__of_Guests" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vw_Payment_UserInfo">
+    <Key>
+      <PropertyRef Name="Payment_No_" />
+      <PropertyRef Name="Payment_Mode" />
+      <PropertyRef Name="Payment_Amount" />
+      <PropertyRef Name="Payer_Username" />
+    </Key>
+    <Property Name="Payment_No_" Type="Int32" Nullable="false" />
+    <Property Name="Payment_Mode" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
+    <Property Name="Payment_Amount" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="Payer_User_ID" Type="Int32" />
+    <Property Name="Payer_Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="vw_Reservation_Full">
+    <Key>
+      <PropertyRef Name="Reservation_No_" />
+      <PropertyRef Name="Check_In" />
+      <PropertyRef Name="Check_Out" />
+      <PropertyRef Name="Nights_to_Stay" />
+      <PropertyRef Name="No__of_Adult_Guests" />
+      <PropertyRef Name="No__of_Children_Guests" />
+      <PropertyRef Name="No__of_Guests" />
+    </Key>
+    <Property Name="Reservation_No_" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Check_In" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Check_Out" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Nights_to_Stay" Type="Int32" Nullable="false" />
+    <Property Name="No__of_Adult_Guests" Type="Int32" Nullable="false" />
+    <Property Name="No__of_Children_Guests" Type="Int32" Nullable="false" />
+    <Property Name="No__of_Guests" Type="Int32" Nullable="false" />
+    <Property Name="Booker_ID" Type="Int32" />
+    <Property Name="Guest_ID_No_" Type="Int32" />
+    <Property Name="Room_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vw_Reservation_GuestCount">
+    <Key>
+      <PropertyRef Name="Reservation_No_" />
+      <PropertyRef Name="Check_In" />
+      <PropertyRef Name="Check_Out" />
+      <PropertyRef Name="No__of_Adult_Guests" />
+      <PropertyRef Name="No__of_Children_Guests" />
+      <PropertyRef Name="No__of_Guests" />
+    </Key>
+    <Property Name="Reservation_No_" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Check_In" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Check_Out" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="No__of_Adult_Guests" Type="Int32" Nullable="false" />
+    <Property Name="No__of_Children_Guests" Type="Int32" Nullable="false" />
+    <Property Name="No__of_Guests" Type="Int32" Nullable="false" />
+    <Property Name="Guest_ID_No_" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vw_Reservation_GuestInfo">
+    <Key>
+      <PropertyRef Name="Reservation_No_" />
+      <PropertyRef Name="Check_In" />
+      <PropertyRef Name="Check_Out" />
+      <PropertyRef Name="No__of_Guests" />
+      <PropertyRef Name="First_Name" />
+      <PropertyRef Name="Last_Name" />
+      <PropertyRef Name="Gender" />
+      <PropertyRef Name="Contact_No_" />
+      <PropertyRef Name="Email_Address" />
+      <PropertyRef Name="Last_Checked_In" />
+      <PropertyRef Name="Last_Checked_Out" />
+    </Key>
+    <Property Name="Reservation_No_" Type="Int32" Nullable="false" />
+    <Property Name="Check_In" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Check_Out" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="No__of_Guests" Type="Int32" Nullable="false" />
+    <Property Name="Guest_ID_No_" Type="Int32" />
+    <Property Name="First_Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Last_Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
+    <Property Name="Contact_No_" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
+    <Property Name="Email_Address" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
+    <Property Name="Last_Checked_In" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Last_Checked_Out" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="vw_Reservation_RoomInfo">
+    <Key>
+      <PropertyRef Name="Reservation_No_" />
+      <PropertyRef Name="Check_In" />
+      <PropertyRef Name="Check_Out" />
+      <PropertyRef Name="Room_Title" />
+      <PropertyRef Name="Room_Type" />
+      <PropertyRef Name="Price" />
+    </Key>
+    <Property Name="Reservation_No_" Type="Int32" Nullable="false" />
+    <Property Name="Check_In" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Check_Out" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Room_ID" Type="Int32" />
+    <Property Name="Room_Title" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Room_Type" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="Short_Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="vw_Reservation_Rooms">
+    <Key>
+      <PropertyRef Name="Reservation_No_" />
+      <PropertyRef Name="Check_In" />
+      <PropertyRef Name="Check_Out" />
+      <PropertyRef Name="No__of_Guests" />
+    </Key>
+    <Property Name="Reservation_No_" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Check_In" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Check_Out" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="No__of_Guests" Type="Int32" Nullable="false" />
+    <Property Name="Room_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vw_Reservation_UserInfo">
+    <Key>
+      <PropertyRef Name="Reservation_No_" />
+      <PropertyRef Name="Check_In" />
+      <PropertyRef Name="Check_Out" />
+      <PropertyRef Name="No__of_Guests" />
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Reservation_No_" Type="Int32" Nullable="false" />
+    <Property Name="Check_In" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Check_Out" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="No__of_Guests" Type="Int32" Nullable="false" />
+    <Property Name="User_ID" Type="Int32" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Last_Updated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="vw_RoomInfo_Available">
+    <Key>
+      <PropertyRef Name="Room_ID" />
+      <PropertyRef Name="Room_Name" />
+      <PropertyRef Name="Room_Type" />
+      <PropertyRef Name="Occupant_User_ID" />
+      <PropertyRef Name="Occupant_Username" />
+    </Key>
+    <Property Name="Room_ID" Type="Int32" Nullable="false" />
+    <Property Name="Room_Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Room_Type" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Occupant_User_ID" Type="Int32" Nullable="false" />
+    <Property Name="Room_Occupants" Type="Int32" />
+    <Property Name="Occupant_Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="vw_RoomInfo_Full">
+    <Key>
+      <PropertyRef Name="Room_ID" />
+      <PropertyRef Name="Room_Name" />
+      <PropertyRef Name="Room_Type" />
+      <PropertyRef Name="Room_Price" />
+      <PropertyRef Name="Occupant_User_ID" />
+    </Key>
+    <Property Name="Room_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Room_Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Room_Type" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Room_Price" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="Room_Image_File_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Room_Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Room_Occupants" Type="Int32" />
+    <Property Name="Occupant_User_ID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vw_RoomInfo_Occupied">
+    <Key>
+      <PropertyRef Name="Room_ID" />
+      <PropertyRef Name="Room_Name" />
+      <PropertyRef Name="Room_Type" />
+      <PropertyRef Name="Occupant_User_ID" />
+      <PropertyRef Name="Occupant_Username" />
+    </Key>
+    <Property Name="Room_ID" Type="Int32" Nullable="false" />
+    <Property Name="Room_Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Room_Type" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Occupant_User_ID" Type="Int32" Nullable="false" />
+    <Property Name="Room_Occupants" Type="Int32" />
+    <Property Name="Occupant_Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="vw_RoomInfo_Prices">
+    <Key>
+      <PropertyRef Name="Room_ID" />
+      <PropertyRef Name="Room_Name" />
+      <PropertyRef Name="Room_Type" />
+      <PropertyRef Name="Room_Price" />
+    </Key>
+    <Property Name="Room_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Room_Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Room_Type" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Room_Price" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="Room_Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="vw_RoomInfo_Types">
+    <Key>
+      <PropertyRef Name="Room_ID" />
+      <PropertyRef Name="Room_Name" />
+      <PropertyRef Name="Room_Type" />
+    </Key>
+    <Property Name="Room_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Room_Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Room_Type" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Room_Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="vw_UserAccount_Active">
+    <Key>
+      <PropertyRef Name="User_ID_" />
+      <PropertyRef Name="Username" />
+      <PropertyRef Name="Status" />
+    </Key>
+    <Property Name="User_ID_" Type="Int32" Nullable="false" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="vw_UserAccount_Full">
+    <Key>
+      <PropertyRef Name="User_ID_" />
+      <PropertyRef Name="Username" />
+      <PropertyRef Name="Password" />
+      <PropertyRef Name="Status" />
+    </Key>
+    <Property Name="User_ID_" Type="Int32" Nullable="false" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Date_Created" Type="DateTime" Precision="0" />
+    <Property Name="Date_Updated" Type="DateTime" Precision="0" />
+    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="User_Creator" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="vw_UserAccount_Inactive">
+    <Key>
+      <PropertyRef Name="User_ID_" />
+      <PropertyRef Name="Username" />
+      <PropertyRef Name="Status" />
+    </Key>
+    <Property Name="User_ID_" Type="Int32" Nullable="false" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="vw_UserAccount_Roles">
+    <Key>
+      <PropertyRef Name="User_ID_" />
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="User_ID_" Type="Int32" Nullable="false" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vw_UserAccount_Updates">
+    <Key>
+      <PropertyRef Name="User_ID_" />
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="User_ID_" Type="Int32" Nullable="false" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Date_Created" Type="DateTime" Precision="0" />
+    <Property Name="Date_Updated" Type="DateTime" Precision="0" />
+    <Property Name="Creator" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__GuestInfo__roomI__01142BA1">
+    <End Type="DBSYSModel.RoomInformation" Role="RoomInformation" Multiplicity="0..1" />
+    <End Type="DBSYSModel.GuestInformation" Role="GuestInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoomInformation">
+        <PropertyRef Name="roomID" />
+      </Principal>
+      <Dependent Role="GuestInformation">
+        <PropertyRef Name="roomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GuestInfo__userI__00200768">
+    <End Type="DBSYSModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
+    <End Type="DBSYSModel.GuestInformation" Role="GuestInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccount">
+        <PropertyRef Name="userId" />
+      </Principal>
+      <Dependent Role="GuestInformation">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PaymentIn__guest__41EDCAC5">
+    <End Type="DBSYSModel.GuestInformation" Role="GuestInformation" Multiplicity="0..1" />
+    <End Type="DBSYSModel.PaymentInfo" Role="PaymentInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GuestInformation">
+        <PropertyRef Name="guestID" />
+      </Principal>
+      <Dependent Role="PaymentInfo">
+        <PropertyRef Name="guestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Reservati__guest__3D2915A8">
+    <End Type="DBSYSModel.GuestInformation" Role="GuestInformation" Multiplicity="0..1" />
+    <End Type="DBSYSModel.ReservationInfo" Role="ReservationInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GuestInformation">
+        <PropertyRef Name="guestID" />
+      </Principal>
+      <Dependent Role="ReservationInfo">
+        <PropertyRef Name="guestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PaymentIn__reser__42E1EEFE">
+    <End Type="DBSYSModel.ReservationInfo" Role="ReservationInfo" Multiplicity="0..1" />
+    <End Type="DBSYSModel.PaymentInfo" Role="PaymentInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReservationInfo">
+        <PropertyRef Name="reserveID" />
+      </Principal>
+      <Dependent Role="PaymentInfo">
+        <PropertyRef Name="reserveID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PaymentIn__userI__40F9A68C">
+    <End Type="DBSYSModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
+    <End Type="DBSYSModel.PaymentInfo" Role="PaymentInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccount">
+        <PropertyRef Name="userId" />
+      </Principal>
+      <Dependent Role="PaymentInfo">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Reservati__roomI__3E1D39E1">
+    <End Type="DBSYSModel.RoomInformation" Role="RoomInformation" Multiplicity="0..1" />
+    <End Type="DBSYSModel.ReservationInfo" Role="ReservationInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoomInformation">
+        <PropertyRef Name="roomID" />
+      </Principal>
+      <Dependent Role="ReservationInfo">
+        <PropertyRef Name="roomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Reservati__userI__3C34F16F">
+    <End Type="DBSYSModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
+    <End Type="DBSYSModel.ReservationInfo" Role="ReservationInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccount">
+        <PropertyRef Name="userId" />
+      </Principal>
+      <Dependent Role="ReservationInfo">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StaffInfo__roleI__57DD0BE4">
+    <End Type="DBSYSModel.Role" Role="Role" Multiplicity="0..1" />
+    <End Type="DBSYSModel.StaffInfo" Role="StaffInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="roleId" />
+      </Principal>
+      <Dependent Role="StaffInfo">
+        <PropertyRef Name="roleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAccount_Role">
+    <End Type="DBSYSModel.Role" Role="Role" Multiplicity="0..1" />
+    <End Type="DBSYSModel.UserAccount" Role="UserAccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="roleId" />
+      </Principal>
+      <Dependent Role="UserAccount">
+        <PropertyRef Name="roleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RoomInfor__userI__7B5B524B">
+    <End Type="DBSYSModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
+    <End Type="DBSYSModel.RoomInformation" Role="RoomInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccount">
+        <PropertyRef Name="userId" />
+      </Principal>
+      <Dependent Role="RoomInformation">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StaffInfo__userI__58D1301D">
+    <End Type="DBSYSModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
+    <End Type="DBSYSModel.StaffInfo" Role="StaffInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccount">
+        <PropertyRef Name="userId" />
+      </Principal>
+      <Dependent Role="StaffInfo">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

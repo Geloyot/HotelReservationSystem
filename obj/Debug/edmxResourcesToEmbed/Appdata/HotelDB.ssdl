@@ -1,0 +1,956 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBSYSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="GuestInformation">
+    <Key>
+      <PropertyRef Name="guestID" />
+    </Key>
+    <Property Name="guestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="guestFirstName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="guestLastName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="guestBirthDate" Type="smalldatetime" />
+    <Property Name="guestGender" Type="varchar" MaxLength="99" Nullable="false" />
+    <Property Name="guestContactNo" Type="varchar" MaxLength="99" Nullable="false" />
+    <Property Name="guestAddress" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="guestEmailAddress" Type="varchar" MaxLength="99" Nullable="false" />
+    <Property Name="guestLastCheckInDate" Type="smalldatetime" Nullable="false" />
+    <Property Name="guestLastCheckOutDate" Type="smalldatetime" Nullable="false" />
+    <Property Name="userID" Type="int" />
+    <Property Name="roomID" Type="int" />
+  </EntityType>
+  <EntityType Name="PaymentInfo">
+    <Key>
+      <PropertyRef Name="paymentID" />
+    </Key>
+    <Property Name="paymentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="paymentType" Type="varchar" MaxLength="99" Nullable="false" />
+    <Property Name="paymentAmount" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+    <Property Name="cardNumber" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="cardExpiryDate" Type="datetime" Nullable="false" />
+    <Property Name="cardSecurityCode" Type="int" Nullable="false" />
+    <Property Name="cardOwnerName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="userId" Type="int" />
+    <Property Name="guestID" Type="int" />
+    <Property Name="reserveID" Type="int" />
+  </EntityType>
+  <EntityType Name="ReservationInfo">
+    <Key>
+      <PropertyRef Name="reserveID" />
+    </Key>
+    <Property Name="reserveID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="reserveCheckInDate" Type="datetime" Nullable="false" />
+    <Property Name="reserveCheckOutDate" Type="datetime" Nullable="false" />
+    <Property Name="reserveStayLength" Type="int" Nullable="false" />
+    <Property Name="reserveGuestCount" Type="int" Nullable="false" />
+    <Property Name="reserveGuestAdultCount" Type="int" Nullable="false" />
+    <Property Name="reserveGuestChildCount" Type="int" Nullable="false" />
+    <Property Name="userId" Type="int" />
+    <Property Name="guestID" Type="int" />
+    <Property Name="roomID" Type="int" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="roleId" />
+    </Key>
+    <Property Name="roleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="roleName" Type="nvarchar" MaxLength="50" />
+    <Property Name="roleDescription" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="RoomInformation">
+    <Key>
+      <PropertyRef Name="roomID" />
+    </Key>
+    <Property Name="roomID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="roomTitle" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="roomType" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="roomPrice" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+    <Property Name="roomImage" Type="varchar" MaxLength="255" />
+    <Property Name="roomDesc" Type="varchar" MaxLength="255" />
+    <Property Name="roomGuestCount" Type="int" />
+    <Property Name="userID" Type="int" />
+  </EntityType>
+  <EntityType Name="StaffInfo">
+    <Key>
+      <PropertyRef Name="StaffID" />
+    </Key>
+    <Property Name="StaffID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="roleId" Type="int" />
+    <Property Name="userId" Type="int" />
+    <Property Name="StaffFirstName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="StaffLastName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="StaffBirthDate" Type="datetime" Nullable="false" />
+    <Property Name="StaffGender" Type="varchar" MaxLength="99" Nullable="false" />
+    <Property Name="StaffContactNo" Type="varchar" MaxLength="99" Nullable="false" />
+    <Property Name="StaffEmailAddress" Type="varchar" MaxLength="99" Nullable="false" />
+    <Property Name="StaffSalary" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserAccount">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="userPassword" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="userStatus" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="userDateCreated" Type="datetime" />
+    <Property Name="userDateUpdated" Type="datetime" />
+    <Property Name="roleId" Type="int" />
+    <Property Name="createdById" Type="int" />
+    <Property Name="createdByUser" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_Payment_Amount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_Payment_Amount">
+    <Key>
+      <PropertyRef Name="Payment No." />
+      <PropertyRef Name="Payment Mode" />
+      <PropertyRef Name="Payment Amount" />
+      <PropertyRef Name="Credit Card No." />
+      <PropertyRef Name="Credit Card Name" />
+    </Key>
+    <Property Name="Payment No." Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Payment Mode" Type="varchar" MaxLength="99" Nullable="false" />
+    <Property Name="Payment Amount" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+    <Property Name="Credit Card No." Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Credit Card Name" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_Payment_CardInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_Payment_CardInfo">
+    <Key>
+      <PropertyRef Name="Payment No." />
+      <PropertyRef Name="Payment Mode" />
+      <PropertyRef Name="Payment Amount" />
+      <PropertyRef Name="Credit Card No." />
+      <PropertyRef Name="Credit Card Expiration Date" />
+      <PropertyRef Name="Credit Card Security Code" />
+      <PropertyRef Name="Credit Card Name" />
+    </Key>
+    <Property Name="Payment No." Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Payment Mode" Type="varchar" MaxLength="99" Nullable="false" />
+    <Property Name="Payment Amount" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+    <Property Name="Credit Card No." Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Credit Card Expiration Date" Type="datetime" Nullable="false" />
+    <Property Name="Credit Card Security Code" Type="int" Nullable="false" />
+    <Property Name="Credit Card Name" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_Payment_Full' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_Payment_Full">
+    <Key>
+      <PropertyRef Name="Payment No." />
+      <PropertyRef Name="Payment Mode" />
+      <PropertyRef Name="Payment Amount" />
+      <PropertyRef Name="Credit Card No." />
+      <PropertyRef Name="Credit Card Expiration Date" />
+      <PropertyRef Name="Credit Card Security Code" />
+      <PropertyRef Name="Credit Card Name" />
+    </Key>
+    <Property Name="Payment No." Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Payment Mode" Type="varchar" MaxLength="99" Nullable="false" />
+    <Property Name="Payment Amount" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+    <Property Name="Credit Card No." Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Credit Card Expiration Date" Type="datetime" Nullable="false" />
+    <Property Name="Credit Card Security Code" Type="int" Nullable="false" />
+    <Property Name="Credit Card Name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Payer Username" Type="int" />
+    <Property Name="Payer Guest ID" Type="int" />
+    <Property Name="Referred Reservation ID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_Payment_GuestInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_Payment_GuestInfo">
+    <Key>
+      <PropertyRef Name="Payment No." />
+      <PropertyRef Name="Payment Mode" />
+      <PropertyRef Name="Payment Amount" />
+      <PropertyRef Name="Guest First Name" />
+      <PropertyRef Name="Guest Last Name" />
+      <PropertyRef Name="Gender" />
+      <PropertyRef Name="Contact No." />
+      <PropertyRef Name="Email Address" />
+    </Key>
+    <Property Name="Payment No." Type="int" Nullable="false" />
+    <Property Name="Payment Mode" Type="varchar" MaxLength="99" Nullable="false" />
+    <Property Name="Payment Amount" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+    <Property Name="Payer Guest ID" Type="int" />
+    <Property Name="Guest First Name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Guest Last Name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Gender" Type="varchar" MaxLength="99" Nullable="false" />
+    <Property Name="Contact No." Type="varchar" MaxLength="99" Nullable="false" />
+    <Property Name="Email Address" Type="varchar" MaxLength="99" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_Payment_ReservationInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_Payment_ReservationInfo">
+    <Key>
+      <PropertyRef Name="Payment No." />
+      <PropertyRef Name="Payment Mode" />
+      <PropertyRef Name="Payment Amount" />
+      <PropertyRef Name="Check-In Date" />
+      <PropertyRef Name="Check-Out Date" />
+      <PropertyRef Name="No. of Guests" />
+    </Key>
+    <Property Name="Payment No." Type="int" Nullable="false" />
+    <Property Name="Payment Mode" Type="varchar" MaxLength="99" Nullable="false" />
+    <Property Name="Payment Amount" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+    <Property Name="Referred Reservation ID" Type="int" />
+    <Property Name="Check-In Date" Type="datetime" Nullable="false" />
+    <Property Name="Check-Out Date" Type="datetime" Nullable="false" />
+    <Property Name="No. of Guests" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_Payment_UserInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_Payment_UserInfo">
+    <Key>
+      <PropertyRef Name="Payment No." />
+      <PropertyRef Name="Payment Mode" />
+      <PropertyRef Name="Payment Amount" />
+      <PropertyRef Name="Payer Username" />
+    </Key>
+    <Property Name="Payment No." Type="int" Nullable="false" />
+    <Property Name="Payment Mode" Type="varchar" MaxLength="99" Nullable="false" />
+    <Property Name="Payment Amount" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+    <Property Name="Payer User ID" Type="int" />
+    <Property Name="Payer Username" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_Reservation_Full' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_Reservation_Full">
+    <Key>
+      <PropertyRef Name="Reservation No." />
+      <PropertyRef Name="Check-In" />
+      <PropertyRef Name="Check-Out" />
+      <PropertyRef Name="Nights to Stay" />
+      <PropertyRef Name="No. of Adult Guests" />
+      <PropertyRef Name="No. of Children Guests" />
+      <PropertyRef Name="No. of Guests" />
+    </Key>
+    <Property Name="Reservation No." Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Check-In" Type="datetime" Nullable="false" />
+    <Property Name="Check-Out" Type="datetime" Nullable="false" />
+    <Property Name="Nights to Stay" Type="int" Nullable="false" />
+    <Property Name="No. of Adult Guests" Type="int" Nullable="false" />
+    <Property Name="No. of Children Guests" Type="int" Nullable="false" />
+    <Property Name="No. of Guests" Type="int" Nullable="false" />
+    <Property Name="Booker ID" Type="int" />
+    <Property Name="Guest ID No." Type="int" />
+    <Property Name="Room ID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_Reservation_GuestCount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_Reservation_GuestCount">
+    <Key>
+      <PropertyRef Name="Reservation No." />
+      <PropertyRef Name="Check-In" />
+      <PropertyRef Name="Check-Out" />
+      <PropertyRef Name="No. of Adult Guests" />
+      <PropertyRef Name="No. of Children Guests" />
+      <PropertyRef Name="No. of Guests" />
+    </Key>
+    <Property Name="Reservation No." Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Check-In" Type="datetime" Nullable="false" />
+    <Property Name="Check-Out" Type="datetime" Nullable="false" />
+    <Property Name="No. of Adult Guests" Type="int" Nullable="false" />
+    <Property Name="No. of Children Guests" Type="int" Nullable="false" />
+    <Property Name="No. of Guests" Type="int" Nullable="false" />
+    <Property Name="Guest ID No." Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_Reservation_GuestInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_Reservation_GuestInfo">
+    <Key>
+      <PropertyRef Name="Reservation No." />
+      <PropertyRef Name="Check-In" />
+      <PropertyRef Name="Check-Out" />
+      <PropertyRef Name="No. of Guests" />
+      <PropertyRef Name="First Name" />
+      <PropertyRef Name="Last Name" />
+      <PropertyRef Name="Gender" />
+      <PropertyRef Name="Contact No." />
+      <PropertyRef Name="Email Address" />
+      <PropertyRef Name="Last Checked-In" />
+      <PropertyRef Name="Last Checked-Out" />
+    </Key>
+    <Property Name="Reservation No." Type="int" Nullable="false" />
+    <Property Name="Check-In" Type="datetime" Nullable="false" />
+    <Property Name="Check-Out" Type="datetime" Nullable="false" />
+    <Property Name="No. of Guests" Type="int" Nullable="false" />
+    <Property Name="Guest ID No." Type="int" />
+    <Property Name="First Name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Last Name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Gender" Type="varchar" MaxLength="99" Nullable="false" />
+    <Property Name="Contact No." Type="varchar" MaxLength="99" Nullable="false" />
+    <Property Name="Email Address" Type="varchar" MaxLength="99" Nullable="false" />
+    <Property Name="Last Checked-In" Type="smalldatetime" Nullable="false" />
+    <Property Name="Last Checked-Out" Type="smalldatetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_Reservation_RoomInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_Reservation_RoomInfo">
+    <Key>
+      <PropertyRef Name="Reservation No." />
+      <PropertyRef Name="Check-In" />
+      <PropertyRef Name="Check-Out" />
+      <PropertyRef Name="Room Title" />
+      <PropertyRef Name="Room Type" />
+      <PropertyRef Name="Price" />
+    </Key>
+    <Property Name="Reservation No." Type="int" Nullable="false" />
+    <Property Name="Check-In" Type="datetime" Nullable="false" />
+    <Property Name="Check-Out" Type="datetime" Nullable="false" />
+    <Property Name="Room ID" Type="int" />
+    <Property Name="Room Title" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Room Type" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+    <Property Name="Short Description" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_Reservation_Rooms' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_Reservation_Rooms">
+    <Key>
+      <PropertyRef Name="Reservation No." />
+      <PropertyRef Name="Check-In" />
+      <PropertyRef Name="Check-Out" />
+      <PropertyRef Name="No. of Guests" />
+    </Key>
+    <Property Name="Reservation No." Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Check-In" Type="datetime" Nullable="false" />
+    <Property Name="Check-Out" Type="datetime" Nullable="false" />
+    <Property Name="No. of Guests" Type="int" Nullable="false" />
+    <Property Name="Room ID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_Reservation_UserInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_Reservation_UserInfo">
+    <Key>
+      <PropertyRef Name="Reservation No." />
+      <PropertyRef Name="Check-In" />
+      <PropertyRef Name="Check-Out" />
+      <PropertyRef Name="No. of Guests" />
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Reservation No." Type="int" Nullable="false" />
+    <Property Name="Check-In" Type="datetime" Nullable="false" />
+    <Property Name="Check-Out" Type="datetime" Nullable="false" />
+    <Property Name="No. of Guests" Type="int" Nullable="false" />
+    <Property Name="User ID" Type="int" />
+    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Last Updated" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_RoomInfo_Available' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_RoomInfo_Available">
+    <Key>
+      <PropertyRef Name="Room ID" />
+      <PropertyRef Name="Room Name" />
+      <PropertyRef Name="Room Type" />
+      <PropertyRef Name="Occupant User ID" />
+      <PropertyRef Name="Occupant Username" />
+    </Key>
+    <Property Name="Room ID" Type="int" Nullable="false" />
+    <Property Name="Room Name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Room Type" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Occupant User ID" Type="int" Nullable="false" />
+    <Property Name="Room Occupants" Type="int" />
+    <Property Name="Occupant Username" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_RoomInfo_Full' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_RoomInfo_Full">
+    <Key>
+      <PropertyRef Name="Room ID" />
+      <PropertyRef Name="Room Name" />
+      <PropertyRef Name="Room Type" />
+      <PropertyRef Name="Room Price" />
+      <PropertyRef Name="Occupant User ID" />
+    </Key>
+    <Property Name="Room ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Room Name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Room Type" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Room Price" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+    <Property Name="Room Image File Name" Type="varchar" MaxLength="255" />
+    <Property Name="Room Description" Type="varchar" MaxLength="255" />
+    <Property Name="Room Occupants" Type="int" />
+    <Property Name="Occupant User ID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_RoomInfo_Occupied' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_RoomInfo_Occupied">
+    <Key>
+      <PropertyRef Name="Room ID" />
+      <PropertyRef Name="Room Name" />
+      <PropertyRef Name="Room Type" />
+      <PropertyRef Name="Occupant User ID" />
+      <PropertyRef Name="Occupant Username" />
+    </Key>
+    <Property Name="Room ID" Type="int" Nullable="false" />
+    <Property Name="Room Name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Room Type" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Occupant User ID" Type="int" Nullable="false" />
+    <Property Name="Room Occupants" Type="int" />
+    <Property Name="Occupant Username" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_RoomInfo_Prices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_RoomInfo_Prices">
+    <Key>
+      <PropertyRef Name="Room ID" />
+      <PropertyRef Name="Room Name" />
+      <PropertyRef Name="Room Type" />
+      <PropertyRef Name="Room Price" />
+    </Key>
+    <Property Name="Room ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Room Name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Room Type" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Room Price" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+    <Property Name="Room Description" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_RoomInfo_Types' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_RoomInfo_Types">
+    <Key>
+      <PropertyRef Name="Room ID" />
+      <PropertyRef Name="Room Name" />
+      <PropertyRef Name="Room Type" />
+    </Key>
+    <Property Name="Room ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Room Name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Room Type" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Room Description" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Active' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_UserAccount_Active">
+    <Key>
+      <PropertyRef Name="User ID#" />
+      <PropertyRef Name="Username" />
+      <PropertyRef Name="Status" />
+    </Key>
+    <Property Name="User ID#" Type="int" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Full' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_UserAccount_Full">
+    <Key>
+      <PropertyRef Name="User ID#" />
+      <PropertyRef Name="Username" />
+      <PropertyRef Name="Password" />
+      <PropertyRef Name="Status" />
+    </Key>
+    <Property Name="User ID#" Type="int" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Date Created" Type="smalldatetime" />
+    <Property Name="Date Updated" Type="smalldatetime" />
+    <Property Name="Role" Type="nvarchar" MaxLength="50" />
+    <Property Name="User Creator" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Inactive' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_UserAccount_Inactive">
+    <Key>
+      <PropertyRef Name="User ID#" />
+      <PropertyRef Name="Username" />
+      <PropertyRef Name="Status" />
+    </Key>
+    <Property Name="User ID#" Type="int" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Roles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_UserAccount_Roles">
+    <Key>
+      <PropertyRef Name="User ID#" />
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="User ID#" Type="int" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Role" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Updates' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_UserAccount_Updates">
+    <Key>
+      <PropertyRef Name="User ID#" />
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="User ID#" Type="int" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Date Created" Type="smalldatetime" />
+    <Property Name="Date Updated" Type="smalldatetime" />
+    <Property Name="Creator" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <Association Name="FK__GuestInfo__roomI__01142BA1">
+    <End Role="RoomInformation" Type="Self.RoomInformation" Multiplicity="0..1" />
+    <End Role="GuestInformation" Type="Self.GuestInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoomInformation">
+        <PropertyRef Name="roomID" />
+      </Principal>
+      <Dependent Role="GuestInformation">
+        <PropertyRef Name="roomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GuestInfo__userI__00200768">
+    <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+    <End Role="GuestInformation" Type="Self.GuestInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccount">
+        <PropertyRef Name="userId" />
+      </Principal>
+      <Dependent Role="GuestInformation">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PaymentIn__guest__41EDCAC5">
+    <End Role="GuestInformation" Type="Self.GuestInformation" Multiplicity="0..1" />
+    <End Role="PaymentInfo" Type="Self.PaymentInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GuestInformation">
+        <PropertyRef Name="guestID" />
+      </Principal>
+      <Dependent Role="PaymentInfo">
+        <PropertyRef Name="guestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PaymentIn__reser__42E1EEFE">
+    <End Role="ReservationInfo" Type="Self.ReservationInfo" Multiplicity="0..1" />
+    <End Role="PaymentInfo" Type="Self.PaymentInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReservationInfo">
+        <PropertyRef Name="reserveID" />
+      </Principal>
+      <Dependent Role="PaymentInfo">
+        <PropertyRef Name="reserveID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PaymentIn__userI__40F9A68C">
+    <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+    <End Role="PaymentInfo" Type="Self.PaymentInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccount">
+        <PropertyRef Name="userId" />
+      </Principal>
+      <Dependent Role="PaymentInfo">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Reservati__guest__3D2915A8">
+    <End Role="GuestInformation" Type="Self.GuestInformation" Multiplicity="0..1" />
+    <End Role="ReservationInfo" Type="Self.ReservationInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GuestInformation">
+        <PropertyRef Name="guestID" />
+      </Principal>
+      <Dependent Role="ReservationInfo">
+        <PropertyRef Name="guestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Reservati__roomI__3E1D39E1">
+    <End Role="RoomInformation" Type="Self.RoomInformation" Multiplicity="0..1" />
+    <End Role="ReservationInfo" Type="Self.ReservationInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoomInformation">
+        <PropertyRef Name="roomID" />
+      </Principal>
+      <Dependent Role="ReservationInfo">
+        <PropertyRef Name="roomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Reservati__userI__3C34F16F">
+    <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+    <End Role="ReservationInfo" Type="Self.ReservationInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccount">
+        <PropertyRef Name="userId" />
+      </Principal>
+      <Dependent Role="ReservationInfo">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RoomInfor__userI__7B5B524B">
+    <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+    <End Role="RoomInformation" Type="Self.RoomInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccount">
+        <PropertyRef Name="userId" />
+      </Principal>
+      <Dependent Role="RoomInformation">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StaffInfo__roleI__57DD0BE4">
+    <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+    <End Role="StaffInfo" Type="Self.StaffInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="roleId" />
+      </Principal>
+      <Dependent Role="StaffInfo">
+        <PropertyRef Name="roleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StaffInfo__userI__58D1301D">
+    <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+    <End Role="StaffInfo" Type="Self.StaffInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccount">
+        <PropertyRef Name="userId" />
+      </Principal>
+      <Dependent Role="StaffInfo">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAccount_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+    <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="roleId" />
+      </Principal>
+      <Dependent Role="UserAccount">
+        <PropertyRef Name="roleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="SP_AddReservation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CheckInDate" Type="datetime" Mode="In" />
+    <Parameter Name="CheckOutDate" Type="datetime" Mode="In" />
+    <Parameter Name="StayCount" Type="int" Mode="In" />
+    <Parameter Name="GuestCount" Type="int" Mode="In" />
+    <Parameter Name="AdultGuestCount" Type="int" Mode="In" />
+    <Parameter Name="ChildGuestCount" Type="int" Mode="In" />
+    <Parameter Name="UID" Type="int" Mode="In" />
+    <Parameter Name="GID" Type="int" Mode="In" />
+    <Parameter Name="RID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_DeleteUserAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SpecificID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_NewUserAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UName" Type="varchar" Mode="In" />
+    <Parameter Name="UPassword" Type="varchar" Mode="In" />
+    <Parameter Name="CreateDate" Type="datetime" Mode="In" />
+    <Parameter Name="UpdateDate" Type="datetime" Mode="In" />
+    <Parameter Name="RoleID" Type="int" Mode="In" />
+    <Parameter Name="CreatedByID" Type="int" Mode="In" />
+    <Parameter Name="CreatorName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_SearchUA_Username" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_UpdateUserAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SpecificID" Type="int" Mode="In" />
+    <Parameter Name="UName" Type="varchar" Mode="In" />
+    <Parameter Name="UPassword" Type="varchar" Mode="In" />
+    <Parameter Name="UStatus" Type="varchar" Mode="In" />
+    <Parameter Name="ULastUpdated" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="SP_UpdateUserAccountStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UName" Type="varchar" Mode="In" />
+    <Parameter Name="UStatus" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="DBSYSModelStoreContainer">
+    <EntitySet Name="GuestInformation" EntityType="Self.GuestInformation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentInfo" EntityType="Self.PaymentInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReservationInfo" EntityType="Self.ReservationInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RoomInformation" EntityType="Self.RoomInformation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StaffInfo" EntityType="Self.StaffInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserAccount" EntityType="Self.UserAccount" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vw_Payment_Amount" EntityType="Self.vw_Payment_Amount" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Payment_Amount].[Payment No.] AS [Payment No.], 
+    [vw_Payment_Amount].[Payment Mode] AS [Payment Mode], 
+    [vw_Payment_Amount].[Payment Amount] AS [Payment Amount], 
+    [vw_Payment_Amount].[Credit Card No.] AS [Credit Card No.], 
+    [vw_Payment_Amount].[Credit Card Name] AS [Credit Card Name]
+    FROM [dbo].[vw_Payment_Amount] AS [vw_Payment_Amount]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_Payment_CardInfo" EntityType="Self.vw_Payment_CardInfo" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Payment_CardInfo].[Payment No.] AS [Payment No.], 
+    [vw_Payment_CardInfo].[Payment Mode] AS [Payment Mode], 
+    [vw_Payment_CardInfo].[Payment Amount] AS [Payment Amount], 
+    [vw_Payment_CardInfo].[Credit Card No.] AS [Credit Card No.], 
+    [vw_Payment_CardInfo].[Credit Card Expiration Date] AS [Credit Card Expiration Date], 
+    [vw_Payment_CardInfo].[Credit Card Security Code] AS [Credit Card Security Code], 
+    [vw_Payment_CardInfo].[Credit Card Name] AS [Credit Card Name]
+    FROM [dbo].[vw_Payment_CardInfo] AS [vw_Payment_CardInfo]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_Payment_Full" EntityType="Self.vw_Payment_Full" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Payment_Full].[Payment No.] AS [Payment No.], 
+    [vw_Payment_Full].[Payment Mode] AS [Payment Mode], 
+    [vw_Payment_Full].[Payment Amount] AS [Payment Amount], 
+    [vw_Payment_Full].[Credit Card No.] AS [Credit Card No.], 
+    [vw_Payment_Full].[Credit Card Expiration Date] AS [Credit Card Expiration Date], 
+    [vw_Payment_Full].[Credit Card Security Code] AS [Credit Card Security Code], 
+    [vw_Payment_Full].[Credit Card Name] AS [Credit Card Name], 
+    [vw_Payment_Full].[Payer Username] AS [Payer Username], 
+    [vw_Payment_Full].[Payer Guest ID] AS [Payer Guest ID], 
+    [vw_Payment_Full].[Referred Reservation ID] AS [Referred Reservation ID]
+    FROM [dbo].[vw_Payment_Full] AS [vw_Payment_Full]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_Payment_GuestInfo" EntityType="Self.vw_Payment_GuestInfo" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Payment_GuestInfo].[Payment No.] AS [Payment No.], 
+    [vw_Payment_GuestInfo].[Payment Mode] AS [Payment Mode], 
+    [vw_Payment_GuestInfo].[Payment Amount] AS [Payment Amount], 
+    [vw_Payment_GuestInfo].[Payer Guest ID] AS [Payer Guest ID], 
+    [vw_Payment_GuestInfo].[Guest First Name] AS [Guest First Name], 
+    [vw_Payment_GuestInfo].[Guest Last Name] AS [Guest Last Name], 
+    [vw_Payment_GuestInfo].[Gender] AS [Gender], 
+    [vw_Payment_GuestInfo].[Contact No.] AS [Contact No.], 
+    [vw_Payment_GuestInfo].[Email Address] AS [Email Address]
+    FROM [dbo].[vw_Payment_GuestInfo] AS [vw_Payment_GuestInfo]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_Payment_ReservationInfo" EntityType="Self.vw_Payment_ReservationInfo" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Payment_ReservationInfo].[Payment No.] AS [Payment No.], 
+    [vw_Payment_ReservationInfo].[Payment Mode] AS [Payment Mode], 
+    [vw_Payment_ReservationInfo].[Payment Amount] AS [Payment Amount], 
+    [vw_Payment_ReservationInfo].[Referred Reservation ID] AS [Referred Reservation ID], 
+    [vw_Payment_ReservationInfo].[Check-In Date] AS [Check-In Date], 
+    [vw_Payment_ReservationInfo].[Check-Out Date] AS [Check-Out Date], 
+    [vw_Payment_ReservationInfo].[No. of Guests] AS [No. of Guests]
+    FROM [dbo].[vw_Payment_ReservationInfo] AS [vw_Payment_ReservationInfo]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_Payment_UserInfo" EntityType="Self.vw_Payment_UserInfo" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Payment_UserInfo].[Payment No.] AS [Payment No.], 
+    [vw_Payment_UserInfo].[Payment Mode] AS [Payment Mode], 
+    [vw_Payment_UserInfo].[Payment Amount] AS [Payment Amount], 
+    [vw_Payment_UserInfo].[Payer User ID] AS [Payer User ID], 
+    [vw_Payment_UserInfo].[Payer Username] AS [Payer Username]
+    FROM [dbo].[vw_Payment_UserInfo] AS [vw_Payment_UserInfo]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_Reservation_Full" EntityType="Self.vw_Reservation_Full" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Reservation_Full].[Reservation No.] AS [Reservation No.], 
+    [vw_Reservation_Full].[Check-In] AS [Check-In], 
+    [vw_Reservation_Full].[Check-Out] AS [Check-Out], 
+    [vw_Reservation_Full].[Nights to Stay] AS [Nights to Stay], 
+    [vw_Reservation_Full].[No. of Adult Guests] AS [No. of Adult Guests], 
+    [vw_Reservation_Full].[No. of Children Guests] AS [No. of Children Guests], 
+    [vw_Reservation_Full].[No. of Guests] AS [No. of Guests], 
+    [vw_Reservation_Full].[Booker ID] AS [Booker ID], 
+    [vw_Reservation_Full].[Guest ID No.] AS [Guest ID No.], 
+    [vw_Reservation_Full].[Room ID] AS [Room ID]
+    FROM [dbo].[vw_Reservation_Full] AS [vw_Reservation_Full]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_Reservation_GuestCount" EntityType="Self.vw_Reservation_GuestCount" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Reservation_GuestCount].[Reservation No.] AS [Reservation No.], 
+    [vw_Reservation_GuestCount].[Check-In] AS [Check-In], 
+    [vw_Reservation_GuestCount].[Check-Out] AS [Check-Out], 
+    [vw_Reservation_GuestCount].[No. of Adult Guests] AS [No. of Adult Guests], 
+    [vw_Reservation_GuestCount].[No. of Children Guests] AS [No. of Children Guests], 
+    [vw_Reservation_GuestCount].[No. of Guests] AS [No. of Guests], 
+    [vw_Reservation_GuestCount].[Guest ID No.] AS [Guest ID No.]
+    FROM [dbo].[vw_Reservation_GuestCount] AS [vw_Reservation_GuestCount]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_Reservation_GuestInfo" EntityType="Self.vw_Reservation_GuestInfo" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Reservation_GuestInfo].[Reservation No.] AS [Reservation No.], 
+    [vw_Reservation_GuestInfo].[Check-In] AS [Check-In], 
+    [vw_Reservation_GuestInfo].[Check-Out] AS [Check-Out], 
+    [vw_Reservation_GuestInfo].[No. of Guests] AS [No. of Guests], 
+    [vw_Reservation_GuestInfo].[Guest ID No.] AS [Guest ID No.], 
+    [vw_Reservation_GuestInfo].[First Name] AS [First Name], 
+    [vw_Reservation_GuestInfo].[Last Name] AS [Last Name], 
+    [vw_Reservation_GuestInfo].[Gender] AS [Gender], 
+    [vw_Reservation_GuestInfo].[Contact No.] AS [Contact No.], 
+    [vw_Reservation_GuestInfo].[Email Address] AS [Email Address], 
+    [vw_Reservation_GuestInfo].[Last Checked-In] AS [Last Checked-In], 
+    [vw_Reservation_GuestInfo].[Last Checked-Out] AS [Last Checked-Out]
+    FROM [dbo].[vw_Reservation_GuestInfo] AS [vw_Reservation_GuestInfo]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_Reservation_RoomInfo" EntityType="Self.vw_Reservation_RoomInfo" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Reservation_RoomInfo].[Reservation No.] AS [Reservation No.], 
+    [vw_Reservation_RoomInfo].[Check-In] AS [Check-In], 
+    [vw_Reservation_RoomInfo].[Check-Out] AS [Check-Out], 
+    [vw_Reservation_RoomInfo].[Room ID] AS [Room ID], 
+    [vw_Reservation_RoomInfo].[Room Title] AS [Room Title], 
+    [vw_Reservation_RoomInfo].[Room Type] AS [Room Type], 
+    [vw_Reservation_RoomInfo].[Price] AS [Price], 
+    [vw_Reservation_RoomInfo].[Short Description] AS [Short Description]
+    FROM [dbo].[vw_Reservation_RoomInfo] AS [vw_Reservation_RoomInfo]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_Reservation_Rooms" EntityType="Self.vw_Reservation_Rooms" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Reservation_Rooms].[Reservation No.] AS [Reservation No.], 
+    [vw_Reservation_Rooms].[Check-In] AS [Check-In], 
+    [vw_Reservation_Rooms].[Check-Out] AS [Check-Out], 
+    [vw_Reservation_Rooms].[No. of Guests] AS [No. of Guests], 
+    [vw_Reservation_Rooms].[Room ID] AS [Room ID]
+    FROM [dbo].[vw_Reservation_Rooms] AS [vw_Reservation_Rooms]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_Reservation_UserInfo" EntityType="Self.vw_Reservation_UserInfo" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Reservation_UserInfo].[Reservation No.] AS [Reservation No.], 
+    [vw_Reservation_UserInfo].[Check-In] AS [Check-In], 
+    [vw_Reservation_UserInfo].[Check-Out] AS [Check-Out], 
+    [vw_Reservation_UserInfo].[No. of Guests] AS [No. of Guests], 
+    [vw_Reservation_UserInfo].[User ID] AS [User ID], 
+    [vw_Reservation_UserInfo].[Username] AS [Username], 
+    [vw_Reservation_UserInfo].[Last Updated] AS [Last Updated]
+    FROM [dbo].[vw_Reservation_UserInfo] AS [vw_Reservation_UserInfo]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_RoomInfo_Available" EntityType="Self.vw_RoomInfo_Available" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_RoomInfo_Available].[Room ID] AS [Room ID], 
+    [vw_RoomInfo_Available].[Room Name] AS [Room Name], 
+    [vw_RoomInfo_Available].[Room Type] AS [Room Type], 
+    [vw_RoomInfo_Available].[Occupant User ID] AS [Occupant User ID], 
+    [vw_RoomInfo_Available].[Room Occupants] AS [Room Occupants], 
+    [vw_RoomInfo_Available].[Occupant Username] AS [Occupant Username]
+    FROM [dbo].[vw_RoomInfo_Available] AS [vw_RoomInfo_Available]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_RoomInfo_Full" EntityType="Self.vw_RoomInfo_Full" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_RoomInfo_Full].[Room ID] AS [Room ID], 
+    [vw_RoomInfo_Full].[Room Name] AS [Room Name], 
+    [vw_RoomInfo_Full].[Room Type] AS [Room Type], 
+    [vw_RoomInfo_Full].[Room Price] AS [Room Price], 
+    [vw_RoomInfo_Full].[Room Image File Name] AS [Room Image File Name], 
+    [vw_RoomInfo_Full].[Room Description] AS [Room Description], 
+    [vw_RoomInfo_Full].[Room Occupants] AS [Room Occupants], 
+    [vw_RoomInfo_Full].[Occupant User ID] AS [Occupant User ID]
+    FROM [dbo].[vw_RoomInfo_Full] AS [vw_RoomInfo_Full]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_RoomInfo_Occupied" EntityType="Self.vw_RoomInfo_Occupied" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_RoomInfo_Occupied].[Room ID] AS [Room ID], 
+    [vw_RoomInfo_Occupied].[Room Name] AS [Room Name], 
+    [vw_RoomInfo_Occupied].[Room Type] AS [Room Type], 
+    [vw_RoomInfo_Occupied].[Occupant User ID] AS [Occupant User ID], 
+    [vw_RoomInfo_Occupied].[Room Occupants] AS [Room Occupants], 
+    [vw_RoomInfo_Occupied].[Occupant Username] AS [Occupant Username]
+    FROM [dbo].[vw_RoomInfo_Occupied] AS [vw_RoomInfo_Occupied]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_RoomInfo_Prices" EntityType="Self.vw_RoomInfo_Prices" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_RoomInfo_Prices].[Room ID] AS [Room ID], 
+    [vw_RoomInfo_Prices].[Room Name] AS [Room Name], 
+    [vw_RoomInfo_Prices].[Room Type] AS [Room Type], 
+    [vw_RoomInfo_Prices].[Room Price] AS [Room Price], 
+    [vw_RoomInfo_Prices].[Room Description] AS [Room Description]
+    FROM [dbo].[vw_RoomInfo_Prices] AS [vw_RoomInfo_Prices]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_RoomInfo_Types" EntityType="Self.vw_RoomInfo_Types" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_RoomInfo_Types].[Room ID] AS [Room ID], 
+    [vw_RoomInfo_Types].[Room Name] AS [Room Name], 
+    [vw_RoomInfo_Types].[Room Type] AS [Room Type], 
+    [vw_RoomInfo_Types].[Room Description] AS [Room Description]
+    FROM [dbo].[vw_RoomInfo_Types] AS [vw_RoomInfo_Types]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_UserAccount_Active" EntityType="Self.vw_UserAccount_Active" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_UserAccount_Active].[User ID#] AS [User ID#], 
+    [vw_UserAccount_Active].[Username] AS [Username], 
+    [vw_UserAccount_Active].[Status] AS [Status]
+    FROM [dbo].[vw_UserAccount_Active] AS [vw_UserAccount_Active]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_UserAccount_Full" EntityType="Self.vw_UserAccount_Full" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_UserAccount_Full].[User ID#] AS [User ID#], 
+    [vw_UserAccount_Full].[Username] AS [Username], 
+    [vw_UserAccount_Full].[Password] AS [Password], 
+    [vw_UserAccount_Full].[Status] AS [Status], 
+    [vw_UserAccount_Full].[Date Created] AS [Date Created], 
+    [vw_UserAccount_Full].[Date Updated] AS [Date Updated], 
+    [vw_UserAccount_Full].[Role] AS [Role], 
+    [vw_UserAccount_Full].[User Creator] AS [User Creator]
+    FROM [dbo].[vw_UserAccount_Full] AS [vw_UserAccount_Full]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_UserAccount_Inactive" EntityType="Self.vw_UserAccount_Inactive" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_UserAccount_Inactive].[User ID#] AS [User ID#], 
+    [vw_UserAccount_Inactive].[Username] AS [Username], 
+    [vw_UserAccount_Inactive].[Status] AS [Status]
+    FROM [dbo].[vw_UserAccount_Inactive] AS [vw_UserAccount_Inactive]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_UserAccount_Roles" EntityType="Self.vw_UserAccount_Roles" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_UserAccount_Roles].[User ID#] AS [User ID#], 
+    [vw_UserAccount_Roles].[Username] AS [Username], 
+    [vw_UserAccount_Roles].[Role] AS [Role]
+    FROM [dbo].[vw_UserAccount_Roles] AS [vw_UserAccount_Roles]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_UserAccount_Updates" EntityType="Self.vw_UserAccount_Updates" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_UserAccount_Updates].[User ID#] AS [User ID#], 
+    [vw_UserAccount_Updates].[Username] AS [Username], 
+    [vw_UserAccount_Updates].[Date Created] AS [Date Created], 
+    [vw_UserAccount_Updates].[Date Updated] AS [Date Updated], 
+    [vw_UserAccount_Updates].[Creator] AS [Creator]
+    FROM [dbo].[vw_UserAccount_Updates] AS [vw_UserAccount_Updates]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__GuestInfo__roomI__01142BA1" Association="Self.FK__GuestInfo__roomI__01142BA1">
+      <End Role="RoomInformation" EntitySet="RoomInformation" />
+      <End Role="GuestInformation" EntitySet="GuestInformation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GuestInfo__userI__00200768" Association="Self.FK__GuestInfo__userI__00200768">
+      <End Role="UserAccount" EntitySet="UserAccount" />
+      <End Role="GuestInformation" EntitySet="GuestInformation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PaymentIn__guest__41EDCAC5" Association="Self.FK__PaymentIn__guest__41EDCAC5">
+      <End Role="GuestInformation" EntitySet="GuestInformation" />
+      <End Role="PaymentInfo" EntitySet="PaymentInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PaymentIn__reser__42E1EEFE" Association="Self.FK__PaymentIn__reser__42E1EEFE">
+      <End Role="ReservationInfo" EntitySet="ReservationInfo" />
+      <End Role="PaymentInfo" EntitySet="PaymentInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PaymentIn__userI__40F9A68C" Association="Self.FK__PaymentIn__userI__40F9A68C">
+      <End Role="UserAccount" EntitySet="UserAccount" />
+      <End Role="PaymentInfo" EntitySet="PaymentInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Reservati__guest__3D2915A8" Association="Self.FK__Reservati__guest__3D2915A8">
+      <End Role="GuestInformation" EntitySet="GuestInformation" />
+      <End Role="ReservationInfo" EntitySet="ReservationInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Reservati__roomI__3E1D39E1" Association="Self.FK__Reservati__roomI__3E1D39E1">
+      <End Role="RoomInformation" EntitySet="RoomInformation" />
+      <End Role="ReservationInfo" EntitySet="ReservationInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Reservati__userI__3C34F16F" Association="Self.FK__Reservati__userI__3C34F16F">
+      <End Role="UserAccount" EntitySet="UserAccount" />
+      <End Role="ReservationInfo" EntitySet="ReservationInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RoomInfor__userI__7B5B524B" Association="Self.FK__RoomInfor__userI__7B5B524B">
+      <End Role="UserAccount" EntitySet="UserAccount" />
+      <End Role="RoomInformation" EntitySet="RoomInformation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StaffInfo__roleI__57DD0BE4" Association="Self.FK__StaffInfo__roleI__57DD0BE4">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="StaffInfo" EntitySet="StaffInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StaffInfo__userI__58D1301D" Association="Self.FK__StaffInfo__userI__58D1301D">
+      <End Role="UserAccount" EntitySet="UserAccount" />
+      <End Role="StaffInfo" EntitySet="StaffInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAccount_Role" Association="Self.FK_UserAccount_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="UserAccount" EntitySet="UserAccount" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

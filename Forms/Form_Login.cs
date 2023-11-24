@@ -14,7 +14,7 @@ namespace HotelReservationSystem
 {
     public partial class Form_Login : Form
     {
-        UserRepository UserRepos;
+        private UserRepository UserRepos;
         public string login_username;
 
         public Form_Login()
