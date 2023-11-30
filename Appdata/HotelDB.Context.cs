@@ -34,6 +34,9 @@ namespace HotelReservationSystem.Appdata
         public virtual DbSet<RoomInformation> RoomInformation { get; set; }
         public virtual DbSet<StaffInfo> StaffInfo { get; set; }
         public virtual DbSet<UserAccount> UserAccount { get; set; }
+        public virtual DbSet<vw_Guest_CheckInOutDates> vw_Guest_CheckInOutDates { get; set; }
+        public virtual DbSet<vw_Guest_Full> vw_Guest_Full { get; set; }
+        public virtual DbSet<vw_Guest_RoomOccupied> vw_Guest_RoomOccupied { get; set; }
         public virtual DbSet<vw_Payment_Amount> vw_Payment_Amount { get; set; }
         public virtual DbSet<vw_Payment_CardInfo> vw_Payment_CardInfo { get; set; }
         public virtual DbSet<vw_Payment_Full> vw_Payment_Full { get; set; }
@@ -188,6 +191,211 @@ namespace HotelReservationSystem.Appdata
                 new ObjectParameter("UName", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SearchUA_Username_Result>("SP_SearchUA_Username", uNameParameter);
+        }
+    
+        public virtual ObjectResult<SP_SearchReservation_GuestLastName_Result> SP_SearchReservation_GuestLastName(string guestSurname)
+        {
+            var guestSurnameParameter = guestSurname != null ?
+                new ObjectParameter("GuestSurname", guestSurname) :
+                new ObjectParameter("GuestSurname", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SearchReservation_GuestLastName_Result>("SP_SearchReservation_GuestLastName", guestSurnameParameter);
+        }
+    
+        public virtual ObjectResult<SP_SearchReservation_RoomOccupied_Result> SP_SearchReservation_RoomOccupied(string roomTitle)
+        {
+            var roomTitleParameter = roomTitle != null ?
+                new ObjectParameter("RoomTitle", roomTitle) :
+                new ObjectParameter("RoomTitle", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SearchReservation_RoomOccupied_Result>("SP_SearchReservation_RoomOccupied", roomTitleParameter);
+        }
+    
+        public virtual ObjectResult<SP_SearchReservation_Username_Result> SP_SearchReservation_Username(string uName)
+        {
+            var uNameParameter = uName != null ?
+                new ObjectParameter("UName", uName) :
+                new ObjectParameter("UName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SearchReservation_Username_Result>("SP_SearchReservation_Username", uNameParameter);
+        }
+    
+        public virtual ObjectResult<SP_SearchRoom_RoomTitle_Result> SP_SearchRoom_RoomTitle(string roomTitle)
+        {
+            var roomTitleParameter = roomTitle != null ?
+                new ObjectParameter("RoomTitle", roomTitle) :
+                new ObjectParameter("RoomTitle", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SearchRoom_RoomTitle_Result>("SP_SearchRoom_RoomTitle", roomTitleParameter);
+        }
+    
+        public virtual int SP_DeleteGuest(Nullable<int> guestID)
+        {
+            var guestIDParameter = guestID.HasValue ?
+                new ObjectParameter("GuestID", guestID) :
+                new ObjectParameter("GuestID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_DeleteGuest", guestIDParameter);
+        }
+    
+        public virtual ObjectResult<SP_SearchGuest_Name_Result> SP_SearchGuest_Name(string gName)
+        {
+            var gNameParameter = gName != null ?
+                new ObjectParameter("GName", gName) :
+                new ObjectParameter("GName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SearchGuest_Name_Result>("SP_SearchGuest_Name", gNameParameter);
+        }
+    
+        public virtual int SP_UpdateGuest(Nullable<int> guestID, string fName, string lName, string gender, Nullable<System.DateTime> bDate, string contact, string address, string email)
+        {
+            var guestIDParameter = guestID.HasValue ?
+                new ObjectParameter("GuestID", guestID) :
+                new ObjectParameter("GuestID", typeof(int));
+    
+            var fNameParameter = fName != null ?
+                new ObjectParameter("FName", fName) :
+                new ObjectParameter("FName", typeof(string));
+    
+            var lNameParameter = lName != null ?
+                new ObjectParameter("LName", lName) :
+                new ObjectParameter("LName", typeof(string));
+    
+            var genderParameter = gender != null ?
+                new ObjectParameter("Gender", gender) :
+                new ObjectParameter("Gender", typeof(string));
+    
+            var bDateParameter = bDate.HasValue ?
+                new ObjectParameter("BDate", bDate) :
+                new ObjectParameter("BDate", typeof(System.DateTime));
+    
+            var contactParameter = contact != null ?
+                new ObjectParameter("Contact", contact) :
+                new ObjectParameter("Contact", typeof(string));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("Address", address) :
+                new ObjectParameter("Address", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UpdateGuest", guestIDParameter, fNameParameter, lNameParameter, genderParameter, bDateParameter, contactParameter, addressParameter, emailParameter);
+        }
+    
+        public virtual int SP_AddRoom(string title, string type, Nullable<decimal> price, string desc, string img)
+        {
+            var titleParameter = title != null ?
+                new ObjectParameter("Title", title) :
+                new ObjectParameter("Title", typeof(string));
+    
+            var typeParameter = type != null ?
+                new ObjectParameter("Type", type) :
+                new ObjectParameter("Type", typeof(string));
+    
+            var priceParameter = price.HasValue ?
+                new ObjectParameter("Price", price) :
+                new ObjectParameter("Price", typeof(decimal));
+    
+            var descParameter = desc != null ?
+                new ObjectParameter("Desc", desc) :
+                new ObjectParameter("Desc", typeof(string));
+    
+            var imgParameter = img != null ?
+                new ObjectParameter("Img", img) :
+                new ObjectParameter("Img", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_AddRoom", titleParameter, typeParameter, priceParameter, descParameter, imgParameter);
+        }
+    
+        public virtual int SP_DeleteRoom(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_DeleteRoom", iDParameter);
+        }
+    
+        public virtual int SP_UpdateRoom(Nullable<int> iD, string title, string type, Nullable<decimal> price, string desc, string img)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var titleParameter = title != null ?
+                new ObjectParameter("Title", title) :
+                new ObjectParameter("Title", typeof(string));
+    
+            var typeParameter = type != null ?
+                new ObjectParameter("Type", type) :
+                new ObjectParameter("Type", typeof(string));
+    
+            var priceParameter = price.HasValue ?
+                new ObjectParameter("Price", price) :
+                new ObjectParameter("Price", typeof(decimal));
+    
+            var descParameter = desc != null ?
+                new ObjectParameter("Desc", desc) :
+                new ObjectParameter("Desc", typeof(string));
+    
+            var imgParameter = img != null ?
+                new ObjectParameter("Img", img) :
+                new ObjectParameter("Img", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UpdateRoom", iDParameter, titleParameter, typeParameter, priceParameter, descParameter, imgParameter);
+        }
+    
+        public virtual int SP_UpdateRoom_GuestCount(Nullable<int> iD, Nullable<int> count)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var countParameter = count.HasValue ?
+                new ObjectParameter("Count", count) :
+                new ObjectParameter("Count", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UpdateRoom_GuestCount", iDParameter, countParameter);
+        }
+    
+        public virtual int SP_UpdateRoom_NoImage(Nullable<int> iD, string title, string type, Nullable<decimal> price, string desc)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var titleParameter = title != null ?
+                new ObjectParameter("Title", title) :
+                new ObjectParameter("Title", typeof(string));
+    
+            var typeParameter = type != null ?
+                new ObjectParameter("Type", type) :
+                new ObjectParameter("Type", typeof(string));
+    
+            var priceParameter = price.HasValue ?
+                new ObjectParameter("Price", price) :
+                new ObjectParameter("Price", typeof(decimal));
+    
+            var descParameter = desc != null ?
+                new ObjectParameter("Desc", desc) :
+                new ObjectParameter("Desc", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UpdateRoom_NoImage", iDParameter, titleParameter, typeParameter, priceParameter, descParameter);
+        }
+    
+        public virtual int SP_UpdateRoom_GuestID(Nullable<int> rID, Nullable<int> gID)
+        {
+            var rIDParameter = rID.HasValue ?
+                new ObjectParameter("RID", rID) :
+                new ObjectParameter("RID", typeof(int));
+    
+            var gIDParameter = gID.HasValue ?
+                new ObjectParameter("GID", gID) :
+                new ObjectParameter("GID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UpdateRoom_GuestID", rIDParameter, gIDParameter);
         }
     }
 }

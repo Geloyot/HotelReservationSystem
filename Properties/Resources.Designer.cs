@@ -73,6 +73,26 @@ namespace HotelReservationSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _5610944 {
+            get {
+                object obj = ResourceManager.GetObject("5610944", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _5610944___Copy {
+            get {
+                object obj = ResourceManager.GetObject("5610944 - Copy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bg1 {
             get {
                 object obj = ResourceManager.GetObject("bg1", resourceCulture);
@@ -86,6 +106,46 @@ namespace HotelReservationSystem.Properties {
         internal static System.Drawing.Bitmap hoteldbsyslogo {
             get {
                 object obj = ResourceManager.GetObject("hoteldbsyslogo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap step1 {
+            get {
+                object obj = ResourceManager.GetObject("step1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap step2 {
+            get {
+                object obj = ResourceManager.GetObject("step2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap step3 {
+            get {
+                object obj = ResourceManager.GetObject("step3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap step4 {
+            get {
+                object obj = ResourceManager.GetObject("step4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

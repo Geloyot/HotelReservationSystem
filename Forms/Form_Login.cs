@@ -15,6 +15,7 @@ namespace HotelReservationSystem
     public partial class Form_Login : Form
     {
         private UserRepository UserRepos;
+        private bool IsExiting = true;
         public string login_username;
 
         public Form_Login()
@@ -23,9 +24,17 @@ namespace HotelReservationSystem
             UserRepos = new UserRepository();
         }
 
+        //public void DEBUGMODE() 
+        //{
+        //    Txt_Username.Text = "gelobotAdmin";
+        //    Txt_Password.Text = "22204390";
+        //    Btn_Login_Click(null, null);
+        //}
+
         private void Form_Login_Load(object sender, EventArgs e)
         {
             Timer_Clock.Start();
+            //DEBUGMODE();
         }
         
         private void Btn_Login_Click(object sender, EventArgs e)
@@ -72,7 +81,7 @@ namespace HotelReservationSystem
 
         private void Timer_Loading_Tick(object sender, EventArgs e)
         {
-            if (ProgressBar_Loading.Value < 200)
+            if (ProgressBar_Loading.Value < 1)
             {
                 ProgressBar_Loading.Value++;
                 Label_Loading.Text = (ProgressBar_Loading.Value / 2) + "%";
@@ -146,10 +155,10 @@ namespace HotelReservationSystem
 
         private void LinkLabel_Register_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            using (Form_Register FormRegister = new Form_Register()) 
-            {
-                FormRegister.ShowDialog();
-            }
+            IsExiting = false;
+
+            Form_Register FormRegister = new Form_Register();
+            FormRegister.Show();
         }
 
         private void Timer_Clock_Tick(object sender, EventArgs e)
@@ -160,7 +169,14 @@ namespace HotelReservationSystem
 
         private void Form_Login_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            if (IsExiting)
+            {
+                Application.Exit();
+            }
+            else 
+            {
+                IsExiting = true;
+            }
         }
     }
 }

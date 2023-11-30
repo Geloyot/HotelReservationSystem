@@ -28,12 +28,12 @@ namespace HotelReservationSystem.Appdata
         public string roomImage { get; set; }
         public string roomDesc { get; set; }
         public Nullable<int> roomGuestCount { get; set; }
-        public Nullable<int> userID { get; set; }
+        public Nullable<int> guestID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GuestInformation> GuestInformation { get; set; }
+        public virtual GuestInformation GuestInformation1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReservationInfo> ReservationInfo { get; set; }
-        public virtual UserAccount UserAccount { get; set; }
     }
 }

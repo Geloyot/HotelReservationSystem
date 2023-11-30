@@ -1,4 +1,4 @@
-﻿namespace HotelReservationSystem.Forms
+﻿namespace HotelReservationSystem
 {
     partial class Form_Dashboard_Admin
     {
@@ -33,11 +33,11 @@
             this.ToolStripStatus_CurrentUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.TS_MI_OpenUserEntryForm = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItem_Accounts = new System.Windows.Forms.ToolStripMenuItem();
+            this.hotelRoomsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.guestReservationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Panel_NavBar = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.LinkLabel_Room = new System.Windows.Forms.LinkLabel();
             this.LinkLabel_Reservation = new System.Windows.Forms.LinkLabel();
             this.LinkLabelLogout = new System.Windows.Forms.LinkLabel();
@@ -63,13 +63,14 @@
             this.Label_ReservationCount = new System.Windows.Forms.Label();
             this.Label_Reservation = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Label_AccountCount = new System.Windows.Forms.Label();
             this.Btn_AcctInactive = new System.Windows.Forms.Button();
             this.Btn_AcctActive = new System.Windows.Forms.Button();
             this.Btn_AcctRoles = new System.Windows.Forms.Button();
             this.Dgv_AccountsSmall = new System.Windows.Forms.DataGridView();
             this.Btn_Accounts = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.LinkLabelPayments = new System.Windows.Forms.LinkLabel();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.Panel_NavBar.SuspendLayout();
@@ -110,39 +111,46 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.userToolStripMenuItem,
+            this.MenuItem_Accounts,
+            this.hotelRoomsToolStripMenuItem,
+            this.guestReservationsToolStripMenuItem,
             this.logOutToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // userToolStripMenuItem
+            // MenuItem_Accounts
             // 
-            this.userToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TS_MI_OpenUserEntryForm});
-            this.userToolStripMenuItem.Name = "userToolStripMenuItem";
-            this.userToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.userToolStripMenuItem.Text = "User";
+            this.MenuItem_Accounts.Name = "MenuItem_Accounts";
+            this.MenuItem_Accounts.Size = new System.Drawing.Size(173, 22);
+            this.MenuItem_Accounts.Text = "User Accounts";
+            this.MenuItem_Accounts.Click += new System.EventHandler(this.MenuItem_Accounts_Click);
             // 
-            // TS_MI_OpenUserEntryForm
+            // hotelRoomsToolStripMenuItem
             // 
-            this.TS_MI_OpenUserEntryForm.Name = "TS_MI_OpenUserEntryForm";
-            this.TS_MI_OpenUserEntryForm.Size = new System.Drawing.Size(190, 22);
-            this.TS_MI_OpenUserEntryForm.Text = "Open User Entry Form";
-            this.TS_MI_OpenUserEntryForm.Click += new System.EventHandler(this.TS_MI_OpenUserEntryForm_Click);
+            this.hotelRoomsToolStripMenuItem.Name = "hotelRoomsToolStripMenuItem";
+            this.hotelRoomsToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.hotelRoomsToolStripMenuItem.Text = "Hotel Rooms";
+            this.hotelRoomsToolStripMenuItem.Click += new System.EventHandler(this.hotelRoomsToolStripMenuItem_Click);
+            // 
+            // guestReservationsToolStripMenuItem
+            // 
+            this.guestReservationsToolStripMenuItem.Name = "guestReservationsToolStripMenuItem";
+            this.guestReservationsToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.guestReservationsToolStripMenuItem.Text = "Guest Reservations";
+            this.guestReservationsToolStripMenuItem.Click += new System.EventHandler(this.guestReservationsToolStripMenuItem_Click);
             // 
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.logOutToolStripMenuItem.Text = "Log Out";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
             // Panel_NavBar
             // 
             this.Panel_NavBar.BackColor = System.Drawing.Color.Aquamarine;
-            this.Panel_NavBar.Controls.Add(this.linkLabel1);
-            this.Panel_NavBar.Controls.Add(this.label3);
+            this.Panel_NavBar.Controls.Add(this.LinkLabelPayments);
             this.Panel_NavBar.Controls.Add(this.LinkLabel_Room);
             this.Panel_NavBar.Controls.Add(this.LinkLabel_Reservation);
             this.Panel_NavBar.Controls.Add(this.LinkLabelLogout);
@@ -154,17 +162,6 @@
             this.Panel_NavBar.Name = "Panel_NavBar";
             this.Panel_NavBar.Size = new System.Drawing.Size(125, 392);
             this.Panel_NavBar.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 128);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 25);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "Dashboard";
             // 
             // LinkLabel_Room
             // 
@@ -287,9 +284,9 @@
             this.Label_RoomUsedCount.Font = new System.Drawing.Font("Bahnschrift", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label_RoomUsedCount.Location = new System.Drawing.Point(348, 48);
             this.Label_RoomUsedCount.Name = "Label_RoomUsedCount";
-            this.Label_RoomUsedCount.Size = new System.Drawing.Size(46, 39);
+            this.Label_RoomUsedCount.Size = new System.Drawing.Size(35, 39);
             this.Label_RoomUsedCount.TabIndex = 22;
-            this.Label_RoomUsedCount.Text = "10";
+            this.Label_RoomUsedCount.Text = "0";
             // 
             // Btn_Rooms
             // 
@@ -320,9 +317,9 @@
             this.Label_RoomAvailCount.Font = new System.Drawing.Font("Bahnschrift", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label_RoomAvailCount.Location = new System.Drawing.Point(107, 48);
             this.Label_RoomAvailCount.Name = "Label_RoomAvailCount";
-            this.Label_RoomAvailCount.Size = new System.Drawing.Size(46, 39);
+            this.Label_RoomAvailCount.Size = new System.Drawing.Size(35, 39);
             this.Label_RoomAvailCount.TabIndex = 19;
-            this.Label_RoomAvailCount.Text = "10";
+            this.Label_RoomAvailCount.Text = "0";
             // 
             // Label_Availability
             // 
@@ -370,9 +367,9 @@
             this.Label_CheckOutCount.Font = new System.Drawing.Font("Bahnschrift", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label_CheckOutCount.Location = new System.Drawing.Point(398, 45);
             this.Label_CheckOutCount.Name = "Label_CheckOutCount";
-            this.Label_CheckOutCount.Size = new System.Drawing.Size(34, 39);
+            this.Label_CheckOutCount.Size = new System.Drawing.Size(35, 39);
             this.Label_CheckOutCount.TabIndex = 24;
-            this.Label_CheckOutCount.Text = "2";
+            this.Label_CheckOutCount.Text = "0";
             // 
             // label2
             // 
@@ -394,7 +391,7 @@
             this.Label_CheckInCount.Name = "Label_CheckInCount";
             this.Label_CheckInCount.Size = new System.Drawing.Size(35, 39);
             this.Label_CheckInCount.TabIndex = 22;
-            this.Label_CheckInCount.Text = "4";
+            this.Label_CheckInCount.Text = "0";
             // 
             // Btn_Reservation
             // 
@@ -427,7 +424,7 @@
             this.Label_ReservationCount.Name = "Label_ReservationCount";
             this.Label_ReservationCount.Size = new System.Drawing.Size(35, 39);
             this.Label_ReservationCount.TabIndex = 19;
-            this.Label_ReservationCount.Text = "4";
+            this.Label_ReservationCount.Text = "0";
             // 
             // Label_Reservation
             // 
@@ -444,6 +441,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.Label_AccountCount);
             this.panel1.Controls.Add(this.Btn_AcctInactive);
             this.panel1.Controls.Add(this.Btn_AcctActive);
             this.panel1.Controls.Add(this.Btn_AcctRoles);
@@ -454,6 +452,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(270, 370);
             this.panel1.TabIndex = 24;
+            // 
+            // Label_AccountCount
+            // 
+            this.Label_AccountCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Label_AccountCount.AutoSize = true;
+            this.Label_AccountCount.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_AccountCount.Location = new System.Drawing.Point(9, 303);
+            this.Label_AccountCount.Name = "Label_AccountCount";
+            this.Label_AccountCount.Size = new System.Drawing.Size(171, 25);
+            this.Label_AccountCount.TabIndex = 29;
+            this.Label_AccountCount.Text = "No. of Accounts: ";
             // 
             // Btn_AcctInactive
             // 
@@ -495,9 +504,8 @@
             this.Dgv_AccountsSmall.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_AccountsSmall.Location = new System.Drawing.Point(9, 75);
             this.Dgv_AccountsSmall.Name = "Dgv_AccountsSmall";
-            this.Dgv_AccountsSmall.Size = new System.Drawing.Size(249, 243);
+            this.Dgv_AccountsSmall.Size = new System.Drawing.Size(249, 222);
             this.Dgv_AccountsSmall.TabIndex = 25;
-            this.Dgv_AccountsSmall.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_AccountsSmall_CellContentClick);
             // 
             // Btn_Accounts
             // 
@@ -521,17 +529,17 @@
             this.label10.TabIndex = 24;
             this.label10.Text = "Recently Added Accounts";
             // 
-            // linkLabel1
+            // LinkLabelPayments
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.LinkColor = System.Drawing.Color.Black;
-            this.linkLabel1.Location = new System.Drawing.Point(33, 288);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(51, 25);
-            this.linkLabel1.TabIndex = 19;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Staff";
+            this.LinkLabelPayments.AutoSize = true;
+            this.LinkLabelPayments.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LinkLabelPayments.LinkColor = System.Drawing.Color.Black;
+            this.LinkLabelPayments.Location = new System.Drawing.Point(12, 127);
+            this.LinkLabelPayments.Name = "LinkLabelPayments";
+            this.LinkLabelPayments.Size = new System.Drawing.Size(92, 25);
+            this.LinkLabelPayments.TabIndex = 18;
+            this.LinkLabelPayments.TabStop = true;
+            this.LinkLabelPayments.Text = "Payments";
             // 
             // Form_Dashboard_Admin
             // 
@@ -575,8 +583,7 @@
         private System.Windows.Forms.ToolStripStatusLabel ToolStripStatus_CurrentUser;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem userToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem TS_MI_OpenUserEntryForm;
+        private System.Windows.Forms.ToolStripMenuItem MenuItem_Accounts;
         private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
         private System.Windows.Forms.Panel Panel_NavBar;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -607,10 +614,12 @@
         private System.Windows.Forms.Button Btn_Accounts;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridView Dgv_AccountsSmall;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button Btn_AcctInactive;
         private System.Windows.Forms.Button Btn_AcctActive;
         private System.Windows.Forms.Button Btn_AcctRoles;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Label Label_AccountCount;
+        private System.Windows.Forms.ToolStripMenuItem hotelRoomsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem guestReservationsToolStripMenuItem;
+        private System.Windows.Forms.LinkLabel LinkLabelPayments;
     }
 }

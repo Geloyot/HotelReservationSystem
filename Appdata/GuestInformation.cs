@@ -19,6 +19,7 @@ namespace HotelReservationSystem.Appdata
         {
             this.PaymentInfo = new HashSet<PaymentInfo>();
             this.ReservationInfo = new HashSet<ReservationInfo>();
+            this.RoomInformation1 = new HashSet<RoomInformation>();
         }
     
         public int guestID { get; set; }
@@ -40,5 +41,7 @@ namespace HotelReservationSystem.Appdata
         public virtual ICollection<PaymentInfo> PaymentInfo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReservationInfo> ReservationInfo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RoomInformation> RoomInformation1 { get; set; }
     }
 }

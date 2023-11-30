@@ -58,6 +58,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Appdata\SP_SearchGuest_Name_Result.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\SP_SearchReservation_GuestLastName_Result.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\SP_SearchReservation_RoomOccupied_Result.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\SP_SearchReservation_Username_Result.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\SP_SearchRoom_RoomTitle_Result.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_Guest_CheckInOutDates.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_Guest_Full.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_Guest_RoomOccupied.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Customer_S4Transaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Customer_S4Transaction.Designer.cs">
+      <DependentUpon>Customer_S4Transaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Admin_Staff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin_Staff.Designer.cs">
+      <DependentUpon>Admin_Staff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Appdata\GuestInformation.cs">
       <DependentUpon>HotelDB.tt</DependentUpon>
     </Compile>
@@ -172,6 +208,12 @@
     <Compile Include="Appdata\vw_UserAccount_Updates.cs">
       <DependentUpon>HotelDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Customer_S3Payment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Customer_S3Payment.Designer.cs">
+      <DependentUpon>Customer_S3Payment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Admin_Reservations.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +225,18 @@
     </Compile>
     <Compile Include="Forms\Admin_Rooms.Designer.cs">
       <DependentUpon>Admin_Rooms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Customer_S1Room.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Customer_S1Room.Designer.cs">
+      <DependentUpon>Customer_S1Room.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Customer_S2Guest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Customer_S2.Designer.cs">
+      <DependentUpon>Customer_S2Guest.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Form_AcctManage.cs">
       <SubType>Form</SubType>
@@ -220,12 +274,63 @@
     <Compile Include="Forms\Form_Register.Designer.cs">
       <DependentUpon>Form_Register.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Form_Register_Staff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form_Register_Staff.Designer.cs">
+      <DependentUpon>Form_Register_Staff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\CurrentlyLoggedUser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\HotelRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Forms\Staff_Guest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Staff_Guest.Designer.cs">
+      <DependentUpon>Staff_Guest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Staff_Payment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Staff_Payment.Designer.cs">
+      <DependentUpon>Staff_Payment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Staff_Reservations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Staff_Reservations.Designer.cs">
+      <DependentUpon>Staff_Reservations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Staff_Rooms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Staff_Rooms.Designer.cs">
+      <DependentUpon>Staff_Rooms.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\EnumRoles.cs" />
+    <EmbeddedResource Include="Forms\Customer_S4Transaction.resx">
+      <DependentUpon>Customer_S4Transaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Admin_Staff.resx">
+      <DependentUpon>Admin_Staff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Admin_Reservations.resx">
+      <DependentUpon>Admin_Reservations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Admin_Rooms.resx">
+      <DependentUpon>Admin_Rooms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Customer_S1Room.resx">
+      <DependentUpon>Customer_S1Room.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Customer_S2Guest.resx">
+      <DependentUpon>Customer_S2Guest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Customer_S3Payment.resx">
+      <DependentUpon>Customer_S3Payment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form_AcctManage.resx">
       <DependentUpon>Form_AcctManage.cs</DependentUpon>
     </EmbeddedResource>
@@ -235,11 +340,23 @@
     <EmbeddedResource Include="Forms\Form_Dashboard_Guest.resx">
       <DependentUpon>Form_Dashboard_Guest.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_Dashboard_Staff.resx">
+      <DependentUpon>Form_Dashboard_Staff.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form_Login.resx">
       <DependentUpon>Form_Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form_Register.resx">
       <DependentUpon>Form_Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_Register_Staff.resx">
+      <DependentUpon>Form_Register_Staff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Staff_Guest.resx">
+      <DependentUpon>Staff_Guest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Staff_Rooms.resx">
+      <DependentUpon>Staff_Rooms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -284,6 +401,12 @@
       <LastGenOutput>HotelDB.cs</LastGenOutput>
     </Content>
     <Content Include="hoteldbsyslogo.ico" />
+    <None Include="Resources\5610944 - Copy.png" />
+    <None Include="Resources\5610944.png" />
+    <None Include="Resources\step4.png" />
+    <None Include="Resources\step3.png" />
+    <None Include="Resources\step2.png" />
+    <None Include="Resources\step1.png" />
     <None Include="Resources\1409295-200.png" />
     <None Include="Resources\hoteldbsyslogo.png" />
     <None Include="Resources\bg1.png" />

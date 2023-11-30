@@ -20,7 +20,6 @@ namespace HotelReservationSystem.Appdata
             this.GuestInformation = new HashSet<GuestInformation>();
             this.PaymentInfo = new HashSet<PaymentInfo>();
             this.ReservationInfo = new HashSet<ReservationInfo>();
-            this.RoomInformation = new HashSet<RoomInformation>();
             this.StaffInfo = new HashSet<StaffInfo>();
         }
     
@@ -41,8 +40,6 @@ namespace HotelReservationSystem.Appdata
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReservationInfo> ReservationInfo { get; set; }
         public virtual Role Role { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RoomInformation> RoomInformation { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StaffInfo> StaffInfo { get; set; }
     }

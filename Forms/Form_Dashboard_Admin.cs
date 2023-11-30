@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HotelReservationSystem.Appdata;
+using HotelReservationSystem.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,13 +9,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
-namespace HotelReservationSystem.Forms
+namespace HotelReservationSystem
 {
     public partial class Form_Dashboard_Admin : Form
     {
         private bool IsLoggingOut = false;
         private UserRepository UserRepos;
+        private HotelRepository HotelRepos;
 
         public Form_Dashboard_Admin()
         {
@@ -26,12 +30,42 @@ namespace HotelReservationSystem.Forms
             AccountManagement.Show();
             this.Dispose();
         }
-
+        private void OpenRoomsForm() 
+        { 
+            Admin_Rooms rooms = new Admin_Rooms();
+            rooms.Show();
+            this.Dispose();
+        }
+        private void OpenReservationForm() 
+        {
+            Admin_Reservations reserve = new Admin_Reservations();
+            reserve.Show();
+            this.Dispose();
+        }
         private void LogoutAccount()    // Smooth and memory-saving way of transitioning to another window via disposing the current window
         {
             Form_Login login = new Form_Login();
             login.Show();
             this.Dispose();
+        }
+
+        private void LoadUserAccountsRoles()
+        {
+            Dgv_AccountsSmall.DataSource = UserRepos.GetUserAccountRolesList();
+        }
+        private void LoadUserAccountsActive()
+        {
+            Dgv_AccountsSmall.DataSource = UserRepos.GetUserAccountActiveList();
+        }
+        private void LoadUserAccountsInactive()
+        {
+            Dgv_AccountsSmall.DataSource = UserRepos.GetUserAccountInactiveList();
+        }
+        private void LoadHotelData() 
+        {
+            Label_ReservationCount.Text = HotelRepos.GetReservationFullList().Count.ToString();
+            Label_RoomAvailCount.Text = HotelRepos.GetRoomsAvailableList().Count.ToString();
+            Label_RoomUsedCount.Text = HotelRepos.GetRoomsOccupiedList().Count.ToString();
         }
 
         private void TS_MI_OpenUserEntryForm_Click(object sender, EventArgs e)
@@ -45,20 +79,10 @@ namespace HotelReservationSystem.Forms
             Timer_Clock.Start();
 
             UserRepos = new UserRepository();
+            HotelRepos = new HotelRepository();
             LoadUserAccountsRoles();
-        }
-
-        private void LoadUserAccountsRoles() 
-        {
-            Dgv_AccountsSmall.DataSource = UserRepos.GetUserAccountRolesList();
-        }
-        private void LoadUserAccountsActive() 
-        {
-            Dgv_AccountsSmall.DataSource = UserRepos.GetUserAccountActiveList();
-        }
-        private void LoadUserAccountsInactive() 
-        {
-            Dgv_AccountsSmall.DataSource = UserRepos.GetUserAccountInactiveList();
+            Label_AccountCount.Text = "No. of Accounts: " + UserRepos.GetUserAccountCount();
+            LoadHotelData();
         }
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -98,22 +122,22 @@ namespace HotelReservationSystem.Forms
 
         private void Btn_Rooms_Click(object sender, EventArgs e)
         {
-
+            OpenRoomsForm();
         }
 
         private void Btn_Reservation_Click(object sender, EventArgs e)
         {
-
+            OpenReservationForm();
         }
 
         private void LinkLabel_Room_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            OpenRoomsForm();
         }
 
         private void LinkLabel_Reservation_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            OpenReservationForm();
         }
 
         private void LinkLabelAcctManage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -121,24 +145,32 @@ namespace HotelReservationSystem.Forms
             OpenAcctManageForm();
         }
 
-        private void Dgv_AccountsSmall_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void Btn_AcctRoles_Click(object sender, EventArgs e)
         {
             LoadUserAccountsRoles();
         }
-
         private void Btn_AcctActive_Click(object sender, EventArgs e)
         {
             LoadUserAccountsActive();
         }
-
         private void Btn_AcctInactive_Click(object sender, EventArgs e)
         {
             LoadUserAccountsInactive();
+        }
+
+        private void MenuItem_Accounts_Click(object sender, EventArgs e)
+        {
+            OpenAcctManageForm();
+        }
+
+        private void hotelRoomsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenRoomsForm();
+        }
+
+        private void guestReservationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenReservationForm();
         }
     }
 }

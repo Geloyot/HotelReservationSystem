@@ -24,6 +24,7 @@ namespace HotelReservationSystem.Appdata
         public string StaffContactNo { get; set; }
         public string StaffEmailAddress { get; set; }
         public decimal StaffSalary { get; set; }
+        public string StaffStatus { get; set; }
     
         public virtual Role Role { get; set; }
         public virtual UserAccount UserAccount { get; set; }

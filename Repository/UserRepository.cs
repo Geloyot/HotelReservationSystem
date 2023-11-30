@@ -22,11 +22,18 @@ namespace HotelReservationSystem
             DB = new DBSYSEntities();
             return DB.UserAccount.Where(m => m.userName == SpecificUsername).FirstOrDefault();
         }
-
         public UserAccount GetUserByUserID(int? UserID) 
         {
             DB = new DBSYSEntities();
             return DB.UserAccount.Where(u => u.userId == UserID).FirstOrDefault();
+        }
+
+        public int GetUserAccountCount() 
+        {
+            DB = new DBSYSEntities();
+
+            var count = DB.UserAccount.Count();
+            return count;
         }
 
         public List<vw_UserAccount_Full> GetUserAccountList()
@@ -51,6 +58,12 @@ namespace HotelReservationSystem
             return DB.vw_UserAccount_Inactive.ToList();
         }
 
+        public StaffInfo GetStaffInfoByUserID(int? userID) 
+        {
+            DB = new DBSYSEntities();
+            return DB.StaffInfo.Where(si => si.userId == userID).FirstOrDefault();
+        }
+
         public List<vw_Staff_Full> GetStaffFullList() 
         {
             DB = new DBSYSEntities();
@@ -65,6 +78,28 @@ namespace HotelReservationSystem
         {
             DB = new DBSYSEntities();
             return DB.vw_Staff_Salary.ToList();
+        }
+
+        public GuestInformation GetGuestByGuestID(int? GuestID) 
+        {
+            DB = new DBSYSEntities();
+            return DB.GuestInformation.Where(guest => guest.guestID == GuestID).FirstOrDefault();
+        }
+
+        public List<vw_Guest_Full> GetGuestFullList() 
+        {
+            DB = new DBSYSEntities();
+            return DB.vw_Guest_Full.ToList();
+        }
+        public List<vw_Guest_RoomOccupied> GetGuestLocationList() 
+        {
+            DB = new DBSYSEntities();
+            return DB.vw_Guest_RoomOccupied.ToList();
+        }
+        public List<vw_Guest_CheckInOutDates> GetGuestCheckDatesList() 
+        {
+            DB = new DBSYSEntities();
+            return DB.vw_Guest_CheckInOutDates.ToList();
         }
 
     }

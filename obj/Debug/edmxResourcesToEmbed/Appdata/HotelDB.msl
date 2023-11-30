@@ -6,6 +6,110 @@
     <FunctionImportMapping FunctionImportName="SP_NewUserAccount" FunctionName="DBSYSModel.Store.SP_NewUserAccount" />
     <FunctionImportMapping FunctionImportName="SP_UpdateUserAccount" FunctionName="DBSYSModel.Store.SP_UpdateUserAccount" />
     <FunctionImportMapping FunctionImportName="SP_UpdateUserAccountStatus" FunctionName="DBSYSModel.Store.SP_UpdateUserAccountStatus" />
+    <FunctionImportMapping FunctionImportName="SP_SearchUA_Username" FunctionName="DBSYSModel.Store.SP_SearchUA_Username">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBSYSModel.SP_SearchUA_Username_Result">
+          <ScalarProperty Name="User_ID_" ColumnName="User ID#" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Date_Created" ColumnName="Date Created" />
+          <ScalarProperty Name="Date_Updated" ColumnName="Date Updated" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Creator" ColumnName="Creator" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_SearchReservation_GuestLastName" FunctionName="DBSYSModel.Store.SP_SearchReservation_GuestLastName">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBSYSModel.SP_SearchReservation_GuestLastName_Result">
+          <ScalarProperty Name="Reservation_No_" ColumnName="Reservation No." />
+          <ScalarProperty Name="Booker_Full_Name" ColumnName="Booker Full Name" />
+          <ScalarProperty Name="Check_In" ColumnName="Check-In" />
+          <ScalarProperty Name="Check_Out" ColumnName="Check-Out" />
+          <ScalarProperty Name="Nights_to_Stay" ColumnName="Nights to Stay" />
+          <ScalarProperty Name="No__of_Adult_Guests" ColumnName="No. of Adult Guests" />
+          <ScalarProperty Name="No__of_Children_Guests" ColumnName="No. of Children Guests" />
+          <ScalarProperty Name="No__of_Guests" ColumnName="No. of Guests" />
+          <ScalarProperty Name="Booker_ID" ColumnName="Booker ID" />
+          <ScalarProperty Name="Guest_ID_No_" ColumnName="Guest ID No." />
+          <ScalarProperty Name="Room_ID" ColumnName="Room ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_SearchReservation_RoomOccupied" FunctionName="DBSYSModel.Store.SP_SearchReservation_RoomOccupied">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBSYSModel.SP_SearchReservation_RoomOccupied_Result">
+          <ScalarProperty Name="Reservation_No_" ColumnName="Reservation No." />
+          <ScalarProperty Name="Room_Name" ColumnName="Room Name" />
+          <ScalarProperty Name="Check_In" ColumnName="Check-In" />
+          <ScalarProperty Name="Check_Out" ColumnName="Check-Out" />
+          <ScalarProperty Name="Nights_to_Stay" ColumnName="Nights to Stay" />
+          <ScalarProperty Name="No__of_Adult_Guests" ColumnName="No. of Adult Guests" />
+          <ScalarProperty Name="No__of_Children_Guests" ColumnName="No. of Children Guests" />
+          <ScalarProperty Name="No__of_Guests" ColumnName="No. of Guests" />
+          <ScalarProperty Name="Booker_ID" ColumnName="Booker ID" />
+          <ScalarProperty Name="Guest_ID_No_" ColumnName="Guest ID No." />
+          <ScalarProperty Name="Room_ID" ColumnName="Room ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_SearchReservation_Username" FunctionName="DBSYSModel.Store.SP_SearchReservation_Username">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBSYSModel.SP_SearchReservation_Username_Result">
+          <ScalarProperty Name="Reservation_No_" ColumnName="Reservation No." />
+          <ScalarProperty Name="Booker_Username" ColumnName="Booker Username" />
+          <ScalarProperty Name="Check_In" ColumnName="Check-In" />
+          <ScalarProperty Name="Check_Out" ColumnName="Check-Out" />
+          <ScalarProperty Name="Nights_to_Stay" ColumnName="Nights to Stay" />
+          <ScalarProperty Name="No__of_Adult_Guests" ColumnName="No. of Adult Guests" />
+          <ScalarProperty Name="No__of_Children_Guests" ColumnName="No. of Children Guests" />
+          <ScalarProperty Name="No__of_Guests" ColumnName="No. of Guests" />
+          <ScalarProperty Name="Booker_ID" ColumnName="Booker ID" />
+          <ScalarProperty Name="Guest_ID_No_" ColumnName="Guest ID No." />
+          <ScalarProperty Name="Room_ID" ColumnName="Room ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_SearchRoom_RoomTitle" FunctionName="DBSYSModel.Store.SP_SearchRoom_RoomTitle">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBSYSModel.SP_SearchRoom_RoomTitle_Result">
+          <ScalarProperty Name="Room_ID" ColumnName="Room ID" />
+          <ScalarProperty Name="Room_Name" ColumnName="Room Name" />
+          <ScalarProperty Name="Room_Type" ColumnName="Room Type" />
+          <ScalarProperty Name="Room_Price" ColumnName="Room Price" />
+          <ScalarProperty Name="Room_Image_File_Name" ColumnName="Room Image File Name" />
+          <ScalarProperty Name="Room_Description" ColumnName="Room Description" />
+          <ScalarProperty Name="Room_Occupants" ColumnName="Room Occupants" />
+          <ScalarProperty Name="Occupant_User_ID" ColumnName="Occupant User ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_DeleteGuest" FunctionName="DBSYSModel.Store.SP_DeleteGuest" />
+    <FunctionImportMapping FunctionImportName="SP_SearchGuest_Name" FunctionName="DBSYSModel.Store.SP_SearchGuest_Name">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBSYSModel.SP_SearchGuest_Name_Result">
+          <ScalarProperty Name="guestID" ColumnName="guestID" />
+          <ScalarProperty Name="guestFirstName" ColumnName="guestFirstName" />
+          <ScalarProperty Name="guestLastName" ColumnName="guestLastName" />
+          <ScalarProperty Name="guestBirthDate" ColumnName="guestBirthDate" />
+          <ScalarProperty Name="guestGender" ColumnName="guestGender" />
+          <ScalarProperty Name="guestContactNo" ColumnName="guestContactNo" />
+          <ScalarProperty Name="guestAddress" ColumnName="guestAddress" />
+          <ScalarProperty Name="guestEmailAddress" ColumnName="guestEmailAddress" />
+          <ScalarProperty Name="guestLastCheckInDate" ColumnName="guestLastCheckInDate" />
+          <ScalarProperty Name="guestLastCheckOutDate" ColumnName="guestLastCheckOutDate" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="roomID" ColumnName="roomID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_UpdateGuest" FunctionName="DBSYSModel.Store.SP_UpdateGuest" />
+    <FunctionImportMapping FunctionImportName="SP_AddRoom" FunctionName="DBSYSModel.Store.SP_AddRoom" />
+    <FunctionImportMapping FunctionImportName="SP_DeleteRoom" FunctionName="DBSYSModel.Store.SP_DeleteRoom" />
+    <FunctionImportMapping FunctionImportName="SP_UpdateRoom" FunctionName="DBSYSModel.Store.SP_UpdateRoom" />
+    <FunctionImportMapping FunctionImportName="SP_UpdateRoom_GuestCount" FunctionName="DBSYSModel.Store.SP_UpdateRoom_GuestCount" />
+    <FunctionImportMapping FunctionImportName="SP_UpdateRoom_NoImage" FunctionName="DBSYSModel.Store.SP_UpdateRoom_NoImage" />
     <EntitySetMapping Name="GuestInformation">
       <EntityTypeMapping TypeName="DBSYSModel.GuestInformation">
         <MappingFragment StoreEntitySet="GuestInformation">
@@ -68,7 +172,7 @@
     <EntitySetMapping Name="RoomInformation">
       <EntityTypeMapping TypeName="DBSYSModel.RoomInformation">
         <MappingFragment StoreEntitySet="RoomInformation">
-          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="guestID" ColumnName="guestID" />
           <ScalarProperty Name="roomGuestCount" ColumnName="roomGuestCount" />
           <ScalarProperty Name="roomDesc" ColumnName="roomDesc" />
           <ScalarProperty Name="roomImage" ColumnName="roomImage" />
@@ -82,6 +186,7 @@
     <EntitySetMapping Name="StaffInfo">
       <EntityTypeMapping TypeName="DBSYSModel.StaffInfo">
         <MappingFragment StoreEntitySet="StaffInfo">
+          <ScalarProperty Name="StaffStatus" ColumnName="StaffStatus" />
           <ScalarProperty Name="StaffSalary" ColumnName="StaffSalary" />
           <ScalarProperty Name="StaffEmailAddress" ColumnName="StaffEmailAddress" />
           <ScalarProperty Name="StaffContactNo" ColumnName="StaffContactNo" />
@@ -107,6 +212,42 @@
           <ScalarProperty Name="userPassword" ColumnName="userPassword" />
           <ScalarProperty Name="userName" ColumnName="userName" />
           <ScalarProperty Name="userId" ColumnName="userId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Guest_CheckInOutDates">
+      <EntityTypeMapping TypeName="DBSYSModel.vw_Guest_CheckInOutDates">
+        <MappingFragment StoreEntitySet="vw_Guest_CheckInOutDates">
+          <ScalarProperty Name="Last_Checked_Out" ColumnName="Last Checked Out" />
+          <ScalarProperty Name="Last_Checked_In" ColumnName="Last Checked In" />
+          <ScalarProperty Name="Guest_Name" ColumnName="Guest Name" />
+          <ScalarProperty Name="Guest_ID" ColumnName="Guest ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Guest_Full">
+      <EntityTypeMapping TypeName="DBSYSModel.vw_Guest_Full">
+        <MappingFragment StoreEntitySet="vw_Guest_Full">
+          <ScalarProperty Name="User_Account_ID" ColumnName="User Account ID" />
+          <ScalarProperty Name="Last_Checked_Out" ColumnName="Last Checked Out" />
+          <ScalarProperty Name="Last_Checked_In" ColumnName="Last Checked In" />
+          <ScalarProperty Name="Email_Address" ColumnName="Email Address" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Contact_Number" ColumnName="Contact Number" />
+          <ScalarProperty Name="Guest_Birthdate" ColumnName="Guest Birthdate" />
+          <ScalarProperty Name="Guest_Gender" ColumnName="Guest Gender" />
+          <ScalarProperty Name="Guest_Name" ColumnName="Guest Name" />
+          <ScalarProperty Name="Guest_ID" ColumnName="Guest ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Guest_RoomOccupied">
+      <EntityTypeMapping TypeName="DBSYSModel.vw_Guest_RoomOccupied">
+        <MappingFragment StoreEntitySet="vw_Guest_RoomOccupied">
+          <ScalarProperty Name="Room_Name" ColumnName="Room Name" />
+          <ScalarProperty Name="Room_ID" ColumnName="Room ID" />
+          <ScalarProperty Name="Guest_Name" ColumnName="Guest Name" />
+          <ScalarProperty Name="Guest_ID" ColumnName="Guest ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -277,9 +418,9 @@
     <EntitySetMapping Name="vw_RoomInfo_Available">
       <EntityTypeMapping TypeName="DBSYSModel.vw_RoomInfo_Available">
         <MappingFragment StoreEntitySet="vw_RoomInfo_Available">
-          <ScalarProperty Name="Occupant_Username" ColumnName="Occupant Username" />
+          <ScalarProperty Name="Occupant_Surname" ColumnName="Occupant Surname" />
           <ScalarProperty Name="Room_Occupants" ColumnName="Room Occupants" />
-          <ScalarProperty Name="Occupant_User_ID" ColumnName="Occupant User ID" />
+          <ScalarProperty Name="Hotel_Occupant_ID" ColumnName="Hotel Occupant ID" />
           <ScalarProperty Name="Room_Type" ColumnName="Room Type" />
           <ScalarProperty Name="Room_Name" ColumnName="Room Name" />
           <ScalarProperty Name="Room_ID" ColumnName="Room ID" />
@@ -289,7 +430,7 @@
     <EntitySetMapping Name="vw_RoomInfo_Full">
       <EntityTypeMapping TypeName="DBSYSModel.vw_RoomInfo_Full">
         <MappingFragment StoreEntitySet="vw_RoomInfo_Full">
-          <ScalarProperty Name="Occupant_User_ID" ColumnName="Occupant User ID" />
+          <ScalarProperty Name="Hotel_Occupant_ID" ColumnName="Hotel Occupant ID" />
           <ScalarProperty Name="Room_Occupants" ColumnName="Room Occupants" />
           <ScalarProperty Name="Room_Description" ColumnName="Room Description" />
           <ScalarProperty Name="Room_Image_File_Name" ColumnName="Room Image File Name" />
@@ -303,9 +444,9 @@
     <EntitySetMapping Name="vw_RoomInfo_Occupied">
       <EntityTypeMapping TypeName="DBSYSModel.vw_RoomInfo_Occupied">
         <MappingFragment StoreEntitySet="vw_RoomInfo_Occupied">
-          <ScalarProperty Name="Occupant_Username" ColumnName="Occupant Username" />
+          <ScalarProperty Name="Occupant_Surname" ColumnName="Occupant Surname" />
           <ScalarProperty Name="Room_Occupants" ColumnName="Room Occupants" />
-          <ScalarProperty Name="Occupant_User_ID" ColumnName="Occupant User ID" />
+          <ScalarProperty Name="Hotel_Occupant_ID" ColumnName="Hotel Occupant ID" />
           <ScalarProperty Name="Room_Type" ColumnName="Room Type" />
           <ScalarProperty Name="Room_Name" ColumnName="Room Name" />
           <ScalarProperty Name="Room_ID" ColumnName="Room ID" />
@@ -330,6 +471,46 @@
           <ScalarProperty Name="Room_Type" ColumnName="Room Type" />
           <ScalarProperty Name="Room_Name" ColumnName="Room Name" />
           <ScalarProperty Name="Room_ID" ColumnName="Room ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Staff_Full">
+      <EntityTypeMapping TypeName="DBSYSModel.vw_Staff_Full">
+        <MappingFragment StoreEntitySet="vw_Staff_Full">
+          <ScalarProperty Name="Staff_Account_Last_Updated" ColumnName="Staff Account Last Updated" />
+          <ScalarProperty Name="Staff_Account_Last_Created" ColumnName="Staff Account Last Created" />
+          <ScalarProperty Name="Staff_Salary" ColumnName="Staff Salary" />
+          <ScalarProperty Name="Staff_Email_Address" ColumnName="Staff Email Address" />
+          <ScalarProperty Name="Staff_Contact_Number" ColumnName="Staff Contact Number" />
+          <ScalarProperty Name="Staff_Gender" ColumnName="Staff Gender" />
+          <ScalarProperty Name="Staff_Birthdate" ColumnName="Staff Birthdate" />
+          <ScalarProperty Name="Staff_Name" ColumnName="Staff Name" />
+          <ScalarProperty Name="Hotel_User_ID" ColumnName="Hotel User ID" />
+          <ScalarProperty Name="Staff_ID" ColumnName="Staff ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Staff_Personal">
+      <EntityTypeMapping TypeName="DBSYSModel.vw_Staff_Personal">
+        <MappingFragment StoreEntitySet="vw_Staff_Personal">
+          <ScalarProperty Name="Staff_Email_Address" ColumnName="Staff Email Address" />
+          <ScalarProperty Name="Staff_Contact_Number" ColumnName="Staff Contact Number" />
+          <ScalarProperty Name="Staff_Gender" ColumnName="Staff Gender" />
+          <ScalarProperty Name="Staff_Birthdate" ColumnName="Staff Birthdate" />
+          <ScalarProperty Name="Staff_Name" ColumnName="Staff Name" />
+          <ScalarProperty Name="Hotel_User_ID" ColumnName="Hotel User ID" />
+          <ScalarProperty Name="Staff_ID" ColumnName="Staff ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Staff_Salary">
+      <EntityTypeMapping TypeName="DBSYSModel.vw_Staff_Salary">
+        <MappingFragment StoreEntitySet="vw_Staff_Salary">
+          <ScalarProperty Name="Staff_Salary" ColumnName="Staff Salary" />
+          <ScalarProperty Name="Staff_Email_Address" ColumnName="Staff Email Address" />
+          <ScalarProperty Name="Staff_Contact_Number" ColumnName="Staff Contact Number" />
+          <ScalarProperty Name="Staff_Name" ColumnName="Staff Name" />
+          <ScalarProperty Name="Staff_ID" ColumnName="Staff ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -385,19 +566,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="SP_SearchUA_Username" FunctionName="DBSYSModel.Store.SP_SearchUA_Username">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="DBSYSModel.SP_SearchUA_Username_Result">
-          <ScalarProperty Name="User_ID_" ColumnName="User ID#" />
-          <ScalarProperty Name="Username" ColumnName="Username" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Date_Created" ColumnName="Date Created" />
-          <ScalarProperty Name="Date_Updated" ColumnName="Date Updated" />
-          <ScalarProperty Name="Role" ColumnName="Role" />
-          <ScalarProperty Name="Creator" ColumnName="Creator" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_UpdateRoom_GuestID" FunctionName="DBSYSModel.Store.SP_UpdateRoom_GuestID" />
   </EntityContainerMapping>
 </Mapping>

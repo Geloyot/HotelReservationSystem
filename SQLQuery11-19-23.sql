@@ -26,10 +26,6 @@ CREATE TABLE RoomInformation (
 	userID int REFERENCES UserAccount (userID) DEFAULT 0
 )
 
-CREATE TABLE ReservationInfo (
-	
-)
-
 -- ==================================
 -- SQL VIEWS
 -- ==================================
@@ -70,7 +66,7 @@ ON ua.roleId = r.roleId
 
 CREATE VIEW vw_RoomInfo_Full AS
 SELECT roomID AS 'Room ID', roomTitle AS 'Room Name', roomType AS 'Room Type', roomPrice AS 'Room Price',
-roomImage AS 'Room Image File Name', roomDesc AS 'Room Description', roomGuestCount AS 'Room Occupants', ISNULL(userID, 0) AS 'Occupant User ID'
+roomImage AS 'Room Image File Name', roomDesc AS 'Room Description', roomGuestCount AS 'Room Occupants', ISNULL(guestID, 0) AS 'Hotel Occupant ID'
 FROM RoomInformation
 
 CREATE VIEW vw_RoomInfo_Types AS
@@ -82,19 +78,19 @@ SELECT roomID AS 'Room ID', roomTitle AS 'Room Name', roomType AS 'Room Type', r
 FROM RoomInformation
 
 CREATE VIEW vw_RoomInfo_Occupied AS
-SELECT r.roomID AS 'Room ID', r.roomTitle AS 'Room Name', r.roomType AS 'Room Type', ISNULL(r.userID, 0) AS 'Occupant User ID', 
-r.roomGuestCount AS 'Room Occupants', ISNULL(ua.userName, 'N/A') AS 'Occupant Username'
+SELECT r.roomID AS 'Room ID', r.roomTitle AS 'Room Name', r.roomType AS 'Room Type', ISNULL(g.guestID, 0) AS 'Hotel Occupant ID', 
+r.roomGuestCount AS 'Room Occupants', ISNULL(g.guestLastName, 'N/A') AS 'Occupant Surname'
 FROM RoomInformation r
-LEFT JOIN UserAccount ua
-ON r.userID = ua.userID
+LEFT JOIN GuestInformation g
+ON r.guestID = g.guestID
 WHERE r.roomGuestCount > 0
 
 CREATE VIEW vw_RoomInfo_Available AS
-SELECT r.roomID AS 'Room ID', r.roomTitle AS 'Room Name', r.roomType AS 'Room Type', ISNULL(r.userID, 0) AS 'Occupant User ID', 
-r.roomGuestCount AS 'Room Occupants', ISNULL(ua.userName, 'N/A') AS 'Occupant Username'
+SELECT r.roomID AS 'Room ID', r.roomTitle AS 'Room Name', r.roomType AS 'Room Type', ISNULL(g.guestID, 0) AS 'Hotel Occupant ID', 
+r.roomGuestCount AS 'Room Occupants', ISNULL(g.guestLastName, 'N/A') AS 'Occupant Surname'
 FROM RoomInformation r
-LEFT JOIN UserAccount ua
-ON r.userID = ua.userID
+LEFT JOIN GuestInformation g
+ON r.guestID = g.guestID
 WHERE r.roomGuestCount = 0
 
 -- ==================================

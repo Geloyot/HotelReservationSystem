@@ -5,7 +5,7 @@ USE DBSYS
 --==================================================================
 
 CREATE TABLE ReservationInfo (
-	reserveID int IDENTITY(1000, 1) PRIMARY KEY,
+	reserveID int IDENTITY(10001, 1) PRIMARY KEY,
 	reserveCheckInDate datetime NOT NULL,
 	reserveCheckOutDate datetime NOT NULL,
 	reserveStayLength int NOT NULL,

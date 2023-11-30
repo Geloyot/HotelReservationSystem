@@ -15,7 +15,18 @@ namespace HotelReservationSystem
         { 
             DB = new DBSYSEntities();
         }
-        
+
+        public RoomInformation GetRoomByRoomID(int? RoomID) 
+        {
+            DB = new DBSYSEntities();
+            return DB.RoomInformation.Where(r => r.roomID == RoomID).FirstOrDefault();
+        }
+        public RoomInformation GetRoomByRoomTitle(string RoomName) 
+        {
+            DB = new DBSYSEntities();
+            return DB.RoomInformation.Where(r => r.roomTitle == RoomName).FirstOrDefault();
+        }
+
         public List<vw_RoomInfo_Full> GetRoomsFullList()
         {
             DB = new DBSYSEntities();

@@ -66,7 +66,7 @@
     <Property Name="roomImage" Type="varchar" MaxLength="255" />
     <Property Name="roomDesc" Type="varchar" MaxLength="255" />
     <Property Name="roomGuestCount" Type="int" />
-    <Property Name="userID" Type="int" />
+    <Property Name="guestID" Type="int" />
   </EntityType>
   <EntityType Name="StaffInfo">
     <Key>
@@ -82,6 +82,7 @@
     <Property Name="StaffContactNo" Type="varchar" MaxLength="99" Nullable="false" />
     <Property Name="StaffEmailAddress" Type="varchar" MaxLength="99" Nullable="false" />
     <Property Name="StaffSalary" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+    <Property Name="StaffStatus" Type="varchar" MaxLength="10" Nullable="false" />
   </EntityType>
   <EntityType Name="UserAccount">
     <Key>
@@ -96,6 +97,57 @@
     <Property Name="roleId" Type="int" />
     <Property Name="createdById" Type="int" />
     <Property Name="createdByUser" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_Guest_CheckInOutDates' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_Guest_CheckInOutDates">
+    <Key>
+      <PropertyRef Name="Guest ID" />
+      <PropertyRef Name="Guest Name" />
+      <PropertyRef Name="Last Checked In" />
+      <PropertyRef Name="Last Checked Out" />
+    </Key>
+    <Property Name="Guest ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Guest Name" Type="varchar" MaxLength="512" Nullable="false" />
+    <Property Name="Last Checked In" Type="smalldatetime" Nullable="false" />
+    <Property Name="Last Checked Out" Type="smalldatetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_Guest_Full' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_Guest_Full">
+    <Key>
+      <PropertyRef Name="Guest ID" />
+      <PropertyRef Name="Guest Name" />
+      <PropertyRef Name="Guest Gender" />
+      <PropertyRef Name="Contact Number" />
+      <PropertyRef Name="Address" />
+      <PropertyRef Name="Email Address" />
+      <PropertyRef Name="Last Checked In" />
+      <PropertyRef Name="Last Checked Out" />
+    </Key>
+    <Property Name="Guest ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Guest Name" Type="varchar" MaxLength="512" Nullable="false" />
+    <Property Name="Guest Gender" Type="varchar" MaxLength="99" Nullable="false" />
+    <Property Name="Guest Birthdate" Type="smalldatetime" />
+    <Property Name="Contact Number" Type="varchar" MaxLength="99" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Email Address" Type="varchar" MaxLength="99" Nullable="false" />
+    <Property Name="Last Checked In" Type="smalldatetime" Nullable="false" />
+    <Property Name="Last Checked Out" Type="smalldatetime" Nullable="false" />
+    <Property Name="User Account ID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_Guest_RoomOccupied' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_Guest_RoomOccupied">
+    <Key>
+      <PropertyRef Name="Guest ID" />
+      <PropertyRef Name="Guest Name" />
+      <PropertyRef Name="Room Name" />
+    </Key>
+    <Property Name="Guest ID" Type="int" Nullable="false" />
+    <Property Name="Guest Name" Type="varchar" MaxLength="512" Nullable="false" />
+    <Property Name="Room ID" Type="int" />
+    <Property Name="Room Name" Type="varchar" MaxLength="255" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'DBSYS.dbo.vw_Payment_Amount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -344,15 +396,15 @@ warning 6002: The table/view 'DBSYS.dbo.vw_RoomInfo_Available' does not have a p
       <PropertyRef Name="Room ID" />
       <PropertyRef Name="Room Name" />
       <PropertyRef Name="Room Type" />
-      <PropertyRef Name="Occupant User ID" />
-      <PropertyRef Name="Occupant Username" />
+      <PropertyRef Name="Hotel Occupant ID" />
+      <PropertyRef Name="Occupant Surname" />
     </Key>
     <Property Name="Room ID" Type="int" Nullable="false" />
     <Property Name="Room Name" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="Room Type" Type="varchar" MaxLength="255" Nullable="false" />
-    <Property Name="Occupant User ID" Type="int" Nullable="false" />
+    <Property Name="Hotel Occupant ID" Type="int" Nullable="false" />
     <Property Name="Room Occupants" Type="int" />
-    <Property Name="Occupant Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Occupant Surname" Type="varchar" MaxLength="255" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'DBSYS.dbo.vw_RoomInfo_Full' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -362,7 +414,7 @@ warning 6002: The table/view 'DBSYS.dbo.vw_RoomInfo_Full' does not have a primar
       <PropertyRef Name="Room Name" />
       <PropertyRef Name="Room Type" />
       <PropertyRef Name="Room Price" />
-      <PropertyRef Name="Occupant User ID" />
+      <PropertyRef Name="Hotel Occupant ID" />
     </Key>
     <Property Name="Room ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Room Name" Type="varchar" MaxLength="255" Nullable="false" />
@@ -371,7 +423,7 @@ warning 6002: The table/view 'DBSYS.dbo.vw_RoomInfo_Full' does not have a primar
     <Property Name="Room Image File Name" Type="varchar" MaxLength="255" />
     <Property Name="Room Description" Type="varchar" MaxLength="255" />
     <Property Name="Room Occupants" Type="int" />
-    <Property Name="Occupant User ID" Type="int" Nullable="false" />
+    <Property Name="Hotel Occupant ID" Type="int" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'DBSYS.dbo.vw_RoomInfo_Occupied' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -380,15 +432,15 @@ warning 6002: The table/view 'DBSYS.dbo.vw_RoomInfo_Occupied' does not have a pr
       <PropertyRef Name="Room ID" />
       <PropertyRef Name="Room Name" />
       <PropertyRef Name="Room Type" />
-      <PropertyRef Name="Occupant User ID" />
-      <PropertyRef Name="Occupant Username" />
+      <PropertyRef Name="Hotel Occupant ID" />
+      <PropertyRef Name="Occupant Surname" />
     </Key>
     <Property Name="Room ID" Type="int" Nullable="false" />
     <Property Name="Room Name" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="Room Type" Type="varchar" MaxLength="255" Nullable="false" />
-    <Property Name="Occupant User ID" Type="int" Nullable="false" />
+    <Property Name="Hotel Occupant ID" Type="int" Nullable="false" />
     <Property Name="Room Occupants" Type="int" />
-    <Property Name="Occupant Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Occupant Surname" Type="varchar" MaxLength="255" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'DBSYS.dbo.vw_RoomInfo_Prices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -419,6 +471,64 @@ warning 6002: The table/view 'DBSYS.dbo.vw_RoomInfo_Types' does not have a prima
     <Property Name="Room Description" Type="varchar" MaxLength="255" />
   </EntityType>
   <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_Staff_Full' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_Staff_Full">
+    <Key>
+      <PropertyRef Name="Staff ID" />
+      <PropertyRef Name="Staff Name" />
+      <PropertyRef Name="Staff Birthdate" />
+      <PropertyRef Name="Staff Gender" />
+      <PropertyRef Name="Staff Contact Number" />
+      <PropertyRef Name="Staff Email Address" />
+      <PropertyRef Name="Staff Salary" />
+    </Key>
+    <Property Name="Staff ID" Type="int" Nullable="false" />
+    <Property Name="Hotel User ID" Type="int" />
+    <Property Name="Staff Name" Type="varchar" MaxLength="512" Nullable="false" />
+    <Property Name="Staff Birthdate" Type="datetime" Nullable="false" />
+    <Property Name="Staff Gender" Type="varchar" MaxLength="99" Nullable="false" />
+    <Property Name="Staff Contact Number" Type="varchar" MaxLength="99" Nullable="false" />
+    <Property Name="Staff Email Address" Type="varchar" MaxLength="99" Nullable="false" />
+    <Property Name="Staff Salary" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+    <Property Name="Staff Account Last Created" Type="datetime" />
+    <Property Name="Staff Account Last Updated" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_Staff_Personal' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_Staff_Personal">
+    <Key>
+      <PropertyRef Name="Staff ID" />
+      <PropertyRef Name="Staff Name" />
+      <PropertyRef Name="Staff Birthdate" />
+      <PropertyRef Name="Staff Gender" />
+      <PropertyRef Name="Staff Contact Number" />
+      <PropertyRef Name="Staff Email Address" />
+    </Key>
+    <Property Name="Staff ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Hotel User ID" Type="int" />
+    <Property Name="Staff Name" Type="varchar" MaxLength="512" Nullable="false" />
+    <Property Name="Staff Birthdate" Type="datetime" Nullable="false" />
+    <Property Name="Staff Gender" Type="varchar" MaxLength="99" Nullable="false" />
+    <Property Name="Staff Contact Number" Type="varchar" MaxLength="99" Nullable="false" />
+    <Property Name="Staff Email Address" Type="varchar" MaxLength="99" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_Staff_Salary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_Staff_Salary">
+    <Key>
+      <PropertyRef Name="Staff ID" />
+      <PropertyRef Name="Staff Name" />
+      <PropertyRef Name="Staff Contact Number" />
+      <PropertyRef Name="Staff Email Address" />
+      <PropertyRef Name="Staff Salary" />
+    </Key>
+    <Property Name="Staff ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Staff Name" Type="varchar" MaxLength="512" Nullable="false" />
+    <Property Name="Staff Contact Number" Type="varchar" MaxLength="99" Nullable="false" />
+    <Property Name="Staff Email Address" Type="varchar" MaxLength="99" Nullable="false" />
+    <Property Name="Staff Salary" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
 warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Active' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="vw_UserAccount_Active">
     <Key>
@@ -430,6 +540,11 @@ warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Active' does not have a p
     <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Status" Type="varchar" MaxLength="10" Nullable="false" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'DBSYS.dbo.vw_UserAccount_Count' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vw_UserAccount_Count">
+          <Property Name="No. of Accounts: " Type="int" />
+        </EntityType>-->
   <!--Errors Found During Generation:
 warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Full' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="vw_UserAccount_Full">
@@ -580,15 +695,15 @@ warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Updates' does not have a 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__RoomInfor__userI__7B5B524B">
-    <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+  <Association Name="FK__RoomInfor__guest__756D6ECB">
+    <End Role="GuestInformation" Type="Self.GuestInformation" Multiplicity="0..1" />
     <End Role="RoomInformation" Type="Self.RoomInformation" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="UserAccount">
-        <PropertyRef Name="userId" />
+      <Principal Role="GuestInformation">
+        <PropertyRef Name="guestID" />
       </Principal>
       <Dependent Role="RoomInformation">
-        <PropertyRef Name="userID" />
+        <PropertyRef Name="guestID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -639,6 +754,19 @@ warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Updates' does not have a 
     <Parameter Name="GID" Type="int" Mode="In" />
     <Parameter Name="RID" Type="int" Mode="In" />
   </Function>
+  <Function Name="SP_AddRoom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Title" Type="varchar" Mode="In" />
+    <Parameter Name="Type" Type="varchar" Mode="In" />
+    <Parameter Name="Price" Type="decimal" Mode="In" />
+    <Parameter Name="Desc" Type="varchar" Mode="In" />
+    <Parameter Name="Img" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_DeleteGuest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="GuestID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_DeleteRoom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+  </Function>
   <Function Name="SP_DeleteUserAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="SpecificID" Type="int" Mode="In" />
   </Function>
@@ -651,8 +779,56 @@ warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Updates' does not have a 
     <Parameter Name="CreatedByID" Type="int" Mode="In" />
     <Parameter Name="CreatorName" Type="varchar" Mode="In" />
   </Function>
+  <Function Name="SP_SearchGuest_Name" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="GName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_SearchReservation_GuestLastName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="GuestSurname" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_SearchReservation_RoomOccupied" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RoomTitle" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_SearchReservation_Username" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_SearchRoom_RoomTitle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RoomTitle" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="SP_SearchUA_Username" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="UName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_UpdateGuest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="GuestID" Type="int" Mode="In" />
+    <Parameter Name="FName" Type="varchar" Mode="In" />
+    <Parameter Name="LName" Type="varchar" Mode="In" />
+    <Parameter Name="Gender" Type="varchar" Mode="In" />
+    <Parameter Name="BDate" Type="datetime" Mode="In" />
+    <Parameter Name="Contact" Type="varchar" Mode="In" />
+    <Parameter Name="Address" Type="varchar" Mode="In" />
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_UpdateRoom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="Title" Type="varchar" Mode="In" />
+    <Parameter Name="Type" Type="varchar" Mode="In" />
+    <Parameter Name="Price" Type="decimal" Mode="In" />
+    <Parameter Name="Desc" Type="varchar" Mode="In" />
+    <Parameter Name="Img" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_UpdateRoom_GuestCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="Count" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_UpdateRoom_GuestID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RID" Type="int" Mode="In" />
+    <Parameter Name="GID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_UpdateRoom_NoImage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="Title" Type="varchar" Mode="In" />
+    <Parameter Name="Type" Type="varchar" Mode="In" />
+    <Parameter Name="Price" Type="decimal" Mode="In" />
+    <Parameter Name="Desc" Type="varchar" Mode="In" />
   </Function>
   <Function Name="SP_UpdateUserAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="SpecificID" Type="int" Mode="In" />
@@ -673,6 +849,36 @@ warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Updates' does not have a 
     <EntitySet Name="RoomInformation" EntityType="Self.RoomInformation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StaffInfo" EntityType="Self.StaffInfo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserAccount" EntityType="Self.UserAccount" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vw_Guest_CheckInOutDates" EntityType="Self.vw_Guest_CheckInOutDates" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Guest_CheckInOutDates].[Guest ID] AS [Guest ID], 
+    [vw_Guest_CheckInOutDates].[Guest Name] AS [Guest Name], 
+    [vw_Guest_CheckInOutDates].[Last Checked In] AS [Last Checked In], 
+    [vw_Guest_CheckInOutDates].[Last Checked Out] AS [Last Checked Out]
+    FROM [dbo].[vw_Guest_CheckInOutDates] AS [vw_Guest_CheckInOutDates]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_Guest_Full" EntityType="Self.vw_Guest_Full" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Guest_Full].[Guest ID] AS [Guest ID], 
+    [vw_Guest_Full].[Guest Name] AS [Guest Name], 
+    [vw_Guest_Full].[Guest Gender] AS [Guest Gender], 
+    [vw_Guest_Full].[Guest Birthdate] AS [Guest Birthdate], 
+    [vw_Guest_Full].[Contact Number] AS [Contact Number], 
+    [vw_Guest_Full].[Address] AS [Address], 
+    [vw_Guest_Full].[Email Address] AS [Email Address], 
+    [vw_Guest_Full].[Last Checked In] AS [Last Checked In], 
+    [vw_Guest_Full].[Last Checked Out] AS [Last Checked Out], 
+    [vw_Guest_Full].[User Account ID] AS [User Account ID]
+    FROM [dbo].[vw_Guest_Full] AS [vw_Guest_Full]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_Guest_RoomOccupied" EntityType="Self.vw_Guest_RoomOccupied" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Guest_RoomOccupied].[Guest ID] AS [Guest ID], 
+    [vw_Guest_RoomOccupied].[Guest Name] AS [Guest Name], 
+    [vw_Guest_RoomOccupied].[Room ID] AS [Room ID], 
+    [vw_Guest_RoomOccupied].[Room Name] AS [Room Name]
+    FROM [dbo].[vw_Guest_RoomOccupied] AS [vw_Guest_RoomOccupied]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="vw_Payment_Amount" EntityType="Self.vw_Payment_Amount" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [vw_Payment_Amount].[Payment No.] AS [Payment No.], 
@@ -818,9 +1024,9 @@ warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Updates' does not have a 
     [vw_RoomInfo_Available].[Room ID] AS [Room ID], 
     [vw_RoomInfo_Available].[Room Name] AS [Room Name], 
     [vw_RoomInfo_Available].[Room Type] AS [Room Type], 
-    [vw_RoomInfo_Available].[Occupant User ID] AS [Occupant User ID], 
+    [vw_RoomInfo_Available].[Hotel Occupant ID] AS [Hotel Occupant ID], 
     [vw_RoomInfo_Available].[Room Occupants] AS [Room Occupants], 
-    [vw_RoomInfo_Available].[Occupant Username] AS [Occupant Username]
+    [vw_RoomInfo_Available].[Occupant Surname] AS [Occupant Surname]
     FROM [dbo].[vw_RoomInfo_Available] AS [vw_RoomInfo_Available]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="vw_RoomInfo_Full" EntityType="Self.vw_RoomInfo_Full" store:Type="Views" store:Schema="dbo">
@@ -832,7 +1038,7 @@ warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Updates' does not have a 
     [vw_RoomInfo_Full].[Room Image File Name] AS [Room Image File Name], 
     [vw_RoomInfo_Full].[Room Description] AS [Room Description], 
     [vw_RoomInfo_Full].[Room Occupants] AS [Room Occupants], 
-    [vw_RoomInfo_Full].[Occupant User ID] AS [Occupant User ID]
+    [vw_RoomInfo_Full].[Hotel Occupant ID] AS [Hotel Occupant ID]
     FROM [dbo].[vw_RoomInfo_Full] AS [vw_RoomInfo_Full]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="vw_RoomInfo_Occupied" EntityType="Self.vw_RoomInfo_Occupied" store:Type="Views" store:Schema="dbo">
@@ -840,9 +1046,9 @@ warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Updates' does not have a 
     [vw_RoomInfo_Occupied].[Room ID] AS [Room ID], 
     [vw_RoomInfo_Occupied].[Room Name] AS [Room Name], 
     [vw_RoomInfo_Occupied].[Room Type] AS [Room Type], 
-    [vw_RoomInfo_Occupied].[Occupant User ID] AS [Occupant User ID], 
+    [vw_RoomInfo_Occupied].[Hotel Occupant ID] AS [Hotel Occupant ID], 
     [vw_RoomInfo_Occupied].[Room Occupants] AS [Room Occupants], 
-    [vw_RoomInfo_Occupied].[Occupant Username] AS [Occupant Username]
+    [vw_RoomInfo_Occupied].[Occupant Surname] AS [Occupant Surname]
     FROM [dbo].[vw_RoomInfo_Occupied] AS [vw_RoomInfo_Occupied]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="vw_RoomInfo_Prices" EntityType="Self.vw_RoomInfo_Prices" store:Type="Views" store:Schema="dbo">
@@ -861,6 +1067,40 @@ warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Updates' does not have a 
     [vw_RoomInfo_Types].[Room Type] AS [Room Type], 
     [vw_RoomInfo_Types].[Room Description] AS [Room Description]
     FROM [dbo].[vw_RoomInfo_Types] AS [vw_RoomInfo_Types]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_Staff_Full" EntityType="Self.vw_Staff_Full" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Staff_Full].[Staff ID] AS [Staff ID], 
+    [vw_Staff_Full].[Hotel User ID] AS [Hotel User ID], 
+    [vw_Staff_Full].[Staff Name] AS [Staff Name], 
+    [vw_Staff_Full].[Staff Birthdate] AS [Staff Birthdate], 
+    [vw_Staff_Full].[Staff Gender] AS [Staff Gender], 
+    [vw_Staff_Full].[Staff Contact Number] AS [Staff Contact Number], 
+    [vw_Staff_Full].[Staff Email Address] AS [Staff Email Address], 
+    [vw_Staff_Full].[Staff Salary] AS [Staff Salary], 
+    [vw_Staff_Full].[Staff Account Last Created] AS [Staff Account Last Created], 
+    [vw_Staff_Full].[Staff Account Last Updated] AS [Staff Account Last Updated]
+    FROM [dbo].[vw_Staff_Full] AS [vw_Staff_Full]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_Staff_Personal" EntityType="Self.vw_Staff_Personal" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Staff_Personal].[Staff ID] AS [Staff ID], 
+    [vw_Staff_Personal].[Hotel User ID] AS [Hotel User ID], 
+    [vw_Staff_Personal].[Staff Name] AS [Staff Name], 
+    [vw_Staff_Personal].[Staff Birthdate] AS [Staff Birthdate], 
+    [vw_Staff_Personal].[Staff Gender] AS [Staff Gender], 
+    [vw_Staff_Personal].[Staff Contact Number] AS [Staff Contact Number], 
+    [vw_Staff_Personal].[Staff Email Address] AS [Staff Email Address]
+    FROM [dbo].[vw_Staff_Personal] AS [vw_Staff_Personal]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_Staff_Salary" EntityType="Self.vw_Staff_Salary" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Staff_Salary].[Staff ID] AS [Staff ID], 
+    [vw_Staff_Salary].[Staff Name] AS [Staff Name], 
+    [vw_Staff_Salary].[Staff Contact Number] AS [Staff Contact Number], 
+    [vw_Staff_Salary].[Staff Email Address] AS [Staff Email Address], 
+    [vw_Staff_Salary].[Staff Salary] AS [Staff Salary]
+    FROM [dbo].[vw_Staff_Salary] AS [vw_Staff_Salary]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="vw_UserAccount_Active" EntityType="Self.vw_UserAccount_Active" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -936,8 +1176,8 @@ warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Updates' does not have a 
       <End Role="UserAccount" EntitySet="UserAccount" />
       <End Role="ReservationInfo" EntitySet="ReservationInfo" />
     </AssociationSet>
-    <AssociationSet Name="FK__RoomInfor__userI__7B5B524B" Association="Self.FK__RoomInfor__userI__7B5B524B">
-      <End Role="UserAccount" EntitySet="UserAccount" />
+    <AssociationSet Name="FK__RoomInfor__guest__756D6ECB" Association="Self.FK__RoomInfor__guest__756D6ECB">
+      <End Role="GuestInformation" EntitySet="GuestInformation" />
       <End Role="RoomInformation" EntitySet="RoomInformation" />
     </AssociationSet>
     <AssociationSet Name="FK__StaffInfo__roleI__57DD0BE4" Association="Self.FK__StaffInfo__roleI__57DD0BE4">

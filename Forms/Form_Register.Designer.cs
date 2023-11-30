@@ -189,7 +189,6 @@
             this.CbBox_Role.Name = "CbBox_Role";
             this.CbBox_Role.Size = new System.Drawing.Size(291, 33);
             this.CbBox_Role.TabIndex = 0;
-            this.CbBox_Role.SelectedIndexChanged += new System.EventHandler(this.CbBox_Role_SelectedIndexChanged);
             // 
             // LinkLabel_Login
             // 
@@ -233,7 +232,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(518, 555);
             this.panel1.TabIndex = 27;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // Form_Register
             // 

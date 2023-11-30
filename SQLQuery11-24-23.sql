@@ -10,7 +10,8 @@ CREATE TABLE StaffInfo(
 	StaffGender varchar(99) NOT NULL DEFAULT 'Prefer not to say',
 	StaffContactNo varchar(99) NOT NULL DEFAULT 'Unknown',
 	StaffEmailAddress varchar(99) NOT NULL,
-	StaffSalary decimal(9, 2) NOT NULL
+	StaffSalary decimal(9, 2) NOT NULL,
+	StaffStatus varchar(10) NOT NULL DEFAULT 'ACTIVE'
 )
 
 CREATE VIEW vw_Staff_Full 

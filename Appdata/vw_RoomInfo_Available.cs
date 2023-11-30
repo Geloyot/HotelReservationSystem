@@ -17,8 +17,8 @@ namespace HotelReservationSystem.Appdata
         public int Room_ID { get; set; }
         public string Room_Name { get; set; }
         public string Room_Type { get; set; }
-        public int Occupant_User_ID { get; set; }
+        public int Hotel_Occupant_ID { get; set; }
         public Nullable<int> Room_Occupants { get; set; }
-        public string Occupant_Username { get; set; }
+        public string Occupant_Surname { get; set; }
     }
 }

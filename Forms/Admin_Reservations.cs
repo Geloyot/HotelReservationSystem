@@ -16,5 +16,25 @@ namespace HotelReservationSystem.Forms
         {
             InitializeComponent();
         }
+
+        private void BtnDashboard_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_LogOut_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Timer_Clock_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Admin_Reservations_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

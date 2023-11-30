@@ -102,7 +102,7 @@ namespace HotelReservationSystem
                 return;
             }
 
-            UserAccount NewUserAccount = new UserAccount();
+            UserAccount NewUserAccount = new UserAccount(); // Time-consuming way to add user to DB using db contexts.
             NewUserAccount.userName = Txt_Username.Text;
             NewUserAccount.userPassword = Txt_Password.Text;
             NewUserAccount.userStatus = "ACTIVE";
@@ -112,25 +112,25 @@ namespace HotelReservationSystem
             NewUserAccount.createdById = NewUserAccount.userId;
             NewUserAccount.createdByUser = Txt_Username.Text;
 
-            DB.UserAccount.Add(NewUserAccount);
-            DB.SaveChanges();
+            if (Convert.ToInt32(CbBox_Role.SelectedValue) != 1) // Applicable only for Staff and Admin
+            {
+                Form_Register_Staff staff = new Form_Register_Staff();
+                staff.Show();
+                staff.SetStaffUA(NewUserAccount);   // Do not add the user account yet; transfer it to Staff Info Form.
+                this.Dispose();
+            }
+            else    // Customer will be registered right away.
+            {
+                DB.UserAccount.Add(NewUserAccount);
+                DB.SaveChanges();
 
-            Txt_Username.Clear();
-            Txt_Password.Clear();
-            Txt_PasswordConfirm.Clear();
-            MessageBox.Show("Registration successful!", "Registration Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Txt_Username.Clear();
+                Txt_Password.Clear();
+                Txt_PasswordConfirm.Clear();
+                MessageBox.Show("Registration successful!", "Registration Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            this.Dispose();
-        }
-
-        private void CbBox_Role_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
+                this.Dispose();
+            }
         }
     }
 }
