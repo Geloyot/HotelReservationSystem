@@ -6,7 +6,6 @@ C:\Users\admin\source\repos\HotelReservationSystem\bin\Debug\EntityFramework.Sql
 C:\Users\admin\source\repos\HotelReservationSystem\bin\Debug\EntityFramework.xml
 C:\Users\admin\source\repos\HotelReservationSystem\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\admin\source\repos\HotelReservationSystem\obj\Debug\HotelReservationSystem.csproj.AssemblyReference.cache
-C:\Users\admin\source\repos\HotelReservationSystem\obj\Debug\HotelReservationSystem.Form_AcctManage.resources
 C:\Users\admin\source\repos\HotelReservationSystem\obj\Debug\HotelReservationSystem.Properties.Resources.resources
 C:\Users\admin\source\repos\HotelReservationSystem\obj\Debug\HotelReservationSystem.csproj.GenerateResource.cache
 C:\Users\admin\source\repos\HotelReservationSystem\obj\Debug\HotelReservationSystem.csproj.CoreCompileInputs.cache
@@ -28,3 +27,5 @@ C:\Users\admin\source\repos\HotelReservationSystem\obj\Debug\HotelReservationSys
 C:\Users\admin\source\repos\HotelReservationSystem\obj\Debug\HotelReservationSystem.Staff_Guest.resources
 C:\Users\admin\source\repos\HotelReservationSystem\obj\Debug\HotelReservationSystem.Staff_Rooms.resources
 C:\Users\admin\source\repos\HotelReservationSystem\obj\Debug\HotelReservationSystem.Customer_S4Transaction.resources
+C:\Users\admin\source\repos\HotelReservationSystem\obj\Debug\HotelReservationSystem.Admin_AcctManage.resources
+C:\Users\admin\source\repos\HotelReservationSystem\obj\Debug\HotelReservationSystem.Staff_Reservations.resources

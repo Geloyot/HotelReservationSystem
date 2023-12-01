@@ -44,7 +44,7 @@ namespace HotelReservationSystem
 
         private void Timer_Clock_Tick(object sender, EventArgs e)
         {
-            Label_Calendar.Text = DateTime.Now.ToString("d");
+            Label_Calendar.Text = DateTime.Now.ToString("MMMM dd, yyyy");
             Label_Clock.Text = DateTime.Now.ToString("HH:mm:ss tt");
         }
 
@@ -64,7 +64,16 @@ namespace HotelReservationSystem
         private void LoadCbxRoomNames() 
         {
             DBSYSEntities DB = new DBSYSEntities();
-            var RoomTitles = DB.RoomInformation.ToList();
+            List<RoomInformation> RoomTitles = DB.RoomInformation.ToList();
+            int[] roomIndex = new int[RoomTitles.Count];
+            // Do an enhanced for-loop for RoomTitles using DB's table for rooms to avoid errors.
+            foreach (RoomInformation room in DB.RoomInformation.ToList()) 
+            {
+                if (room.roomGuestCount != 0) 
+                { 
+                    RoomTitles.Remove(room);
+                }
+            }
 
             Cbx_RoomTitles.ValueMember = "roomID";
             Cbx_RoomTitles.DisplayMember = "roomTitle";
@@ -84,48 +93,57 @@ namespace HotelReservationSystem
 
         private void Btn_NextStep_Click(object sender, EventArgs e)
         {
-            DateTime checkin = Calendar_CheckIn.SelectionRange.Start;
-            DateTime checkout = Calendar_CheckIn.SelectionRange.End;
-            int staycount = (checkout - checkin).Days;
-            int adult = Convert.ToInt32(NumUD_AdultCount.Value);
-            int child = Convert.ToInt32(NumUD_ChildCount.Value);
-
-            EP_Input.Clear();
-
-            if (String.IsNullOrEmpty(Cbx_RoomTitles.Text)) 
+            try 
             {
-                EP_Input.SetError(Cbx_RoomTitles, "Select a room first before proceeding!");
-                return;
+                DateTime checkin = Calendar_CheckIn.SelectionRange.Start;
+                DateTime checkout = Calendar_CheckIn.SelectionRange.End;
+                int staycount = (checkout - checkin).Days;
+                int adult = Convert.ToInt32(NumUD_AdultCount.Value);
+                int child = Convert.ToInt32(NumUD_ChildCount.Value);
+
+                EP_Input.Clear();
+
+                if (String.IsNullOrEmpty(Cbx_RoomTitles.Text))
+                {
+                    EP_Input.SetError(Cbx_RoomTitles, "Select a room first before proceeding!");
+                    return;
+                }
+                if (String.IsNullOrEmpty(Txt_CheckOut.Text))
+                {
+
+                    EP_Input.SetError(Txt_CheckOut, "Select your check-out date before proceeding!");
+                    return;
+                }
+
+                if (ReservationDetails == null)
+                {
+                    ReservationDetails = new ReservationInfo();
+                }
+                ReservationDetails.reserveCheckInDate = checkin;
+                ReservationDetails.reserveCheckOutDate = checkout;
+                ReservationDetails.reserveStayLength = staycount;
+                ReservationDetails.roomID = SelectedRoom.roomID;
+                ReservationDetails.reserveGuestAdultCount = adult;
+                ReservationDetails.reserveGuestChildCount = child;
+                ReservationDetails.reserveGuestCount = adult + child;
+                ReservationDetails.reserveHasCheckedIn = false;
+                ReservationDetails.reserveHasCheckedOut = false;
+                ReservationDetails.userId = CurrentlyLoggedUser.GetInstance().CurrentUserAccount.userId;
+
+                Customer_S2Guest guest = new Customer_S2Guest();
+
+                guest.SelectedRoom = SelectedRoom;
+                guest.ReservationDetails = ReservationDetails;
+                guest.GuestDetails = GuestDetails;
+                guest.PaymentDetails = PaymentDetails;
+
+                guest.Show();
+                this.Dispose();
             }
-            if (String.IsNullOrEmpty(Txt_CheckOut.Text))
+            catch (Exception ex)
             {
-
-                EP_Input.SetError(Txt_CheckOut, "Select your check-out date before proceeding!");
-                return;
+                MessageBox.Show("Exception occurred! \n\nDESCRIPTION:\n" + ex.InnerException, "Exception Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            if (ReservationDetails == null) 
-            {
-                ReservationDetails = new ReservationInfo();
-            }
-            ReservationDetails.reserveCheckInDate = checkin;
-            ReservationDetails.reserveCheckOutDate = checkout;
-            ReservationDetails.reserveStayLength = staycount;
-            ReservationDetails.roomID = SelectedRoom.roomID;
-            ReservationDetails.reserveGuestAdultCount = adult;
-            ReservationDetails.reserveGuestChildCount = child;
-            ReservationDetails.reserveGuestCount = adult + child;
-            ReservationDetails.userId = CurrentlyLoggedUser.GetInstance().CurrentUserAccount.userId;
-
-            Customer_S2Guest guest = new Customer_S2Guest();
-
-            guest.SelectedRoom = SelectedRoom;
-            guest.ReservationDetails = ReservationDetails;
-            guest.GuestDetails = GuestDetails;
-            guest.PaymentDetails = PaymentDetails;
-
-            guest.Show();
-            this.Dispose();
         }
 
         private void Customer_S1Room_FormClosed(object sender, FormClosedEventArgs e)

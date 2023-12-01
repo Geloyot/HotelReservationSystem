@@ -15,8 +15,8 @@ namespace HotelReservationSystem.Appdata
     public partial class vw_Reservation_GuestInfo
     {
         public int Reservation_No_ { get; set; }
-        public System.DateTime Check_In { get; set; }
-        public System.DateTime Check_Out { get; set; }
+        public Nullable<System.DateTime> Check_In { get; set; }
+        public Nullable<System.DateTime> Check_Out { get; set; }
         public int No__of_Guests { get; set; }
         public Nullable<int> Guest_ID_No_ { get; set; }
         public string First_Name { get; set; }
@@ -24,7 +24,7 @@ namespace HotelReservationSystem.Appdata
         public string Gender { get; set; }
         public string Contact_No_ { get; set; }
         public string Email_Address { get; set; }
-        public System.DateTime Last_Checked_In { get; set; }
-        public System.DateTime Last_Checked_Out { get; set; }
+        public Nullable<System.DateTime> Last_Checked_In { get; set; }
+        public Nullable<System.DateTime> Last_Checked_Out { get; set; }
     }
 }

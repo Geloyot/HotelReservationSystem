@@ -21,12 +21,16 @@ namespace HotelReservationSystem.Appdata
         }
     
         public int reserveID { get; set; }
-        public System.DateTime reserveCheckInDate { get; set; }
-        public System.DateTime reserveCheckOutDate { get; set; }
+        public Nullable<System.DateTime> reserveCheckInDate { get; set; }
+        public Nullable<System.DateTime> reserveCheckOutDate { get; set; }
         public int reserveStayLength { get; set; }
         public int reserveGuestCount { get; set; }
         public int reserveGuestAdultCount { get; set; }
         public int reserveGuestChildCount { get; set; }
+        public Nullable<bool> reserveHasCheckedIn { get; set; }
+        public Nullable<bool> reserveHasCheckedOut { get; set; }
+        public Nullable<System.DateTime> reserveGuestCheckInDate { get; set; }
+        public Nullable<System.DateTime> reserveGuestCheckOutDate { get; set; }
         public Nullable<int> userId { get; set; }
         public Nullable<int> guestID { get; set; }
         public Nullable<int> roomID { get; set; }

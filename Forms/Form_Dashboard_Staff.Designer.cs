@@ -28,15 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.Label_Clock = new System.Windows.Forms.Label();
             this.Btn_Payments = new System.Windows.Forms.Button();
             this.Btn_Rooms = new System.Windows.Forms.Button();
-            this.Label_Calendar = new System.Windows.Forms.Label();
             this.Btn_Reservations = new System.Windows.Forms.Button();
             this.Btn_Guests = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.Label_AccountCount = new System.Windows.Forms.Label();
+            this.Label_GuestCount = new System.Windows.Forms.Label();
             this.Dgv_GuestsSmall = new System.Windows.Forms.DataGridView();
             this.Btn_GoToGuests = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
@@ -57,21 +56,27 @@
             this.Label_RoomAvailCount = new System.Windows.Forms.Label();
             this.Label_Availability = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.ToolStripStatus_CurrentUser = new System.Windows.Forms.ToolStripStatusLabel();
+            this.Timer_Clock = new System.Windows.Forms.Timer(this.components);
+            this.Panel_DateTime = new System.Windows.Forms.Panel();
+            this.Label_Calendar = new System.Windows.Forms.Label();
+            this.Label_Clock = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GuestsSmall)).BeginInit();
             this.Panel_Reservation.SuspendLayout();
             this.Panel_Availability.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.statusStrip1.SuspendLayout();
+            this.Panel_DateTime.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.panel1.Controls.Add(this.Label_Clock);
             this.panel1.Controls.Add(this.Btn_Payments);
             this.panel1.Controls.Add(this.Btn_Rooms);
-            this.panel1.Controls.Add(this.Label_Calendar);
             this.panel1.Controls.Add(this.Btn_Reservations);
             this.panel1.Controls.Add(this.Btn_Guests);
             this.panel1.Controls.Add(this.panel2);
@@ -81,16 +86,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(842, 454);
             this.panel1.TabIndex = 0;
-            // 
-            // Label_Clock
-            // 
-            this.Label_Clock.AutoSize = true;
-            this.Label_Clock.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Clock.Location = new System.Drawing.Point(9, 38);
-            this.Label_Clock.Name = "Label_Clock";
-            this.Label_Clock.Size = new System.Drawing.Size(61, 25);
-            this.Label_Clock.TabIndex = 30;
-            this.Label_Clock.Text = "Time:";
             // 
             // Btn_Payments
             // 
@@ -113,17 +108,6 @@
             this.Btn_Rooms.Text = "ROOMS";
             this.Btn_Rooms.UseVisualStyleBackColor = true;
             this.Btn_Rooms.Click += new System.EventHandler(this.Btn_Rooms_Click);
-            // 
-            // Label_Calendar
-            // 
-            this.Label_Calendar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Label_Calendar.AutoSize = true;
-            this.Label_Calendar.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Calendar.Location = new System.Drawing.Point(9, 13);
-            this.Label_Calendar.Name = "Label_Calendar";
-            this.Label_Calendar.Size = new System.Drawing.Size(60, 25);
-            this.Label_Calendar.TabIndex = 31;
-            this.Label_Calendar.Text = "Date:";
             // 
             // Btn_Reservations
             // 
@@ -151,7 +135,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.Label_AccountCount);
+            this.panel2.Controls.Add(this.Label_GuestCount);
             this.panel2.Controls.Add(this.Dgv_GuestsSmall);
             this.panel2.Controls.Add(this.Btn_GoToGuests);
             this.panel2.Controls.Add(this.label10);
@@ -160,16 +144,16 @@
             this.panel2.Size = new System.Drawing.Size(270, 370);
             this.panel2.TabIndex = 27;
             // 
-            // Label_AccountCount
+            // Label_GuestCount
             // 
-            this.Label_AccountCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Label_AccountCount.AutoSize = true;
-            this.Label_AccountCount.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_AccountCount.Location = new System.Drawing.Point(3, 302);
-            this.Label_AccountCount.Name = "Label_AccountCount";
-            this.Label_AccountCount.Size = new System.Drawing.Size(229, 25);
-            this.Label_AccountCount.TabIndex = 29;
-            this.Label_AccountCount.Text = "No. of Current Guests: ";
+            this.Label_GuestCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Label_GuestCount.AutoSize = true;
+            this.Label_GuestCount.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_GuestCount.Location = new System.Drawing.Point(3, 302);
+            this.Label_GuestCount.Name = "Label_GuestCount";
+            this.Label_GuestCount.Size = new System.Drawing.Size(229, 25);
+            this.Label_GuestCount.TabIndex = 29;
+            this.Label_GuestCount.Text = "No. of Current Guests: ";
             // 
             // Dgv_GuestsSmall
             // 
@@ -400,18 +384,72 @@
             this.pictureBox1.TabIndex = 28;
             this.pictureBox1.TabStop = false;
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripStatus_CurrentUser});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 630);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(885, 28);
+            this.statusStrip1.TabIndex = 29;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // ToolStripStatus_CurrentUser
+            // 
+            this.ToolStripStatus_CurrentUser.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Bold);
+            this.ToolStripStatus_CurrentUser.Name = "ToolStripStatus_CurrentUser";
+            this.ToolStripStatus_CurrentUser.Size = new System.Drawing.Size(124, 23);
+            this.ToolStripStatus_CurrentUser.Text = "Current User:";
+            // 
+            // Timer_Clock
+            // 
+            this.Timer_Clock.Tick += new System.EventHandler(this.Timer_Clock_Tick);
+            // 
+            // Panel_DateTime
+            // 
+            this.Panel_DateTime.BackColor = System.Drawing.Color.Cyan;
+            this.Panel_DateTime.Controls.Add(this.Label_Calendar);
+            this.Panel_DateTime.Controls.Add(this.Label_Clock);
+            this.Panel_DateTime.Location = new System.Drawing.Point(12, 12);
+            this.Panel_DateTime.Name = "Panel_DateTime";
+            this.Panel_DateTime.Size = new System.Drawing.Size(255, 62);
+            this.Panel_DateTime.TabIndex = 30;
+            // 
+            // Label_Calendar
+            // 
+            this.Label_Calendar.AutoSize = true;
+            this.Label_Calendar.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_Calendar.Location = new System.Drawing.Point(3, 5);
+            this.Label_Calendar.Name = "Label_Calendar";
+            this.Label_Calendar.Size = new System.Drawing.Size(60, 25);
+            this.Label_Calendar.TabIndex = 14;
+            this.Label_Calendar.Text = "Date:";
+            // 
+            // Label_Clock
+            // 
+            this.Label_Clock.AutoSize = true;
+            this.Label_Clock.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_Clock.Location = new System.Drawing.Point(3, 30);
+            this.Label_Clock.Name = "Label_Clock";
+            this.Label_Clock.Size = new System.Drawing.Size(61, 25);
+            this.Label_Clock.TabIndex = 13;
+            this.Label_Clock.Text = "Time:";
+            // 
             // Form_Dashboard_Staff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::HotelReservationSystem.Properties.Resources.bg1;
             this.ClientSize = new System.Drawing.Size(885, 658);
+            this.Controls.Add(this.Panel_DateTime);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.Name = "Form_Dashboard_Staff";
             this.Text = "Form_Dashboard_Staff";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_Dashboard_Staff_FormClosed);
+            this.Load += new System.EventHandler(this.Form_Dashboard_Staff_Load);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_GuestsSmall)).EndInit();
@@ -420,7 +458,12 @@
             this.Panel_Availability.ResumeLayout(false);
             this.Panel_Availability.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
+            this.Panel_DateTime.ResumeLayout(false);
+            this.Panel_DateTime.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -445,7 +488,7 @@
         private System.Windows.Forms.Label Label_Availability;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label Label_AccountCount;
+        private System.Windows.Forms.Label Label_GuestCount;
         private System.Windows.Forms.DataGridView Dgv_GuestsSmall;
         private System.Windows.Forms.Button Btn_GoToGuests;
         private System.Windows.Forms.Label label10;
@@ -453,7 +496,11 @@
         private System.Windows.Forms.Button Btn_Reservations;
         private System.Windows.Forms.Button Btn_Rooms;
         private System.Windows.Forms.Button Btn_Payments;
-        private System.Windows.Forms.Label Label_Clock;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel ToolStripStatus_CurrentUser;
+        private System.Windows.Forms.Timer Timer_Clock;
+        private System.Windows.Forms.Panel Panel_DateTime;
         private System.Windows.Forms.Label Label_Calendar;
+        private System.Windows.Forms.Label Label_Clock;
     }
 }

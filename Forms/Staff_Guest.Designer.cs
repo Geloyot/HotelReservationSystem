@@ -135,12 +135,11 @@
             this.Panel_DateTime.Controls.Add(this.Label_Clock);
             this.Panel_DateTime.Location = new System.Drawing.Point(15, 4);
             this.Panel_DateTime.Name = "Panel_DateTime";
-            this.Panel_DateTime.Size = new System.Drawing.Size(128, 69);
+            this.Panel_DateTime.Size = new System.Drawing.Size(326, 69);
             this.Panel_DateTime.TabIndex = 15;
             // 
             // Label_Calendar
             // 
-            this.Label_Calendar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Label_Calendar.AutoSize = true;
             this.Label_Calendar.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label_Calendar.Location = new System.Drawing.Point(3, 8);
@@ -193,7 +192,7 @@
             this.Panel_AcctOptions.Controls.Add(this.label2);
             this.Panel_AcctOptions.Location = new System.Drawing.Point(15, 154);
             this.Panel_AcctOptions.Name = "Panel_AcctOptions";
-            this.Panel_AcctOptions.Size = new System.Drawing.Size(889, 175);
+            this.Panel_AcctOptions.Size = new System.Drawing.Size(889, 211);
             this.Panel_AcctOptions.TabIndex = 9;
             // 
             // Txt_SearchGuestName
@@ -378,9 +377,9 @@
             // Dgv_Guests
             // 
             this.Dgv_Guests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_Guests.Location = new System.Drawing.Point(15, 335);
+            this.Dgv_Guests.Location = new System.Drawing.Point(15, 371);
             this.Dgv_Guests.Name = "Dgv_Guests";
-            this.Dgv_Guests.Size = new System.Drawing.Size(889, 344);
+            this.Dgv_Guests.Size = new System.Drawing.Size(889, 308);
             this.Dgv_Guests.TabIndex = 0;
             this.Dgv_Guests.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Guests_CellClick);
             // 

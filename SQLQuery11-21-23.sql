@@ -19,9 +19,18 @@ CREATE TABLE ReservationInfo (
 
 CREATE VIEW vw_Reservation_Full
 AS
-SELECT reserveID AS 'Reservation No.', reserveCheckInDate AS 'Check-In', reserveCheckOutDate AS 'Check-Out', reserveStayLength AS 'Nights to Stay',
-reserveGuestAdultCount AS 'No. of Adult Guests', reserveGuestChildCount AS 'No. of Children Guests', reserveGuestCount AS 'No. of Guests',
-userId AS 'Booker ID', guestID AS 'Guest ID No.', roomID AS 'Room ID'
+SELECT reserveID AS "Reservation No.", 
+reserveCheckInDate AS "Check-In", 
+reserveCheckOutDate AS "Check-Out", 
+reserveHasCheckedIn AS "Has Checked In?", 
+reserveHasCheckedOut AS "Has Checked Out?",
+reserveStayLength AS "Nights to Stay",
+reserveGuestAdultCount AS "No. of Adult Guests", 
+reserveGuestChildCount AS "No. of Children Guests", 
+reserveGuestCount AS "No. of Guests",
+userId AS "Booker ID", 
+guestID AS "Guest ID No.", 
+roomID AS "Room ID"
 FROM ReservationInfo 
 
 CREATE VIEW vw_Reservation_Rooms

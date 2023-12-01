@@ -40,7 +40,7 @@ namespace HotelReservationSystem
 
         private void Timer_Clock_Tick(object sender, EventArgs e)
         {
-            Label_Calendar.Text = DateTime.Now.ToString("d");
+            Label_Calendar.Text = DateTime.Now.ToString("MMMM dd, yyyy");
             Label_Clock.Text = DateTime.Now.ToString("HH:mm:ss tt");
         }
 
@@ -56,10 +56,7 @@ namespace HotelReservationSystem
         private void Btn_LogOut_Click(object sender, EventArgs e)
         {
             IsLoggingOut = true;
-
-            Form_Login login = new Form_Login();
-            login.Show();
-            this.Dispose();
+            this.Close();
         }
 
         private void Staff_Rooms_FormClosed(object sender, FormClosedEventArgs e)
@@ -67,6 +64,12 @@ namespace HotelReservationSystem
             if (!IsLoggingOut)
             {
                 Application.Exit();
+            }
+            else
+            {
+                Form_Login login = new Form_Login();
+                login.Show();
+                this.Dispose();
             }
         }
 

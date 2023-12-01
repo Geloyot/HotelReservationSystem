@@ -58,6 +58,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Appdata\GuestInformation.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\PaymentInfo.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\ReservationInfo.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\Role.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\RoomInformation.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Appdata\SP_SearchGuest_Name_Result.cs">
       <DependentUpon>HotelDB.tt</DependentUpon>
     </Compile>
@@ -73,57 +88,6 @@
     <Compile Include="Appdata\SP_SearchRoom_RoomTitle_Result.cs">
       <DependentUpon>HotelDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Appdata\vw_Guest_CheckInOutDates.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Appdata\vw_Guest_Full.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Appdata\vw_Guest_RoomOccupied.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Customer_S4Transaction.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Customer_S4Transaction.Designer.cs">
-      <DependentUpon>Customer_S4Transaction.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Admin_Staff.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Admin_Staff.Designer.cs">
-      <DependentUpon>Admin_Staff.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Appdata\GuestInformation.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Appdata\HotelDB.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HotelDB.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Appdata\HotelDB.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HotelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Appdata\HotelDB.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HotelDB.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Appdata\PaymentInfo.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Appdata\ReservationInfo.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Appdata\Role.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Appdata\RoomInformation.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Appdata\SP_SearchUA_Username_Result.cs">
       <DependentUpon>HotelDB.tt</DependentUpon>
     </Compile>
@@ -131,6 +95,15 @@
       <DependentUpon>HotelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Appdata\UserAccount.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_Guest_CheckInOutDates.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_Guest_Full.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_Guest_RoomOccupied.cs">
       <DependentUpon>HotelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Appdata\vw_Payment_Amount.cs">
@@ -149,6 +122,15 @@
       <DependentUpon>HotelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Appdata\vw_Payment_UserInfo.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_Reservation_CheckedIn.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_Reservation_CheckedOut.cs">
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\vw_Reservation_CheckStatus.cs">
       <DependentUpon>HotelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Appdata\vw_Reservation_Full.cs">
@@ -208,6 +190,33 @@
     <Compile Include="Appdata\vw_UserAccount_Updates.cs">
       <DependentUpon>HotelDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Customer_S4Transaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Customer_S4Transaction.Designer.cs">
+      <DependentUpon>Customer_S4Transaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Admin_Staff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin_Staff.Designer.cs">
+      <DependentUpon>Admin_Staff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\HotelDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotelDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\HotelDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appdata\HotelDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotelDB.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Customer_S3Payment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -238,11 +247,11 @@
     <Compile Include="Forms\Customer_S2.Designer.cs">
       <DependentUpon>Customer_S2Guest.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Form_AcctManage.cs">
+    <Compile Include="Forms\Admin_AcctManage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form_AcctManage.Designer.cs">
-      <DependentUpon>Form_AcctManage.cs</DependentUpon>
+    <Compile Include="Forms\Admin_AcctManage.Designer.cs">
+      <DependentUpon>Admin_AcctManage.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Form_Dashboard_Admin.cs">
       <SubType>Form</SubType>
@@ -331,8 +340,8 @@
     <EmbeddedResource Include="Forms\Customer_S3Payment.resx">
       <DependentUpon>Customer_S3Payment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form_AcctManage.resx">
-      <DependentUpon>Form_AcctManage.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Admin_AcctManage.resx">
+      <DependentUpon>Admin_AcctManage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form_Dashboard_Admin.resx">
       <DependentUpon>Form_Dashboard_Admin.cs</DependentUpon>
@@ -354,6 +363,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Staff_Guest.resx">
       <DependentUpon>Staff_Guest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Staff_Reservations.resx">
+      <DependentUpon>Staff_Reservations.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Staff_Rooms.resx">
       <DependentUpon>Staff_Rooms.cs</DependentUpon>

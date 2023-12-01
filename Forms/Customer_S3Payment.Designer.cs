@@ -51,17 +51,17 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.Btn_LogOut = new System.Windows.Forms.Button();
+            this.Pic_HotelKannoteki = new System.Windows.Forms.PictureBox();
+            this.EP_Input = new System.Windows.Forms.ErrorProvider(this.components);
             this.Panel_DateTime = new System.Windows.Forms.Panel();
             this.Label_Calendar = new System.Windows.Forms.Label();
             this.Label_Clock = new System.Windows.Forms.Label();
-            this.Pic_HotelKannoteki = new System.Windows.Forms.PictureBox();
-            this.EP_Input = new System.Windows.Forms.ErrorProvider(this.components);
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picProgress)).BeginInit();
-            this.Panel_DateTime.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_HotelKannoteki)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EP_Input)).BeginInit();
+            this.Panel_DateTime.SuspendLayout();
             this.SuspendLayout();
             // 
             // Timer_Clock
@@ -89,6 +89,7 @@
             // panel1
             // 
             this.panel1.BackgroundImage = global::HotelReservationSystem.Properties.Resources.bg1;
+            this.panel1.Controls.Add(this.Panel_DateTime);
             this.panel1.Controls.Add(this.Txt_CardNumber);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.Txt_SecurityCode);
@@ -107,7 +108,6 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.Btn_LogOut);
-            this.panel1.Controls.Add(this.Panel_DateTime);
             this.panel1.Controls.Add(this.Pic_HotelKannoteki);
             this.panel1.Location = new System.Drawing.Point(24, 9);
             this.panel1.Name = "panel1";
@@ -300,6 +300,21 @@
             this.Btn_LogOut.UseVisualStyleBackColor = true;
             this.Btn_LogOut.Click += new System.EventHandler(this.Btn_LogOut_Click);
             // 
+            // Pic_HotelKannoteki
+            // 
+            this.Pic_HotelKannoteki.BackColor = System.Drawing.Color.Transparent;
+            this.Pic_HotelKannoteki.Image = global::HotelReservationSystem.Properties.Resources.hoteldbsyslogo;
+            this.Pic_HotelKannoteki.Location = new System.Drawing.Point(327, 3);
+            this.Pic_HotelKannoteki.Name = "Pic_HotelKannoteki";
+            this.Pic_HotelKannoteki.Size = new System.Drawing.Size(115, 62);
+            this.Pic_HotelKannoteki.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pic_HotelKannoteki.TabIndex = 12;
+            this.Pic_HotelKannoteki.TabStop = false;
+            // 
+            // EP_Input
+            // 
+            this.EP_Input.ContainerControl = this;
+            // 
             // Panel_DateTime
             // 
             this.Panel_DateTime.BackColor = System.Drawing.Color.LightGreen;
@@ -307,12 +322,11 @@
             this.Panel_DateTime.Controls.Add(this.Label_Clock);
             this.Panel_DateTime.Location = new System.Drawing.Point(3, 3);
             this.Panel_DateTime.Name = "Panel_DateTime";
-            this.Panel_DateTime.Size = new System.Drawing.Size(128, 62);
-            this.Panel_DateTime.TabIndex = 16;
+            this.Panel_DateTime.Size = new System.Drawing.Size(306, 62);
+            this.Panel_DateTime.TabIndex = 41;
             // 
             // Label_Calendar
             // 
-            this.Label_Calendar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Label_Calendar.AutoSize = true;
             this.Label_Calendar.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label_Calendar.Location = new System.Drawing.Point(3, 5);
@@ -331,21 +345,6 @@
             this.Label_Clock.TabIndex = 13;
             this.Label_Clock.Text = "Time:";
             // 
-            // Pic_HotelKannoteki
-            // 
-            this.Pic_HotelKannoteki.BackColor = System.Drawing.Color.Transparent;
-            this.Pic_HotelKannoteki.Image = global::HotelReservationSystem.Properties.Resources.hoteldbsyslogo;
-            this.Pic_HotelKannoteki.Location = new System.Drawing.Point(327, 3);
-            this.Pic_HotelKannoteki.Name = "Pic_HotelKannoteki";
-            this.Pic_HotelKannoteki.Size = new System.Drawing.Size(115, 62);
-            this.Pic_HotelKannoteki.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pic_HotelKannoteki.TabIndex = 12;
-            this.Pic_HotelKannoteki.TabStop = false;
-            // 
-            // EP_Input
-            // 
-            this.EP_Input.ContainerControl = this;
-            // 
             // Customer_S3Payment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -363,10 +362,10 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picProgress)).EndInit();
-            this.Panel_DateTime.ResumeLayout(false);
-            this.Panel_DateTime.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_HotelKannoteki)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EP_Input)).EndInit();
+            this.Panel_DateTime.ResumeLayout(false);
+            this.Panel_DateTime.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -387,9 +386,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Btn_LogOut;
-        private System.Windows.Forms.Panel Panel_DateTime;
-        private System.Windows.Forms.Label Label_Calendar;
-        private System.Windows.Forms.Label Label_Clock;
         private System.Windows.Forms.PictureBox Pic_HotelKannoteki;
         private System.Windows.Forms.ComboBox Cbx_CardType;
         private System.Windows.Forms.Label label5;
@@ -401,5 +397,8 @@
         private System.Windows.Forms.TextBox Txt_CardNumber;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ErrorProvider EP_Input;
+        private System.Windows.Forms.Panel Panel_DateTime;
+        private System.Windows.Forms.Label Label_Calendar;
+        private System.Windows.Forms.Label Label_Clock;
     }
 }

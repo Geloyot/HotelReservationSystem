@@ -110,11 +110,18 @@
     <FunctionImportMapping FunctionImportName="SP_UpdateRoom" FunctionName="DBSYSModel.Store.SP_UpdateRoom" />
     <FunctionImportMapping FunctionImportName="SP_UpdateRoom_GuestCount" FunctionName="DBSYSModel.Store.SP_UpdateRoom_GuestCount" />
     <FunctionImportMapping FunctionImportName="SP_UpdateRoom_NoImage" FunctionName="DBSYSModel.Store.SP_UpdateRoom_NoImage" />
+    <FunctionImportMapping FunctionImportName="SP_UpdateRoom_GuestID" FunctionName="DBSYSModel.Store.SP_UpdateRoom_GuestID" />
+    <FunctionImportMapping FunctionImportName="SP_UpdateGuest_CheckInDate" FunctionName="DBSYSModel.Store.SP_UpdateGuest_CheckInDate" />
+    <FunctionImportMapping FunctionImportName="SP_UpdateGuest_CheckOutDate" FunctionName="DBSYSModel.Store.SP_UpdateGuest_CheckOutDate" />
+    <FunctionImportMapping FunctionImportName="SP_UpdateReservation_CheckInGuest" FunctionName="DBSYSModel.Store.SP_UpdateReservation_CheckInGuest" />
+    <FunctionImportMapping FunctionImportName="SP_UpdateReservation_CheckOutGuest" FunctionName="DBSYSModel.Store.SP_UpdateReservation_CheckOutGuest" />
+    <FunctionImportMapping FunctionImportName="SP_UpdateRoom_EmptyRoom" FunctionName="DBSYSModel.Store.SP_UpdateRoom_EmptyRoom" />
     <EntitySetMapping Name="GuestInformation">
       <EntityTypeMapping TypeName="DBSYSModel.GuestInformation">
         <MappingFragment StoreEntitySet="GuestInformation">
           <ScalarProperty Name="roomID" ColumnName="roomID" />
           <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="guestHasReservation" ColumnName="guestHasReservation" />
           <ScalarProperty Name="guestLastCheckOutDate" ColumnName="guestLastCheckOutDate" />
           <ScalarProperty Name="guestLastCheckInDate" ColumnName="guestLastCheckInDate" />
           <ScalarProperty Name="guestEmailAddress" ColumnName="guestEmailAddress" />
@@ -150,6 +157,10 @@
           <ScalarProperty Name="roomID" ColumnName="roomID" />
           <ScalarProperty Name="guestID" ColumnName="guestID" />
           <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="reserveGuestCheckOutDate" ColumnName="reserveGuestCheckOutDate" />
+          <ScalarProperty Name="reserveGuestCheckInDate" ColumnName="reserveGuestCheckInDate" />
+          <ScalarProperty Name="reserveHasCheckedOut" ColumnName="reserveHasCheckedOut" />
+          <ScalarProperty Name="reserveHasCheckedIn" ColumnName="reserveHasCheckedIn" />
           <ScalarProperty Name="reserveGuestChildCount" ColumnName="reserveGuestChildCount" />
           <ScalarProperty Name="reserveGuestAdultCount" ColumnName="reserveGuestAdultCount" />
           <ScalarProperty Name="reserveGuestCount" ColumnName="reserveGuestCount" />
@@ -330,6 +341,43 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="vw_Reservation_CheckedIn">
+      <EntityTypeMapping TypeName="DBSYSModel.vw_Reservation_CheckedIn">
+        <MappingFragment StoreEntitySet="vw_Reservation_CheckedIn">
+          <ScalarProperty Name="No__of_Guests" ColumnName="No. of Guests" />
+          <ScalarProperty Name="No__of_Children_Guests" ColumnName="No. of Children Guests" />
+          <ScalarProperty Name="No__of_Adult_Guests" ColumnName="No. of Adult Guests" />
+          <ScalarProperty Name="Nights_to_Stay" ColumnName="Nights to Stay" />
+          <ScalarProperty Name="Check_Out" ColumnName="Check-Out" />
+          <ScalarProperty Name="Check_In" ColumnName="Check-In" />
+          <ScalarProperty Name="Reservation_No_" ColumnName="Reservation No." />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Reservation_CheckedOut">
+      <EntityTypeMapping TypeName="DBSYSModel.vw_Reservation_CheckedOut">
+        <MappingFragment StoreEntitySet="vw_Reservation_CheckedOut">
+          <ScalarProperty Name="No__of_Guests" ColumnName="No. of Guests" />
+          <ScalarProperty Name="No__of_Children_Guests" ColumnName="No. of Children Guests" />
+          <ScalarProperty Name="No__of_Adult_Guests" ColumnName="No. of Adult Guests" />
+          <ScalarProperty Name="Nights_to_Stay" ColumnName="Nights to Stay" />
+          <ScalarProperty Name="Check_Out" ColumnName="Check-Out" />
+          <ScalarProperty Name="Check_In" ColumnName="Check-In" />
+          <ScalarProperty Name="Reservation_No_" ColumnName="Reservation No." />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Reservation_CheckStatus">
+      <EntityTypeMapping TypeName="DBSYSModel.vw_Reservation_CheckStatus">
+        <MappingFragment StoreEntitySet="vw_Reservation_CheckStatus">
+          <ScalarProperty Name="Has_Checked_Out_" ColumnName="Has Checked Out?" />
+          <ScalarProperty Name="Has_Checked_In_" ColumnName="Has Checked In?" />
+          <ScalarProperty Name="Check_Out" ColumnName="Check-Out" />
+          <ScalarProperty Name="Check_In" ColumnName="Check-In" />
+          <ScalarProperty Name="Reservation_No_" ColumnName="Reservation No." />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="vw_Reservation_Full">
       <EntityTypeMapping TypeName="DBSYSModel.vw_Reservation_Full">
         <MappingFragment StoreEntitySet="vw_Reservation_Full">
@@ -340,6 +388,8 @@
           <ScalarProperty Name="No__of_Children_Guests" ColumnName="No. of Children Guests" />
           <ScalarProperty Name="No__of_Adult_Guests" ColumnName="No. of Adult Guests" />
           <ScalarProperty Name="Nights_to_Stay" ColumnName="Nights to Stay" />
+          <ScalarProperty Name="Has_Checked_Out_" ColumnName="Has Checked Out?" />
+          <ScalarProperty Name="Has_Checked_In_" ColumnName="Has Checked In?" />
           <ScalarProperty Name="Check_Out" ColumnName="Check-Out" />
           <ScalarProperty Name="Check_In" ColumnName="Check-In" />
           <ScalarProperty Name="Reservation_No_" ColumnName="Reservation No." />
@@ -566,6 +616,5 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="SP_UpdateRoom_GuestID" FunctionName="DBSYSModel.Store.SP_UpdateRoom_GuestID" />
   </EntityContainerMapping>
 </Mapping>

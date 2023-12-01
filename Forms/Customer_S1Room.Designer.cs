@@ -33,6 +33,10 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.ToolStripStatus_CurrentUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.NumUD_ChildCount = new System.Windows.Forms.NumericUpDown();
+            this.NumUD_AdultCount = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.Txt_CheckOut = new System.Windows.Forms.TextBox();
@@ -57,19 +61,15 @@
             this.Label_Calendar = new System.Windows.Forms.Label();
             this.Label_Clock = new System.Windows.Forms.Label();
             this.Pic_HotelKannoteki = new System.Windows.Forms.PictureBox();
-            this.NumUD_AdultCount = new System.Windows.Forms.NumericUpDown();
-            this.NumUD_ChildCount = new System.Windows.Forms.NumericUpDown();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.EP_Input = new System.Windows.Forms.ErrorProvider(this.components);
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumUD_ChildCount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumUD_AdultCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picProgress)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBx_RoomImage)).BeginInit();
             this.Panel_DateTime.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_HotelKannoteki)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumUD_AdultCount)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumUD_ChildCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EP_Input)).BeginInit();
             this.SuspendLayout();
             // 
@@ -128,6 +128,59 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(754, 523);
             this.panel1.TabIndex = 1;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(185, 366);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(152, 25);
+            this.label8.TabIndex = 40;
+            this.label8.Text = "No. of Children";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(38, 366);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(134, 25);
+            this.label7.TabIndex = 39;
+            this.label7.Text = "No. of Adults";
+            // 
+            // NumUD_ChildCount
+            // 
+            this.NumUD_ChildCount.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NumUD_ChildCount.Location = new System.Drawing.Point(190, 392);
+            this.NumUD_ChildCount.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.NumUD_ChildCount.Name = "NumUD_ChildCount";
+            this.NumUD_ChildCount.Size = new System.Drawing.Size(83, 33);
+            this.NumUD_ChildCount.TabIndex = 38;
+            // 
+            // NumUD_AdultCount
+            // 
+            this.NumUD_AdultCount.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NumUD_AdultCount.Location = new System.Drawing.Point(41, 392);
+            this.NumUD_AdultCount.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.NumUD_AdultCount.Name = "NumUD_AdultCount";
+            this.NumUD_AdultCount.Size = new System.Drawing.Size(83, 33);
+            this.NumUD_AdultCount.TabIndex = 37;
+            this.NumUD_AdultCount.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label6
             // 
@@ -343,7 +396,7 @@
             this.Panel_DateTime.Controls.Add(this.Label_Clock);
             this.Panel_DateTime.Location = new System.Drawing.Point(3, 3);
             this.Panel_DateTime.Name = "Panel_DateTime";
-            this.Panel_DateTime.Size = new System.Drawing.Size(128, 62);
+            this.Panel_DateTime.Size = new System.Drawing.Size(304, 62);
             this.Panel_DateTime.TabIndex = 16;
             // 
             // Label_Calendar
@@ -351,7 +404,7 @@
             this.Label_Calendar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Label_Calendar.AutoSize = true;
             this.Label_Calendar.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Calendar.Location = new System.Drawing.Point(3, 5);
+            this.Label_Calendar.Location = new System.Drawing.Point(4, 5);
             this.Label_Calendar.Name = "Label_Calendar";
             this.Label_Calendar.Size = new System.Drawing.Size(60, 25);
             this.Label_Calendar.TabIndex = 14;
@@ -378,59 +431,6 @@
             this.Pic_HotelKannoteki.TabIndex = 12;
             this.Pic_HotelKannoteki.TabStop = false;
             // 
-            // NumUD_AdultCount
-            // 
-            this.NumUD_AdultCount.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NumUD_AdultCount.Location = new System.Drawing.Point(41, 392);
-            this.NumUD_AdultCount.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.NumUD_AdultCount.Name = "NumUD_AdultCount";
-            this.NumUD_AdultCount.Size = new System.Drawing.Size(83, 33);
-            this.NumUD_AdultCount.TabIndex = 37;
-            this.NumUD_AdultCount.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // NumUD_ChildCount
-            // 
-            this.NumUD_ChildCount.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NumUD_ChildCount.Location = new System.Drawing.Point(190, 392);
-            this.NumUD_ChildCount.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.NumUD_ChildCount.Name = "NumUD_ChildCount";
-            this.NumUD_ChildCount.Size = new System.Drawing.Size(83, 33);
-            this.NumUD_ChildCount.TabIndex = 38;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(38, 366);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(134, 25);
-            this.label7.TabIndex = 39;
-            this.label7.Text = "No. of Adults";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(185, 366);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(152, 25);
-            this.label8.TabIndex = 40;
-            this.label8.Text = "No. of Children";
-            // 
             // EP_Input
             // 
             this.EP_Input.ContainerControl = this;
@@ -451,13 +451,13 @@
             this.statusStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumUD_ChildCount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumUD_AdultCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picProgress)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBx_RoomImage)).EndInit();
             this.Panel_DateTime.ResumeLayout(false);
             this.Panel_DateTime.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_HotelKannoteki)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumUD_AdultCount)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumUD_ChildCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EP_Input)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

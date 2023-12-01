@@ -17,6 +17,8 @@ namespace HotelReservationSystem.Appdata
         public int Reservation_No_ { get; set; }
         public System.DateTime Check_In { get; set; }
         public System.DateTime Check_Out { get; set; }
+        public Nullable<bool> Has_Checked_In_ { get; set; }
+        public Nullable<bool> Has_Checked_Out_ { get; set; }
         public int Nights_to_Stay { get; set; }
         public int No__of_Adult_Guests { get; set; }
         public int No__of_Children_Guests { get; set; }

@@ -12,13 +12,14 @@
           <Property Name="guestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="guestFirstName" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="guestLastName" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="guestBirthDate" Type="smalldatetime" />
+          <Property Name="guestBirthDate" Type="datetime" />
           <Property Name="guestGender" Type="varchar" MaxLength="99" Nullable="false" />
           <Property Name="guestContactNo" Type="varchar" MaxLength="99" Nullable="false" />
           <Property Name="guestAddress" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="guestEmailAddress" Type="varchar" MaxLength="99" Nullable="false" />
-          <Property Name="guestLastCheckInDate" Type="smalldatetime" Nullable="false" />
-          <Property Name="guestLastCheckOutDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="guestLastCheckInDate" Type="datetime" />
+          <Property Name="guestLastCheckOutDate" Type="datetime" />
+          <Property Name="guestHasReservation" Type="bit" />
           <Property Name="userID" Type="int" />
           <Property Name="roomID" Type="int" />
         </EntityType>
@@ -42,12 +43,16 @@
             <PropertyRef Name="reserveID" />
           </Key>
           <Property Name="reserveID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="reserveCheckInDate" Type="datetime" Nullable="false" />
-          <Property Name="reserveCheckOutDate" Type="datetime" Nullable="false" />
+          <Property Name="reserveCheckInDate" Type="datetime" />
+          <Property Name="reserveCheckOutDate" Type="datetime" />
           <Property Name="reserveStayLength" Type="int" Nullable="false" />
           <Property Name="reserveGuestCount" Type="int" Nullable="false" />
           <Property Name="reserveGuestAdultCount" Type="int" Nullable="false" />
           <Property Name="reserveGuestChildCount" Type="int" Nullable="false" />
+          <Property Name="reserveHasCheckedIn" Type="bit" />
+          <Property Name="reserveHasCheckedOut" Type="bit" />
+          <Property Name="reserveGuestCheckInDate" Type="datetime" />
+          <Property Name="reserveGuestCheckOutDate" Type="datetime" />
           <Property Name="userId" Type="int" />
           <Property Name="guestID" Type="int" />
           <Property Name="roomID" Type="int" />
@@ -271,6 +276,60 @@ warning 6002: The table/view 'DBSYS.dbo.vw_Payment_UserInfo' does not have a pri
           <Property Name="Payer Username" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_Reservation_CheckedIn' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_Reservation_CheckedIn">
+          <Key>
+            <PropertyRef Name="Reservation No." />
+            <PropertyRef Name="Check-In" />
+            <PropertyRef Name="Check-Out" />
+            <PropertyRef Name="Nights to Stay" />
+            <PropertyRef Name="No. of Adult Guests" />
+            <PropertyRef Name="No. of Children Guests" />
+            <PropertyRef Name="No. of Guests" />
+          </Key>
+          <Property Name="Reservation No." Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Check-In" Type="datetime" Nullable="false" />
+          <Property Name="Check-Out" Type="datetime" Nullable="false" />
+          <Property Name="Nights to Stay" Type="int" Nullable="false" />
+          <Property Name="No. of Adult Guests" Type="int" Nullable="false" />
+          <Property Name="No. of Children Guests" Type="int" Nullable="false" />
+          <Property Name="No. of Guests" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_Reservation_CheckedOut' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_Reservation_CheckedOut">
+          <Key>
+            <PropertyRef Name="Reservation No." />
+            <PropertyRef Name="Check-In" />
+            <PropertyRef Name="Check-Out" />
+            <PropertyRef Name="Nights to Stay" />
+            <PropertyRef Name="No. of Adult Guests" />
+            <PropertyRef Name="No. of Children Guests" />
+            <PropertyRef Name="No. of Guests" />
+          </Key>
+          <Property Name="Reservation No." Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Check-In" Type="datetime" Nullable="false" />
+          <Property Name="Check-Out" Type="datetime" Nullable="false" />
+          <Property Name="Nights to Stay" Type="int" Nullable="false" />
+          <Property Name="No. of Adult Guests" Type="int" Nullable="false" />
+          <Property Name="No. of Children Guests" Type="int" Nullable="false" />
+          <Property Name="No. of Guests" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DBSYS.dbo.vw_Reservation_CheckStatus' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_Reservation_CheckStatus">
+          <Key>
+            <PropertyRef Name="Reservation No." />
+            <PropertyRef Name="Check-In" />
+            <PropertyRef Name="Check-Out" />
+          </Key>
+          <Property Name="Reservation No." Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Check-In" Type="datetime" Nullable="false" />
+          <Property Name="Check-Out" Type="datetime" Nullable="false" />
+          <Property Name="Has Checked In?" Type="bit" />
+          <Property Name="Has Checked Out?" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'DBSYS.dbo.vw_Reservation_Full' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vw_Reservation_Full">
           <Key>
@@ -285,6 +344,8 @@ warning 6002: The table/view 'DBSYS.dbo.vw_Reservation_Full' does not have a pri
           <Property Name="Reservation No." Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Check-In" Type="datetime" Nullable="false" />
           <Property Name="Check-Out" Type="datetime" Nullable="false" />
+          <Property Name="Has Checked In?" Type="bit" />
+          <Property Name="Has Checked Out?" Type="bit" />
           <Property Name="Nights to Stay" Type="int" Nullable="false" />
           <Property Name="No. of Adult Guests" Type="int" Nullable="false" />
           <Property Name="No. of Children Guests" Type="int" Nullable="false" />
@@ -317,20 +378,16 @@ warning 6002: The table/view 'DBSYS.dbo.vw_Reservation_GuestInfo' does not have 
         <EntityType Name="vw_Reservation_GuestInfo">
           <Key>
             <PropertyRef Name="Reservation No." />
-            <PropertyRef Name="Check-In" />
-            <PropertyRef Name="Check-Out" />
             <PropertyRef Name="No. of Guests" />
             <PropertyRef Name="First Name" />
             <PropertyRef Name="Last Name" />
             <PropertyRef Name="Gender" />
             <PropertyRef Name="Contact No." />
             <PropertyRef Name="Email Address" />
-            <PropertyRef Name="Last Checked-In" />
-            <PropertyRef Name="Last Checked-Out" />
           </Key>
           <Property Name="Reservation No." Type="int" Nullable="false" />
-          <Property Name="Check-In" Type="datetime" Nullable="false" />
-          <Property Name="Check-Out" Type="datetime" Nullable="false" />
+          <Property Name="Check-In" Type="datetime" />
+          <Property Name="Check-Out" Type="datetime" />
           <Property Name="No. of Guests" Type="int" Nullable="false" />
           <Property Name="Guest ID No." Type="int" />
           <Property Name="First Name" Type="varchar" MaxLength="255" Nullable="false" />
@@ -338,8 +395,8 @@ warning 6002: The table/view 'DBSYS.dbo.vw_Reservation_GuestInfo' does not have 
           <Property Name="Gender" Type="varchar" MaxLength="99" Nullable="false" />
           <Property Name="Contact No." Type="varchar" MaxLength="99" Nullable="false" />
           <Property Name="Email Address" Type="varchar" MaxLength="99" Nullable="false" />
-          <Property Name="Last Checked-In" Type="smalldatetime" Nullable="false" />
-          <Property Name="Last Checked-Out" Type="smalldatetime" Nullable="false" />
+          <Property Name="Last Checked-In" Type="datetime" />
+          <Property Name="Last Checked-Out" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'DBSYS.dbo.vw_Reservation_RoomInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -812,6 +869,22 @@ warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Updates' does not have a 
           <Parameter Name="Address" Type="varchar" Mode="In" />
           <Parameter Name="Email" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="SP_UpdateGuest_CheckInDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GID" Type="int" Mode="In" />
+          <Parameter Name="CheckInDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="SP_UpdateGuest_CheckOutDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GID" Type="int" Mode="In" />
+          <Parameter Name="CheckOutDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="SP_UpdateReservation_CheckInGuest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ResID" Type="int" Mode="In" />
+          <Parameter Name="CheckInDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="SP_UpdateReservation_CheckOutGuest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ResID" Type="int" Mode="In" />
+          <Parameter Name="CheckOutDate" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="SP_UpdateRoom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
           <Parameter Name="Title" Type="varchar" Mode="In" />
@@ -819,6 +892,9 @@ warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Updates' does not have a 
           <Parameter Name="Price" Type="decimal" Mode="In" />
           <Parameter Name="Desc" Type="varchar" Mode="In" />
           <Parameter Name="Img" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_UpdateRoom_EmptyRoom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RID" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_UpdateRoom_GuestCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
@@ -951,11 +1027,44 @@ warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Updates' does not have a 
     [vw_Payment_UserInfo].[Payer Username] AS [Payer Username]
     FROM [dbo].[vw_Payment_UserInfo] AS [vw_Payment_UserInfo]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="vw_Reservation_CheckedIn" EntityType="Self.vw_Reservation_CheckedIn" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Reservation_CheckedIn].[Reservation No.] AS [Reservation No.], 
+    [vw_Reservation_CheckedIn].[Check-In] AS [Check-In], 
+    [vw_Reservation_CheckedIn].[Check-Out] AS [Check-Out], 
+    [vw_Reservation_CheckedIn].[Nights to Stay] AS [Nights to Stay], 
+    [vw_Reservation_CheckedIn].[No. of Adult Guests] AS [No. of Adult Guests], 
+    [vw_Reservation_CheckedIn].[No. of Children Guests] AS [No. of Children Guests], 
+    [vw_Reservation_CheckedIn].[No. of Guests] AS [No. of Guests]
+    FROM [dbo].[vw_Reservation_CheckedIn] AS [vw_Reservation_CheckedIn]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_Reservation_CheckedOut" EntityType="Self.vw_Reservation_CheckedOut" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Reservation_CheckedOut].[Reservation No.] AS [Reservation No.], 
+    [vw_Reservation_CheckedOut].[Check-In] AS [Check-In], 
+    [vw_Reservation_CheckedOut].[Check-Out] AS [Check-Out], 
+    [vw_Reservation_CheckedOut].[Nights to Stay] AS [Nights to Stay], 
+    [vw_Reservation_CheckedOut].[No. of Adult Guests] AS [No. of Adult Guests], 
+    [vw_Reservation_CheckedOut].[No. of Children Guests] AS [No. of Children Guests], 
+    [vw_Reservation_CheckedOut].[No. of Guests] AS [No. of Guests]
+    FROM [dbo].[vw_Reservation_CheckedOut] AS [vw_Reservation_CheckedOut]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_Reservation_CheckStatus" EntityType="Self.vw_Reservation_CheckStatus" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Reservation_CheckStatus].[Reservation No.] AS [Reservation No.], 
+    [vw_Reservation_CheckStatus].[Check-In] AS [Check-In], 
+    [vw_Reservation_CheckStatus].[Check-Out] AS [Check-Out], 
+    [vw_Reservation_CheckStatus].[Has Checked In?] AS [Has Checked In?], 
+    [vw_Reservation_CheckStatus].[Has Checked Out?] AS [Has Checked Out?]
+    FROM [dbo].[vw_Reservation_CheckStatus] AS [vw_Reservation_CheckStatus]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vw_Reservation_Full" EntityType="Self.vw_Reservation_Full" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vw_Reservation_Full].[Reservation No.] AS [Reservation No.], 
     [vw_Reservation_Full].[Check-In] AS [Check-In], 
     [vw_Reservation_Full].[Check-Out] AS [Check-Out], 
+    [vw_Reservation_Full].[Has Checked In?] AS [Has Checked In?], 
+    [vw_Reservation_Full].[Has Checked Out?] AS [Has Checked Out?], 
     [vw_Reservation_Full].[Nights to Stay] AS [Nights to Stay], 
     [vw_Reservation_Full].[No. of Adult Guests] AS [No. of Adult Guests], 
     [vw_Reservation_Full].[No. of Children Guests] AS [No. of Children Guests], 
@@ -1297,6 +1406,29 @@ warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Updates' does not have a 
             <Parameter Name="Price" Mode="In" Type="Decimal" />
             <Parameter Name="Desc" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="SP_UpdateRoom_GuestID">
+            <Parameter Name="RID" Mode="In" Type="Int32" />
+            <Parameter Name="GID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UpdateGuest_CheckInDate">
+            <Parameter Name="GID" Mode="In" Type="Int32" />
+            <Parameter Name="CheckInDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UpdateGuest_CheckOutDate">
+            <Parameter Name="GID" Mode="In" Type="Int32" />
+            <Parameter Name="CheckOutDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UpdateReservation_CheckInGuest">
+            <Parameter Name="ResID" Mode="In" Type="Int32" />
+            <Parameter Name="CheckInDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UpdateReservation_CheckOutGuest">
+            <Parameter Name="ResID" Mode="In" Type="Int32" />
+            <Parameter Name="CheckOutDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UpdateRoom_EmptyRoom">
+          <Parameter Name="RID" Mode="In" Type="Int32" />
+          </FunctionImport>
           <EntitySet Name="GuestInformation" EntityType="DBSYSModel.GuestInformation" />
           <EntitySet Name="PaymentInfo" EntityType="DBSYSModel.PaymentInfo" />
           <EntitySet Name="ReservationInfo" EntityType="DBSYSModel.ReservationInfo" />
@@ -1313,6 +1445,9 @@ warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Updates' does not have a 
           <EntitySet Name="vw_Payment_GuestInfo" EntityType="DBSYSModel.vw_Payment_GuestInfo" />
           <EntitySet Name="vw_Payment_ReservationInfo" EntityType="DBSYSModel.vw_Payment_ReservationInfo" />
           <EntitySet Name="vw_Payment_UserInfo" EntityType="DBSYSModel.vw_Payment_UserInfo" />
+          <EntitySet Name="vw_Reservation_CheckedIn" EntityType="DBSYSModel.vw_Reservation_CheckedIn" />
+          <EntitySet Name="vw_Reservation_CheckedOut" EntityType="DBSYSModel.vw_Reservation_CheckedOut" />
+          <EntitySet Name="vw_Reservation_CheckStatus" EntityType="DBSYSModel.vw_Reservation_CheckStatus" />
           <EntitySet Name="vw_Reservation_Full" EntityType="DBSYSModel.vw_Reservation_Full" />
           <EntitySet Name="vw_Reservation_GuestCount" EntityType="DBSYSModel.vw_Reservation_GuestCount" />
           <EntitySet Name="vw_Reservation_GuestInfo" EntityType="DBSYSModel.vw_Reservation_GuestInfo" />
@@ -1380,10 +1515,6 @@ warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Updates' does not have a 
             <End Role="UserAccount" EntitySet="UserAccount" />
             <End Role="StaffInfo" EntitySet="StaffInfo" />
           </AssociationSet>
-          <FunctionImport Name="SP_UpdateRoom_GuestID">
-            <Parameter Name="RID" Mode="In" Type="Int32" />
-            <Parameter Name="GID" Mode="In" Type="Int32" />
-          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_SearchUA_Username_Result">
           <Property Type="Int32" Name="User_ID_" Nullable="false" />
@@ -1465,13 +1596,14 @@ warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Updates' does not have a 
           <Property Name="guestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="guestFirstName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="guestLastName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="guestBirthDate" Type="DateTime" Precision="0" />
+          <Property Name="guestBirthDate" Type="DateTime" Precision="3" />
           <Property Name="guestGender" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
           <Property Name="guestContactNo" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
           <Property Name="guestAddress" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="guestEmailAddress" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
-          <Property Name="guestLastCheckInDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="guestLastCheckOutDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="guestLastCheckInDate" Type="DateTime" Precision="3" />
+          <Property Name="guestLastCheckOutDate" Type="DateTime" Precision="3" />
+          <Property Name="guestHasReservation" Type="Boolean" />
           <Property Name="userID" Type="Int32" />
           <Property Name="roomID" Type="Int32" />
           <NavigationProperty Name="RoomInformation" Relationship="DBSYSModel.FK__GuestInfo__roomI__01142BA1" FromRole="GuestInformation" ToRole="RoomInformation" />
@@ -1503,12 +1635,16 @@ warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Updates' does not have a 
             <PropertyRef Name="reserveID" />
           </Key>
           <Property Name="reserveID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="reserveCheckInDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="reserveCheckOutDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="reserveCheckInDate" Type="DateTime" Precision="3" />
+          <Property Name="reserveCheckOutDate" Type="DateTime" Precision="3" />
           <Property Name="reserveStayLength" Type="Int32" Nullable="false" />
           <Property Name="reserveGuestCount" Type="Int32" Nullable="false" />
           <Property Name="reserveGuestAdultCount" Type="Int32" Nullable="false" />
           <Property Name="reserveGuestChildCount" Type="Int32" Nullable="false" />
+          <Property Name="reserveHasCheckedIn" Type="Boolean" />
+          <Property Name="reserveHasCheckedOut" Type="Boolean" />
+          <Property Name="reserveGuestCheckInDate" Type="DateTime" Precision="3" />
+          <Property Name="reserveGuestCheckOutDate" Type="DateTime" Precision="3" />
           <Property Name="userId" Type="Int32" />
           <Property Name="guestID" Type="Int32" />
           <Property Name="roomID" Type="Int32" />
@@ -1729,6 +1865,54 @@ warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Updates' does not have a 
           <Property Name="Payer_User_ID" Type="Int32" />
           <Property Name="Payer_Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="vw_Reservation_CheckedIn">
+          <Key>
+            <PropertyRef Name="Reservation_No_" />
+            <PropertyRef Name="Check_In" />
+            <PropertyRef Name="Check_Out" />
+            <PropertyRef Name="Nights_to_Stay" />
+            <PropertyRef Name="No__of_Adult_Guests" />
+            <PropertyRef Name="No__of_Children_Guests" />
+            <PropertyRef Name="No__of_Guests" />
+          </Key>
+          <Property Name="Reservation_No_" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Check_In" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Check_Out" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Nights_to_Stay" Type="Int32" Nullable="false" />
+          <Property Name="No__of_Adult_Guests" Type="Int32" Nullable="false" />
+          <Property Name="No__of_Children_Guests" Type="Int32" Nullable="false" />
+          <Property Name="No__of_Guests" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vw_Reservation_CheckedOut">
+          <Key>
+            <PropertyRef Name="Reservation_No_" />
+            <PropertyRef Name="Check_In" />
+            <PropertyRef Name="Check_Out" />
+            <PropertyRef Name="Nights_to_Stay" />
+            <PropertyRef Name="No__of_Adult_Guests" />
+            <PropertyRef Name="No__of_Children_Guests" />
+            <PropertyRef Name="No__of_Guests" />
+          </Key>
+          <Property Name="Reservation_No_" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Check_In" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Check_Out" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Nights_to_Stay" Type="Int32" Nullable="false" />
+          <Property Name="No__of_Adult_Guests" Type="Int32" Nullable="false" />
+          <Property Name="No__of_Children_Guests" Type="Int32" Nullable="false" />
+          <Property Name="No__of_Guests" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vw_Reservation_CheckStatus">
+          <Key>
+            <PropertyRef Name="Reservation_No_" />
+            <PropertyRef Name="Check_In" />
+            <PropertyRef Name="Check_Out" />
+          </Key>
+          <Property Name="Reservation_No_" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Check_In" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Check_Out" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Has_Checked_In_" Type="Boolean" />
+          <Property Name="Has_Checked_Out_" Type="Boolean" />
+        </EntityType>
         <EntityType Name="vw_Reservation_Full">
           <Key>
             <PropertyRef Name="Reservation_No_" />
@@ -1742,6 +1926,8 @@ warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Updates' does not have a 
           <Property Name="Reservation_No_" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Check_In" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Check_Out" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Has_Checked_In_" Type="Boolean" />
+          <Property Name="Has_Checked_Out_" Type="Boolean" />
           <Property Name="Nights_to_Stay" Type="Int32" Nullable="false" />
           <Property Name="No__of_Adult_Guests" Type="Int32" Nullable="false" />
           <Property Name="No__of_Children_Guests" Type="Int32" Nullable="false" />
@@ -1770,20 +1956,16 @@ warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Updates' does not have a 
         <EntityType Name="vw_Reservation_GuestInfo">
           <Key>
             <PropertyRef Name="Reservation_No_" />
-            <PropertyRef Name="Check_In" />
-            <PropertyRef Name="Check_Out" />
             <PropertyRef Name="No__of_Guests" />
             <PropertyRef Name="First_Name" />
             <PropertyRef Name="Last_Name" />
             <PropertyRef Name="Gender" />
             <PropertyRef Name="Contact_No_" />
             <PropertyRef Name="Email_Address" />
-            <PropertyRef Name="Last_Checked_In" />
-            <PropertyRef Name="Last_Checked_Out" />
           </Key>
           <Property Name="Reservation_No_" Type="Int32" Nullable="false" />
-          <Property Name="Check_In" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Check_Out" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Check_In" Type="DateTime" Precision="3" />
+          <Property Name="Check_Out" Type="DateTime" Precision="3" />
           <Property Name="No__of_Guests" Type="Int32" Nullable="false" />
           <Property Name="Guest_ID_No_" Type="Int32" />
           <Property Name="First_Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
@@ -1791,8 +1973,8 @@ warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Updates' does not have a 
           <Property Name="Gender" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
           <Property Name="Contact_No_" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
           <Property Name="Email_Address" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
-          <Property Name="Last_Checked_In" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Last_Checked_Out" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Last_Checked_In" Type="DateTime" Precision="3" />
+          <Property Name="Last_Checked_Out" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="vw_Reservation_RoomInfo">
           <Key>
@@ -2279,11 +2461,18 @@ warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Updates' does not have a 
           <FunctionImportMapping FunctionImportName="SP_UpdateRoom" FunctionName="DBSYSModel.Store.SP_UpdateRoom" />
           <FunctionImportMapping FunctionImportName="SP_UpdateRoom_GuestCount" FunctionName="DBSYSModel.Store.SP_UpdateRoom_GuestCount" />
           <FunctionImportMapping FunctionImportName="SP_UpdateRoom_NoImage" FunctionName="DBSYSModel.Store.SP_UpdateRoom_NoImage" />
+          <FunctionImportMapping FunctionImportName="SP_UpdateRoom_GuestID" FunctionName="DBSYSModel.Store.SP_UpdateRoom_GuestID" />
+          <FunctionImportMapping FunctionImportName="SP_UpdateGuest_CheckInDate" FunctionName="DBSYSModel.Store.SP_UpdateGuest_CheckInDate" />
+          <FunctionImportMapping FunctionImportName="SP_UpdateGuest_CheckOutDate" FunctionName="DBSYSModel.Store.SP_UpdateGuest_CheckOutDate" />
+          <FunctionImportMapping FunctionImportName="SP_UpdateReservation_CheckInGuest" FunctionName="DBSYSModel.Store.SP_UpdateReservation_CheckInGuest" />
+          <FunctionImportMapping FunctionImportName="SP_UpdateReservation_CheckOutGuest" FunctionName="DBSYSModel.Store.SP_UpdateReservation_CheckOutGuest" />
+          <FunctionImportMapping FunctionImportName="SP_UpdateRoom_EmptyRoom" FunctionName="DBSYSModel.Store.SP_UpdateRoom_EmptyRoom" />
           <EntitySetMapping Name="GuestInformation">
             <EntityTypeMapping TypeName="DBSYSModel.GuestInformation">
               <MappingFragment StoreEntitySet="GuestInformation">
                 <ScalarProperty Name="roomID" ColumnName="roomID" />
                 <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="guestHasReservation" ColumnName="guestHasReservation" />
                 <ScalarProperty Name="guestLastCheckOutDate" ColumnName="guestLastCheckOutDate" />
                 <ScalarProperty Name="guestLastCheckInDate" ColumnName="guestLastCheckInDate" />
                 <ScalarProperty Name="guestEmailAddress" ColumnName="guestEmailAddress" />
@@ -2319,6 +2508,10 @@ warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Updates' does not have a 
                 <ScalarProperty Name="roomID" ColumnName="roomID" />
                 <ScalarProperty Name="guestID" ColumnName="guestID" />
                 <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="reserveGuestCheckOutDate" ColumnName="reserveGuestCheckOutDate" />
+                <ScalarProperty Name="reserveGuestCheckInDate" ColumnName="reserveGuestCheckInDate" />
+                <ScalarProperty Name="reserveHasCheckedOut" ColumnName="reserveHasCheckedOut" />
+                <ScalarProperty Name="reserveHasCheckedIn" ColumnName="reserveHasCheckedIn" />
                 <ScalarProperty Name="reserveGuestChildCount" ColumnName="reserveGuestChildCount" />
                 <ScalarProperty Name="reserveGuestAdultCount" ColumnName="reserveGuestAdultCount" />
                 <ScalarProperty Name="reserveGuestCount" ColumnName="reserveGuestCount" />
@@ -2499,6 +2692,43 @@ warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Updates' does not have a 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="vw_Reservation_CheckedIn">
+            <EntityTypeMapping TypeName="DBSYSModel.vw_Reservation_CheckedIn">
+              <MappingFragment StoreEntitySet="vw_Reservation_CheckedIn">
+                <ScalarProperty Name="No__of_Guests" ColumnName="No. of Guests" />
+                <ScalarProperty Name="No__of_Children_Guests" ColumnName="No. of Children Guests" />
+                <ScalarProperty Name="No__of_Adult_Guests" ColumnName="No. of Adult Guests" />
+                <ScalarProperty Name="Nights_to_Stay" ColumnName="Nights to Stay" />
+                <ScalarProperty Name="Check_Out" ColumnName="Check-Out" />
+                <ScalarProperty Name="Check_In" ColumnName="Check-In" />
+                <ScalarProperty Name="Reservation_No_" ColumnName="Reservation No." />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Reservation_CheckedOut">
+            <EntityTypeMapping TypeName="DBSYSModel.vw_Reservation_CheckedOut">
+              <MappingFragment StoreEntitySet="vw_Reservation_CheckedOut">
+                <ScalarProperty Name="No__of_Guests" ColumnName="No. of Guests" />
+                <ScalarProperty Name="No__of_Children_Guests" ColumnName="No. of Children Guests" />
+                <ScalarProperty Name="No__of_Adult_Guests" ColumnName="No. of Adult Guests" />
+                <ScalarProperty Name="Nights_to_Stay" ColumnName="Nights to Stay" />
+                <ScalarProperty Name="Check_Out" ColumnName="Check-Out" />
+                <ScalarProperty Name="Check_In" ColumnName="Check-In" />
+                <ScalarProperty Name="Reservation_No_" ColumnName="Reservation No." />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Reservation_CheckStatus">
+            <EntityTypeMapping TypeName="DBSYSModel.vw_Reservation_CheckStatus">
+              <MappingFragment StoreEntitySet="vw_Reservation_CheckStatus">
+                <ScalarProperty Name="Has_Checked_Out_" ColumnName="Has Checked Out?" />
+                <ScalarProperty Name="Has_Checked_In_" ColumnName="Has Checked In?" />
+                <ScalarProperty Name="Check_Out" ColumnName="Check-Out" />
+                <ScalarProperty Name="Check_In" ColumnName="Check-In" />
+                <ScalarProperty Name="Reservation_No_" ColumnName="Reservation No." />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="vw_Reservation_Full">
             <EntityTypeMapping TypeName="DBSYSModel.vw_Reservation_Full">
               <MappingFragment StoreEntitySet="vw_Reservation_Full">
@@ -2509,6 +2739,8 @@ warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Updates' does not have a 
                 <ScalarProperty Name="No__of_Children_Guests" ColumnName="No. of Children Guests" />
                 <ScalarProperty Name="No__of_Adult_Guests" ColumnName="No. of Adult Guests" />
                 <ScalarProperty Name="Nights_to_Stay" ColumnName="Nights to Stay" />
+                <ScalarProperty Name="Has_Checked_Out_" ColumnName="Has Checked Out?" />
+                <ScalarProperty Name="Has_Checked_In_" ColumnName="Has Checked In?" />
                 <ScalarProperty Name="Check_Out" ColumnName="Check-Out" />
                 <ScalarProperty Name="Check_In" ColumnName="Check-In" />
                 <ScalarProperty Name="Reservation_No_" ColumnName="Reservation No." />
@@ -2735,7 +2967,6 @@ warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Updates' does not have a 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="SP_UpdateRoom_GuestID" FunctionName="DBSYSModel.Store.SP_UpdateRoom_GuestID" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

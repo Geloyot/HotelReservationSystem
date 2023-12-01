@@ -13,6 +13,8 @@ namespace HotelReservationSystem
 {
     public partial class Form_Dashboard_Guest : Form
     {
+        private HotelRepository HotelRepos;
+        private UserRepository UserRepos;
         private bool IsLoggingOut = false;
 
         public Form_Dashboard_Guest()
@@ -42,9 +44,12 @@ namespace HotelReservationSystem
 
         private void Form_Dashboard_Guest_Load(object sender, EventArgs e)
         {
-            ToolStripStatus_CurrentUser.Text = "Current User: " + CurrentlyLoggedUser.GetInstance().CurrentUserAccount.userName;
+            HotelRepos = new HotelRepository();
+            UserRepos = new UserRepository();
 
+            ToolStripStatus_CurrentUser.Text = "Current User: " + CurrentlyLoggedUser.GetInstance().CurrentUserAccount.userName;
             Timer_Clock.Start();
+            CheckGuestReservation();
         }
 
         private void Btn_LogOut_Click(object sender, EventArgs e)
@@ -58,6 +63,29 @@ namespace HotelReservationSystem
             Customer_S1Room SelectRoom = new Customer_S1Room();
             SelectRoom.Show();
             this.Dispose();
+        }
+
+        private void CheckGuestReservation() 
+        {
+            try // Try-catch used since getting Guest for 1st time always results in null exception.
+            {
+                GuestInformation Guest = UserRepos.GetGuestByUserID(CurrentlyLoggedUser.GetInstance().CurrentUserAccount.userId);
+                if (Guest == null) 
+                {
+                    return;
+                }
+                if (Guest.guestHasReservation.Value) 
+                {
+                    ReservationInfo CurrentReservation = HotelRepos.GetReservationByGuestID(Guest.guestID);
+                    Label_CheckIn.Text = CurrentReservation.reserveCheckInDate.Value.ToString("MMMM dd, yyyy");
+                    Label_CheckOut.Text = CurrentReservation.reserveCheckOutDate.Value.ToString("MMMM dd, yyyy");
+                    Panel_PreExistingRes.Visible = true;
+                }
+            }
+            catch 
+            {
+
+            }
         }
     }
 }

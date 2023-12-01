@@ -34,7 +34,7 @@ namespace HotelReservationSystem
 
         private void Timer_Clock_Tick(object sender, EventArgs e)
         {
-            Label_Calendar.Text = DateTime.Now.ToString("d");
+            Label_Calendar.Text = DateTime.Now.ToString("MMMM dd, yyyy");
             Label_Clock.Text = DateTime.Now.ToString("HH:mm:ss tt");
         }
 

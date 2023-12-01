@@ -109,11 +109,11 @@
             this.Label_ReserveID.BackColor = System.Drawing.Color.Transparent;
             this.Label_ReserveID.Font = new System.Drawing.Font("Bahnschrift", 24.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label_ReserveID.ForeColor = System.Drawing.Color.NavajoWhite;
-            this.Label_ReserveID.Location = new System.Drawing.Point(251, 310);
+            this.Label_ReserveID.Location = new System.Drawing.Point(294, 311);
             this.Label_ReserveID.Name = "Label_ReserveID";
-            this.Label_ReserveID.Size = new System.Drawing.Size(291, 40);
+            this.Label_ReserveID.Size = new System.Drawing.Size(103, 40);
             this.Label_ReserveID.TabIndex = 22;
-            this.Label_ReserveID.Text = "Reservation ID No.";
+            this.Label_ReserveID.Text = "00000";
             this.Label_ReserveID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Label_Amount
@@ -122,11 +122,11 @@
             this.Label_Amount.BackColor = System.Drawing.Color.Transparent;
             this.Label_Amount.Font = new System.Drawing.Font("Bahnschrift", 24.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label_Amount.ForeColor = System.Drawing.Color.NavajoWhite;
-            this.Label_Amount.Location = new System.Drawing.Point(251, 425);
+            this.Label_Amount.Location = new System.Drawing.Point(285, 428);
             this.Label_Amount.Name = "Label_Amount";
-            this.Label_Amount.Size = new System.Drawing.Size(71, 40);
+            this.Label_Amount.Size = new System.Drawing.Size(120, 40);
             this.Label_Amount.TabIndex = 23;
-            this.Label_Amount.Text = "Pay";
+            this.Label_Amount.Text = "1000.00";
             this.Label_Amount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Btn_Back

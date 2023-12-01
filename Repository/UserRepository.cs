@@ -11,9 +11,11 @@ namespace HotelReservationSystem
     public class UserRepository
     {
         private DBSYSEntities DB;
+        private HotelRepository HotelRepos;
 
         public UserRepository() { 
             DB = new DBSYSEntities();
+            HotelRepos = new HotelRepository();
         }
 
         public UserAccount GetUserByUsername(string SpecificUsername)
@@ -27,13 +29,31 @@ namespace HotelReservationSystem
             DB = new DBSYSEntities();
             return DB.UserAccount.Where(u => u.userId == UserID).FirstOrDefault();
         }
-
+        public string GetUsernameByUserID(int? ID) 
+        {
+            DB = new DBSYSEntities();
+            UserAccount user = DB.UserAccount.Where(u => u.userId == ID).FirstOrDefault();
+            return user.userName;
+        }
         public int GetUserAccountCount() 
         {
             DB = new DBSYSEntities();
 
             var count = DB.UserAccount.Count();
             return count;
+        }
+        public int GetCurrentMonthUserAccountCount() 
+        {
+            DB = new DBSYSEntities();
+            List<UserAccount> UserList = DB.UserAccount.ToList();
+            foreach (UserAccount User in DB.UserAccount.ToList()) 
+            {
+                if (User.userDateUpdated.Value.Month != DateTime.Now.Month) 
+                {
+                    UserList.Remove(User);
+                }
+            }
+            return UserList.Count;
         }
 
         public List<vw_UserAccount_Full> GetUserAccountList()
@@ -85,6 +105,38 @@ namespace HotelReservationSystem
             DB = new DBSYSEntities();
             return DB.GuestInformation.Where(guest => guest.guestID == GuestID).FirstOrDefault();
         }
+        public string GetGuestNameByGuestID(int? ID) 
+        {
+            DB = new DBSYSEntities();
+            GuestInformation guest = DB.GuestInformation.Where(g => g.guestID == ID).FirstOrDefault();
+            return guest.guestLastName + ", " + guest.guestFirstName;
+        }
+        public GuestInformation GetGuestByUserID(int? ID) 
+        { 
+            DB = new DBSYSEntities();
+            return DB.GuestInformation.Where(g => g.userID == ID).FirstOrDefault();
+        }
+        public int GetCurrentMonthGuestCount() 
+        {
+            int GuestCurrentCount = 0;
+            DB = new DBSYSEntities();
+
+            List<GuestInformation> GuestList = new List<GuestInformation>();
+
+            foreach (GuestInformation Guest in DB.GuestInformation.ToList()) 
+            {
+                if (Guest.roomID == null)
+                {
+                    GuestList.Remove(Guest);
+                }
+                else 
+                {
+                    GuestCurrentCount += HotelRepos.GetGuestCountByRoomID(Guest.roomID);
+                }
+            }
+
+            return GuestCurrentCount;
+        }
 
         public List<vw_Guest_Full> GetGuestFullList() 
         {
@@ -94,7 +146,15 @@ namespace HotelReservationSystem
         public List<vw_Guest_RoomOccupied> GetGuestLocationList() 
         {
             DB = new DBSYSEntities();
-            return DB.vw_Guest_RoomOccupied.ToList();
+            List<vw_Guest_RoomOccupied> GuestLocations = new List<vw_Guest_RoomOccupied>();
+            foreach (vw_Guest_RoomOccupied guest in DB.vw_Guest_RoomOccupied.ToList()) 
+            {
+                if (guest.Room_ID != null) 
+                {
+                    GuestLocations.Add(guest);
+                }
+            }
+            return GuestLocations;
         }
         public List<vw_Guest_CheckInOutDates> GetGuestCheckDatesList() 
         {

@@ -38,6 +38,7 @@
             this.Label_Clock = new System.Windows.Forms.Label();
             this.Pic_HotelKannoteki = new System.Windows.Forms.PictureBox();
             this.Panel_AcctOptions = new System.Windows.Forms.Panel();
+            this.Txt_RType = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.Txt_SearchRoom = new System.Windows.Forms.TextBox();
             this.Btn_RoomsTypes = new System.Windows.Forms.Button();
@@ -58,7 +59,6 @@
             this.Txt_RTitle = new System.Windows.Forms.TextBox();
             this.Dgv_Rooms = new System.Windows.Forms.DataGridView();
             this.Timer_Clock = new System.Windows.Forms.Timer(this.components);
-            this.Txt_RType = new System.Windows.Forms.TextBox();
             this.Panel_AcctManage.SuspendLayout();
             this.Panel_DateTime.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_HotelKannoteki)).BeginInit();
@@ -121,7 +121,7 @@
             this.Panel_DateTime.Controls.Add(this.Label_Clock);
             this.Panel_DateTime.Location = new System.Drawing.Point(15, 4);
             this.Panel_DateTime.Name = "Panel_DateTime";
-            this.Panel_DateTime.Size = new System.Drawing.Size(128, 69);
+            this.Panel_DateTime.Size = new System.Drawing.Size(334, 69);
             this.Panel_DateTime.TabIndex = 15;
             // 
             // Label_Calendar
@@ -129,7 +129,7 @@
             this.Label_Calendar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Label_Calendar.AutoSize = true;
             this.Label_Calendar.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Calendar.Location = new System.Drawing.Point(3, 8);
+            this.Label_Calendar.Location = new System.Drawing.Point(4, 8);
             this.Label_Calendar.Name = "Label_Calendar";
             this.Label_Calendar.Size = new System.Drawing.Size(60, 25);
             this.Label_Calendar.TabIndex = 14;
@@ -181,6 +181,14 @@
             this.Panel_AcctOptions.Name = "Panel_AcctOptions";
             this.Panel_AcctOptions.Size = new System.Drawing.Size(889, 215);
             this.Panel_AcctOptions.TabIndex = 9;
+            // 
+            // Txt_RType
+            // 
+            this.Txt_RType.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_RType.Location = new System.Drawing.Point(238, 37);
+            this.Txt_RType.Name = "Txt_RType";
+            this.Txt_RType.Size = new System.Drawing.Size(151, 30);
+            this.Txt_RType.TabIndex = 40;
             // 
             // label8
             // 
@@ -376,14 +384,6 @@
             // Timer_Clock
             // 
             this.Timer_Clock.Tick += new System.EventHandler(this.Timer_Clock_Tick);
-            // 
-            // Txt_RType
-            // 
-            this.Txt_RType.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_RType.Location = new System.Drawing.Point(238, 37);
-            this.Txt_RType.Name = "Txt_RType";
-            this.Txt_RType.Size = new System.Drawing.Size(151, 30);
-            this.Txt_RType.TabIndex = 40;
             // 
             // Admin_Rooms
             // 

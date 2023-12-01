@@ -81,7 +81,15 @@ namespace HotelReservationSystem
 
         private void Timer_Loading_Tick(object sender, EventArgs e)
         {
-            if (ProgressBar_Loading.Value < 1)
+            var LoginUser = UserRepos.GetUserByUsername(login_username);
+            int timer = 200;
+
+            if (LoginUser.roleId != 1)
+            {
+                timer = 1;
+            }
+
+            if (ProgressBar_Loading.Value < timer)
             {
                 ProgressBar_Loading.Value++;
                 Label_Loading.Text = (ProgressBar_Loading.Value / 2) + "%";
@@ -91,7 +99,6 @@ namespace HotelReservationSystem
                 Timer_Loading.Stop();
                 ProgressBar_Loading.Value = 0;
 
-                var LoginUser = UserRepos.GetUserByUsername(login_username);
                 OpenAccountDashboard(LoginUser);
             }
         }

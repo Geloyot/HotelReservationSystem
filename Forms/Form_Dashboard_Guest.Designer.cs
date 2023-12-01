@@ -33,23 +33,23 @@
             this.StatusStrip_CurrentUser = new System.Windows.Forms.StatusStrip();
             this.ToolStripStatus_CurrentUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Panel_PreExistingRes = new System.Windows.Forms.Panel();
+            this.Label_CheckOut = new System.Windows.Forms.Label();
+            this.Label_CheckIn = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.Btn_LogOut = new System.Windows.Forms.Button();
             this.Panel_DateTime = new System.Windows.Forms.Panel();
             this.Label_Calendar = new System.Windows.Forms.Label();
             this.Label_Clock = new System.Windows.Forms.Label();
             this.Btn_Book = new System.Windows.Forms.Button();
             this.Pic_HotelKannoteki = new System.Windows.Forms.PictureBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.Label_CheckIn = new System.Windows.Forms.Label();
-            this.Label_CheckOut = new System.Windows.Forms.Label();
             this.StatusStrip_CurrentUser.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.Panel_PreExistingRes.SuspendLayout();
             this.Panel_DateTime.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_HotelKannoteki)).BeginInit();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // Timer_Clock
@@ -77,7 +77,7 @@
             // panel1
             // 
             this.panel1.BackgroundImage = global::HotelReservationSystem.Properties.Resources.bg1;
-            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.Panel_PreExistingRes);
             this.panel1.Controls.Add(this.Btn_LogOut);
             this.panel1.Controls.Add(this.Panel_DateTime);
             this.panel1.Controls.Add(this.Btn_Book);
@@ -86,6 +86,72 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(676, 399);
             this.panel1.TabIndex = 0;
+            // 
+            // Panel_PreExistingRes
+            // 
+            this.Panel_PreExistingRes.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Panel_PreExistingRes.Controls.Add(this.Label_CheckOut);
+            this.Panel_PreExistingRes.Controls.Add(this.Label_CheckIn);
+            this.Panel_PreExistingRes.Controls.Add(this.label3);
+            this.Panel_PreExistingRes.Controls.Add(this.label2);
+            this.Panel_PreExistingRes.Controls.Add(this.label1);
+            this.Panel_PreExistingRes.Location = new System.Drawing.Point(43, 288);
+            this.Panel_PreExistingRes.Name = "Panel_PreExistingRes";
+            this.Panel_PreExistingRes.Size = new System.Drawing.Size(594, 100);
+            this.Panel_PreExistingRes.TabIndex = 17;
+            this.Panel_PreExistingRes.Visible = false;
+            // 
+            // Label_CheckOut
+            // 
+            this.Label_CheckOut.AutoSize = true;
+            this.Label_CheckOut.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_CheckOut.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.Label_CheckOut.Location = new System.Drawing.Point(316, 65);
+            this.Label_CheckOut.Name = "Label_CheckOut";
+            this.Label_CheckOut.Size = new System.Drawing.Size(102, 23);
+            this.Label_CheckOut.TabIndex = 4;
+            this.Label_CheckOut.Text = "CHECKOUT";
+            // 
+            // Label_CheckIn
+            // 
+            this.Label_CheckIn.AutoSize = true;
+            this.Label_CheckIn.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_CheckIn.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.Label_CheckIn.Location = new System.Drawing.Point(316, 42);
+            this.Label_CheckIn.Name = "Label_CheckIn";
+            this.Label_CheckIn.Size = new System.Drawing.Size(88, 23);
+            this.Label_CheckIn.TabIndex = 3;
+            this.Label_CheckIn.Text = "CHECKIN";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(107, 65);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(216, 23);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Reservation Check-Out: ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(107, 42);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(203, 23);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Reservation Check-In: ";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Bahnschrift SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(203, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(212, 25);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Existing Appointment";
             // 
             // Btn_LogOut
             // 
@@ -151,72 +217,6 @@
             this.Pic_HotelKannoteki.TabIndex = 12;
             this.Pic_HotelKannoteki.TabStop = false;
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel2.Controls.Add(this.Label_CheckOut);
-            this.panel2.Controls.Add(this.Label_CheckIn);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(43, 288);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(594, 100);
-            this.panel2.TabIndex = 17;
-            this.panel2.Visible = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Bahnschrift SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(203, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(212, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Existing Appointment";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(125, 45);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(203, 23);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Reservation Check-In: ";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(125, 68);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(216, 23);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Reservation Check-Out: ";
-            // 
-            // Label_CheckIn
-            // 
-            this.Label_CheckIn.AutoSize = true;
-            this.Label_CheckIn.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_CheckIn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.Label_CheckIn.Location = new System.Drawing.Point(334, 45);
-            this.Label_CheckIn.Name = "Label_CheckIn";
-            this.Label_CheckIn.Size = new System.Drawing.Size(88, 23);
-            this.Label_CheckIn.TabIndex = 3;
-            this.Label_CheckIn.Text = "CHECKIN";
-            // 
-            // Label_CheckOut
-            // 
-            this.Label_CheckOut.AutoSize = true;
-            this.Label_CheckOut.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_CheckOut.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.Label_CheckOut.Location = new System.Drawing.Point(334, 68);
-            this.Label_CheckOut.Name = "Label_CheckOut";
-            this.Label_CheckOut.Size = new System.Drawing.Size(102, 23);
-            this.Label_CheckOut.TabIndex = 4;
-            this.Label_CheckOut.Text = "CHECKOUT";
-            // 
             // Form_Dashboard_Guest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -231,11 +231,11 @@
             this.StatusStrip_CurrentUser.ResumeLayout(false);
             this.StatusStrip_CurrentUser.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.Panel_PreExistingRes.ResumeLayout(false);
+            this.Panel_PreExistingRes.PerformLayout();
             this.Panel_DateTime.ResumeLayout(false);
             this.Panel_DateTime.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_HotelKannoteki)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,7 +253,7 @@
         private System.Windows.Forms.Button Btn_LogOut;
         private System.Windows.Forms.StatusStrip StatusStrip_CurrentUser;
         private System.Windows.Forms.ToolStripStatusLabel ToolStripStatus_CurrentUser;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel Panel_PreExistingRes;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;

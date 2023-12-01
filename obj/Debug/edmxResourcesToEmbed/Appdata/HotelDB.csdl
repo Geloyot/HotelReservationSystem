@@ -95,6 +95,29 @@
       <Parameter Name="Price" Mode="In" Type="Decimal" />
       <Parameter Name="Desc" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="SP_UpdateRoom_GuestID">
+      <Parameter Name="RID" Mode="In" Type="Int32" />
+      <Parameter Name="GID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_UpdateGuest_CheckInDate">
+      <Parameter Name="GID" Mode="In" Type="Int32" />
+      <Parameter Name="CheckInDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="SP_UpdateGuest_CheckOutDate">
+      <Parameter Name="GID" Mode="In" Type="Int32" />
+      <Parameter Name="CheckOutDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="SP_UpdateReservation_CheckInGuest">
+      <Parameter Name="ResID" Mode="In" Type="Int32" />
+      <Parameter Name="CheckInDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="SP_UpdateReservation_CheckOutGuest">
+      <Parameter Name="ResID" Mode="In" Type="Int32" />
+      <Parameter Name="CheckOutDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="SP_UpdateRoom_EmptyRoom">
+      <Parameter Name="RID" Mode="In" Type="Int32" />
+    </FunctionImport>
     <EntitySet Name="GuestInformation" EntityType="DBSYSModel.GuestInformation" />
     <EntitySet Name="PaymentInfo" EntityType="DBSYSModel.PaymentInfo" />
     <EntitySet Name="ReservationInfo" EntityType="DBSYSModel.ReservationInfo" />
@@ -111,6 +134,9 @@
     <EntitySet Name="vw_Payment_GuestInfo" EntityType="DBSYSModel.vw_Payment_GuestInfo" />
     <EntitySet Name="vw_Payment_ReservationInfo" EntityType="DBSYSModel.vw_Payment_ReservationInfo" />
     <EntitySet Name="vw_Payment_UserInfo" EntityType="DBSYSModel.vw_Payment_UserInfo" />
+    <EntitySet Name="vw_Reservation_CheckedIn" EntityType="DBSYSModel.vw_Reservation_CheckedIn" />
+    <EntitySet Name="vw_Reservation_CheckedOut" EntityType="DBSYSModel.vw_Reservation_CheckedOut" />
+    <EntitySet Name="vw_Reservation_CheckStatus" EntityType="DBSYSModel.vw_Reservation_CheckStatus" />
     <EntitySet Name="vw_Reservation_Full" EntityType="DBSYSModel.vw_Reservation_Full" />
     <EntitySet Name="vw_Reservation_GuestCount" EntityType="DBSYSModel.vw_Reservation_GuestCount" />
     <EntitySet Name="vw_Reservation_GuestInfo" EntityType="DBSYSModel.vw_Reservation_GuestInfo" />
@@ -178,10 +204,6 @@
       <End Role="UserAccount" EntitySet="UserAccount" />
       <End Role="StaffInfo" EntitySet="StaffInfo" />
     </AssociationSet>
-    <FunctionImport Name="SP_UpdateRoom_GuestID">
-      <Parameter Name="RID" Mode="In" Type="Int32" />
-      <Parameter Name="GID" Mode="In" Type="Int32" />
-    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="SP_SearchUA_Username_Result">
     <Property Type="Int32" Name="User_ID_" Nullable="false" />
@@ -263,13 +285,14 @@
     <Property Name="guestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="guestFirstName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="guestLastName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="guestBirthDate" Type="DateTime" Precision="0" />
+    <Property Name="guestBirthDate" Type="DateTime" Precision="3" />
     <Property Name="guestGender" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
     <Property Name="guestContactNo" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
     <Property Name="guestAddress" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="guestEmailAddress" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
-    <Property Name="guestLastCheckInDate" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="guestLastCheckOutDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="guestLastCheckInDate" Type="DateTime" Precision="3" />
+    <Property Name="guestLastCheckOutDate" Type="DateTime" Precision="3" />
+    <Property Name="guestHasReservation" Type="Boolean" />
     <Property Name="userID" Type="Int32" />
     <Property Name="roomID" Type="Int32" />
     <NavigationProperty Name="RoomInformation" Relationship="DBSYSModel.FK__GuestInfo__roomI__01142BA1" FromRole="GuestInformation" ToRole="RoomInformation" />
@@ -301,12 +324,16 @@
       <PropertyRef Name="reserveID" />
     </Key>
     <Property Name="reserveID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="reserveCheckInDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="reserveCheckOutDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="reserveCheckInDate" Type="DateTime" Precision="3" />
+    <Property Name="reserveCheckOutDate" Type="DateTime" Precision="3" />
     <Property Name="reserveStayLength" Type="Int32" Nullable="false" />
     <Property Name="reserveGuestCount" Type="Int32" Nullable="false" />
     <Property Name="reserveGuestAdultCount" Type="Int32" Nullable="false" />
     <Property Name="reserveGuestChildCount" Type="Int32" Nullable="false" />
+    <Property Name="reserveHasCheckedIn" Type="Boolean" />
+    <Property Name="reserveHasCheckedOut" Type="Boolean" />
+    <Property Name="reserveGuestCheckInDate" Type="DateTime" Precision="3" />
+    <Property Name="reserveGuestCheckOutDate" Type="DateTime" Precision="3" />
     <Property Name="userId" Type="Int32" />
     <Property Name="guestID" Type="Int32" />
     <Property Name="roomID" Type="Int32" />
@@ -527,6 +554,54 @@
     <Property Name="Payer_User_ID" Type="Int32" />
     <Property Name="Payer_Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
+  <EntityType Name="vw_Reservation_CheckedIn">
+    <Key>
+      <PropertyRef Name="Reservation_No_" />
+      <PropertyRef Name="Check_In" />
+      <PropertyRef Name="Check_Out" />
+      <PropertyRef Name="Nights_to_Stay" />
+      <PropertyRef Name="No__of_Adult_Guests" />
+      <PropertyRef Name="No__of_Children_Guests" />
+      <PropertyRef Name="No__of_Guests" />
+    </Key>
+    <Property Name="Reservation_No_" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Check_In" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Check_Out" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Nights_to_Stay" Type="Int32" Nullable="false" />
+    <Property Name="No__of_Adult_Guests" Type="Int32" Nullable="false" />
+    <Property Name="No__of_Children_Guests" Type="Int32" Nullable="false" />
+    <Property Name="No__of_Guests" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vw_Reservation_CheckedOut">
+    <Key>
+      <PropertyRef Name="Reservation_No_" />
+      <PropertyRef Name="Check_In" />
+      <PropertyRef Name="Check_Out" />
+      <PropertyRef Name="Nights_to_Stay" />
+      <PropertyRef Name="No__of_Adult_Guests" />
+      <PropertyRef Name="No__of_Children_Guests" />
+      <PropertyRef Name="No__of_Guests" />
+    </Key>
+    <Property Name="Reservation_No_" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Check_In" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Check_Out" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Nights_to_Stay" Type="Int32" Nullable="false" />
+    <Property Name="No__of_Adult_Guests" Type="Int32" Nullable="false" />
+    <Property Name="No__of_Children_Guests" Type="Int32" Nullable="false" />
+    <Property Name="No__of_Guests" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vw_Reservation_CheckStatus">
+    <Key>
+      <PropertyRef Name="Reservation_No_" />
+      <PropertyRef Name="Check_In" />
+      <PropertyRef Name="Check_Out" />
+    </Key>
+    <Property Name="Reservation_No_" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Check_In" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Check_Out" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Has_Checked_In_" Type="Boolean" />
+    <Property Name="Has_Checked_Out_" Type="Boolean" />
+  </EntityType>
   <EntityType Name="vw_Reservation_Full">
     <Key>
       <PropertyRef Name="Reservation_No_" />
@@ -540,6 +615,8 @@
     <Property Name="Reservation_No_" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Check_In" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Check_Out" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Has_Checked_In_" Type="Boolean" />
+    <Property Name="Has_Checked_Out_" Type="Boolean" />
     <Property Name="Nights_to_Stay" Type="Int32" Nullable="false" />
     <Property Name="No__of_Adult_Guests" Type="Int32" Nullable="false" />
     <Property Name="No__of_Children_Guests" Type="Int32" Nullable="false" />
@@ -568,20 +645,16 @@
   <EntityType Name="vw_Reservation_GuestInfo">
     <Key>
       <PropertyRef Name="Reservation_No_" />
-      <PropertyRef Name="Check_In" />
-      <PropertyRef Name="Check_Out" />
       <PropertyRef Name="No__of_Guests" />
       <PropertyRef Name="First_Name" />
       <PropertyRef Name="Last_Name" />
       <PropertyRef Name="Gender" />
       <PropertyRef Name="Contact_No_" />
       <PropertyRef Name="Email_Address" />
-      <PropertyRef Name="Last_Checked_In" />
-      <PropertyRef Name="Last_Checked_Out" />
     </Key>
     <Property Name="Reservation_No_" Type="Int32" Nullable="false" />
-    <Property Name="Check_In" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="Check_Out" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Check_In" Type="DateTime" Precision="3" />
+    <Property Name="Check_Out" Type="DateTime" Precision="3" />
     <Property Name="No__of_Guests" Type="Int32" Nullable="false" />
     <Property Name="Guest_ID_No_" Type="Int32" />
     <Property Name="First_Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
@@ -589,8 +662,8 @@
     <Property Name="Gender" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
     <Property Name="Contact_No_" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
     <Property Name="Email_Address" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
-    <Property Name="Last_Checked_In" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="Last_Checked_Out" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Last_Checked_In" Type="DateTime" Precision="3" />
+    <Property Name="Last_Checked_Out" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="vw_Reservation_RoomInfo">
     <Key>

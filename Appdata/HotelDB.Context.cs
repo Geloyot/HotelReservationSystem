@@ -43,6 +43,9 @@ namespace HotelReservationSystem.Appdata
         public virtual DbSet<vw_Payment_GuestInfo> vw_Payment_GuestInfo { get; set; }
         public virtual DbSet<vw_Payment_ReservationInfo> vw_Payment_ReservationInfo { get; set; }
         public virtual DbSet<vw_Payment_UserInfo> vw_Payment_UserInfo { get; set; }
+        public virtual DbSet<vw_Reservation_CheckedIn> vw_Reservation_CheckedIn { get; set; }
+        public virtual DbSet<vw_Reservation_CheckedOut> vw_Reservation_CheckedOut { get; set; }
+        public virtual DbSet<vw_Reservation_CheckStatus> vw_Reservation_CheckStatus { get; set; }
         public virtual DbSet<vw_Reservation_Full> vw_Reservation_Full { get; set; }
         public virtual DbSet<vw_Reservation_GuestCount> vw_Reservation_GuestCount { get; set; }
         public virtual DbSet<vw_Reservation_GuestInfo> vw_Reservation_GuestInfo { get; set; }
@@ -396,6 +399,67 @@ namespace HotelReservationSystem.Appdata
                 new ObjectParameter("GID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UpdateRoom_GuestID", rIDParameter, gIDParameter);
+        }
+    
+        public virtual int SP_UpdateGuest_CheckInDate(Nullable<int> gID, Nullable<System.DateTime> checkInDate)
+        {
+            var gIDParameter = gID.HasValue ?
+                new ObjectParameter("GID", gID) :
+                new ObjectParameter("GID", typeof(int));
+    
+            var checkInDateParameter = checkInDate.HasValue ?
+                new ObjectParameter("CheckInDate", checkInDate) :
+                new ObjectParameter("CheckInDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UpdateGuest_CheckInDate", gIDParameter, checkInDateParameter);
+        }
+    
+        public virtual int SP_UpdateGuest_CheckOutDate(Nullable<int> gID, Nullable<System.DateTime> checkOutDate)
+        {
+            var gIDParameter = gID.HasValue ?
+                new ObjectParameter("GID", gID) :
+                new ObjectParameter("GID", typeof(int));
+    
+            var checkOutDateParameter = checkOutDate.HasValue ?
+                new ObjectParameter("CheckOutDate", checkOutDate) :
+                new ObjectParameter("CheckOutDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UpdateGuest_CheckOutDate", gIDParameter, checkOutDateParameter);
+        }
+    
+        public virtual int SP_UpdateReservation_CheckInGuest(Nullable<int> resID, Nullable<System.DateTime> checkInDate)
+        {
+            var resIDParameter = resID.HasValue ?
+                new ObjectParameter("ResID", resID) :
+                new ObjectParameter("ResID", typeof(int));
+    
+            var checkInDateParameter = checkInDate.HasValue ?
+                new ObjectParameter("CheckInDate", checkInDate) :
+                new ObjectParameter("CheckInDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UpdateReservation_CheckInGuest", resIDParameter, checkInDateParameter);
+        }
+    
+        public virtual int SP_UpdateReservation_CheckOutGuest(Nullable<int> resID, Nullable<System.DateTime> checkOutDate)
+        {
+            var resIDParameter = resID.HasValue ?
+                new ObjectParameter("ResID", resID) :
+                new ObjectParameter("ResID", typeof(int));
+    
+            var checkOutDateParameter = checkOutDate.HasValue ?
+                new ObjectParameter("CheckOutDate", checkOutDate) :
+                new ObjectParameter("CheckOutDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UpdateReservation_CheckOutGuest", resIDParameter, checkOutDateParameter);
+        }
+    
+        public virtual int SP_UpdateRoom_EmptyRoom(Nullable<int> rID)
+        {
+            var rIDParameter = rID.HasValue ?
+                new ObjectParameter("RID", rID) :
+                new ObjectParameter("RID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UpdateRoom_EmptyRoom", rIDParameter);
         }
     }
 }

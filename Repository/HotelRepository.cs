@@ -26,6 +26,18 @@ namespace HotelReservationSystem
             DB = new DBSYSEntities();
             return DB.RoomInformation.Where(r => r.roomTitle == RoomName).FirstOrDefault();
         }
+        public string GetRoomTitleByRoomID(int? ID) 
+        {
+            DB = new DBSYSEntities();
+            RoomInformation room = DB.RoomInformation.Where(r => r.roomID == ID).FirstOrDefault();
+            return room.roomTitle;
+        }
+        public int GetGuestCountByRoomID(int? ID)
+        {
+            DB = new DBSYSEntities();
+            RoomInformation room = DB.RoomInformation.Where(r => r.roomID == ID).FirstOrDefault();
+            return room.roomGuestCount.Value;
+        }
 
         public List<vw_RoomInfo_Full> GetRoomsFullList()
         {
@@ -83,6 +95,16 @@ namespace HotelReservationSystem
             DB = new DBSYSEntities();
             return DB.vw_Payment_Amount.ToList();
         }
+        public ReservationInfo GetReservationByID(int? ID) 
+        {
+            DB = new DBSYSEntities();
+            return DB.ReservationInfo.Where(res => res.reserveID == ID).FirstOrDefault();
+        }
+        public ReservationInfo GetReservationByGuestID(int? ID) 
+        {
+            DB = new DBSYSEntities();
+            return DB.ReservationInfo.Where(res => res.guestID == ID).FirstOrDefault();
+        }
 
         public List<vw_Reservation_Full> GetReservationFullList() 
         {
@@ -108,6 +130,21 @@ namespace HotelReservationSystem
         {
             DB = new DBSYSEntities();
             return DB.vw_Reservation_GuestCount.ToList();
+        }
+        public List<vw_Reservation_CheckedIn> GetReservationCheckInList()
+        {
+            DB = new DBSYSEntities();
+            return DB.vw_Reservation_CheckedIn.ToList();
+        }
+        public List<vw_Reservation_CheckedOut> GetReservationCheckOutList() 
+        {
+            DB = new DBSYSEntities();
+            return DB.vw_Reservation_CheckedOut.ToList();
+        }
+        public List<vw_Reservation_CheckStatus> GetReservationChecksList() 
+        {
+            DB = new DBSYSEntities();
+            return DB.vw_Reservation_CheckStatus.ToList();
         }
 
     }

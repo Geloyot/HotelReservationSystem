@@ -141,12 +141,11 @@
             this.Panel_DateTime.Controls.Add(this.Label_Clock);
             this.Panel_DateTime.Location = new System.Drawing.Point(15, 17);
             this.Panel_DateTime.Name = "Panel_DateTime";
-            this.Panel_DateTime.Size = new System.Drawing.Size(128, 69);
+            this.Panel_DateTime.Size = new System.Drawing.Size(328, 69);
             this.Panel_DateTime.TabIndex = 15;
             // 
             // Label_Calendar
             // 
-            this.Label_Calendar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Label_Calendar.AutoSize = true;
             this.Label_Calendar.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label_Calendar.Location = new System.Drawing.Point(3, 8);

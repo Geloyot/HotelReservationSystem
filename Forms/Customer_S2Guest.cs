@@ -53,7 +53,7 @@ namespace HotelReservationSystem
 
         private void Timer_Clock_Tick(object sender, EventArgs e)
         {
-            Label_Calendar.Text = DateTime.Now.ToString("d");
+            Label_Calendar.Text = DateTime.Now.ToString("MMMM dd, yyyy");
             Label_Clock.Text = DateTime.Now.ToString("HH:mm:ss tt");
         }
 
@@ -94,77 +94,83 @@ namespace HotelReservationSystem
 
         private void Btn_NextStep_Click(object sender, EventArgs e)
         {
-            string fn = Txt_FN.Text;
-            string ln = Txt_LN.Text;
-            string gender = Cbx_Gender.Text;
-            DateTime bdate = Calendar_BDate.SelectionRange.Start;
-            string contact = Txt_Contact.Text;
-            string address = Txt_Address.Text;
-            string email = Txt_Email.Text;
+            try 
+            { 
+                string fn = Txt_FN.Text;
+                string ln = Txt_LN.Text;
+                string gender = Cbx_Gender.Text;
+                DateTime bdate = Calendar_BDate.SelectionRange.Start;
+                string contact = Txt_Contact.Text;
+                string address = Txt_Address.Text;
+                string email = Txt_Email.Text;
 
-            EP_Input.Clear();
+                EP_Input.Clear();
 
-            if (String.IsNullOrEmpty(Txt_FN.Text))
-            {
-                EP_Input.SetError(Txt_FN, "First name must be filled out.");
-                return;
-            }
-            if (String.IsNullOrEmpty(Txt_LN.Text))
-            {
-                EP_Input.SetError(Txt_LN, "Last name must be filled out.");
-                return;
-            }
-            if (String.IsNullOrEmpty(Cbx_Gender.Text))
-            {
-                EP_Input.SetError(Cbx_Gender, "Gender must be selected.");
-                return;
-            }
-            if (String.IsNullOrEmpty(Txt_BDate.Text))
-            {
-                EP_Input.SetError(Txt_BDate, "Birth date must be selected.");
-                return;
-            }
-            if (String.IsNullOrEmpty(Txt_Contact.Text))
-            {
-                EP_Input.SetError(Txt_Contact, "Contact number must be filled out.");
-                return;
-            }
-            if (String.IsNullOrEmpty(Txt_Address.Text))
-            {
-                EP_Input.SetError(Txt_Address, "Current address must be filled out.");
-                return;
-            }
-            if (String.IsNullOrEmpty(Txt_Email.Text))
-            {
-                EP_Input.SetError(Txt_Email, "Email address must be filled out.");
-                return;
-            }
+                if (String.IsNullOrEmpty(Txt_FN.Text))
+                {
+                    EP_Input.SetError(Txt_FN, "First name must be filled out.");
+                    return;
+                }
+                if (String.IsNullOrEmpty(Txt_LN.Text))
+                {
+                    EP_Input.SetError(Txt_LN, "Last name must be filled out.");
+                    return;
+                }
+                if (String.IsNullOrEmpty(Cbx_Gender.Text))
+                {
+                    EP_Input.SetError(Cbx_Gender, "Gender must be selected.");
+                    return;
+                }
+                if (String.IsNullOrEmpty(Txt_BDate.Text))
+                {
+                    EP_Input.SetError(Txt_BDate, "Birth date must be selected.");
+                    return;
+                }
+                if (String.IsNullOrEmpty(Txt_Contact.Text))
+                {
+                    EP_Input.SetError(Txt_Contact, "Contact number must be filled out.");
+                    return;
+                }
+                if (String.IsNullOrEmpty(Txt_Address.Text))
+                {
+                    EP_Input.SetError(Txt_Address, "Current address must be filled out.");
+                    return;
+                }
+                if (String.IsNullOrEmpty(Txt_Email.Text))
+                {
+                    EP_Input.SetError(Txt_Email, "Email address must be filled out.");
+                    return;
+                }
 
-            if (GuestDetails == null) 
-            {
-                GuestDetails = new GuestInformation();
+                if (GuestDetails == null) 
+                {
+                    GuestDetails = new GuestInformation();
+                }
+                GuestDetails.guestFirstName = fn;
+                GuestDetails.guestLastName = ln;
+                GuestDetails.guestGender = gender;
+                GuestDetails.guestBirthDate = bdate;
+                GuestDetails.guestContactNo = contact;
+                GuestDetails.guestAddress = address;
+                GuestDetails.guestEmailAddress = email;
+                GuestDetails.guestHasReservation = true;
+                GuestDetails.userID = CurrentlyLoggedUser.GetInstance().CurrentUserAccount.userId;
+                GuestDetails.roomID = SelectedRoom.roomID;
+
+                Customer_S3Payment payment = new Customer_S3Payment();
+
+                payment.SelectedRoom = SelectedRoom;
+                payment.ReservationDetails = ReservationDetails;
+                payment.GuestDetails = GuestDetails;
+                payment.PaymentDetails = PaymentDetails;
+
+                payment.Show();
+                this.Dispose();
             }
-            GuestDetails.guestFirstName = fn;
-            GuestDetails.guestLastName = ln;
-            GuestDetails.guestGender = gender;
-            GuestDetails.guestBirthDate = bdate;
-            GuestDetails.guestContactNo = contact;
-            GuestDetails.guestAddress = address;
-            GuestDetails.guestEmailAddress = email;
-            GuestDetails.userID = CurrentlyLoggedUser.GetInstance().CurrentUserAccount.userId;
-            GuestDetails.roomID = SelectedRoom.roomID;
-
-            ReservationDetails.guestID = GuestDetails.guestID;
-
-            Customer_S3Payment payment = new Customer_S3Payment();
-
-            payment.SelectedRoom = SelectedRoom;
-            payment.ReservationDetails = ReservationDetails;
-            payment.GuestDetails = GuestDetails;
-            payment.PaymentDetails = PaymentDetails;
-
-            payment.Show();
-            this.Dispose();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception occurred! \n\nDESCRIPTION:\n" + ex.InnerException, "Exception Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Calendar_BDate_DateChanged(object sender, DateRangeEventArgs e)

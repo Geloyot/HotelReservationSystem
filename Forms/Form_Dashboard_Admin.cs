@@ -26,7 +26,7 @@ namespace HotelReservationSystem
 
         private void OpenAcctManageForm()
         {
-            Form_AcctManage AccountManagement = new Form_AcctManage();
+            Admin_AcctManage AccountManagement = new Admin_AcctManage();
             AccountManagement.Show();
             this.Dispose();
         }
@@ -63,7 +63,44 @@ namespace HotelReservationSystem
         }
         private void LoadHotelData() 
         {
-            Label_ReservationCount.Text = HotelRepos.GetReservationFullList().Count.ToString();
+            DBSYSEntities DB = new DBSYSEntities();
+
+            List<ReservationInfo> ReservesList = DB.ReservationInfo.ToList();
+            List<GuestInformation> GuestsList = DB.GuestInformation.ToList();
+            int checkins = 0;
+            int checkouts = 0;
+
+            foreach (ReservationInfo reservation in DB.ReservationInfo.ToList())
+            {
+                if (reservation.reserveCheckInDate.Value.Month != DateTime.Now.Month)
+                {
+                    ReservesList.Remove(reservation);
+                }
+            }
+            foreach (GuestInformation guest in DB.GuestInformation.ToList())
+            {
+                if (guest.guestLastCheckInDate == null || guest.guestLastCheckInDate.Value.Month != DateTime.Now.Month)
+                {
+                    GuestsList.Remove(guest);
+                }
+            }
+            foreach (ReservationInfo reservation in DB.ReservationInfo.ToList())
+            {
+                if (reservation.reserveHasCheckedIn.Value)
+                {
+                    checkins++;
+                }
+                if (reservation.reserveHasCheckedOut.Value)
+                {
+                    checkouts++;
+                }
+            }
+
+            Label_Reservation.Text = "Reservations for " + DateTime.Now.ToString("MMMM");
+            Label_ReservationCount.Text = ReservesList.Count.ToString();
+            Label_CheckInCount.Text = checkins.ToString();
+            Label_CheckOutCount.Text = checkouts.ToString();
+            // Label_ReservationCount.Text = HotelRepos.GetReservationFullList().Count.ToString();
             Label_RoomAvailCount.Text = HotelRepos.GetRoomsAvailableList().Count.ToString();
             Label_RoomUsedCount.Text = HotelRepos.GetRoomsOccupiedList().Count.ToString();
         }
@@ -81,7 +118,7 @@ namespace HotelReservationSystem
             UserRepos = new UserRepository();
             HotelRepos = new HotelRepository();
             LoadUserAccountsRoles();
-            Label_AccountCount.Text = "No. of Accounts: " + UserRepos.GetUserAccountCount();
+            Label_AccountCount.Text = "No. of Accounts: " + UserRepos.GetCurrentMonthUserAccountCount();
             LoadHotelData();
         }
 
