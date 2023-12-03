@@ -162,7 +162,8 @@ namespace HotelReservationSystem
                 string desc = richTxt_RDesc.Text;
 
                 string oldImgFileName = Txt_ImgFileName.Text;
-                string newImgFileName = "IMG_" + DateTime.Now.ToString("MM-dd-yyyy_") + DateTime.Now.ToString("HH-mm-ss") + ".jpg";
+                string[] newImgFileNameSplit = type.Split(' ');
+                string newImgFileName = string.Join("_", newImgFileNameSplit) + ".jpg";
                 string newImgPath = Path.Combine(ImgFilePath, newImgFileName);
 
                 File.Copy(oldImgFileName, newImgPath);
@@ -219,7 +220,8 @@ namespace HotelReservationSystem
                 string desc = richTxt_RDesc.Text;
 
                 string oldImgPath = Txt_ImgFileName.Text;
-                string newImgFileName = "IMG_" + DateTime.Now.ToString("MM-dd-yyyy_") + DateTime.Now.ToString("HH-mm-ss") + ".jpg";
+                string[] newImgFileNameSplit = type.Split(' ');
+                string newImgFileName = string.Join("_", newImgFileNameSplit) + (SelectedRoomID - 10000) + ".jpg";
                 string newImgPath = Path.Combine(ImgFilePath, newImgFileName);
 
                 File.Copy(oldImgPath, newImgPath);
