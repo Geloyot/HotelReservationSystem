@@ -21,6 +21,7 @@ This hotel reservation application/system contains the following functionalities
 
 ## Database
 This system includes an SQL Server database that needs to be restored if using this repository in another PC. 
+The application utilizes an entity data model (EDMx) to connect to the database, and uses DBContext, SQL Views, and SQL Stored Procedures to provide the application its functionalities that involve the system's database.
 The database consists of the following tables:
 * User Account
 * Roles
@@ -29,7 +30,6 @@ The database consists of the following tables:
 * Room Information
 * Reservation Information
 * Payment Information
-The application utilizes an entity data model (EDMx) to connect to the database, and uses DBContext, SQL Views, and SQL Stored Procedures to provide the application its functionalities that involve the system's database.
 
 ## Upcoming features
 * Payment/Transaction history for Staff
