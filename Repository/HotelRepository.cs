@@ -65,6 +65,12 @@ namespace HotelReservationSystem
             return DB.vw_RoomInfo_Prices.ToList();
         }
 
+        public PaymentInfo GetPaymentInfoByReservationID(int? id) 
+        {
+            DB = new DBSYSEntities();
+            return DB.PaymentInfo.Where(res => res.reserveID == id).FirstOrDefault();
+        }
+
         public List<vw_Payment_Full> GetPaymentFullList() 
         {
             DB = new DBSYSEntities();

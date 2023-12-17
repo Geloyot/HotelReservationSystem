@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Customer_S1Room));
             this.Timer_Clock = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.ToolStripStatus_CurrentUser = new System.Windows.Forms.ToolStripStatusLabel();
@@ -443,6 +444,7 @@
             this.ClientSize = new System.Drawing.Size(804, 591);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Customer_S1Room";
             this.Text = "Step 1: Room Selection";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Customer_S1Room_FormClosed);

@@ -86,16 +86,17 @@ namespace HotelReservationSystem
             try
             {
                 OpenFileDialog Ofd_RoomImg = new OpenFileDialog();
-                Ofd_RoomImg.ShowDialog();
+                if (Ofd_RoomImg.ShowDialog() == DialogResult.OK)
+                {
+                    string RoomImage = Ofd_RoomImg.FileName;
 
-                string RoomImage = Ofd_RoomImg.FileName;
-
-                Txt_ImgFileName.Text = RoomImage;
-                Pbx_RoomImg.Image = new Bitmap(RoomImage);
+                    Txt_ImgFileName.Text = RoomImage;
+                    Pbx_RoomImg.Image = new Bitmap(RoomImage);
+                } 
             }
             catch (Exception ex) 
             {
-                MessageBox.Show(ex.Message, "Image Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message + "\n" + ex.InnerException, "Image Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -148,7 +149,7 @@ namespace HotelReservationSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Cell Selection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message + "\n" + ex.InnerException, "Cell Selection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -221,10 +222,13 @@ namespace HotelReservationSystem
 
                 string oldImgPath = Txt_ImgFileName.Text;
                 string[] newImgFileNameSplit = type.Split(' ');
-                string newImgFileName = string.Join("_", newImgFileNameSplit) + (SelectedRoomID - 10000) + ".jpg";
+                string newImgFileName = string.Join("_", newImgFileNameSplit) + ".jpg";
                 string newImgPath = Path.Combine(ImgFilePath, newImgFileName);
 
-                File.Copy(oldImgPath, newImgPath);
+                if (oldImgPath != newImgPath) // NO NEED TO COPY FILE IF IT ALREADY EXISTS WITHIN THE APP
+                {
+                    File.Copy(oldImgPath, newImgPath, true);    // TRUE VALUE ALLOWS ONE IMAGE TO BE USED BY MULTIPLE ROOMS
+                }
 
                 EP_Input.Clear();
 
@@ -264,7 +268,7 @@ namespace HotelReservationSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Update Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message + "\n" + ex.InnerException, "Update Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

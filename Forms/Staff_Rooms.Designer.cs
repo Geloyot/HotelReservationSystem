@@ -209,7 +209,7 @@
             // Btn_RoomsTypes
             // 
             this.Btn_RoomsTypes.Font = new System.Drawing.Font("Bahnschrift SemiBold SemiConden", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_RoomsTypes.Location = new System.Drawing.Point(785, 178);
+            this.Btn_RoomsTypes.Location = new System.Drawing.Point(792, 141);
             this.Btn_RoomsTypes.Name = "Btn_RoomsTypes";
             this.Btn_RoomsTypes.Size = new System.Drawing.Size(165, 31);
             this.Btn_RoomsTypes.TabIndex = 53;
@@ -220,7 +220,7 @@
             // Btn_RoomsPrices
             // 
             this.Btn_RoomsPrices.Font = new System.Drawing.Font("Bahnschrift SemiBold SemiConden", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_RoomsPrices.Location = new System.Drawing.Point(785, 141);
+            this.Btn_RoomsPrices.Location = new System.Drawing.Point(792, 104);
             this.Btn_RoomsPrices.Name = "Btn_RoomsPrices";
             this.Btn_RoomsPrices.Size = new System.Drawing.Size(165, 31);
             this.Btn_RoomsPrices.TabIndex = 52;
@@ -231,7 +231,7 @@
             // Btn_RoomsOccupied
             // 
             this.Btn_RoomsOccupied.Font = new System.Drawing.Font("Bahnschrift SemiBold SemiConden", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_RoomsOccupied.Location = new System.Drawing.Point(785, 215);
+            this.Btn_RoomsOccupied.Location = new System.Drawing.Point(792, 178);
             this.Btn_RoomsOccupied.Name = "Btn_RoomsOccupied";
             this.Btn_RoomsOccupied.Size = new System.Drawing.Size(165, 31);
             this.Btn_RoomsOccupied.TabIndex = 51;
@@ -242,7 +242,7 @@
             // Btn_RoomsAvailable
             // 
             this.Btn_RoomsAvailable.Font = new System.Drawing.Font("Bahnschrift SemiBold SemiConden", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_RoomsAvailable.Location = new System.Drawing.Point(785, 252);
+            this.Btn_RoomsAvailable.Location = new System.Drawing.Point(792, 215);
             this.Btn_RoomsAvailable.Name = "Btn_RoomsAvailable";
             this.Btn_RoomsAvailable.Size = new System.Drawing.Size(165, 31);
             this.Btn_RoomsAvailable.TabIndex = 50;
@@ -253,7 +253,7 @@
             // Btn_RoomsFull
             // 
             this.Btn_RoomsFull.Font = new System.Drawing.Font("Bahnschrift SemiBold SemiConden", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_RoomsFull.Location = new System.Drawing.Point(785, 104);
+            this.Btn_RoomsFull.Location = new System.Drawing.Point(792, 67);
             this.Btn_RoomsFull.Name = "Btn_RoomsFull";
             this.Btn_RoomsFull.Size = new System.Drawing.Size(165, 31);
             this.Btn_RoomsFull.TabIndex = 49;
@@ -267,7 +267,7 @@
             this.Txt_ImgFileName.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txt_ImgFileName.Location = new System.Drawing.Point(454, 252);
             this.Txt_ImgFileName.Name = "Txt_ImgFileName";
-            this.Txt_ImgFileName.Size = new System.Drawing.Size(325, 30);
+            this.Txt_ImgFileName.Size = new System.Drawing.Size(503, 30);
             this.Txt_ImgFileName.TabIndex = 46;
             // 
             // Btn_AddRoom

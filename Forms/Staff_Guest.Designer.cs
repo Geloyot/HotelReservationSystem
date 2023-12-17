@@ -291,6 +291,7 @@
             // 
             // Txt_BDate
             // 
+            this.Txt_BDate.Enabled = false;
             this.Txt_BDate.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txt_BDate.Location = new System.Drawing.Point(351, 105);
             this.Txt_BDate.Name = "Txt_BDate";

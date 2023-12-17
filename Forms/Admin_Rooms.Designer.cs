@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin_Rooms));
             this.Panel_AcctManage = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.BtnDashboard = new System.Windows.Forms.Button();
@@ -392,6 +393,7 @@
             this.BackgroundImage = global::HotelReservationSystem.Properties.Resources.bg1;
             this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.Panel_AcctManage);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Admin_Rooms";
             this.Text = "Room Management";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Admin_Rooms_FormClosed);

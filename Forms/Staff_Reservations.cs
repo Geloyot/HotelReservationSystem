@@ -130,6 +130,11 @@ namespace HotelReservationSystem
                     Label_GuestCheckOutDate.Text = SelectedReservation.reserveGuestCheckOutDate.Value.ToString("MMMM dd, yyyy");
                     Label_GuestCheckOutDate.Visible = true;
                 }
+
+                if (SelectedReservation.PaymentInfo != null) 
+                {
+                    Btn_PaymentView.Enabled = true;
+                }
             }
             catch (Exception ex) 
             {
@@ -205,6 +210,13 @@ namespace HotelReservationSystem
             Label_GuestCheckOutDate.Visible = false;
             Btn_ConfirmCheckIn.Enabled = false;
             Btn_ConfirmCheckOut.Enabled = false;
+            Btn_PaymentView.Enabled = false;
+        }
+
+        private void Btn_PaymentView_Click(object sender, EventArgs e)
+        {
+            Staff_Payment payment = new Staff_Payment(SelectedReservation);
+            payment.ShowDialog();
         }
     }
 }

@@ -21,8 +21,8 @@ namespace HotelReservationSystem.Appdata
         public string Contact_Number { get; set; }
         public string Address { get; set; }
         public string Email_Address { get; set; }
-        public System.DateTime Last_Checked_In { get; set; }
-        public System.DateTime Last_Checked_Out { get; set; }
+        public Nullable<System.DateTime> Last_Checked_In { get; set; }
+        public Nullable<System.DateTime> Last_Checked_Out { get; set; }
         public Nullable<int> User_Account_ID { get; set; }
     }
 }

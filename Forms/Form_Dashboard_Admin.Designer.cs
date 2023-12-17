@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Dashboard_Admin));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.ToolStripStatus_CurrentUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -38,6 +39,7 @@
             this.guestReservationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Panel_NavBar = new System.Windows.Forms.Panel();
+            this.LinkLabelPayments = new System.Windows.Forms.LinkLabel();
             this.LinkLabel_Room = new System.Windows.Forms.LinkLabel();
             this.LinkLabel_Reservation = new System.Windows.Forms.LinkLabel();
             this.LinkLabelLogout = new System.Windows.Forms.LinkLabel();
@@ -70,7 +72,6 @@
             this.Dgv_AccountsSmall = new System.Windows.Forms.DataGridView();
             this.Btn_Accounts = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.LinkLabelPayments = new System.Windows.Forms.LinkLabel();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.Panel_NavBar.SuspendLayout();
@@ -162,6 +163,18 @@
             this.Panel_NavBar.Name = "Panel_NavBar";
             this.Panel_NavBar.Size = new System.Drawing.Size(125, 392);
             this.Panel_NavBar.TabIndex = 2;
+            // 
+            // LinkLabelPayments
+            // 
+            this.LinkLabelPayments.AutoSize = true;
+            this.LinkLabelPayments.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LinkLabelPayments.LinkColor = System.Drawing.Color.Black;
+            this.LinkLabelPayments.Location = new System.Drawing.Point(12, 127);
+            this.LinkLabelPayments.Name = "LinkLabelPayments";
+            this.LinkLabelPayments.Size = new System.Drawing.Size(92, 25);
+            this.LinkLabelPayments.TabIndex = 18;
+            this.LinkLabelPayments.TabStop = true;
+            this.LinkLabelPayments.Text = "Payments";
             // 
             // LinkLabel_Room
             // 
@@ -529,18 +542,6 @@
             this.label10.TabIndex = 24;
             this.label10.Text = "Recently Added Accounts";
             // 
-            // LinkLabelPayments
-            // 
-            this.LinkLabelPayments.AutoSize = true;
-            this.LinkLabelPayments.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LinkLabelPayments.LinkColor = System.Drawing.Color.Black;
-            this.LinkLabelPayments.Location = new System.Drawing.Point(12, 127);
-            this.LinkLabelPayments.Name = "LinkLabelPayments";
-            this.LinkLabelPayments.Size = new System.Drawing.Size(92, 25);
-            this.LinkLabelPayments.TabIndex = 18;
-            this.LinkLabelPayments.TabStop = true;
-            this.LinkLabelPayments.Text = "Payments";
-            // 
             // Form_Dashboard_Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -553,6 +554,7 @@
             this.Controls.Add(this.Panel_NavBar);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form_Dashboard_Admin";
             this.Text = "Administrator";

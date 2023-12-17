@@ -81,6 +81,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.Timer_Clock = new System.Windows.Forms.Timer(this.components);
             this.EP_Input = new System.Windows.Forms.ErrorProvider(this.components);
+            this.Btn_PaymentView = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Reservations)).BeginInit();
             this.Panel_AcctOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_HotelKannoteki)).BeginInit();
@@ -102,6 +103,7 @@
             // Panel_AcctOptions
             // 
             this.Panel_AcctOptions.BackColor = System.Drawing.Color.LightBlue;
+            this.Panel_AcctOptions.Controls.Add(this.Btn_PaymentView);
             this.Panel_AcctOptions.Controls.Add(this.label15);
             this.Panel_AcctOptions.Controls.Add(this.Txt_RoomTitle);
             this.Panel_AcctOptions.Controls.Add(this.label13);
@@ -663,6 +665,18 @@
             // 
             this.EP_Input.ContainerControl = this;
             // 
+            // Btn_PaymentView
+            // 
+            this.Btn_PaymentView.Enabled = false;
+            this.Btn_PaymentView.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_PaymentView.Location = new System.Drawing.Point(464, 25);
+            this.Btn_PaymentView.Name = "Btn_PaymentView";
+            this.Btn_PaymentView.Size = new System.Drawing.Size(166, 34);
+            this.Btn_PaymentView.TabIndex = 17;
+            this.Btn_PaymentView.Text = "VIEW PAYMENT";
+            this.Btn_PaymentView.UseVisualStyleBackColor = true;
+            this.Btn_PaymentView.Click += new System.EventHandler(this.Btn_PaymentView_Click);
+            // 
             // Staff_Reservations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -743,5 +757,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Timer Timer_Clock;
         private System.Windows.Forms.ErrorProvider EP_Input;
+        private System.Windows.Forms.Button Btn_PaymentView;
     }
 }

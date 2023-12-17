@@ -409,13 +409,11 @@
     <Key>
       <PropertyRef Name="Guest_ID" />
       <PropertyRef Name="Guest_Name" />
-      <PropertyRef Name="Last_Checked_In" />
-      <PropertyRef Name="Last_Checked_Out" />
     </Key>
     <Property Name="Guest_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Guest_Name" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
-    <Property Name="Last_Checked_In" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="Last_Checked_Out" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Last_Checked_In" Type="DateTime" Precision="3" />
+    <Property Name="Last_Checked_Out" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="vw_Guest_Full">
     <Key>
@@ -425,18 +423,16 @@
       <PropertyRef Name="Contact_Number" />
       <PropertyRef Name="Address" />
       <PropertyRef Name="Email_Address" />
-      <PropertyRef Name="Last_Checked_In" />
-      <PropertyRef Name="Last_Checked_Out" />
     </Key>
     <Property Name="Guest_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Guest_Name" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
     <Property Name="Guest_Gender" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
-    <Property Name="Guest_Birthdate" Type="DateTime" Precision="0" />
+    <Property Name="Guest_Birthdate" Type="DateTime" Precision="3" />
     <Property Name="Contact_Number" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
     <Property Name="Address" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="Email_Address" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
-    <Property Name="Last_Checked_In" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="Last_Checked_Out" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Last_Checked_In" Type="DateTime" Precision="3" />
+    <Property Name="Last_Checked_Out" Type="DateTime" Precision="3" />
     <Property Name="User_Account_ID" Type="Int32" />
   </EntityType>
   <EntityType Name="vw_Guest_RoomOccupied">

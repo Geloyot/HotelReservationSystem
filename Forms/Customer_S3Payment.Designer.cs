@@ -29,10 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Customer_S3Payment));
             this.Timer_Clock = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.ToolStatusStrip_CurrentUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Panel_DateTime = new System.Windows.Forms.Panel();
+            this.Label_Calendar = new System.Windows.Forms.Label();
+            this.Label_Clock = new System.Windows.Forms.Label();
             this.Txt_CardNumber = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.Txt_SecurityCode = new System.Windows.Forms.TextBox();
@@ -53,15 +57,12 @@
             this.Btn_LogOut = new System.Windows.Forms.Button();
             this.Pic_HotelKannoteki = new System.Windows.Forms.PictureBox();
             this.EP_Input = new System.Windows.Forms.ErrorProvider(this.components);
-            this.Panel_DateTime = new System.Windows.Forms.Panel();
-            this.Label_Calendar = new System.Windows.Forms.Label();
-            this.Label_Clock = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.Panel_DateTime.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picProgress)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_HotelKannoteki)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EP_Input)).BeginInit();
-            this.Panel_DateTime.SuspendLayout();
             this.SuspendLayout();
             // 
             // Timer_Clock
@@ -113,6 +114,36 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(754, 429);
             this.panel1.TabIndex = 3;
+            // 
+            // Panel_DateTime
+            // 
+            this.Panel_DateTime.BackColor = System.Drawing.Color.LightGreen;
+            this.Panel_DateTime.Controls.Add(this.Label_Calendar);
+            this.Panel_DateTime.Controls.Add(this.Label_Clock);
+            this.Panel_DateTime.Location = new System.Drawing.Point(3, 3);
+            this.Panel_DateTime.Name = "Panel_DateTime";
+            this.Panel_DateTime.Size = new System.Drawing.Size(306, 62);
+            this.Panel_DateTime.TabIndex = 41;
+            // 
+            // Label_Calendar
+            // 
+            this.Label_Calendar.AutoSize = true;
+            this.Label_Calendar.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_Calendar.Location = new System.Drawing.Point(3, 5);
+            this.Label_Calendar.Name = "Label_Calendar";
+            this.Label_Calendar.Size = new System.Drawing.Size(60, 25);
+            this.Label_Calendar.TabIndex = 14;
+            this.Label_Calendar.Text = "Date:";
+            // 
+            // Label_Clock
+            // 
+            this.Label_Clock.AutoSize = true;
+            this.Label_Clock.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_Clock.Location = new System.Drawing.Point(3, 30);
+            this.Label_Clock.Name = "Label_Clock";
+            this.Label_Clock.Size = new System.Drawing.Size(61, 25);
+            this.Label_Clock.TabIndex = 13;
+            this.Label_Clock.Text = "Time:";
             // 
             // Txt_CardNumber
             // 
@@ -315,36 +346,6 @@
             // 
             this.EP_Input.ContainerControl = this;
             // 
-            // Panel_DateTime
-            // 
-            this.Panel_DateTime.BackColor = System.Drawing.Color.LightGreen;
-            this.Panel_DateTime.Controls.Add(this.Label_Calendar);
-            this.Panel_DateTime.Controls.Add(this.Label_Clock);
-            this.Panel_DateTime.Location = new System.Drawing.Point(3, 3);
-            this.Panel_DateTime.Name = "Panel_DateTime";
-            this.Panel_DateTime.Size = new System.Drawing.Size(306, 62);
-            this.Panel_DateTime.TabIndex = 41;
-            // 
-            // Label_Calendar
-            // 
-            this.Label_Calendar.AutoSize = true;
-            this.Label_Calendar.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Calendar.Location = new System.Drawing.Point(3, 5);
-            this.Label_Calendar.Name = "Label_Calendar";
-            this.Label_Calendar.Size = new System.Drawing.Size(60, 25);
-            this.Label_Calendar.TabIndex = 14;
-            this.Label_Calendar.Text = "Date:";
-            // 
-            // Label_Clock
-            // 
-            this.Label_Clock.AutoSize = true;
-            this.Label_Clock.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Clock.Location = new System.Drawing.Point(3, 30);
-            this.Label_Clock.Name = "Label_Clock";
-            this.Label_Clock.Size = new System.Drawing.Size(61, 25);
-            this.Label_Clock.TabIndex = 13;
-            this.Label_Clock.Text = "Time:";
-            // 
             // Customer_S3Payment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -353,6 +354,7 @@
             this.ClientSize = new System.Drawing.Size(800, 473);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Customer_S3Payment";
             this.Text = "Step 3: Payment";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Customer_S3Payment_FormClosed);
@@ -361,11 +363,11 @@
             this.statusStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.Panel_DateTime.ResumeLayout(false);
+            this.Panel_DateTime.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picProgress)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_HotelKannoteki)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EP_Input)).EndInit();
-            this.Panel_DateTime.ResumeLayout(false);
-            this.Panel_DateTime.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

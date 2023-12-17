@@ -67,10 +67,12 @@ namespace HotelReservationSystem
                 Txt_FN.Text = SelectedGuest.guestFirstName;
                 Txt_LN.Text = SelectedGuest.guestLastName;
                 Cbx_Gender.Text = SelectedGuest.guestGender;
-                Clndr_BDate.SelectionRange.Start = Convert.ToDateTime(SelectedGuest.guestBirthDate);
+                Clndr_BDate.SelectionStart = Convert.ToDateTime(SelectedGuest.guestBirthDate.Value);
+                Clndr_BDate.SelectionEnd = Convert.ToDateTime(SelectedGuest.guestBirthDate.Value);
                 Txt_Contact.Text = SelectedGuest.guestContactNo;
                 Txt_Address.Text = SelectedGuest.guestAddress;
                 Txt_Email.Text = SelectedGuest.guestEmailAddress;
+                Txt_BDate.Text = SelectedGuest.guestBirthDate.Value.ToString();
             }
             catch (Exception ex)
             {

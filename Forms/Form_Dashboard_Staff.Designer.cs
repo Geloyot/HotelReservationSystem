@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.Btn_Payments = new System.Windows.Forms.Button();
             this.Btn_Rooms = new System.Windows.Forms.Button();
             this.Btn_Reservations = new System.Windows.Forms.Button();
             this.Btn_Guests = new System.Windows.Forms.Button();
@@ -75,7 +74,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.panel1.Controls.Add(this.Btn_Payments);
             this.panel1.Controls.Add(this.Btn_Rooms);
             this.panel1.Controls.Add(this.Btn_Reservations);
             this.panel1.Controls.Add(this.Btn_Guests);
@@ -87,21 +85,10 @@
             this.panel1.Size = new System.Drawing.Size(842, 454);
             this.panel1.TabIndex = 0;
             // 
-            // Btn_Payments
-            // 
-            this.Btn_Payments.Font = new System.Drawing.Font("Bahnschrift", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Payments.Location = new System.Drawing.Point(647, 13);
-            this.Btn_Payments.Name = "Btn_Payments";
-            this.Btn_Payments.Size = new System.Drawing.Size(183, 49);
-            this.Btn_Payments.TabIndex = 30;
-            this.Btn_Payments.Text = "PAYMENTS";
-            this.Btn_Payments.UseVisualStyleBackColor = true;
-            this.Btn_Payments.Click += new System.EventHandler(this.Btn_Payments_Click);
-            // 
             // Btn_Rooms
             // 
             this.Btn_Rooms.Font = new System.Drawing.Font("Bahnschrift", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Rooms.Location = new System.Drawing.Point(510, 13);
+            this.Btn_Rooms.Location = new System.Drawing.Point(420, 13);
             this.Btn_Rooms.Name = "Btn_Rooms";
             this.Btn_Rooms.Size = new System.Drawing.Size(131, 49);
             this.Btn_Rooms.TabIndex = 29;
@@ -112,7 +99,7 @@
             // Btn_Reservations
             // 
             this.Btn_Reservations.Font = new System.Drawing.Font("Bahnschrift", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Reservations.Location = new System.Drawing.Point(252, 13);
+            this.Btn_Reservations.Location = new System.Drawing.Point(162, 13);
             this.Btn_Reservations.Name = "Btn_Reservations";
             this.Btn_Reservations.Size = new System.Drawing.Size(252, 49);
             this.Btn_Reservations.TabIndex = 28;
@@ -123,7 +110,7 @@
             // Btn_Guests
             // 
             this.Btn_Guests.Font = new System.Drawing.Font("Bahnschrift", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Guests.Location = new System.Drawing.Point(104, 13);
+            this.Btn_Guests.Location = new System.Drawing.Point(14, 13);
             this.Btn_Guests.Name = "Btn_Guests";
             this.Btn_Guests.Size = new System.Drawing.Size(142, 49);
             this.Btn_Guests.TabIndex = 24;
@@ -139,9 +126,9 @@
             this.panel2.Controls.Add(this.Dgv_GuestsSmall);
             this.panel2.Controls.Add(this.Btn_GoToGuests);
             this.panel2.Controls.Add(this.label10);
-            this.panel2.Location = new System.Drawing.Point(560, 68);
+            this.panel2.Location = new System.Drawing.Point(560, 13);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(270, 370);
+            this.panel2.Size = new System.Drawing.Size(270, 425);
             this.panel2.TabIndex = 27;
             // 
             // Label_GuestCount
@@ -149,7 +136,7 @@
             this.Label_GuestCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Label_GuestCount.AutoSize = true;
             this.Label_GuestCount.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_GuestCount.Location = new System.Drawing.Point(3, 302);
+            this.Label_GuestCount.Location = new System.Drawing.Point(3, 357);
             this.Label_GuestCount.Name = "Label_GuestCount";
             this.Label_GuestCount.Size = new System.Drawing.Size(229, 25);
             this.Label_GuestCount.TabIndex = 29;
@@ -162,13 +149,13 @@
             this.Dgv_GuestsSmall.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_GuestsSmall.Location = new System.Drawing.Point(9, 48);
             this.Dgv_GuestsSmall.Name = "Dgv_GuestsSmall";
-            this.Dgv_GuestsSmall.Size = new System.Drawing.Size(249, 249);
+            this.Dgv_GuestsSmall.Size = new System.Drawing.Size(249, 306);
             this.Dgv_GuestsSmall.TabIndex = 25;
             // 
             // Btn_GoToGuests
             // 
             this.Btn_GoToGuests.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_GoToGuests.Location = new System.Drawing.Point(8, 331);
+            this.Btn_GoToGuests.Location = new System.Drawing.Point(8, 386);
             this.Btn_GoToGuests.Name = "Btn_GoToGuests";
             this.Btn_GoToGuests.Size = new System.Drawing.Size(255, 32);
             this.Btn_GoToGuests.TabIndex = 24;
@@ -201,7 +188,7 @@
             this.Panel_Reservation.Controls.Add(this.Label_Reservation);
             this.Panel_Reservation.Location = new System.Drawing.Point(14, 267);
             this.Panel_Reservation.Name = "Panel_Reservation";
-            this.Panel_Reservation.Size = new System.Drawing.Size(515, 171);
+            this.Panel_Reservation.Size = new System.Drawing.Size(537, 171);
             this.Panel_Reservation.TabIndex = 26;
             // 
             // label4
@@ -209,7 +196,7 @@
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(356, 95);
+            this.label4.Location = new System.Drawing.Point(355, 96);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(130, 25);
             this.label4.TabIndex = 25;
@@ -220,7 +207,7 @@
             this.Label_CheckOutCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Label_CheckOutCount.AutoSize = true;
             this.Label_CheckOutCount.Font = new System.Drawing.Font("Bahnschrift", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_CheckOutCount.Location = new System.Drawing.Point(398, 45);
+            this.Label_CheckOutCount.Location = new System.Drawing.Point(397, 46);
             this.Label_CheckOutCount.Name = "Label_CheckOutCount";
             this.Label_CheckOutCount.Size = new System.Drawing.Size(34, 39);
             this.Label_CheckOutCount.TabIndex = 24;
@@ -231,7 +218,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(203, 95);
+            this.label2.Location = new System.Drawing.Point(202, 96);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(115, 25);
             this.label2.TabIndex = 23;
@@ -242,7 +229,7 @@
             this.Label_CheckInCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Label_CheckInCount.AutoSize = true;
             this.Label_CheckInCount.Font = new System.Drawing.Font("Bahnschrift", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_CheckInCount.Location = new System.Drawing.Point(245, 45);
+            this.Label_CheckInCount.Location = new System.Drawing.Point(244, 46);
             this.Label_CheckInCount.Name = "Label_CheckInCount";
             this.Label_CheckInCount.Size = new System.Drawing.Size(35, 39);
             this.Label_CheckInCount.TabIndex = 22;
@@ -253,7 +240,7 @@
             this.Btn_GoToReservations.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_GoToReservations.Location = new System.Drawing.Point(21, 132);
             this.Btn_GoToReservations.Name = "Btn_GoToReservations";
-            this.Btn_GoToReservations.Size = new System.Drawing.Size(468, 32);
+            this.Btn_GoToReservations.Size = new System.Drawing.Size(495, 32);
             this.Btn_GoToReservations.TabIndex = 21;
             this.Btn_GoToReservations.Text = "Go to Reservations";
             this.Btn_GoToReservations.UseVisualStyleBackColor = true;
@@ -264,7 +251,7 @@
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(33, 95);
+            this.label5.Location = new System.Drawing.Point(32, 96);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(136, 25);
             this.label5.TabIndex = 20;
@@ -275,7 +262,7 @@
             this.Label_ReservationCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Label_ReservationCount.AutoSize = true;
             this.Label_ReservationCount.Font = new System.Drawing.Font("Bahnschrift", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_ReservationCount.Location = new System.Drawing.Point(88, 47);
+            this.Label_ReservationCount.Location = new System.Drawing.Point(87, 48);
             this.Label_ReservationCount.Name = "Label_ReservationCount";
             this.Label_ReservationCount.Size = new System.Drawing.Size(35, 39);
             this.Label_ReservationCount.TabIndex = 19;
@@ -286,7 +273,7 @@
             this.Label_Reservation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Label_Reservation.AutoSize = true;
             this.Label_Reservation.Font = new System.Drawing.Font("Bahnschrift", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Reservation.Location = new System.Drawing.Point(20, 13);
+            this.Label_Reservation.Location = new System.Drawing.Point(19, 14);
             this.Label_Reservation.Name = "Label_Reservation";
             this.Label_Reservation.Size = new System.Drawing.Size(136, 25);
             this.Label_Reservation.TabIndex = 18;
@@ -304,7 +291,7 @@
             this.Panel_Availability.Controls.Add(this.Label_Availability);
             this.Panel_Availability.Location = new System.Drawing.Point(14, 68);
             this.Panel_Availability.Name = "Panel_Availability";
-            this.Panel_Availability.Size = new System.Drawing.Size(515, 171);
+            this.Panel_Availability.Size = new System.Drawing.Size(537, 171);
             this.Panel_Availability.TabIndex = 25;
             // 
             // label8
@@ -312,7 +299,7 @@
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(259, 93);
+            this.label8.Location = new System.Drawing.Point(257, 95);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(228, 25);
             this.label8.TabIndex = 23;
@@ -323,7 +310,7 @@
             this.Label_RoomUsedCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Label_RoomUsedCount.AutoSize = true;
             this.Label_RoomUsedCount.Font = new System.Drawing.Font("Bahnschrift", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_RoomUsedCount.Location = new System.Drawing.Point(348, 48);
+            this.Label_RoomUsedCount.Location = new System.Drawing.Point(346, 50);
             this.Label_RoomUsedCount.Name = "Label_RoomUsedCount";
             this.Label_RoomUsedCount.Size = new System.Drawing.Size(35, 39);
             this.Label_RoomUsedCount.TabIndex = 22;
@@ -334,7 +321,7 @@
             this.Btn_GoToRooms.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_GoToRooms.Location = new System.Drawing.Point(21, 132);
             this.Btn_GoToRooms.Name = "Btn_GoToRooms";
-            this.Btn_GoToRooms.Size = new System.Drawing.Size(468, 32);
+            this.Btn_GoToRooms.Size = new System.Drawing.Size(495, 32);
             this.Btn_GoToRooms.TabIndex = 21;
             this.Btn_GoToRooms.Text = "Go to Rooms";
             this.Btn_GoToRooms.UseVisualStyleBackColor = true;
@@ -345,7 +332,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(18, 93);
+            this.label1.Location = new System.Drawing.Point(16, 95);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(230, 25);
             this.label1.TabIndex = 20;
@@ -356,7 +343,7 @@
             this.Label_RoomAvailCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Label_RoomAvailCount.AutoSize = true;
             this.Label_RoomAvailCount.Font = new System.Drawing.Font("Bahnschrift", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_RoomAvailCount.Location = new System.Drawing.Point(107, 48);
+            this.Label_RoomAvailCount.Location = new System.Drawing.Point(105, 50);
             this.Label_RoomAvailCount.Name = "Label_RoomAvailCount";
             this.Label_RoomAvailCount.Size = new System.Drawing.Size(35, 39);
             this.Label_RoomAvailCount.TabIndex = 19;
@@ -367,7 +354,7 @@
             this.Label_Availability.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Label_Availability.AutoSize = true;
             this.Label_Availability.Font = new System.Drawing.Font("Bahnschrift", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Availability.Location = new System.Drawing.Point(20, 10);
+            this.Label_Availability.Location = new System.Drawing.Point(18, 12);
             this.Label_Availability.Name = "Label_Availability";
             this.Label_Availability.Size = new System.Drawing.Size(114, 25);
             this.Label_Availability.TabIndex = 18;
@@ -495,7 +482,6 @@
         private System.Windows.Forms.Button Btn_Guests;
         private System.Windows.Forms.Button Btn_Reservations;
         private System.Windows.Forms.Button Btn_Rooms;
-        private System.Windows.Forms.Button Btn_Payments;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel ToolStripStatus_CurrentUser;
         private System.Windows.Forms.Timer Timer_Clock;

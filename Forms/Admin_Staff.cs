@@ -24,6 +24,7 @@ namespace HotelReservationSystem
             this.StaffAccount = StaffAccount;
 
             StaffPersonalInfo = UserRepos.GetStaffInfoByUserID(StaffAccount.userId);
+            Label_ID.Text = StaffPersonalInfo.userId.ToString();
             Dgv_Staff.DataSource = DB.StaffInfo.Where(si => si.userId == StaffAccount.userId).ToList();
         }
     }

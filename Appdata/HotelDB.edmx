@@ -114,13 +114,11 @@ warning 6002: The table/view 'DBSYS.dbo.vw_Guest_CheckInOutDates' does not have 
           <Key>
             <PropertyRef Name="Guest ID" />
             <PropertyRef Name="Guest Name" />
-            <PropertyRef Name="Last Checked In" />
-            <PropertyRef Name="Last Checked Out" />
           </Key>
           <Property Name="Guest ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Guest Name" Type="varchar" MaxLength="512" Nullable="false" />
-          <Property Name="Last Checked In" Type="smalldatetime" Nullable="false" />
-          <Property Name="Last Checked Out" Type="smalldatetime" Nullable="false" />
+          <Property Name="Last Checked In" Type="datetime" />
+          <Property Name="Last Checked Out" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'DBSYS.dbo.vw_Guest_Full' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -132,18 +130,16 @@ warning 6002: The table/view 'DBSYS.dbo.vw_Guest_Full' does not have a primary k
             <PropertyRef Name="Contact Number" />
             <PropertyRef Name="Address" />
             <PropertyRef Name="Email Address" />
-            <PropertyRef Name="Last Checked In" />
-            <PropertyRef Name="Last Checked Out" />
           </Key>
           <Property Name="Guest ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Guest Name" Type="varchar" MaxLength="512" Nullable="false" />
           <Property Name="Guest Gender" Type="varchar" MaxLength="99" Nullable="false" />
-          <Property Name="Guest Birthdate" Type="smalldatetime" />
+          <Property Name="Guest Birthdate" Type="datetime" />
           <Property Name="Contact Number" Type="varchar" MaxLength="99" Nullable="false" />
           <Property Name="Address" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Email Address" Type="varchar" MaxLength="99" Nullable="false" />
-          <Property Name="Last Checked In" Type="smalldatetime" Nullable="false" />
-          <Property Name="Last Checked Out" Type="smalldatetime" Nullable="false" />
+          <Property Name="Last Checked In" Type="datetime" />
+          <Property Name="Last Checked Out" Type="datetime" />
           <Property Name="User Account ID" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
@@ -1720,13 +1716,11 @@ warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Updates' does not have a 
           <Key>
             <PropertyRef Name="Guest_ID" />
             <PropertyRef Name="Guest_Name" />
-            <PropertyRef Name="Last_Checked_In" />
-            <PropertyRef Name="Last_Checked_Out" />
           </Key>
           <Property Name="Guest_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Guest_Name" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
-          <Property Name="Last_Checked_In" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Last_Checked_Out" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Last_Checked_In" Type="DateTime" Precision="3" />
+          <Property Name="Last_Checked_Out" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="vw_Guest_Full">
           <Key>
@@ -1736,18 +1730,16 @@ warning 6002: The table/view 'DBSYS.dbo.vw_UserAccount_Updates' does not have a 
             <PropertyRef Name="Contact_Number" />
             <PropertyRef Name="Address" />
             <PropertyRef Name="Email_Address" />
-            <PropertyRef Name="Last_Checked_In" />
-            <PropertyRef Name="Last_Checked_Out" />
           </Key>
           <Property Name="Guest_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Guest_Name" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
           <Property Name="Guest_Gender" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
-          <Property Name="Guest_Birthdate" Type="DateTime" Precision="0" />
+          <Property Name="Guest_Birthdate" Type="DateTime" Precision="3" />
           <Property Name="Contact_Number" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
           <Property Name="Address" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Email_Address" Type="String" Nullable="false" MaxLength="99" FixedLength="false" Unicode="false" />
-          <Property Name="Last_Checked_In" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Last_Checked_Out" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Last_Checked_In" Type="DateTime" Precision="3" />
+          <Property Name="Last_Checked_Out" Type="DateTime" Precision="3" />
           <Property Name="User_Account_ID" Type="Int32" />
         </EntityType>
         <EntityType Name="vw_Guest_RoomOccupied">

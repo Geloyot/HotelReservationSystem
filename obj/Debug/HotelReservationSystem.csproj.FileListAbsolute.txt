@@ -29,3 +29,4 @@ C:\Users\admin\source\repos\HotelReservationSystem\obj\Debug\HotelReservationSys
 C:\Users\admin\source\repos\HotelReservationSystem\obj\Debug\HotelReservationSystem.Customer_S4Transaction.resources
 C:\Users\admin\source\repos\HotelReservationSystem\obj\Debug\HotelReservationSystem.Admin_AcctManage.resources
 C:\Users\admin\source\repos\HotelReservationSystem\obj\Debug\HotelReservationSystem.Staff_Reservations.resources
+C:\Users\admin\source\repos\HotelReservationSystem\obj\Debug\HotelReservationSystem.Staff_Payment.resources

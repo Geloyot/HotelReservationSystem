@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Dashboard_Guest));
             this.Timer_Clock = new System.Windows.Forms.Timer(this.components);
             this.StatusStrip_CurrentUser = new System.Windows.Forms.StatusStrip();
             this.ToolStripStatus_CurrentUser = new System.Windows.Forms.ToolStripStatusLabel();
@@ -225,6 +226,7 @@
             this.ClientSize = new System.Drawing.Size(800, 514);
             this.Controls.Add(this.StatusStrip_CurrentUser);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_Dashboard_Guest";
             this.Text = "Form_Dashboard_Guest";
             this.Load += new System.EventHandler(this.Form_Dashboard_Guest_Load);

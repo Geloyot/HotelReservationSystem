@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Register));
             this.Timer_Clock = new System.Windows.Forms.Timer(this.components);
             this.ErrorProviderInput = new System.Windows.Forms.ErrorProvider(this.components);
             this.Pic_HotelKannoteki = new System.Windows.Forms.PictureBox();
@@ -240,6 +241,7 @@
             this.BackgroundImage = global::HotelReservationSystem.Properties.Resources.bg1;
             this.ClientSize = new System.Drawing.Size(543, 581);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_Register";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register Account";
