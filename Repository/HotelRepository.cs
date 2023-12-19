@@ -101,6 +101,12 @@ namespace HotelReservationSystem
             DB = new DBSYSEntities();
             return DB.vw_Payment_Amount.ToList();
         }
+
+        public int GetReservationLatestID() 
+        {
+            DB = new DBSYSEntities();
+            return DB.ReservationInfo.Max(res => res.reserveID);
+        }
         public ReservationInfo GetReservationByID(int? ID) 
         {
             DB = new DBSYSEntities();

@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\admin\\source\\repos\\HotelReservationSystem\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{5A67C3AE-5DED-48E0-B459-D8640B34F367}|HotelReservationSystem.csproj|c:\\users\\admin\\source\\repos\\hotelreservationsystem\\forms\\staff_reservations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A67C3AE-5DED-48E0-B459-D8640B34F367}|HotelReservationSystem.csproj|solutionrelative:forms\\staff_reservations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A67C3AE-5DED-48E0-B459-D8640B34F367}|HotelReservationSystem.csproj|c:\\users\\admin\\source\\repos\\hotelreservationsystem\\forms\\staff_reservations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5A67C3AE-5DED-48E0-B459-D8640B34F367}|HotelReservationSystem.csproj|solutionrelative:forms\\staff_reservations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A67C3AE-5DED-48E0-B459-D8640B34F367}|HotelReservationSystem.csproj|c:\\users\\admin\\source\\repos\\hotelreservationsystem\\forms\\customer_s3payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A67C3AE-5DED-48E0-B459-D8640B34F367}|HotelReservationSystem.csproj|solutionrelative:forms\\customer_s3payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A67C3AE-5DED-48E0-B459-D8640B34F367}|HotelReservationSystem.csproj|c:\\users\\admin\\source\\repos\\hotelreservationsystem\\repository\\hotelrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A67C3AE-5DED-48E0-B459-D8640B34F367}|HotelReservationSystem.csproj|solutionrelative:repository\\hotelrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5A67C3AE-5DED-48E0-B459-D8640B34F367}|HotelReservationSystem.csproj|c:\\users\\admin\\source\\repos\\hotelreservationsystem\\forms\\form_register_staff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5A67C3AE-5DED-48E0-B459-D8640B34F367}|HotelReservationSystem.csproj|solutionrelative:forms\\form_register_staff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,8 +27,8 @@
       "RelativeMoniker": "D:0:0:{5A67C3AE-5DED-48E0-B459-D8640B34F367}|HotelReservationSystem.csproj|solutionrelative:forms\\form_register.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5A67C3AE-5DED-48E0-B459-D8640B34F367}|HotelReservationSystem.csproj|c:\\users\\admin\\source\\repos\\hotelreservationsystem\\forms\\customer_s3payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5A67C3AE-5DED-48E0-B459-D8640B34F367}|HotelReservationSystem.csproj|solutionrelative:forms\\customer_s3payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5A67C3AE-5DED-48E0-B459-D8640B34F367}|HotelReservationSystem.csproj|c:\\users\\admin\\source\\repos\\hotelreservationsystem\\repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A67C3AE-5DED-48E0-B459-D8640B34F367}|HotelReservationSystem.csproj|solutionrelative:repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,21 +38,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Form_Register_Staff.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\HotelReservationSystem\\Forms\\Form_Register_Staff.cs",
-              "RelativeDocumentMoniker": "Forms\\Form_Register_Staff.cs",
-              "ToolTip": "C:\\Users\\admin\\source\\repos\\HotelReservationSystem\\Forms\\Form_Register_Staff.cs",
-              "RelativeToolTip": "Forms\\Form_Register_Staff.cs",
-              "ViewState": "AQIAAG8AAAAAAAAAAAArwFYAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2023-12-19T03:15:48.83Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{e506b91c-c606-466a-90a9-123d1d1e12b3}"
@@ -47,7 +50,71 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Staff_Reservations.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\HotelReservationSystem\\Forms\\Staff_Reservations.cs",
+              "RelativeDocumentMoniker": "Forms\\Staff_Reservations.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\HotelReservationSystem\\Forms\\Staff_Reservations.cs",
+              "RelativeToolTip": "Forms\\Staff_Reservations.cs",
+              "ViewState": "AQIAACIAAAAAAAAAAAAgwC8AAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-12-19T06:55:54.888Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Staff_Reservations.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\HotelReservationSystem\\Forms\\Staff_Reservations.cs",
+              "RelativeDocumentMoniker": "Forms\\Staff_Reservations.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\HotelReservationSystem\\Forms\\Staff_Reservations.cs [Design]",
+              "RelativeToolTip": "Forms\\Staff_Reservations.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-12-19T06:55:53.501Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HotelRepository.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\HotelReservationSystem\\Repository\\HotelRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\HotelRepository.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\HotelReservationSystem\\Repository\\HotelRepository.cs",
+              "RelativeToolTip": "Repository\\HotelRepository.cs",
+              "ViewState": "AQIAAFkAAAAAAAAAAAAqwGQAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-12-19T06:47:09.789Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\HotelReservationSystem\\Repository\\UserRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\UserRepository.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\HotelReservationSystem\\Repository\\UserRepository.cs",
+              "RelativeToolTip": "Repository\\UserRepository.cs",
+              "ViewState": "AQIAAFYAAAAAAAAAAAAswGYAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-12-19T06:39:26.457Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Form_Register_Staff.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\HotelReservationSystem\\Forms\\Form_Register_Staff.cs",
+              "RelativeDocumentMoniker": "Forms\\Form_Register_Staff.cs",
+              "ToolTip": "C:\\Users\\admin\\source\\repos\\HotelReservationSystem\\Forms\\Form_Register_Staff.cs",
+              "RelativeToolTip": "Forms\\Form_Register_Staff.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAIA4wFYAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-12-19T03:15:48.83Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Form_Register.cs",
               "DocumentMoniker": "C:\\Users\\admin\\source\\repos\\HotelReservationSystem\\Forms\\Form_Register.cs",
               "RelativeDocumentMoniker": "Forms\\Form_Register.cs",
@@ -66,9 +133,10 @@
               "RelativeDocumentMoniker": "Forms\\Customer_S3Payment.cs",
               "ToolTip": "C:\\Users\\admin\\source\\repos\\HotelReservationSystem\\Forms\\Customer_S3Payment.cs",
               "RelativeToolTip": "Forms\\Customer_S3Payment.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "ViewState": "AQIAAJAAAAAAAAAAAAAYwJwAAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2023-12-19T02:12:53.643Z"
+              "WhenOpened": "2023-12-19T02:12:53.643Z",
+              "EditorCaption": ""
             }
           ]
         }

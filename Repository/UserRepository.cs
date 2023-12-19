@@ -100,6 +100,17 @@ namespace HotelReservationSystem
             return DB.vw_Staff_Salary.ToList();
         }
 
+        public int GetGuestLatestID() 
+        {
+            DB = new DBSYSEntities();
+            return DB.GuestInformation.Max(guest => guest.guestID);
+        }
+        public GuestInformation GetGuestLatestByGuestID()
+        {
+            DB = new DBSYSEntities();
+            int LatestGuestID = DB.GuestInformation.Max(guest => guest.guestID);
+            return DB.GuestInformation.FirstOrDefault(guest => guest.guestID == LatestGuestID);
+        }
         public GuestInformation GetGuestByGuestID(int? GuestID) 
         {
             DB = new DBSYSEntities();

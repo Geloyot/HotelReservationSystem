@@ -160,8 +160,10 @@ namespace HotelReservationSystem
                     GuestDetails.guestContactNo,
                     GuestDetails.guestAddress, 
                     GuestDetails.guestEmailAddress, 
-                    GuestDetails.userID, 
-                    GuestDetails.roomID);
+                    GuestDetails.userID,
+                    SelectedRoom.roomID);
+
+                int RecentGuestID = UserRepos.GetGuestLatestID();
 
                 //Create reservation second, so that payment can connect to reservation id
                 DB.SP_AddReservation_Booking(ReservationDetails.reserveCheckInDate, 
@@ -170,13 +172,15 @@ namespace HotelReservationSystem
                     ReservationDetails.reserveGuestAdultCount,
                     ReservationDetails.reserveGuestChildCount,
                     ReservationDetails.reserveGuestCount,
-                    ReservationDetails.userId,
-                    ReservationDetails.roomID,
-                    GuestDetails.guestID);
+                    CurrentlyLoggedUser.GetInstance().CurrentUserAccount.userId,
+                    SelectedRoom.roomID,
+                    RecentGuestID);
 
-                DB.SP_AddPayment_Booking(ReservationDetails.userId,
-                    ReservationDetails.reserveID,
-                    GuestDetails.guestID,
+                int RecentReservationID = HotelRepos.GetReservationLatestID();
+
+                DB.SP_AddPayment_Booking(CurrentlyLoggedUser.GetInstance().CurrentUserAccount.userId,
+                    RecentReservationID,
+                    RecentGuestID,
                     cardtype,
                     cardnum,
                     amount,
@@ -185,9 +189,9 @@ namespace HotelReservationSystem
                     cardowner);
 
                 DB.SP_UpdateRoom_GuestCount(SelectedRoom.roomID, ReservationDetails.reserveGuestCount);
-                DB.SP_UpdateRoom_GuestID(SelectedRoom.roomID, GuestDetails.guestID);
+                DB.SP_UpdateRoom_GuestID(SelectedRoom.roomID, RecentGuestID);
 
-                Customer_S4Transaction receipt = new Customer_S4Transaction(ReservationDetails.reserveID, amount);
+                Customer_S4Transaction receipt = new Customer_S4Transaction(RecentReservationID, amount);
                 receipt.Show();
                 this.Dispose();
             }
