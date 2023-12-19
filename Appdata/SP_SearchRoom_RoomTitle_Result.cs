@@ -20,6 +20,6 @@ namespace HotelReservationSystem.Appdata
         public string Room_Image_File_Name { get; set; }
         public string Room_Description { get; set; }
         public Nullable<int> Room_Occupants { get; set; }
-        public int Occupant_User_ID { get; set; }
+        public int Hotel_Occupant_ID { get; set; }
     }
 }

@@ -86,22 +86,36 @@ namespace HotelReservationSystem
                 return;
             }
 
-            StaffInfo NewStaff = new StaffInfo();
-            NewStaff.roleId = GetStaffUA().roleId;
-            NewStaff.userId = GetStaffUA().userId;
-            NewStaff.StaffFirstName = Txt_FN.Text;
-            NewStaff.StaffLastName = Txt_LN.Text;
-            NewStaff.StaffGender = Cbx_Gender.Text;
-            NewStaff.StaffBirthDate = Convert.ToDateTime(Txt_BDate.Text);
-            NewStaff.StaffContactNo = Txt_Contact.Text;
-            NewStaff.StaffEmailAddress = Txt_Email.Text;
-            NewStaff.StaffSalary = Convert.ToDecimal(RngSalary(18300, 27450)); // Convert from double to decimal.
-            NewStaff.StaffStatus = "ACTIVE";
+            StaffInfo Staff = new StaffInfo();
+            Staff.roleId = GetStaffUA().roleId;
+            Staff.userId = GetStaffUA().userId;
+            Staff.StaffFirstName = Txt_FN.Text;
+            Staff.StaffLastName = Txt_LN.Text;
+            Staff.StaffGender = Cbx_Gender.Text;
+            Staff.StaffBirthDate = Convert.ToDateTime(Txt_BDate.Text);
+            Staff.StaffContactNo = Txt_Contact.Text;
+            Staff.StaffEmailAddress = Txt_Email.Text;
+            Staff.StaffSalary = Convert.ToDecimal(RngSalary(18300, 27450)); // Convert from double to decimal.
+            Staff.StaffStatus = "ACTIVE";
 
-            DB.StaffInfo.Add(NewStaff);
-            DB.UserAccount.Add(GetStaffUA());
-
-            DB.SaveChanges();
+            DB.SP_NewStaff_Register(Staff.StaffFirstName,
+                Staff.StaffLastName,
+                Staff.StaffGender,
+                Staff.StaffBirthDate,
+                Staff.StaffContactNo,
+                Staff.StaffEmailAddress,
+                Staff.StaffSalary,
+                Staff.StaffStatus,
+                Staff.roleId,
+                Staff.userId);
+            DB.SP_NewUserAccount_Register(GetStaffUA().userName,
+                    GetStaffUA().userPassword,
+                    GetStaffUA().userStatus,
+                    GetStaffUA().userDateCreated,
+                    GetStaffUA().userDateUpdated,
+                    GetStaffUA().roleId,
+                    GetStaffUA().createdById,
+                    GetStaffUA().createdByUser);
 
             MessageBox.Show("Registration successful!", "Registration Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

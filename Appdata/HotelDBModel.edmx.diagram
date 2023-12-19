@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b8c250c56a7047f782712e6ce68e0f43" Name="Diagram1">
+        <EntityTypeShape EntityType="DBSYSModel.GuestInformation" Width="1.5" PointX="5.25" PointY="7.875" />
+        <EntityTypeShape EntityType="DBSYSModel.PaymentInfo" Width="1.5" PointX="10.5" PointY="8.375" />
+        <EntityTypeShape EntityType="DBSYSModel.ReservationInfo" Width="1.5" PointX="9.75" PointY="12.625" />
+        <EntityTypeShape EntityType="DBSYSModel.Role" Width="1.5" PointX="0.75" PointY="9.125" />
+        <EntityTypeShape EntityType="DBSYSModel.RoomInformation" Width="1.5" PointX="7.5" PointY="12.875" />
+        <EntityTypeShape EntityType="DBSYSModel.StaffInfo" Width="1.5" PointX="8.25" PointY="8.375" />
+        <EntityTypeShape EntityType="DBSYSModel.UserAccount" Width="1.5" PointX="3" PointY="8.25" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_Guest_CheckInOutDates" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_Guest_Full" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_Guest_RoomOccupied" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_Payment_Amount" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_Payment_CardInfo" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_Payment_Full" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_Payment_GuestInfo" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_Payment_ReservationInfo" Width="1.5" PointX="6.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_Payment_UserInfo" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_Reservation_CheckedIn" Width="1.5" PointX="8.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_Reservation_CheckedOut" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_Reservation_CheckStatus" Width="1.5" PointX="10.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_Reservation_Full" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_Reservation_GuestCount" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_Reservation_GuestInfo" Width="1.5" PointX="12.75" PointY="5.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_Reservation_RoomInfo" Width="1.5" PointX="12.75" PointY="10.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_Reservation_Rooms" Width="1.5" PointX="2.75" PointY="13.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_Reservation_UserInfo" Width="1.5" PointX="4.75" PointY="13.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_RoomInfo_Available" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_RoomInfo_Full" Width="1.5" PointX="14.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_RoomInfo_Occupied" Width="1.5" PointX="14.75" PointY="7.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_RoomInfo_Prices" Width="1.5" PointX="14.75" PointY="10.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_RoomInfo_Types" Width="1.5" PointX="11.75" PointY="14.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_Staff_Full" Width="1.5" PointX="14.75" PointY="13.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_Staff_Personal" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_Staff_Salary" Width="1.5" PointX="0.75" PointY="16.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_UserAccount_Active" Width="1.5" PointX="16.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_UserAccount_Full" Width="1.5" PointX="6.75" PointY="16.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_UserAccount_Inactive" Width="1.5" PointX="16.75" PointY="7.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_UserAccount_Roles" Width="1.5" PointX="16.75" PointY="10.75" />
+        <EntityTypeShape EntityType="DBSYSModel.vw_UserAccount_Updates" Width="1.5" PointX="16.75" PointY="13.75" />
+        <AssociationConnector Association="DBSYSModel.FK__GuestInfo__roomI__01142BA1" />
+        <AssociationConnector Association="DBSYSModel.FK__GuestInfo__userI__00200768" />
+        <AssociationConnector Association="DBSYSModel.FK__PaymentIn__guest__41EDCAC5" />
+        <AssociationConnector Association="DBSYSModel.FK__Reservati__guest__3D2915A8" />
+        <AssociationConnector Association="DBSYSModel.FK__RoomInfor__guest__756D6ECB" />
+        <AssociationConnector Association="DBSYSModel.FK__PaymentIn__reser__42E1EEFE" />
+        <AssociationConnector Association="DBSYSModel.FK__PaymentIn__userI__40F9A68C" />
+        <AssociationConnector Association="DBSYSModel.FK__Reservati__roomI__3E1D39E1" />
+        <AssociationConnector Association="DBSYSModel.FK__Reservati__userI__3C34F16F" />
+        <AssociationConnector Association="DBSYSModel.FK__StaffInfo__roleI__57DD0BE4" />
+        <AssociationConnector Association="DBSYSModel.FK_UserAccount_Role" />
+        <AssociationConnector Association="DBSYSModel.FK__StaffInfo__userI__58D1301D" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

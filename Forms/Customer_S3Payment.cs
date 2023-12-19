@@ -103,7 +103,7 @@ namespace HotelReservationSystem
         {
             try 
             { 
-                    string cardtype = Cbx_CardType.Text;
+                string cardtype = Cbx_CardType.Text;
                 string cardnum = Txt_CardNumber.Text;
                 decimal amount = Convert.ToDecimal(Txt_Amount.Text);
                 int cardcvv = Convert.ToInt32(Txt_SecurityCode.Text);
@@ -151,21 +151,38 @@ namespace HotelReservationSystem
                 PaymentDetails.userId = CurrentlyLoggedUser.GetInstance().CurrentUserAccount.userId;
                 PaymentDetails.reserveID = ReservationDetails.guestID;
 
-                //Guest record first, so that other records can connect from FK_GuestID to PK_GuestID
+                //Guest record first, so that other records can connect using guestID.
                 DBSYSEntities DB = new DBSYSEntities();
-                DB.GuestInformation.Add(GuestDetails);
-                DB.SaveChanges();
-                // CONNECT guestID foreign keys to newly added guest record
-                PaymentDetails.guestID = GuestDetails.guestID;
-                ReservationDetails.guestID = GuestDetails.guestID;
+                DB.SP_AddGuest_Booking(GuestDetails.guestFirstName, 
+                    GuestDetails.guestLastName,
+                    GuestDetails.guestGender, 
+                    GuestDetails.guestBirthDate, 
+                    GuestDetails.guestContactNo,
+                    GuestDetails.guestAddress, 
+                    GuestDetails.guestEmailAddress, 
+                    GuestDetails.userID, 
+                    GuestDetails.roomID);
 
-                DB.ReservationInfo.Add(ReservationDetails);
-                DB.SaveChanges();
-                // CONNECT reservation ID foreign key to newly added reservation record
-                PaymentDetails.reserveID = ReservationDetails.reserveID;
+                //Create reservation second, so that payment can connect to reservation id
+                DB.SP_AddReservation_Booking(ReservationDetails.reserveCheckInDate, 
+                    ReservationDetails.reserveCheckOutDate,
+                    ReservationDetails.reserveStayLength,
+                    ReservationDetails.reserveGuestAdultCount,
+                    ReservationDetails.reserveGuestChildCount,
+                    ReservationDetails.reserveGuestCount,
+                    ReservationDetails.userId,
+                    ReservationDetails.roomID,
+                    GuestDetails.guestID);
 
-                DB.PaymentInfo.Add(PaymentDetails);
-                DB.SaveChanges();
+                DB.SP_AddPayment_Booking(ReservationDetails.userId,
+                    ReservationDetails.reserveID,
+                    GuestDetails.guestID,
+                    cardtype,
+                    cardnum,
+                    amount,
+                    cardcvv,
+                    cardexpire,
+                    cardowner);
 
                 DB.SP_UpdateRoom_GuestCount(SelectedRoom.roomID, ReservationDetails.reserveGuestCount);
                 DB.SP_UpdateRoom_GuestID(SelectedRoom.roomID, GuestDetails.guestID);

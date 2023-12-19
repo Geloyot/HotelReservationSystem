@@ -122,13 +122,13 @@ namespace HotelReservationSystem
                 ReservationDetails.reserveCheckInDate = checkin;
                 ReservationDetails.reserveCheckOutDate = checkout;
                 ReservationDetails.reserveStayLength = staycount;
-                ReservationDetails.roomID = SelectedRoom.roomID;
                 ReservationDetails.reserveGuestAdultCount = adult;
                 ReservationDetails.reserveGuestChildCount = child;
                 ReservationDetails.reserveGuestCount = adult + child;
                 ReservationDetails.reserveHasCheckedIn = false;
                 ReservationDetails.reserveHasCheckedOut = false;
                 ReservationDetails.userId = CurrentlyLoggedUser.GetInstance().CurrentUserAccount.userId;
+                ReservationDetails.roomID = SelectedRoom.roomID;
 
                 Customer_S2Guest guest = new Customer_S2Guest();
 

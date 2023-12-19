@@ -21,8 +21,9 @@ namespace HotelReservationSystem.Appdata
         public string guestContactNo { get; set; }
         public string guestAddress { get; set; }
         public string guestEmailAddress { get; set; }
-        public System.DateTime guestLastCheckInDate { get; set; }
-        public System.DateTime guestLastCheckOutDate { get; set; }
+        public Nullable<System.DateTime> guestLastCheckInDate { get; set; }
+        public Nullable<System.DateTime> guestLastCheckOutDate { get; set; }
+        public Nullable<bool> guestHasReservation { get; set; }
         public Nullable<int> userID { get; set; }
         public Nullable<int> roomID { get; set; }
     }

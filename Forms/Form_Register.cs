@@ -121,8 +121,14 @@ namespace HotelReservationSystem
             }
             else    // Customer will be registered right away.
             {
-                DB.UserAccount.Add(NewUserAccount);
-                DB.SaveChanges();
+                DB.SP_NewUserAccount_Register(NewUserAccount.userName,
+                    NewUserAccount.userPassword,
+                    NewUserAccount.userStatus,
+                    NewUserAccount.userDateCreated,
+                    NewUserAccount.userDateUpdated,
+                    NewUserAccount.roleId,
+                    NewUserAccount.createdById,
+                    NewUserAccount.createdByUser);
 
                 Txt_Username.Clear();
                 Txt_Password.Clear();
